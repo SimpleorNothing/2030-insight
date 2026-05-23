@@ -203,6 +203,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .mi-impact{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--txt);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
 .mi-date{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted2)}
 .mi-card h3{font-family:'Gowun Batang',serif;font-weight:700;font-size:18px;line-height:1.32;margin-bottom:9px}
+.mi-card h3 a{color:inherit;text-decoration:none;transition:color .15s}
+.mi-card h3 a:hover{color:var(--gold);text-decoration:underline}
 .mi-card .sum{font-size:13px;color:var(--muted);margin-bottom:13px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 .mi-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px}
 .mi-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);background:var(--bg2);border:1px solid var(--line);border-radius:5px;padding:2px 7px}
@@ -778,7 +780,15 @@ secs.forEach(s=>s&&obs.observe(s));
     if(typeof it.impact==='number')top.appendChild(el('span','mi-impact','영향 '+it.impact.toFixed(1)));
     if(it.publishedAt)top.appendChild(el('span','mi-date',relTime(it.publishedAt)));
     c.appendChild(top);
-    c.appendChild(el('h3',null,it.headline||'(제목 없음)'));
+    const url=(it.source&&it.source.url)||it.url;
+    const hasUrl=url&&/^https?:\/\//.test(url);
+    const h=el('h3'), title=it.headline||'(제목 없음)';
+    if(hasUrl){
+      const ha=el('a',null,title);
+      ha.href=url; ha.target='_blank'; ha.rel='noopener noreferrer';
+      h.appendChild(ha);
+    }else h.textContent=title;
+    c.appendChild(h);
     if(it.summary)c.appendChild(el('p','sum',it.summary));
     const chips=el('div','mi-chips');
     (it.products||[]).forEach(p=>chips.appendChild(tag(p,'prd')));
@@ -792,8 +802,7 @@ secs.forEach(s=>s&&obs.observe(s));
       add('매출연관',f.salesRelevance);add('시급성',f.timeUrgency);add('시장규모',f.marketSize);add('출처신뢰',f.sourceReliability);
       if(fe.children.length)c.appendChild(fe);
     }
-    const url=(it.source&&it.source.url)||it.url;
-    if(url&&/^https?:\/\//.test(url)){
+    if(hasUrl){
       const sw=el('div','mi-src');
       const a=el('a',null,'원문 보기'+(it.source&&it.source.name?' · '+it.source.name:'')+' →');
       a.href=url; a.target='_blank'; a.rel='noopener noreferrer';
