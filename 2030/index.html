@@ -177,7 +177,54 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .rise{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
 .d1{animation-delay:.05s}.d2{animation-delay:.12s}.d3{animation-delay:.2s}.d4{animation-delay:.28s}
 
+/* ---------- LIVE MARKET INSIGHT (auto-reflect) ---------- */
+.ctr.r::before{background:var(--red)}
+.ctr.mi{cursor:pointer}
+.ctr.mi:hover{border-color:var(--line2)}
+.ctr.mi.on{border-color:var(--line2);box-shadow:0 8px 22px rgba(20,25,40,.12);transform:translateY(-2px)}
+.mi-status{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 18px;margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
+.mi-status .live{display:inline-flex;align-items:center;gap:7px;color:var(--green);font-weight:600;letter-spacing:.5px}
+.mi-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.8s infinite}
+.mi-status b{color:var(--txt);font-weight:500}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(46,158,84,.45)}70%{box-shadow:0 0 0 7px rgba(46,158,84,0)}100%{box-shadow:0 0 0 0 rgba(46,158,84,0)}}
+.mi-filters{display:flex;flex-direction:column;gap:9px;margin-top:18px}
+.mi-frow{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.mi-frow .flab{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:1px;color:var(--muted2);min-width:46px;text-transform:uppercase}
+.mi-chip{cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:5px 12px;transition:.16s;white-space:nowrap}
+.mi-chip:hover{border-color:var(--line2);color:var(--txt)}
+.mi-chip.on{background:var(--gold-soft);border-color:rgba(176,121,31,.4);color:var(--gold);font-weight:600}
+.mi-chip .c{color:var(--muted2);font-weight:400;margin-left:4px}
+.mi-chip.on .c{color:var(--gold)}
+.mi-feed{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
+.mi-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:0 1px 3px rgba(20,25,40,.05);transition:.2s;display:flex;flex-direction:column}
+.mi-card:hover{border-color:var(--line2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(20,25,40,.10)}
+.mi-card .top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:11px}
+.mi-card .lens{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--teal);letter-spacing:1px;text-transform:uppercase;margin-right:auto}
+.mi-impact{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--txt);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+.mi-date{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted2)}
+.mi-card h3{font-family:'Gowun Batang',serif;font-weight:700;font-size:18px;line-height:1.32;margin-bottom:9px}
+.mi-card .sum{font-size:13px;color:var(--muted);margin-bottom:13px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.mi-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px}
+.mi-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);background:var(--bg2);border:1px solid var(--line);border-radius:5px;padding:2px 7px}
+.mi-tag.prd{color:var(--blue);border-color:rgba(61,111,203,.25);background:rgba(61,111,203,.07)}
+.mi-tag.cmp{color:var(--amber);border-color:rgba(181,120,30,.28);background:rgba(181,120,30,.07)}
+.mi-factors{display:flex;gap:13px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted2);padding-top:11px;border-top:1px dashed var(--line)}
+.mi-factors b{color:var(--txt);font-weight:600}
+.mi-src{margin-top:auto;padding-top:12px}
+.mi-src a{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--teal);text-decoration:none}
+.mi-src a:hover{text-decoration:underline}
+.mi-pill{display:inline-flex;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;letter-spacing:.4px}
+.g-urgent{background:rgba(222,59,57,.13);color:var(--red);border:1px solid rgba(222,59,57,.32)}
+.g-major{background:rgba(176,121,31,.13);color:var(--gold);border:1px solid rgba(176,121,31,.32)}
+.g-watch{background:rgba(61,111,203,.12);color:var(--blue);border:1px solid rgba(61,111,203,.3)}
+.g-ref{background:rgba(120,120,130,.12);color:var(--muted2);border:1px solid rgba(120,120,130,.28)}
+.mi-more{display:block;margin:22px auto 0;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);background:var(--gold-soft);border:1px solid rgba(176,121,31,.3);border-radius:9px;padding:10px 22px;transition:.16s}
+.mi-more:hover{background:rgba(176,121,31,.16)}
+.mi-msg{margin-top:22px;padding:30px;text-align:center;color:var(--muted2);font-family:'IBM Plex Mono',monospace;font-size:13px;background:var(--bg2);border:1px solid var(--line);border-radius:14px}
+.mi-msg.err{color:#9A3B3A;background:rgba(222,59,57,.05);border-color:rgba(222,59,57,.25)}
+
 @media(max-width:860px){
+  .mi-feed{grid-template-columns:1fr}
   .counters,.horizon{grid-template-columns:repeat(2,1fr)}
   .g3,.g2,.delta{grid-template-columns:1fr}
   .tl-row{grid-template-columns:1fr}.tl-row .lab{text-align:left}
@@ -191,6 +238,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <div class="brand">DA·SENSING<small>HOME APPLIANCE 2030</small></div>
   <div class="links">
     <a href="#home" class="on">대시보드</a>
+    <a href="#insight">실시간</a>
     <a href="#board2030">2030 전망</a>
     <a href="#consumer">소비자</a>
     <a href="#tech">기술</a>
@@ -212,6 +260,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <span>추적 범위 <b>소비자5 · 기술5 · 경쟁사11사 / 7제품군</b></span>
       <span>위계 <b>Signal → Trend → Megatrend</b></span>
       <span>청자 <b>사업부장 · 기획 · 상품기획 · R&D</b></span>
+      <span style="color:var(--green)">● 실시간 연동 <b id="miHeroCount" style="color:var(--green)">연동 중…</b> · 수집 <b id="miHeroUpdated" style="color:var(--green)">—</b></span>
     </div>
 
     <!-- counters -->
@@ -244,6 +293,38 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <div class="callout rise d4">
       ⚠ <b>이 보드의 모든 카운터·빈도·신뢰도·KPI·발견일 등 정량 수치는 시연용 잠정값(빨간 이탤릭)이며 검증 필요</b>합니다. 입력 가이드(소비자·기술/경쟁사 v3)는 운영 프레임워크 정의서로, 아직 수집된 실측 신호 데이터를 포함하지 않습니다. 본 보드는 <b>고정 템플릿 구조 + 검증된 프레임워크 + 가이드 내 예시 사례(시연 카드)</b>로 구성됐습니다. 신규 사실·수치·고유명사는 임의 추가하지 않았습니다(할루시네이션 차단 7원칙 준수).
     </div>
+  </div>
+</section>
+
+<!-- ================= LIVE MARKET INSIGHT ================= -->
+<section id="insight">
+  <div class="wrap">
+    <p class="eyebrow">실시간 데이터 · MARKET INSIGHT 자동 연동</p>
+    <h2>실시간 마켓 인사이트 피드</h2>
+    <p class="sec-note">market-insight 수집·분류 파이프라인(RSS 수집 → AI 렌즈/등급/영향도 분류, 시간 단위 자동 갱신)이 산출한 <b>실데이터 신호</b>를 자동으로 반영합니다. 상단 프레임워크의 시연용 잠정 수치(<span class="demo">빨간 이탤릭</span>)와 달리, 아래 카운터·항목은 실제 수집·분류 결과입니다. 렌즈(경쟁사·소비자·기술·정책·거시) × 등급(긴급·주요·주시·참고) × 영향도(1~5)로 분류됩니다. 등급 카운터를 클릭하면 해당 등급만 필터링됩니다.</p>
+
+    <div class="mi-status" id="miStatus">
+      <span class="live"><span class="mi-dot"></span>LIVE</span>
+      <span>연동 상태 <b id="miState">불러오는 중…</b></span>
+    </div>
+
+    <div class="counters" id="miCounters" style="display:none">
+      <div class="ctr r mi" data-grade="긴급"><div class="k">긴급 (Urgent)</div><div class="v" id="miCntUrgent">—</div><div class="sub">즉시 대응 / 최우선</div></div>
+      <div class="ctr t mi" data-grade="주요"><div class="k">주요 (Major)</div><div class="v" id="miCntMajor">—</div><div class="sub">의사결정 영향 신호</div></div>
+      <div class="ctr s mi" data-grade="주시"><div class="k">주시 (Watch)</div><div class="v" id="miCntWatch">—</div><div class="sub">지속 모니터링 대상</div></div>
+      <div class="ctr d mi" data-grade="참고"><div class="k">참고 (Reference)</div><div class="v" id="miCntRef">—</div><div class="sub">배경·맥락 정보</div></div>
+    </div>
+
+    <div class="mi-filters" id="miFilters" style="display:none">
+      <div class="mi-frow"><span class="flab">렌즈</span><span id="miLensChips"></span></div>
+      <div class="mi-frow"><span class="flab">정렬</span>
+        <span class="mi-chip sort on" data-sort="impact">영향순</span>
+        <span class="mi-chip sort" data-sort="recent">최신순</span>
+      </div>
+    </div>
+
+    <div class="mi-feed" id="miFeed"></div>
+    <div id="miMsgWrap"></div>
   </div>
 </section>
 
@@ -620,6 +701,11 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <ol start="13">
         <li>Gartner Hype Cycle for Smart Home · Euromonitor Megatrends · Matter 1.x Spec · EU DPP</li>
       </ol>
+      <h4>실시간 데이터 연동 (자동 · 시간 단위 갱신)</h4>
+      <ol start="14">
+        <li>market-insight 수집·분류 파이프라인 — RSS 수집 + AI(LLM) 렌즈/등급/영향도 분류</li>
+        <li>데이터 소스 — <span class="url">samsungda.net/mi/data/news.json</span> (fallback: <span class="url">raw.githubusercontent.com/SimpleorNothing/market-insight</span>)</li>
+      </ol>
     </div>
   </div>
 </section>
@@ -644,6 +730,132 @@ const obs=new IntersectionObserver(es=>{
   });
 },{rootMargin:'-45% 0px -50% 0px'});
 secs.forEach(s=>s&&obs.observe(s));
+
+/* ---------- LIVE MARKET INSIGHT — auto-reflect from market-insight pipeline ---------- */
+(function(){
+  // Same-origin path first (when board is served alongside /mi), then absolute, then CORS-friendly raw fallback.
+  const DATA_URLS=[
+    '/mi/data/news.json',
+    'https://samsungda.net/mi/data/news.json',
+    'https://raw.githubusercontent.com/SimpleorNothing/market-insight/main/data/news.json'
+  ];
+  const LENS_SEQ=['경쟁사','소비자','기술','정책','거시'];
+  const GRADE_RANK={'긴급':0,'주요':1,'주시':2,'참고':3};
+  const GRADE_CLS={'긴급':'g-urgent','주요':'g-major','주시':'g-watch','참고':'g-ref'};
+  const $=id=>document.getElementById(id);
+  const feed=$('miFeed'), msgWrap=$('miMsgWrap');
+  let ALL=[], state={lens:'전체',grade:null,sort:'impact',limit:30};
+
+  function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+  function relTime(iso){
+    const t=new Date(iso).getTime(); if(isNaN(t))return'';
+    const d=Math.floor((Date.now()-t)/1000);
+    if(d<60)return'방금'; if(d<3600)return Math.floor(d/60)+'분 전';
+    if(d<86400)return Math.floor(d/3600)+'시간 전'; if(d<2592000)return Math.floor(d/86400)+'일 전';
+    return Math.floor(d/2592000)+'개월 전';
+  }
+  function fmtDT(iso){const d=new Date(iso);if(isNaN(d.getTime()))return'';
+    const p=n=>String(n).padStart(2,'0');
+    return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}
+
+  function chip(label,count,active,on){
+    const c=el('span','mi-chip'+(active?' on':''));
+    c.appendChild(document.createTextNode(label));
+    if(count!=null)c.appendChild(el('span','c','('+count+')'));
+    c.addEventListener('click',on); return c;
+  }
+  function buildLensChips(){
+    const wrap=$('miLensChips'); wrap.textContent='';
+    const counts={}; ALL.forEach(i=>counts[i.lens]=(counts[i.lens]||0)+1);
+    wrap.appendChild(chip('전체',ALL.length,state.lens==='전체',()=>{state.lens='전체';state.limit=30;render();}));
+    LENS_SEQ.filter(l=>counts[l]).forEach(l=>wrap.appendChild(
+      chip(l,counts[l],state.lens===l,()=>{state.lens=l;state.limit=30;render();})));
+  }
+  function tag(text,cls){return el('span','mi-tag'+(cls?' '+cls:''),text);}
+
+  function card(it){
+    const c=el('div','mi-card'), top=el('div','top');
+    top.appendChild(el('span','lens',it.lens||''));
+    if(GRADE_CLS[it.grade])top.appendChild(el('span','mi-pill '+GRADE_CLS[it.grade],it.grade));
+    if(typeof it.impact==='number')top.appendChild(el('span','mi-impact','영향 '+it.impact.toFixed(1)));
+    if(it.publishedAt)top.appendChild(el('span','mi-date',relTime(it.publishedAt)));
+    c.appendChild(top);
+    c.appendChild(el('h3',null,it.headline||'(제목 없음)'));
+    if(it.summary)c.appendChild(el('p','sum',it.summary));
+    const chips=el('div','mi-chips');
+    (it.products||[]).forEach(p=>chips.appendChild(tag(p,'prd')));
+    (it.competitors||[]).forEach(p=>chips.appendChild(tag(p,'cmp')));
+    (it.tags||[]).slice(0,5).forEach(p=>chips.appendChild(tag('#'+p)));
+    if(chips.children.length)c.appendChild(chips);
+    const f=it.factors;
+    if(f){
+      const fe=el('div','mi-factors');
+      const add=(lab,v)=>{if(v==null)return;const s=el('span',null,lab+' ');s.appendChild(el('b',null,v));fe.appendChild(s);};
+      add('매출연관',f.salesRelevance);add('시급성',f.timeUrgency);add('시장규모',f.marketSize);add('출처신뢰',f.sourceReliability);
+      if(fe.children.length)c.appendChild(fe);
+    }
+    const url=(it.source&&it.source.url)||it.url;
+    if(url&&/^https?:\/\//.test(url)){
+      const sw=el('div','mi-src');
+      const a=el('a',null,'원문 보기'+(it.source&&it.source.name?' · '+it.source.name:'')+' →');
+      a.href=url; a.target='_blank'; a.rel='noopener noreferrer';
+      sw.appendChild(a); c.appendChild(sw);
+    }
+    return c;
+  }
+  function render(){
+    document.querySelectorAll('#miCounters .ctr').forEach(c=>c.classList.toggle('on',c.dataset.grade===state.grade));
+    document.querySelectorAll('#miFilters .sort').forEach(c=>c.classList.toggle('on',c.dataset.sort===state.sort));
+    let list=ALL.slice();
+    if(state.lens!=='전체')list=list.filter(i=>i.lens===state.lens);
+    if(state.grade)list=list.filter(i=>i.grade===state.grade);
+    list.sort(state.sort==='recent'
+      ? (a,b)=>new Date(b.publishedAt)-new Date(a.publishedAt)
+      : (a,b)=>((GRADE_RANK[a.grade]??9)-(GRADE_RANK[b.grade]??9))||((b.impact||0)-(a.impact||0)));
+    feed.textContent=''; msgWrap.textContent='';
+    if(!list.length){msgWrap.appendChild(el('div','mi-msg','해당 조건의 신호가 없습니다.'));return;}
+    list.slice(0,state.limit).forEach(it=>feed.appendChild(card(it)));
+    if(list.length>state.limit){
+      const more=el('button','mi-more','더 보기 ('+(list.length-state.limit)+'건 더 · 전체 '+list.length+'건)');
+      more.addEventListener('click',()=>{state.limit+=30;render();});
+      msgWrap.appendChild(more);
+    }
+  }
+  function onData(d){
+    ALL=Array.isArray(d&&d.items)?d.items:[];
+    if(!ALL.length){fail('수신된 신호 항목이 없습니다.');return;}
+    const g={}; ALL.forEach(i=>g[i.grade]=(g[i.grade]||0)+1);
+    $('miCntUrgent').textContent=g['긴급']||0;
+    $('miCntMajor').textContent=g['주요']||0;
+    $('miCntWatch').textContent=g['주시']||0;
+    $('miCntRef').textContent=g['참고']||0;
+    const upd=d.updatedAt?fmtDT(d.updatedAt)+' ('+relTime(d.updatedAt)+')':'시각 미상';
+    $('miState').textContent='정상 · 총 '+ALL.length+'건 · 최종 수집 '+upd;
+    const hc=$('miHeroCount'); if(hc)hc.textContent=ALL.length+'건';
+    const hu=$('miHeroUpdated'); if(hu)hu.textContent=d.updatedAt?relTime(d.updatedAt):'—';
+    $('miCounters').style.display='';
+    $('miFilters').style.display='';
+    document.querySelectorAll('#miCounters .ctr.mi').forEach(c=>c.addEventListener('click',()=>{
+      state.grade=(state.grade===c.dataset.grade)?null:c.dataset.grade; state.limit=30; render();}));
+    document.querySelectorAll('#miFilters .sort').forEach(c=>c.addEventListener('click',()=>{
+      state.sort=c.dataset.sort; render();}));
+    buildLensChips();
+    render();
+  }
+  function fail(msg){
+    $('miState').textContent='연동 실패 — '+(msg||'데이터 소스 접근 불가');
+    const dot=$('miStatus').querySelector('.mi-dot'); if(dot)dot.style.background='var(--red)';
+    const live=$('miStatus').querySelector('.live'); if(live)live.style.color='var(--red)';
+    msgWrap.appendChild(el('div','mi-msg err','실시간 데이터를 불러오지 못했습니다. '+(msg||'')+' 데이터 소스(market-insight) 연결을 확인하세요.'));
+  }
+  (function load(i){
+    if(i>=DATA_URLS.length){fail('모든 데이터 소스 접근 실패.');return;}
+    fetch(DATA_URLS[i],{cache:'no-store'})
+      .then(r=>{if(!r.ok)throw 0; return r.json();})
+      .then(onData)
+      .catch(()=>load(i+1));
+  })(0);
+})();
 </script>
 </body>
 </html>
