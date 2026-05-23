@@ -704,7 +704,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <h4>실시간 데이터 연동 (자동 · 시간 단위 갱신)</h4>
       <ol start="14">
         <li>market-insight 수집·분류 파이프라인 — RSS 수집 + AI(LLM) 렌즈/등급/영향도 분류</li>
-        <li>데이터 소스 — <span class="url">samsungda.net/mi/data/news.json</span> (fallback: <span class="url">raw.githubusercontent.com/SimpleorNothing/market-insight</span>)</li>
+        <li>데이터 소스 — <span class="url">raw.githubusercontent.com/SimpleorNothing/market-insight/main/data/news.json</span> (CORS 허용 · 시간 단위 자동 갱신)</li>
       </ol>
     </div>
   </div>
@@ -733,10 +733,8 @@ secs.forEach(s=>s&&obs.observe(s));
 
 /* ---------- LIVE MARKET INSIGHT — auto-reflect from market-insight pipeline ---------- */
 (function(){
-  // Same-origin path first (when board is served alongside /mi), then absolute, then CORS-friendly raw fallback.
+  // Cross-origin fetch from the market-insight repo (CORS: access-control-allow-origin *), auto-updated hourly.
   const DATA_URLS=[
-    '/mi/data/news.json',
-    'https://samsungda.net/mi/data/news.json',
     'https://raw.githubusercontent.com/SimpleorNothing/market-insight/main/data/news.json'
   ];
   const LENS_SEQ=['경쟁사','소비자','기술','정책','거시'];
