@@ -182,7 +182,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .mi-chip.on{background:var(--gold-soft);border-color:rgba(176,121,31,.4);color:var(--gold);font-weight:600}
 .mi-chip .c{color:var(--muted2);font-weight:400;margin-left:4px}
 .mi-chip.on .c{color:var(--gold)}
-.mi-feed{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
+.mi-feed{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px;grid-auto-rows:1fr}
 .mi-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:0 1px 3px rgba(20,25,40,.05);transition:.2s;display:flex;flex-direction:column}
 .mi-card:hover{border-color:var(--line2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(20,25,40,.10)}
 .mi-card .top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:11px}
@@ -193,11 +193,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .mi-card h3 a{color:inherit;text-decoration:none;transition:color .15s}
 .mi-card h3 a:hover{color:var(--gold);text-decoration:underline}
 .mi-card .sum{font-size:13px;color:var(--muted);margin-bottom:13px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-.mi-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px}
+.mi-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;margin-bottom:11px}
+.mi-chips:empty{margin-bottom:0}
 .mi-tag{font-family:var(--font);font-size:10px;color:var(--muted);background:var(--bg2);border:1px solid var(--line);border-radius:5px;padding:2px 7px}
 .mi-tag.prd{color:var(--blue);border-color:rgba(61,111,203,.25);background:rgba(61,111,203,.07)}
 .mi-tag.cmp{color:var(--amber);border-color:rgba(181,120,30,.28);background:rgba(181,120,30,.07)}
-.mi-foot{margin-top:auto;display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;padding-top:11px;border-top:1px dashed var(--line)}
+.mi-foot{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;padding-top:11px;border-top:1px dashed var(--line)}
 .mi-factors{display:flex;gap:13px;flex-wrap:wrap;font-family:var(--font);font-size:10.5px;color:var(--muted2)}
 .mi-factors b{color:var(--txt);font-weight:600}
 .mi-src{margin-left:auto;text-align:right}
@@ -214,7 +215,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .mi-msg.err{color:#9A3B3A;background:rgba(222,59,57,.05);border-color:rgba(222,59,57,.25)}
 
 @media(max-width:860px){
-  .mi-feed{grid-template-columns:1fr}
+  .mi-feed{grid-template-columns:1fr;grid-auto-rows:auto}
   .counters,.horizon{grid-template-columns:repeat(2,1fr)}
   .g3,.g2,.delta{grid-template-columns:1fr}
   .tl-row{grid-template-columns:1fr}.tl-row .lab{text-align:left}
@@ -713,7 +714,7 @@ secs.forEach(s=>s&&obs.observe(s));
     (it.products||[]).forEach(p=>chips.appendChild(tag(p,'prd')));
     (it.competitors||[]).forEach(p=>chips.appendChild(tag(p,'cmp')));
     (it.tags||[]).slice(0,5).forEach(p=>chips.appendChild(tag('#'+p)));
-    if(chips.children.length)c.appendChild(chips);
+    c.appendChild(chips);
     const foot=el('div','mi-foot');
     const f=it.factors;
     if(f){
