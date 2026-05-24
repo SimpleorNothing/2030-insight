@@ -199,7 +199,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .mi-tag.cmp{color:var(--amber);border-color:rgba(181,120,30,.28);background:rgba(181,120,30,.07)}
 .mi-factors{display:flex;gap:13px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted2);padding-top:11px;border-top:1px dashed var(--line)}
 .mi-factors b{color:var(--txt);font-weight:600}
-.mi-src{margin-top:auto;padding-top:12px}
+.mi-src{margin-top:auto;padding-top:12px;text-align:right}
 .mi-src a{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--teal);text-decoration:none}
 .mi-src a:hover{text-decoration:underline}
 .mi-pill{display:inline-flex;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;letter-spacing:.4px}
@@ -722,7 +722,7 @@ secs.forEach(s=>s&&obs.observe(s));
     }
     if(hasUrl){
       const sw=el('div','mi-src');
-      const a=el('a',null,'원문 보기'+(it.source&&it.source.name?' · '+it.source.name:'')+' →');
+      const a=el('a',null,(it.source&&it.source.name?it.source.name:'원문 보기')+' →');
       a.href=url; a.target='_blank'; a.rel='noopener noreferrer';
       sw.appendChild(a); c.appendChild(sw);
     }
