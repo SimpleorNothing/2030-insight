@@ -197,9 +197,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .mi-tag{font-family:var(--font);font-size:10px;color:var(--muted);background:var(--bg2);border:1px solid var(--line);border-radius:5px;padding:2px 7px}
 .mi-tag.prd{color:var(--blue);border-color:rgba(61,111,203,.25);background:rgba(61,111,203,.07)}
 .mi-tag.cmp{color:var(--amber);border-color:rgba(181,120,30,.28);background:rgba(181,120,30,.07)}
-.mi-factors{display:flex;gap:13px;flex-wrap:wrap;font-family:var(--font);font-size:10.5px;color:var(--muted2);padding-top:11px;border-top:1px dashed var(--line)}
+.mi-foot{margin-top:auto;display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;padding-top:11px;border-top:1px dashed var(--line)}
+.mi-factors{display:flex;gap:13px;flex-wrap:wrap;font-family:var(--font);font-size:10.5px;color:var(--muted2)}
 .mi-factors b{color:var(--txt);font-weight:600}
-.mi-src{margin-top:auto;padding-top:12px;text-align:right}
+.mi-src{margin-left:auto;text-align:right}
 .mi-src a{font-family:var(--font);font-size:11px;color:var(--teal);text-decoration:none}
 .mi-src a:hover{text-decoration:underline}
 .mi-pill{display:inline-flex;align-items:center;gap:4px;font-family:var(--font);font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;letter-spacing:.4px}
@@ -713,19 +714,21 @@ secs.forEach(s=>s&&obs.observe(s));
     (it.competitors||[]).forEach(p=>chips.appendChild(tag(p,'cmp')));
     (it.tags||[]).slice(0,5).forEach(p=>chips.appendChild(tag('#'+p)));
     if(chips.children.length)c.appendChild(chips);
+    const foot=el('div','mi-foot');
     const f=it.factors;
     if(f){
       const fe=el('div','mi-factors');
       const add=(lab,v)=>{if(v==null)return;const s=el('span',null,lab+' ');s.appendChild(el('b',null,v));fe.appendChild(s);};
       add('매출연관',f.salesRelevance);add('시급성',f.timeUrgency);add('시장규모',f.marketSize);add('출처신뢰',f.sourceReliability);
-      if(fe.children.length)c.appendChild(fe);
+      if(fe.children.length)foot.appendChild(fe);
     }
     if(hasUrl){
       const sw=el('div','mi-src');
       const a=el('a',null,(it.source&&it.source.name?it.source.name:'원문 보기')+' →');
       a.href=url; a.target='_blank'; a.rel='noopener noreferrer';
-      sw.appendChild(a); c.appendChild(sw);
+      sw.appendChild(a); foot.appendChild(sw);
     }
+    if(foot.children.length)c.appendChild(foot);
     return c;
   }
   function render(){
