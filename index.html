@@ -195,9 +195,13 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .mi-card .sum{font-size:13px;color:var(--muted);margin-bottom:13px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 .mi-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;margin-bottom:11px}
 .mi-chips:empty{margin-bottom:0}
-.mi-tag{font-family:var(--font);font-size:10px;color:var(--muted);background:var(--bg2);border:1px solid var(--line);border-radius:5px;padding:2px 7px}
+.mi-tag{font-family:var(--font);font-size:10px;color:var(--muted);background:var(--bg2);border:1px solid var(--line);border-radius:5px;padding:2px 7px;cursor:pointer;transition:border-color .14s,box-shadow .14s,color .14s}
 .mi-tag.prd{color:var(--blue);border-color:rgba(61,111,203,.25);background:rgba(61,111,203,.07)}
 .mi-tag.cmp{color:var(--amber);border-color:rgba(181,120,30,.28);background:rgba(181,120,30,.07)}
+.mi-tag:hover{border-color:var(--line2)}
+.mi-tag.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold);color:var(--gold);font-weight:600}
+#miTagRow .mi-chip .mi-x{margin-left:6px;font-size:10px;opacity:.7}
+.mi-tagcount{font-family:var(--font);font-size:11px;color:var(--muted2);margin-left:6px}
 .mi-foot{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;padding-top:11px;border-top:1px dashed var(--line)}
 .mi-factors{display:flex;gap:13px;flex-wrap:wrap;font-family:var(--font);font-size:10.5px;color:var(--muted2)}
 .mi-factors b{color:var(--txt);font-weight:600}
@@ -307,6 +311,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <span class="mi-chip sort on" data-sort="impact">영향순</span>
         <span class="mi-chip sort" data-sort="recent">최신순</span>
       </div>
+      <div class="mi-frow" id="miTagRow" style="display:none"><span class="flab">태그</span><span id="miActiveTag"></span></div>
     </div>
 
     <div class="mi-feed" id="miFeed"></div>
@@ -664,7 +669,7 @@ secs.forEach(s=>s&&obs.observe(s));
   const GRADE_CLS={'긴급':'g-urgent','주요':'g-major','주시':'g-watch','참고':'g-ref'};
   const $=id=>document.getElementById(id);
   const feed=$('miFeed'), msgWrap=$('miMsgWrap');
-  let ALL=[], state={lens:'전체',grade:null,sort:'impact',limit:30};
+  let ALL=[], state={lens:'전체',grade:null,sort:'impact',limit:30,tag:null};
 
   function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
   function relTime(iso){
@@ -691,7 +696,18 @@ secs.forEach(s=>s&&obs.observe(s));
     LENS_SEQ.filter(l=>counts[l]).forEach(l=>wrap.appendChild(
       chip(l,counts[l],state.lens===l,()=>{state.lens=l;state.limit=30;render();})));
   }
-  function tag(text,cls){return el('span','mi-tag'+(cls?' '+cls:''),text);}
+  function itemHasTag(i,t){
+    return (i.products||[]).includes(t)||(i.competitors||[]).includes(t)||(i.tags||[]).includes(t);
+  }
+  function tag(text,cls,val){
+    const e=el('span','mi-tag'+(cls?' '+cls:''),text);
+    if(val!=null){
+      if(state.tag===val)e.classList.add('on');
+      e.title='이 태그로 필터';
+      e.addEventListener('click',()=>{state.tag=(state.tag===val)?null:val;state.limit=30;render();});
+    }
+    return e;
+  }
 
   // --- Google News redirect safety net (mirrors market-insight data-layer fix) ---
   // Some feed items may still carry a news.google.com/rss/articles/... redirect URL.
@@ -737,9 +753,9 @@ secs.forEach(s=>s&&obs.observe(s));
     c.appendChild(h);
     if(it.summary)c.appendChild(el('p','sum',it.summary));
     const chips=el('div','mi-chips');
-    (it.products||[]).forEach(p=>chips.appendChild(tag(p,'prd')));
-    (it.competitors||[]).forEach(p=>chips.appendChild(tag(p,'cmp')));
-    (it.tags||[]).slice(0,5).forEach(p=>chips.appendChild(tag('#'+p)));
+    (it.products||[]).forEach(p=>chips.appendChild(tag(p,'prd',p)));
+    (it.competitors||[]).forEach(p=>chips.appendChild(tag(p,'cmp',p)));
+    (it.tags||[]).slice(0,5).forEach(p=>chips.appendChild(tag('#'+p,null,p)));
     c.appendChild(chips);
     const foot=el('div','mi-foot');
     const f=it.factors;
@@ -758,15 +774,30 @@ secs.forEach(s=>s&&obs.observe(s));
     if(foot.children.length)c.appendChild(foot);
     return c;
   }
+  function renderTagRow(count){
+    const row=$('miTagRow'), box=$('miActiveTag');
+    if(!row||!box)return;
+    if(!state.tag){row.style.display='none';box.textContent='';return;}
+    row.style.display=''; box.textContent='';
+    const c=el('span','mi-chip on');
+    c.appendChild(document.createTextNode('#'+state.tag));
+    c.appendChild(el('span','mi-x','✕'));
+    c.title='태그 필터 해제';
+    c.addEventListener('click',()=>{state.tag=null;state.limit=30;render();});
+    box.appendChild(c);
+    box.appendChild(el('span','mi-tagcount','결과 '+count+'건'));
+  }
   function render(){
     document.querySelectorAll('#miCounters .ctr').forEach(c=>c.classList.toggle('on',c.dataset.grade===state.grade));
     document.querySelectorAll('#miFilters .sort').forEach(c=>c.classList.toggle('on',c.dataset.sort===state.sort));
     let list=ALL.slice();
     if(state.lens!=='전체')list=list.filter(i=>i.lens===state.lens);
     if(state.grade)list=list.filter(i=>i.grade===state.grade);
+    if(state.tag)list=list.filter(i=>itemHasTag(i,state.tag));
     list.sort(state.sort==='recent'
       ? (a,b)=>new Date(b.publishedAt)-new Date(a.publishedAt)
       : (a,b)=>((GRADE_RANK[a.grade]??9)-(GRADE_RANK[b.grade]??9))||((b.impact||0)-(a.impact||0)));
+    renderTagRow(list.length);
     feed.textContent=''; msgWrap.textContent='';
     if(!list.length){msgWrap.appendChild(el('div','mi-msg','해당 조건의 신호가 없습니다.'));return;}
     list.slice(0,state.limit).forEach(it=>feed.appendChild(card(it)));
