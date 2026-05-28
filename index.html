@@ -693,6 +693,32 @@ secs.forEach(s=>s&&obs.observe(s));
   }
   function tag(text,cls){return el('span','mi-tag'+(cls?' '+cls:''),text);}
 
+  // --- Google News redirect safety net (mirrors market-insight data-layer fix) ---
+  // Some feed items may still carry a news.google.com/rss/articles/... redirect URL.
+  // On networks that block the consent.google.com hop these links fail, so we prefer a
+  // direct publisher URL and, failing that, try to decode the one embedded in the path.
+  const isGNewsUrl=u=>/^https?:\/\/news\.google\.com\//i.test(u||'');
+  function decodeGNewsUrl(u){
+    try{
+      const m=String(u).match(/\/articles\/([^?\/#]+)/);
+      if(!m)return null;
+      let s=m[1].replace(/-/g,'+').replace(/_/g,'/');
+      while(s.length%4)s+='=';
+      const bytes=atob(s);
+      const urls=bytes.match(/https?:\/\/[^\s"'<>\\)]+/g);
+      if(!urls)return null;
+      const ext=urls.find(x=>!/(?:[^/]*\.)?google\.com(?:[\/:?]|$)/i.test(x));
+      return ext||null;
+    }catch(e){return null;}
+  }
+  function pickUrl(it){
+    const cands=[it.source&&it.source.url,it.url].filter(u=>u&&/^https?:\/\//.test(u));
+    const direct=cands.find(u=>!isGNewsUrl(u));
+    if(direct)return direct;
+    for(const u of cands){const d=decodeGNewsUrl(u);if(d)return d;}
+    return cands[0]||null;
+  }
+
   function card(it){
     const c=el('div','mi-card'), top=el('div','top');
     top.appendChild(el('span','lens',it.lens||''));
@@ -700,8 +726,8 @@ secs.forEach(s=>s&&obs.observe(s));
     if(typeof it.impact==='number')top.appendChild(el('span','mi-impact','영향 '+it.impact.toFixed(1)));
     if(it.publishedAt)top.appendChild(el('span','mi-date',relTime(it.publishedAt)));
     c.appendChild(top);
-    const url=(it.source&&it.source.url)||it.url;
-    const hasUrl=url&&/^https?:\/\//.test(url);
+    const url=pickUrl(it);
+    const hasUrl=!!url;
     const h=el('h3'), title=it.headline||'(제목 없음)';
     if(hasUrl){
       const ha=el('a',null,title);
