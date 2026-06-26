@@ -692,9 +692,12 @@ secs.forEach(s=>s&&obs.observe(s));
   function buildLensChips(){
     const wrap=$('miLensChips'); wrap.textContent='';
     const counts={}; ALL.forEach(i=>counts[i.lens]=(counts[i.lens]||0)+1);
-    wrap.appendChild(chip('전체',ALL.length,state.lens==='전체',()=>{state.lens='전체';state.limit=30;render();}));
-    LENS_SEQ.filter(l=>counts[l]).forEach(l=>wrap.appendChild(
-      chip(l,counts[l],state.lens===l,()=>{state.lens=l;state.limit=30;render();})));
+    const add=(label,count,val)=>{
+      const c=chip(label,count,state.lens===val,()=>{state.lens=val;state.limit=30;render();});
+      c.dataset.lens=val; wrap.appendChild(c);
+    };
+    add('전체',ALL.length,'전체');
+    LENS_SEQ.filter(l=>counts[l]).forEach(l=>add(l,counts[l],l));
   }
   function itemHasTag(i,t){
     return (i.products||[]).includes(t)||(i.competitors||[]).includes(t)||(i.tags||[]).includes(t);
@@ -790,6 +793,7 @@ secs.forEach(s=>s&&obs.observe(s));
   function render(){
     document.querySelectorAll('#miCounters .ctr').forEach(c=>c.classList.toggle('on',c.dataset.grade===state.grade));
     document.querySelectorAll('#miFilters .sort').forEach(c=>c.classList.toggle('on',c.dataset.sort===state.sort));
+    document.querySelectorAll('#miLensChips .mi-chip').forEach(c=>c.classList.toggle('on',c.dataset.lens===state.lens));
     let list=ALL.slice();
     if(state.lens!=='전체')list=list.filter(i=>i.lens===state.lens);
     if(state.grade)list=list.filter(i=>i.grade===state.grade);
