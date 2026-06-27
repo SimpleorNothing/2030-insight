@@ -307,27 +307,20 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       <h3>정보 업데이트 — 분석 사슬에 신호를 공급하는 단계</h3>
       <p class="s0-lead">S1~S6 분석이 도는 "엔진"이라면, 이 단계는 최신 신호를 끊임없이 넣어주는 "연료 공급"이다. 두 경로로 들어온 정보가 트렌드 도출·경쟁사·당사 위치를 주기적으로 갱신한다.</p>
 
-      <div class="s0-routes">
-        <div class="s0-route weekly" data-s0-toggle="weekly" style="cursor:pointer">
-          <span class="r-tag">방법 1 · 정기</span>
-          <h4>위클리 업데이트 (매주 월)</h4>
-          <p>매주 월요일, 전주(前週) 기사를 모아 반영. 경쟁사 신제품·M&A·규제 동향 등 빠르게 변하는 신호를 정기 리듬으로 포착.</p>
-          <div class="feeds">→ 주로 <b>S4 경쟁사 대응</b>·<b>S2 트렌드 도출</b> 갱신</div>
-        </div>
-        <div class="s0-route adhoc" data-s0-toggle="adhoc" style="cursor:pointer">
-          <span class="r-tag">방법 2 · 비정기</span>
-          <h4>수시 업데이트 (이벤트 기반)</h4>
-          <p>보고서·심층 기사·정책 발표 등을 수시로 반영. CES·규제 발효·대형 M&A 같은 비정기 변곡점을 그때그때 흡수.</p>
-          <div class="feeds">→ 주로 <b>S1 프레임</b>·<b>S3 성숙도</b>·<b>S5 당사 위치</b> 갱신</div>
-        </div>
-      </div>
-
-      <div class="s0-flowto">방법 1 · 2 &nbsp;→&nbsp; 신호 누적 &nbsp;→&nbsp; S1~S6 분석 사슬 갱신</div>
     </div>
 
-    <!-- S0 Interactive Content Sections -->
+    <!-- 방법 1 섹션 -->
+    <div style="margin-top:32px; padding-top:20px; border-top:2px solid rgba(255,255,255,.1)">
+      <div style="margin-bottom:16px">
+        <span class="r-tag" style="background:#1E7A57; color:#fff">방법 1 · 정기</span>
+        <h4 style="color:#fff; margin:8px 0">위클리 업데이트 (매주 월)</h4>
+        <p style="color:#B9C6D4; font-size:13px; line-height:1.5">매주 월요일, 전주(前週) 기사를 모아 반영. 경쟁사 신제품·M&A·규제 동향 등 빠르게 변하는 신호를 정기 리듬으로 포착.</p>
+        <div style="color:#8FA3B5; font-size:12px; margin-top:8px">→ 주로 <b style="color:#CFE0EE">S4 경쟁사 대응</b>·<b style="color:#CFE0EE">S2 트렌드 도출</b> 갱신</div>
+      </div>
+    </div>
+
     <!-- 1. 위클리 — S1~S6 체크리스트 -->
-    <div class="s0-content-toggle" id="mi-articles-section" style="display:block; margin-top:24px; background:#FFF8E6; padding:20px; border-radius:12px">
+    <div class="s0-content-toggle" id="mi-articles-section" style="display:block; margin-top:16px; background:#FFF8E6; padding:20px; border-radius:12px">
       <div style="margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid #E0D5C7; display:flex; justify-content:space-between; align-items:center">
         <div style="color:var(--ink); font-size:13px"><b id="s0-weekly-status">이번 주 MI 핵심</b></div>
         <button id="s0WeeklyToggleBtn" onclick="s0WeeklyToggleAll()" style="padding:6px 12px; background:#FFA500; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:12px">전체 선택</button>
@@ -386,8 +379,18 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       </div>
     </div>
 
+    <!-- 방법 2 섹션 -->
+    <div style="margin-top:32px; padding-top:20px; border-top:2px solid rgba(255,255,255,.1); color:#fff">
+      <div style="margin-bottom:16px">
+        <span class="r-tag" style="background:#C2410C; color:#fff">방법 2 · 비정기</span>
+        <h4 style="color:#fff; margin:8px 0">수시 업데이트 (이벤트 기반)</h4>
+        <p style="color:#B9C6D4; font-size:13px; line-height:1.5">보고서·심층 기사·정책 발표 등을 수시로 반영. CES·규제 발효·대형 M&A 같은 비정기 변곡점을 그때그때 흡수.</p>
+        <div style="color:#8FA3B5; font-size:12px; margin-top:8px">→ 주로 <b style="color:#CFE0EE">S1 프레임</b>·<b style="color:#CFE0EE">S3 성숙도</b>·<b style="color:#CFE0EE">S5 당사 위치</b> 갱신</div>
+      </div>
+    </div>
+
     <!-- 2. 비정기 — URL/파일/텍스트 입력 폼 -->
-    <div class="s0-content-toggle" id="vending-report-section" style="display:block; margin-top:24px; background:#F9F9F9; padding:20px; border-radius:12px">
+    <div class="s0-content-toggle" id="vending-report-section" style="display:block; margin-top:16px; background:#F9F9F9; padding:20px; border-radius:12px">
       <div style="margin-bottom:18px">
         <div style="display:flex; gap:12px; margin-bottom:14px; border-bottom:1px solid var(--line)">
           <button onclick="s0AdhocTab('url')" class="s0-adhoc-tab-btn" data-tab="url" style="padding:10px 16px; background:none; border:none; border-bottom:2px solid var(--accent); color:var(--accent); font-weight:600; cursor:pointer; font-size:13px">URL</button>
