@@ -40,7 +40,7 @@ header.rail{
 .brand{
   font-size:13px; font-weight:700; letter-spacing:-.01em; white-space:nowrap;
 }
-.brand span{display:block; font-family:var(--font-mono); font-size:10.5px; font-weight:500; color:var(--faint); letter-spacing:.02em}
+.brand span{display:block; font-family:var(--font-sans); font-size:10.5px; font-weight:500; color:var(--faint); letter-spacing:.02em}
 .flow{
   display:flex; flex:1; align-items:center; gap:0; overflow-x:auto;
 }
@@ -52,7 +52,7 @@ header.rail{
   content:""; height:1px; flex:1; background:var(--line-strong); margin:0 4px; min-width:10px;
 }
 .flow .node{
-  font-family:var(--font-mono); font-size:11px; font-weight:600;
+  font-family:var(--font-sans); font-size:11px; font-weight:600;
   width:24px; height:24px; flex:none; border-radius:50%;
   display:grid; place-items:center; border:1.5px solid var(--line-strong);
   background:var(--surface); transition:.2s;
@@ -65,7 +65,7 @@ header.rail{
 /* ---------- 히어로 ---------- */
 .hero{padding:72px 0 40px}
 .eyebrow{
-  font-family:var(--font-mono); font-size:12px; font-weight:600; letter-spacing:.08em;
+  font-family:var(--font-sans); font-size:12px; font-weight:600; letter-spacing:.08em;
   color:var(--accent); text-transform:uppercase;
 }
 .hero h1{
@@ -82,7 +82,7 @@ header.rail{
   padding:16px 14px; text-decoration:none; color:inherit; transition:.18s;
 }
 .flowmap .step:hover{border-color:var(--accent); transform:translateY(-2px); box-shadow:0 8px 24px rgba(11,95,165,.08)}
-.flowmap .n{font-family:var(--font-mono); font-size:13px; font-weight:700; color:var(--accent)}
+.flowmap .n{font-family:var(--font-sans); font-size:13px; font-weight:700; color:var(--accent)}
 .flowmap .t{font-size:13.5px; font-weight:700; margin:6px 0 4px; letter-spacing:-.01em}
 .flowmap .d{font-size:11.5px; color:var(--faint); line-height:1.45}
 
@@ -90,10 +90,10 @@ header.rail{
 section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:8px}
 .sec-num{
-  font-family:var(--font-mono); font-size:13px; font-weight:700; color:#fff;
+  font-family:var(--font-sans); font-size:13px; font-weight:700; color:#fff;
   background:var(--accent); padding:3px 10px; border-radius:20px; flex:none;
 }
-.sec-role{font-size:13px; color:var(--faint); font-family:var(--font-mono)}
+.sec-role{font-size:13px; color:var(--faint); font-family:var(--font-sans)}
 .sec-title{font-size:clamp(22px,3vw,30px); font-weight:800; letter-spacing:-.02em; margin:6px 0 10px}
 .sec-desc{font-size:15px; color:var(--muted); max-width:760px; margin-bottom:30px}
 
@@ -104,7 +104,7 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 }
 .fill::before{
   content:"✏ 채움 영역"; position:absolute; top:10px; right:12px;
-  font-family:var(--font-mono); font-size:10px; color:var(--faint); letter-spacing:.04em;
+  font-family:var(--font-sans); font-size:10px; color:var(--faint); letter-spacing:.04em;
 }
 .fill-note{font-size:13px; color:var(--muted); line-height:1.55}
 .fill-note b{color:var(--ink); font-weight:700}
@@ -129,10 +129,10 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .card{
   border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:18px;
 }
-.card .tag{font-family:var(--font-mono); font-size:11px; font-weight:700; color:var(--accent)}
+.card .tag{font-family:var(--font-sans); font-size:11px; font-weight:700; color:var(--accent)}
 .card h4{font-size:15px; font-weight:700; margin:8px 0 6px; letter-spacing:-.01em}
 .card .chip{
-  display:inline-block; font-size:10.5px; font-family:var(--font-mono);
+  display:inline-block; font-size:10.5px; font-family:var(--font-sans);
   background:var(--accent-soft); color:var(--accent); padding:2px 8px; border-radius:20px; margin-top:8px;
 }
 .card .ph{font-size:12.5px; color:var(--faint); border-top:1px dashed var(--line); margin-top:10px; padding-top:10px}
@@ -144,8 +144,8 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
   aspect-ratio:16/9;
 }
 .quad .q{background:var(--surface); padding:18px; display:flex; flex-direction:column}
-.quad .q .qh{font-size:12px; font-weight:700; color:var(--muted); font-family:var(--font-mono)}
-.quad-axes{display:flex; justify-content:space-between; font-size:11.5px; color:var(--faint); margin-top:8px; font-family:var(--font-mono)}
+.quad .q .qh{font-size:12px; font-weight:700; color:var(--muted); font-family:var(--font-sans)}
+.quad-axes{display:flex; justify-content:space-between; font-size:11.5px; color:var(--faint); margin-top:8px; font-family:var(--font-sans)}
 
 /* ---------- 경쟁사 히트맵 ---------- */
 .heat{border:1px solid var(--line); border-radius:14px; overflow:auto; background:var(--surface)}
@@ -164,7 +164,7 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .road{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface)}
 .road .phase{padding:18px; border-right:1px solid var(--line)}
 .road .phase:last-child{border-right:none}
-.road .phase .ph-h{font-family:var(--font-mono); font-size:12px; font-weight:700; color:var(--accent)}
+.road .phase .ph-h{font-family:var(--font-sans); font-size:12px; font-weight:700; color:var(--accent)}
 .road .phase .ph-y{font-size:11px; color:var(--faint)}
 
 footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint); font-size:12px}
@@ -181,7 +181,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
   border-bottom:1px solid var(--warn-border);
 }
 .weekly-check-head .wc-badge{
-  font-family:var(--font-mono); font-size:10.5px; font-weight:700;
+  font-family:var(--font-sans); font-size:10.5px; font-weight:700;
   background:var(--warn-border); color:#fff;
   padding:2px 8px; border-radius:20px; flex:none;
 }
@@ -189,10 +189,10 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
   font-size:13.5px; font-weight:700; color:var(--warn); flex:1;
 }
 .weekly-check-head .wc-date{
-  font-family:var(--font-mono); font-size:11px; color:var(--warn); opacity:.75;
+  font-family:var(--font-sans); font-size:11px; color:var(--warn); opacity:.75;
 }
 .weekly-check-head .wc-status{
-  font-family:var(--font-mono); font-size:10.5px; font-weight:700;
+  font-family:var(--font-sans); font-size:10.5px; font-weight:700;
   padding:2px 9px; border-radius:20px; border:1px solid;
 }
 .wc-status.pending{ color:var(--warn); border-color:var(--warn-border); background:#fff8e1; }
@@ -200,7 +200,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 .weekly-check-body{padding:18px 20px; display:flex; flex-direction:column; gap:14px;}
 .wc-stage-row{display:flex; gap:12px; align-items:flex-start;}
 .wc-stage-badge{
-  font-family:var(--font-mono); font-size:11px; font-weight:700;
+  font-family:var(--font-sans); font-size:11px; font-weight:700;
   background:var(--warn-border); color:#fff;
   padding:2px 7px; border-radius:6px; flex:none; margin-top:2px;
 }
