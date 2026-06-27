@@ -256,22 +256,18 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .chart .seg:hover{opacity:1}
 .freqtip{position:fixed;pointer-events:none;background:var(--txt);color:#fff;font-size:11.5px;font-family:var(--font);padding:7px 10px;border-radius:7px;opacity:0;transform:translate(-50%,-130%);transition:opacity .1s;white-space:nowrap;z-index:80;line-height:1.5}
 .freqtip b{font-weight:600}
+.wip-badge{display:inline-flex;align-items:center;gap:5px;flex:none;font-family:var(--font);font-size:11px;font-weight:700;letter-spacing:.5px;color:#7A4E00;background:#FCD34D;border:1px solid #E3B100;border-radius:7px;padding:4px 9px;line-height:1;white-space:nowrap;box-shadow:0 1px 4px rgba(227,177,0,.35)}
+.wip-badge .dot{width:6px;height:6px;border-radius:50%;background:#C2410C}
 </style>
 </head>
 <body>
 
 <nav>
+  <span class="wip-badge"><span class="dot"></span>작업중</span>
   <div class="brand">DA·SENSING<small>HOME APPLIANCE 2030</small></div>
   <div class="links">
     <a href="#board2030" class="on">2030 전망</a>
     <a href="#freq">키워드 비중</a>
-    <a href="#home">대시보드</a>
-    <a href="#insight">실시간</a>
-    <a href="#consumer">소비자</a>
-    <a href="#tech">기술</a>
-    <a href="#comp">경쟁사</a>
-    <a href="#sowhat">So what</a>
-    <a href="#sources">출처</a>
   </div>
   <a class="da-launcher" href="https://samsungda.net" title="도구모음 열기">
     <svg class="da-gi" viewBox="0 0 16 16" aria-hidden="true"><rect x="0" y="0" width="7" height="7" rx="1"/><rect x="9" y="0" width="7" height="7" rx="1"/><rect x="0" y="9" width="7" height="7" rx="1"/><rect x="9" y="9" width="7" height="7" rx="1"/></svg>도구모음
@@ -283,7 +279,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <div class="wrap">
     <p class="eyebrow">전망 보드 · OUTLOOK ~2030</p>
     <h2>메가트렌드 후보 타임라인 & 기술 성숙도</h2>
-    <p class="sec-note">가전 키워드를 ~2030 타임라인에 배치하고 Hype Cycle 4단계(혁신→정점→저점→안정) 위치를 표시합니다. 곡선 색은 단계, 점 색은 키워드(아래 비중 차트와 동일)를 나타냅니다. 아래 배치는 분석가 정성 판단에 따른 예시 배치이며, 확정 메가트렌드가 아닙니다.</p>
+    <p class="sec-note">가전 키워드를 ~2030 타임라인에 배치하고 Hype Cycle 4단계(혁신→정점→저점→안정) 위치를 표시합니다. 곡선 색은 단계, 점 색은 키워드를 나타냅니다. 아래 배치는 분석가 정성 판단에 따른 예시 배치이며, 확정 메가트렌드가 아닙니다.</p>
 
     <!-- Hype Cycle -->
     <div class="hype">
@@ -313,7 +309,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <span><i style="background:#E8B45A"></i>정점</span>
         <span><i style="background:#FF6B6B"></i>저점</span>
         <span><i style="background:#79E2B5"></i>안정</span>
-        <span style="color:var(--muted2)">곡선 색=단계 / 점 색=키워드(아래 비중 차트 동일)</span>
+        <span style="color:var(--muted2)">곡선 색=단계 / 점 색=키워드 · 정성 배치</span>
       </div>
     </div>
 
@@ -339,581 +335,54 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   </div>
 </section>
 
-<!-- ================= 키워드별 월별 비중 ================= -->
+<!-- ================= 가전 제품군별 월별 비중 ================= -->
 <section id="freq">
   <div class="wrap">
-    <p class="eyebrow">키워드 모니터링 · 2025–2026 추이</p>
-    <h2>가전 키워드별 월별 발생 비중</h2>
-    <p class="sec-note">25~26년 2개년간 가전 키워드 6종이 월별로 몇 건씩 포착됐는지, 키워드별 비중이 어떻게 변하는지 누적 막대로 봅니다. 건수/비중 토글로 절대량·구성비를 전환하고, 범례 클릭으로 특정 키워드만 볼 수 있습니다. 미도래월(점선)은 수집 전 구간입니다. 아래 수치는 예시 데모이며 실집계가 아닙니다.</p>
+    <p class="eyebrow">키워드 모니터링 · MARKET INSIGHT 실집계</p>
+    <h2>가전 제품군별 월별 발생 비중</h2>
+    <p class="sec-note">market-insight 수집 데이터(news.json)를 기준으로 가전 제품군 7종(HVAC·세탁기·냉장고·조리기기·건조기·청소기·식기세척기)이 월별로 몇 건 포착됐는지와 제품군별 비중을 집계합니다. <b>실제 수집된 월만</b> 표시되며(현재 2026-05~), 건수/비중 토글·범례 클릭 필터를 지원합니다. 시간 단위 자동 갱신.</p>
 
     <div class="freq">
       <div class="freq-head">
         <div class="freq-stats">
-          <div class="stat"><div class="k">집계 월수</div><div class="v">18<small> / 24</small></div></div>
-          <div class="stat"><div class="k">최다 키워드</div><div class="v kw">온디바이스 AI 가전</div></div>
-          <div class="stat"><div class="k">26 상반기 AI계열 비중</div><div class="v up">70%<small> ▲</small></div></div>
+          <div class="stat"><div class="k">집계 월수</div><div class="v"><span id="freqStatMonths">—</span></div></div>
+          <div class="stat"><div class="k">최다 제품군</div><div class="v kw" id="freqStatTop">—</div></div>
+          <div class="stat"><div class="k">총 분류 건수</div><div class="v" id="freqStatTotal">—</div></div>
         </div>
         <div class="modeswitch" id="freqMode">
-          <button data-mode="count" class="on">건수</button>
-          <button data-mode="share">비중 %</button>
+          <button data-mode="share" class="on">비중 %</button>
+          <button data-mode="count">건수</button>
         </div>
       </div>
       <div class="kwlegend" id="freqLegend"></div>
       <div class="chart-scroll">
-        <svg id="freqChart" class="chart" viewBox="0 0 960 330" xmlns="http://www.w3.org/2000/svg" aria-label="키워드별 월별 비중"></svg>
-      </div>
-      <div style="margin-top:8px"><span class="ghostkey"><i></i>미도래(예정) — 실집계 시 채워짐</span></div>
-    </div>
-    <p class="sec-note" style="margin-top:14px">▍ 비중은 추적 키워드 사전 매칭 건수 기준(중복 제거). 막대 hover 시 키워드·월·건수·비중 표시. 데이터 파이프라인 연동 시 실집계로 자동 치환 예정.</p>
-  </div>
-</section>
-
-<!-- ================= HOME ================= -->
-<section id="home" class="hero">
-  <div class="wrap">
-    <p class="eyebrow rise d1">DA사업부 기획팀 · 가전시장 2030 변화 통합 센싱 에이전트</p>
-    <h1 class="rise d1">메가화 <em>2년 전</em>, 약(弱) 신호를 먼저 잡는다</h1>
-    <p class="mission lead rise d2">가전 메가트렌드 주기가 2~3년으로 단축된 지금, 소비자·기술·경쟁사 3축을 통합 추적해 약 신호를 먼저 포착합니다.</p>
-    <div class="meta rise d3">
-      <span>추적 범위 <b>소비자5 · 기술5 · 경쟁사11사 / 7제품군</b></span>
-      <span>위계 <b>Signal → Trend → Megatrend</b></span>
-      <span style="color:var(--green)">● 실시간 연동 <b id="miHeroCount" style="color:var(--green)">연동 중…</b> · 수집 <b id="miHeroUpdated" style="color:var(--green)">—</b></span>
-    </div>
-
-    <!-- counters — 실시간 피드(news.json) 실집계 · 자동 갱신 -->
-    <div class="counters">
-      <div class="ctr m rise d1"><div class="k">총 신호 (Signals)</div><div class="v" id="heroTotal">115</div><div class="sub">수집·분류 완료 · 자동 갱신</div></div>
-      <div class="ctr r rise d2"><div class="k">의사결정 영향 (Actionable)</div><div class="v" id="heroActionable">74</div><div class="sub">긴급 + 주요 등급</div></div>
-      <div class="ctr t rise d3"><div class="k">지속 모니터링 (Watch)</div><div class="v" id="heroWatch">35</div><div class="sub">주시 등급</div></div>
-      <div class="ctr d rise d4"><div class="k">참고 (Reference)</div><div class="v" id="heroRef">6</div><div class="sub">배경·맥락 정보</div></div>
-    </div>
-
-    <!-- delta -->
-    <div class="delta">
-      <div class="box rise d2">
-        <h4>// 최근 7일 변동</h4>
-        <ul>
-          <li><span class="pill new">NEW</span> 펫팸 부상 — 라이프스타일축 신규 약 신호 등록</li>
-          <li><span class="pill new">NEW</span> EU DPP 의무화 — 표준/규제축 신규 약 신호 등록</li>
-        </ul>
-      </div>
-      <div class="box rise d3">
-        <h4>// 최근 30일 변동</h4>
-        <ul>
-          <li><span class="pill up">↑승격</span> 온디바이스 AI — 약 신호 → 트렌드 승격</li>
-          <li><span class="pill up">↑승격</span> 1인 가구 ↑ — 약 신호 → 트렌드 승격</li>
-        </ul>
+        <svg id="freqChart" class="chart" viewBox="0 0 960 330" xmlns="http://www.w3.org/2000/svg" aria-label="제품군별 월별 비중"></svg>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ================= LIVE MARKET INSIGHT ================= -->
-<section id="insight">
-  <div class="wrap">
-    <p class="eyebrow">실시간 데이터 · MARKET INSIGHT 자동 연동</p>
-    <h2>실시간 마켓 인사이트 피드</h2>
-    <p class="sec-note">market-insight 수집·분류 파이프라인(RSS 수집 → AI 렌즈/등급/영향도 분류, 시간 단위 자동 갱신)이 산출한 <b>실데이터 신호</b>를 자동으로 반영합니다. 상단 대시보드 카운터도 동일 피드의 실집계로 자동 산출됩니다. 렌즈(경쟁사·소비자·기술·정책·거시) × 등급(긴급·주요·주시·참고) × 영향도(1~5)로 분류됩니다. 등급 카운터를 클릭하면 해당 등급만 필터링됩니다.</p>
-
-    <div class="mi-status" id="miStatus">
-      <span class="live"><span class="mi-dot"></span>LIVE</span>
-      <span>연동 상태 <b id="miState">불러오는 중…</b></span>
-    </div>
-
-    <div class="counters" id="miCounters" style="display:none">
-      <div class="ctr r mi" data-grade="긴급"><div class="k">긴급 (Urgent)</div><div class="v" id="miCntUrgent">—</div><div class="sub">즉시 대응 / 최우선</div></div>
-      <div class="ctr t mi" data-grade="주요"><div class="k">주요 (Major)</div><div class="v" id="miCntMajor">—</div><div class="sub">의사결정 영향 신호</div></div>
-      <div class="ctr s mi" data-grade="주시"><div class="k">주시 (Watch)</div><div class="v" id="miCntWatch">—</div><div class="sub">지속 모니터링 대상</div></div>
-      <div class="ctr d mi" data-grade="참고"><div class="k">참고 (Reference)</div><div class="v" id="miCntRef">—</div><div class="sub">배경·맥락 정보</div></div>
-    </div>
-
-    <div class="mi-filters" id="miFilters" style="display:none">
-      <div class="mi-frow"><span class="flab">렌즈</span><span id="miLensChips"></span></div>
-      <div class="mi-frow"><span class="flab">정렬</span>
-        <span class="mi-chip sort on" data-sort="impact">영향순</span>
-        <span class="mi-chip sort" data-sort="recent">최신순</span>
-      </div>
-      <div class="mi-frow" id="miTagRow" style="display:none"><span class="flab">태그</span><span id="miActiveTag"></span></div>
-    </div>
-
-    <div class="mi-feed" id="miFeed"></div>
-    <div id="miMsgWrap"></div>
-  </div>
-</section>
-
-<!-- ================= CONSUMER ================= -->
-<section id="consumer">
-  <div class="wrap">
-    <p class="eyebrow">축 A · 소비자 5영역</p>
-    <h2>소비자 신호</h2>
-    <p class="sec-note">라이프스타일 · 페인포인트 · 세그먼트 · 가격대 · 채널. 영역 간 상관 신호(예: 1인 가구 + 소형)는 우선순위 가산점.</p>
-
-    <div class="grid g3" style="margin-top:22px">
-      <!-- card: 1인 가구 -->
-      <div class="card">
-        <div class="top"><span class="area">라이프스타일</span><span class="pill trd">트렌드</span><span class="pill up">↑승격</span></div>
-        <h3>1인 가구 ↑</h3>
-        <p class="desc">가구 축소·듀얼 인컴 확대로 소형·공간효율 수요 구조화. 세그먼트축과 상관 신호.</p>
-        <div class="sowhat">
-          <div class="row"><span class="tag">컨셉</span><span class="val">소형 프리미엄</span></div>
-          <div class="row"><span class="tag">R&D</span><span class="val">모듈 / 공간 효율</span></div>
-          <div class="row"><span class="tag">가격</span><span class="val">매스 프리미엄</span></div>
-          <div class="row"><span class="tag">채널</span><span class="val">D2C / 이커머스</span></div>
-        </div>
-      </div>
-
-      <!-- card: 펫팸 -->
-      <div class="card">
-        <div class="top"><span class="area">라이프스타일</span><span class="pill obs">관찰</span><span class="pill new">NEW</span></div>
-        <h3>펫팸 부상</h3>
-        <p class="desc">반려동물 동거 가구 확대. 탈취·소음·위생 중심의 신규 제품 카테고리 단서.</p>
-        <div class="sowhat">
-          <div class="row"><span class="tag">컨셉</span><span class="val">펫 케어 가전</span></div>
-          <div class="row"><span class="tag">R&D</span><span class="val">탈취 / 소음 저감</span></div>
-          <div class="row"><span class="tag">가격</span><span class="val">매스 ~ 프리미엄</span></div>
-          <div class="row"><span class="tag">채널</span><span class="val">펫 채널 / 구독</span></div>
-        </div>
-      </div>
-
-      <!-- card: 에너지비 -->
-      <div class="card">
-        <div class="top"><span class="area">페인 포인트</span><span class="pill obs">관찰</span></div>
-        <h3>에너지비 급등</h3>
-        <p class="desc">전기요금 부담이 구매 의사결정 변수로 부상. 절전 라벨 민감도 상승.</p>
-        <div class="sowhat">
-          <div class="row"><span class="tag">컨셉</span><span class="val">초절전 라벨</span></div>
-          <div class="row"><span class="tag">R&D</span><span class="val">고효율 컴프</span></div>
-          <div class="row"><span class="tag">가격</span><span class="val">가치형 신설</span></div>
-          <div class="row"><span class="tag">채널</span><span class="val">에너지 보조금</span></div>
-        </div>
-      </div>
-    </div>
-
-    <p class="sec-note" style="margin-top:18px">▍ 추적 키워드 사전 (분기 1회 사람 검토 갱신) — 세그먼트: Gen Z · 밀레니얼 부모 · 액티브 시니어 · 신혼 / 가격대: 가치형 · 매스 · 매스 프리미엄 · 프리미엄 · 리퍼브 · 구독 / 채널: D2C · 리퍼브 · 구독 · 옴니채널 · 라이브커머스. 세그먼트·가격대·채널 영역 카드는 데이터 확보 시 순차 추가 예정.</p>
-  </div>
-</section>
-
-<!-- ================= TECH ================= -->
-<section id="tech">
-  <div class="wrap">
-    <p class="eyebrow">축 B · 기술 5영역</p>
-    <h2>기술 신호</h2>
-    <p class="sec-note">코어테크 · 인터페이스 · 연결성 · 소재 · 표준/규제. 성숙도는 Hype Cycle 4단계로 표시.</p>
-
-    <div class="grid g3" style="margin-top:22px">
-      <!-- 온디바이스 AI -->
-      <div class="card">
-        <div class="top"><span class="area">코어테크 · 정점</span><span class="pill trd">트렌드</span><span class="pill up">↑승격</span></div>
-        <h3>온디바이스 AI</h3>
-        <p class="desc">NPU/SoC 내제화로 본원 기능 자율화. 인터페이스(멀티모달)와 결합 시 'AI 컨트롤 융합'.</p>
-        <div class="sowhat">
-          <div class="row"><span class="tag">컨셉</span><span class="val">AI 가전 라인업</span></div>
-          <div class="row"><span class="tag">R&D</span><span class="val">NPU / SoC 내제화</span></div>
-          <div class="row"><span class="tag">가격</span><span class="val">프리미엄 + α</span></div>
-          <div class="row"><span class="tag">채널</span><span class="val">체험 매장 강화</span></div>
-        </div>
-      </div>
-
-      <!-- 멀티모달 LLM -->
-      <div class="card">
-        <div class="top"><span class="area">인터페이스 · 혁신</span><span class="pill obs">관찰</span></div>
-        <h3>멀티모달 LLM 인터페이스</h3>
-        <p class="desc">음성·제스처·보이스 ID 통합 상호작용. 감성 차별화 단서.</p>
-        <div class="sowhat">
-          <div class="row"><span class="tag">컨셉</span><span class="val">대화형 가전 UX</span></div>
-          <div class="row"><span class="tag">R&D</span><span class="val">멀티모달 / 보이스 ID</span></div>
-          <div class="row"><span class="tag">판정</span><span class="val" style="color:var(--red)">가격·채널 매핑 — 사람 판정 요청</span></div>
-        </div>
-      </div>
-
-      <!-- EU DPP -->
-      <div class="card">
-        <div class="top"><span class="area">표준/규제 · 혁신</span><span class="pill obs">관찰</span><span class="pill new">NEW</span></div>
-        <h3>EU DPP 의무화</h3>
-        <p class="desc">디지털 제품 여권. 친환경 표준 부합이 EU 출시 가능성을 좌우.</p>
-        <div class="sowhat">
-          <div class="row"><span class="tag">컨셉</span><span class="val">친환경 표준 부합</span></div>
-          <div class="row"><span class="tag">R&D</span><span class="val">재생 소재</span></div>
-          <div class="row"><span class="tag">가격</span><span class="val">원가 반영</span></div>
-          <div class="row"><span class="tag">채널</span><span class="val">EU 우선 출시</span></div>
-        </div>
-      </div>
-    </div>
-
-    <p class="sec-note" style="margin-top:18px">▍ 추적 키워드 사전 — 연결성: Matter · Thread · Wi-Fi 7 · BLE · UWB · Edge AI · OTA / 소재: 재생 플라스틱 · 바이오 · 경량 강판 · 탄소 저감 · 항균 코팅 / 표준: Energy Star · GDPR · DPP · EU Eco-design · RoHS · REACH. 연결성·소재 영역 카드는 데이터 확보 시 순차 추가 예정.</p>
-  </div>
-</section>
-
-<!-- ================= COMPETITOR ================= -->
-<section id="comp">
-  <div class="wrap">
-    <p class="eyebrow">축 C · 경쟁사 11개사 / 7제품군</p>
-    <h2>경쟁사 동향</h2>
-    <p class="sec-note">검색 3단(총론·이벤트·시점) 결합 + 듀얼 쿼리(영문+모국어). 동일 사실은 2개 이상 1차 출처 교차 확인 후 흡수. 아래 카드는 가이드 작성 시 활용한 예시 사례로, 단일 출처 기반이라 1차 출처 교차검증이 필요합니다.</p>
-
-    <div class="grid g3" style="margin-top:22px">
-      <div class="card">
-        <div class="top"><span class="area">New · 변곡점</span><span class="pill obs">관찰</span></div>
-        <h3>Electrolux·Midea 북미 JV</h3>
-        <p class="desc">북미 합작 3건 체결 정황. 채널·생산 거점 재편 신호로 해석 가능.</p>
-        <div class="metrics">
-          <div>대상사<b>Electrolux · Midea</b></div>
-          <div>제품군<b>다제품</b></div>
-        </div>
-        <div class="sowhat"><div class="row"><span class="tag">단서</span><span class="val">북미 채널·생산 거점 경쟁 격화 → 당사 진입 전략 점검</span></div>
-        <div class="row"><span class="tag">검증</span><span class="val" style="color:var(--red)">IR·거래소 공시 2차 교차 확인 필요</span></div></div>
-      </div>
-
-      <div class="card">
-        <div class="top"><span class="area">Deep · 구조 동인</span><span class="pill obs">관찰</span></div>
-        <h3>'26 Q1 가전 둔화 vs ToB 가속</h3>
-        <p class="desc">소비자 가전 둔화와 ToB(HVAC·솔루션) 가속이 양 축으로 분기하는 구조.</p>
-        <div class="metrics">
-          <div>대상사<b>업계 공통</b></div>
-          <div>제품군<b>HVAC 등</b></div>
-        </div>
-        <div class="sowhat"><div class="row"><span class="tag">단서</span><span class="val">ToB·HVAC 포트폴리오 비중 재배분 검토</span></div>
-        <div class="row"><span class="tag">검증</span><span class="val" style="color:var(--red)">분기 실적(10-Q 등) 1차 출처 확인 필요</span></div></div>
-      </div>
-
-      <div class="card">
-        <div class="top"><span class="area">Insight · 분수령</span><span class="pill obs">관찰</span></div>
-        <h3>관세 우회 미국 직접 진입</h3>
-        <p class="desc">중국 가전사 전반에 결정적 카드로 작용 가능. 정책 이슈는 정부 공식 발표 우선 검증.</p>
-        <div class="metrics">
-          <div>대상사<b>중국 가전사</b></div>
-          <div>제품군<b>전제품</b></div>
-        </div>
-        <div class="sowhat"><div class="row"><span class="tag">단서</span><span class="val">미국 직접 진입 시 가격 경쟁 구도 변화 — 선제 포지셔닝 필요</span></div>
-        <div class="row"><span class="tag">검증</span><span class="val" style="color:var(--red)">관세·규제는 정부 공식 발표 1차 확인 필수</span></div></div>
-      </div>
-    </div>
-
-    <h3 style="margin-top:34px;font-family:var(--font);font-size:20px">11개사 1차 출처 매핑 & 하위 브랜드</h3>
-    <div class="tblwrap">
-      <table>
-        <tr><th>기업</th><th>1차 출처</th><th>하위 브랜드 (별도 검색 필수)</th></tr>
-        <tr><td><b>Midea</b></td><td>자체 IR · 홍콩/심천 거래소</td><td>Toshiba · COLMO · Comfee</td></tr>
-        <tr><td><b>Haier</b></td><td>자체 IR · 홍콩/상해 거래소</td><td>GE Appliances · Hotpoint · Casarte</td></tr>
-        <tr><td><b>Whirlpool</b></td><td>SEC 10-Q/10-K</td><td>KitchenAid · Maytag · JennAir</td></tr>
-        <tr><td><b>BSH</b></td><td>Bosch Group IR (비상장)</td><td>Bosch · Siemens · Gaggenau</td></tr>
-        <tr><td><b>Electrolux</b></td><td>스톡홀름 거래소</td><td>Frigidaire · AEG · Zanussi</td></tr>
-        <tr><td><b>Carrier</b></td><td>NYSE · SEC 공시</td><td>Carrier · Toshiba Carrier · Bryant</td></tr>
-        <tr><td><b>Trane</b></td><td>NYSE · SEC 공시</td><td>Trane · American Standard</td></tr>
-        <tr><td><b>JCI</b></td><td>NYSE · SEC 공시</td><td>York · Hitachi(JV) · Tyco</td></tr>
-        <tr><td><b>Daikin</b></td><td>EDINET · 도쿄 거래소</td><td>Daikin · Goodman · Amana</td></tr>
-        <tr><td><b>Lennox</b></td><td>NYSE · SEC 공시</td><td>Lennox · Armstrong Air</td></tr>
-        <tr><td><b>LG전자</b></td><td>DART · 자체 IR</td><td>LG · Signature Kitchen Suite</td></tr>
-      </table>
-    </div>
-    <p class="sec-note" style="margin-top:14px">검색 우선순위: 자체 IR &gt; 거래소 공시 &gt; 회사 보도자료. 듀얼 쿼리(중국=중국어, 일본=일본어, 독일=독일어). 7제품군: 냉장고·세탁기·건조기·조리·HVAC·청소기·주방 소형.</p>
-  </div>
-</section>
-
-<!-- ================= SO WHAT ================= -->
-<section id="sowhat">
-  <div class="wrap">
-    <p class="eyebrow">So what for DA · 시점별 실행 시사점</p>
-    <h2>당사 시사점 — 단기 · 중기 · 장기</h2>
-    <p class="sec-note">트렌드/메가 신호를 컨셉·R&D·가격·채널 4축으로 연결하고, 6M / 1~2Y / 3Y+(~2030) 시점으로 정렬합니다.</p>
-
-    <div class="horizon">
-      <div class="hz">
-        <div class="h">// 단기 — 6M</div>
-        <div class="t">즉시 착수</div>
-        <ul>
-          <li><b>소형 프리미엄 라인업</b> 컨셉 확정 — 1인 가구 트렌드 대응 (가격: 매스 프리미엄)</li>
-          <li><b>AI 가전 라인업</b> 1차 적용 — 온디바이스 AI, 체험 매장 강화</li>
-          <li><b>경쟁사 북미 JV·관세 동향</b> 1차 출처 교차검증 후 진입 전략 점검</li>
-        </ul>
-      </div>
-      <div class="hz">
-        <div class="h">// 중기 — 1~2Y</div>
-        <div class="t">역량 구축</div>
-        <ul>
-          <li><b>NPU / SoC 내제화</b> R&D 우선순위 정렬 (코어테크)</li>
-          <li><b>모듈 / 공간효율</b> 설계 — 가구 축소 구조 대응</li>
-          <li><b>펫 케어 가전</b> 카테고리 검토 — 펫 채널·구독 모델 연계</li>
-        </ul>
-      </div>
-      <div class="hz">
-        <div class="h">// 장기 — 3Y+ ~2030</div>
-        <div class="t">구조 전환</div>
-        <ul>
-          <li><b>EU DPP·Eco-design 대응</b> — 재생 소재 전환, EU 우선 출시 체계</li>
-          <li><b>AI 네이티브 가전</b> 표준화 — '제어 → 자율 운영' 전환</li>
-          <li><b>ToB·HVAC 포트폴리오</b> 비중 재배분 — 양 축 분기 구조 대비</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="sowhat-final">
-      <p class="eyebrow">SO WHAT FOR DA</p>
-      <p><b>당사</b>는 약 신호 단계의 사전 포착으로 신제품 리드타임을 확보하고, 컨셉·R&D·가격·채널을 메가화 이전에 정렬할 수 있습니다. 현 시점 확정 메가트렌드는 없으나(메가 후보 추적 중), 온디바이스 AI와 1인 가구는 트렌드로 승격되어 <b>단기 라인업 의사결정 시점</b>에 도달했습니다. 다음 액션은 ① 경쟁사 사례(JV·관세)의 1차 출처 교차검증, ② 소비자·기술 5종 채널 실데이터 수집 착수, ③ 분기 임계값 보정입니다.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= SOURCES ================= -->
-<section id="sources">
-  <div class="wrap">
-    <p class="eyebrow">출처 아카이브 · 본문 인용 순 (가공 URL 금지)</p>
-    <h2>출처</h2>
-    <div class="src">
-      <h4>입력 자료 (프레임워크 정의서)</h4>
-      <ol>
-        <li>소비자·기술 센싱 가이드 v3 (DA사업부 기획팀, 2026-05-06)</li>
-        <li>경쟁사 동향 센싱 가이드 v3 (DA사업부 기획팀, 2026-05-06)</li>
-        <li>1·2·3단계 워드보고서 가이드 (스토리라인/작성/리뷰, 2026-05-05)</li>
-      </ol>
-      <h4>1차 출처 — 공시 · 거래소 (가이드 명시)</h4>
-      <ol start="4">
-        <li>SEC EDGAR (미국) — <span class="url">sec.gov/edgar</span></li>
-        <li>일본 EDINET — <span class="url">disclosure2.edinet-fsa.go.jp</span></li>
-        <li>한국 DART — <span class="url">dart.fss.or.kr</span></li>
-        <li>Hong Kong Stock Exchange HKEXnews — <span class="url">hkexnews.hk</span></li>
-        <li>Nasdaq Stockholm — <span class="url">nasdaqomxnordic.com</span></li>
-      </ol>
-      <h4>1차 출처 — 산업 박람회</h4>
-      <ol start="9">
-        <li>CES (1월, 美 라스베이거스) · IFA (9월, 獨 베를린) · KBIS (2월, 美) · AHR Expo (HVAC&R, 美)</li>
-      </ol>
-      <h4>Tier 1 매체</h4>
-      <ol start="10">
-        <li>Reuters · Bloomberg · Financial Times · WSJ</li>
-        <li>South China Morning Post · Caixin Global · Nikkei Asia · 연합뉴스 · 전자신문</li>
-      </ol>
-      <h4>참고 사례 (예시 카드 출처 — 추가 검증 필요)</h4>
-      <ol start="12">
-        <li>가이드 작성 시 활용한 Midea 검색 사례 (Electrolux JV · MIRO U · Q1 '26 실적 등)</li>
-      </ol>
-      <h4>외부 참고 표준 (입력 자료 미명시 — 사용자 검증 필요)</h4>
-      <ol start="13">
-        <li>Gartner Hype Cycle for Smart Home · Euromonitor Megatrends · Matter 1.x Spec · EU DPP</li>
-      </ol>
-      <h4>실시간 데이터 연동 (자동 · 시간 단위 갱신)</h4>
-      <ol start="14">
-        <li>market-insight 수집·분류 파이프라인 — RSS 수집 + AI(LLM) 렌즈/등급/영향도 분류</li>
-        <li>데이터 소스 — <span class="url">raw.githubusercontent.com/SimpleorNothing/market-insight/main/data/news.json</span> (CORS 허용 · 시간 단위 자동 갱신)</li>
-      </ol>
-    </div>
+    <p class="sec-note" style="margin-top:14px">▍ 제품군 분류는 market-insight AI 분류 기준(기사별 복수 제품군 가능, 제품군 미분류 기사는 제외). 막대 hover 시 제품군·월·건수·비중 표시. 데이터 소스: raw.githubusercontent.com/SimpleorNothing/market-insight/main/data/news.json</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <span>DA·SENSING 2030 · 가전시장 변화 통합 센싱 보드 · 누적·이력 보존 운영</span>
-    <span>최종 갱신 2026-05-06 · 상단 카운터·실시간 피드 자동 연동</span>
+    <span>데이터 연동 market-insight(news.json) · 시간 단위 자동 갱신</span>
   </div>
 </footer>
 
 <script>
 // nav active state on scroll
-const links=[...document.querySelectorAll('nav .links a')];
-const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
-const obs=new IntersectionObserver(es=>{
-  es.forEach(e=>{
+var navLinks=[].slice.call(document.querySelectorAll('nav .links a'));
+var navSecs=navLinks.map(function(a){return document.querySelector(a.getAttribute('href'));});
+var navObs=new IntersectionObserver(function(es){
+  es.forEach(function(e){
     if(e.isIntersecting){
-      const id='#'+e.target.id;
-      links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')===id));
+      var id='#'+e.target.id;
+      navLinks.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')===id);});
     }
   });
 },{rootMargin:'-45% 0px -50% 0px'});
-secs.forEach(s=>s&&obs.observe(s));
-
-/* ---------- LIVE MARKET INSIGHT — auto-reflect from market-insight pipeline ---------- */
-(function(){
-  // Cross-origin fetch from the market-insight repo (CORS: access-control-allow-origin *), auto-updated hourly.
-  const DATA_URLS=[
-    'https://raw.githubusercontent.com/SimpleorNothing/market-insight/main/data/news.json'
-  ];
-  const LENS_SEQ=['경쟁사','소비자','기술','정책','거시'];
-  const GRADE_RANK={'긴급':0,'주요':1,'주시':2,'참고':3};
-  const GRADE_CLS={'긴급':'g-urgent','주요':'g-major','주시':'g-watch','참고':'g-ref'};
-  const $=id=>document.getElementById(id);
-  const feed=$('miFeed'), msgWrap=$('miMsgWrap');
-  let ALL=[], state={lens:'전체',grade:null,sort:'impact',limit:30,tag:null};
-
-  function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
-  function relTime(iso){
-    const t=new Date(iso).getTime(); if(isNaN(t))return'';
-    const d=Math.floor((Date.now()-t)/1000);
-    if(d<60)return'방금'; if(d<3600)return Math.floor(d/60)+'분 전';
-    if(d<86400)return Math.floor(d/3600)+'시간 전'; if(d<2592000)return Math.floor(d/86400)+'일 전';
-    return Math.floor(d/2592000)+'개월 전';
-  }
-  function fmtDT(iso){const d=new Date(iso);if(isNaN(d.getTime()))return'';
-    const p=n=>String(n).padStart(2,'0');
-    return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}
-
-  function chip(label,count,active,on){
-    const c=el('span','mi-chip'+(active?' on':''));
-    c.appendChild(document.createTextNode(label));
-    if(count!=null)c.appendChild(el('span','c','('+count+')'));
-    c.addEventListener('click',on); return c;
-  }
-  function buildLensChips(){
-    const wrap=$('miLensChips'); wrap.textContent='';
-    const counts={}; ALL.forEach(i=>counts[i.lens]=(counts[i.lens]||0)+1);
-    const add=(label,count,val)=>{
-      const c=chip(label,count,state.lens===val,()=>{state.lens=val;state.limit=30;render();});
-      c.dataset.lens=val; wrap.appendChild(c);
-    };
-    add('전체',ALL.length,'전체');
-    LENS_SEQ.filter(l=>counts[l]).forEach(l=>add(l,counts[l],l));
-  }
-  function itemHasTag(i,t){
-    return (i.products||[]).includes(t)||(i.competitors||[]).includes(t)||(i.tags||[]).includes(t);
-  }
-  function tag(text,cls,val){
-    const e=el('span','mi-tag'+(cls?' '+cls:''),text);
-    if(val!=null){
-      if(state.tag===val)e.classList.add('on');
-      e.title='이 태그로 필터';
-      e.addEventListener('click',()=>{state.tag=(state.tag===val)?null:val;state.limit=30;render();});
-    }
-    return e;
-  }
-
-  // --- Google News redirect safety net (mirrors market-insight data-layer fix) ---
-  // Some feed items may still carry a news.google.com/rss/articles/... redirect URL.
-  // On networks that block the consent.google.com hop these links fail, so we prefer a
-  // direct publisher URL and, failing that, try to decode the one embedded in the path.
-  const isGNewsUrl=u=>/^https?:\/\/news\.google\.com\//i.test(u||'');
-  function decodeGNewsUrl(u){
-    try{
-      const m=String(u).match(/\/articles\/([^?\/#]+)/);
-      if(!m)return null;
-      let s=m[1].replace(/-/g,'+').replace(/_/g,'/');
-      while(s.length%4)s+='=';
-      const bytes=atob(s);
-      const urls=bytes.match(/https?:\/\/[^\s"'<>\\)]+/g);
-      if(!urls)return null;
-      const ext=urls.find(x=>!/(?:[^/]*\.)?google\.com(?:[\/:?]|$)/i.test(x));
-      return ext||null;
-    }catch(e){return null;}
-  }
-  function pickUrl(it){
-    const cands=[it.source&&it.source.url,it.url].filter(u=>u&&/^https?:\/\//.test(u));
-    const direct=cands.find(u=>!isGNewsUrl(u));
-    if(direct)return direct;
-    for(const u of cands){const d=decodeGNewsUrl(u);if(d)return d;}
-    return cands[0]||null;
-  }
-
-  function card(it){
-    const c=el('div','mi-card'), top=el('div','top');
-    top.appendChild(el('span','lens',it.lens||''));
-    if(GRADE_CLS[it.grade])top.appendChild(el('span','mi-pill '+GRADE_CLS[it.grade],it.grade));
-    if(typeof it.impact==='number')top.appendChild(el('span','mi-impact','영향 '+it.impact.toFixed(1)));
-    if(it.publishedAt)top.appendChild(el('span','mi-date',relTime(it.publishedAt)));
-    c.appendChild(top);
-    const url=pickUrl(it);
-    const hasUrl=!!url;
-    const h=el('h3'), title=it.headline||'(제목 없음)';
-    if(hasUrl){
-      const ha=el('a',null,title);
-      ha.href=url; ha.target='_blank'; ha.rel='noopener noreferrer';
-      h.appendChild(ha);
-    }else h.textContent=title;
-    c.appendChild(h);
-    if(it.summary)c.appendChild(el('p','sum',it.summary));
-    const chips=el('div','mi-chips');
-    (it.products||[]).forEach(p=>chips.appendChild(tag(p,'prd',p)));
-    (it.competitors||[]).forEach(p=>chips.appendChild(tag(p,'cmp',p)));
-    (it.tags||[]).slice(0,5).forEach(p=>chips.appendChild(tag('#'+p,null,p)));
-    c.appendChild(chips);
-    const foot=el('div','mi-foot');
-    const f=it.factors;
-    if(f){
-      const fe=el('div','mi-factors');
-      const add=(lab,v)=>{if(v==null)return;const s=el('span',null,lab+' ');s.appendChild(el('b',null,v));fe.appendChild(s);};
-      add('매출연관',f.salesRelevance);add('시급성',f.timeUrgency);add('시장규모',f.marketSize);add('출처신뢰',f.sourceReliability);
-      if(fe.children.length)foot.appendChild(fe);
-    }
-    if(hasUrl){
-      const sw=el('div','mi-src');
-      const a=el('a',null,(it.source&&it.source.name?it.source.name:'원문 보기')+' →');
-      a.href=url; a.target='_blank'; a.rel='noopener noreferrer';
-      sw.appendChild(a); foot.appendChild(sw);
-    }
-    if(foot.children.length)c.appendChild(foot);
-    return c;
-  }
-  function renderTagRow(count){
-    const row=$('miTagRow'), box=$('miActiveTag');
-    if(!row||!box)return;
-    if(!state.tag){row.style.display='none';box.textContent='';return;}
-    row.style.display=''; box.textContent='';
-    const c=el('span','mi-chip on');
-    c.appendChild(document.createTextNode('#'+state.tag));
-    c.appendChild(el('span','mi-x','✕'));
-    c.title='태그 필터 해제';
-    c.addEventListener('click',()=>{state.tag=null;state.limit=30;render();});
-    box.appendChild(c);
-    box.appendChild(el('span','mi-tagcount','결과 '+count+'건'));
-  }
-  function render(){
-    document.querySelectorAll('#miCounters .ctr').forEach(c=>c.classList.toggle('on',c.dataset.grade===state.grade));
-    document.querySelectorAll('#miFilters .sort').forEach(c=>c.classList.toggle('on',c.dataset.sort===state.sort));
-    document.querySelectorAll('#miLensChips .mi-chip').forEach(c=>c.classList.toggle('on',c.dataset.lens===state.lens));
-    let list=ALL.slice();
-    if(state.lens!=='전체')list=list.filter(i=>i.lens===state.lens);
-    if(state.grade)list=list.filter(i=>i.grade===state.grade);
-    if(state.tag)list=list.filter(i=>itemHasTag(i,state.tag));
-    list.sort(state.sort==='recent'
-      ? (a,b)=>new Date(b.publishedAt)-new Date(a.publishedAt)
-      : (a,b)=>((GRADE_RANK[a.grade]??9)-(GRADE_RANK[b.grade]??9))||((b.impact||0)-(a.impact||0)));
-    renderTagRow(list.length);
-    feed.textContent=''; msgWrap.textContent='';
-    if(!list.length){msgWrap.appendChild(el('div','mi-msg','해당 조건의 신호가 없습니다.'));return;}
-    list.slice(0,state.limit).forEach(it=>feed.appendChild(card(it)));
-    if(list.length>state.limit){
-      const more=el('button','mi-more','더 보기 ('+(list.length-state.limit)+'건 더 · 전체 '+list.length+'건)');
-      more.addEventListener('click',()=>{state.limit+=30;render();});
-      msgWrap.appendChild(more);
-    }
-  }
-  function onData(d){
-    ALL=Array.isArray(d&&d.items)?d.items:[];
-    if(!ALL.length){fail('수신된 신호 항목이 없습니다.');return;}
-    const g={}; ALL.forEach(i=>g[i.grade]=(g[i.grade]||0)+1);
-    $('miCntUrgent').textContent=g['긴급']||0;
-    $('miCntMajor').textContent=g['주요']||0;
-    $('miCntWatch').textContent=g['주시']||0;
-    $('miCntRef').textContent=g['참고']||0;
-    const setHero=(id,v)=>{const e=$(id); if(e)e.textContent=v;};
-    setHero('heroTotal', ALL.length);
-    setHero('heroActionable', (g['긴급']||0)+(g['주요']||0));
-    setHero('heroWatch', g['주시']||0);
-    setHero('heroRef', g['참고']||0);
-    const upd=d.updatedAt?fmtDT(d.updatedAt)+' ('+relTime(d.updatedAt)+')':'시각 미상';
-    $('miState').textContent='정상 · 총 '+ALL.length+'건 · 최종 수집 '+upd;
-    const hc=$('miHeroCount'); if(hc)hc.textContent=ALL.length+'건';
-    const hu=$('miHeroUpdated'); if(hu)hu.textContent=d.updatedAt?relTime(d.updatedAt):'—';
-    $('miCounters').style.display='';
-    $('miFilters').style.display='';
-    document.querySelectorAll('#miCounters .ctr.mi').forEach(c=>c.addEventListener('click',()=>{
-      state.grade=(state.grade===c.dataset.grade)?null:c.dataset.grade; state.limit=30; render();}));
-    document.querySelectorAll('#miFilters .sort').forEach(c=>c.addEventListener('click',()=>{
-      state.sort=c.dataset.sort; render();}));
-    buildLensChips();
-    render();
-  }
-  function fail(msg){
-    $('miState').textContent='연동 실패 — '+(msg||'데이터 소스 접근 불가');
-    const dot=$('miStatus').querySelector('.mi-dot'); if(dot)dot.style.background='var(--red)';
-    const live=$('miStatus').querySelector('.live'); if(live)live.style.color='var(--red)';
-    msgWrap.appendChild(el('div','mi-msg err','실시간 데이터를 불러오지 못했습니다. '+(msg||'')+' 데이터 소스(market-insight) 연결을 확인하세요.'));
-  }
-  (function load(i){
-    if(i>=DATA_URLS.length){fail('모든 데이터 소스 접근 실패.');return;}
-    fetch(DATA_URLS[i],{cache:'no-store'})
-      .then(r=>{if(!r.ok)throw 0; return r.json();})
-      .then(onData)
-      .catch(()=>load(i+1));
-  })(0);
-})();
+navSecs.forEach(function(s){s&&navObs.observe(s);});
 </script>
 <!-- 도구모음 런처 (상단 nav 우측 통합) -->
 <style>
@@ -925,80 +394,104 @@ secs.forEach(s=>s&&obs.observe(s));
 </style>
 <div class="freqtip" id="freqTip"></div>
 <script>
-/* ---------- 가전 키워드별 월별 비중 차트 (예시 데모 · 실집계 아님) ---------- */
+/* ---------- 가전 제품군별 월별 비중 (market-insight news.json 실집계) ---------- */
 (function(){
-  var KW=[
-    {name:'온디바이스 AI 가전',color:'#3D6FCB'},
-    {name:'생성형 AI·LLM 가전 UX',color:'#1F9E94'},
-    {name:'가정용 서비스 로봇',color:'#B0791F'},
-    {name:'Matter·Thread 표준',color:'#DE3B39'},
-    {name:'친환경·에너지효율 규제',color:'#2E9E54'},
-    {name:'고효율 인버터 컴프레서',color:'#8A92A3'}
-  ];
-  var MONTHS=['25.01','25.02','25.03','25.04','25.05','25.06','25.07','25.08','25.09','25.10','25.11','25.12','26.01','26.02','26.03','26.04','26.05','26.06','26.07','26.08','26.09','26.10','26.11','26.12'];
-  var SERIES=[
-    [5,2,1,4,4,2],[6,2,2,5,4,2],[6,2,1,4,4,2],[8,3,2,5,4,2],[9,4,2,5,5,2],[9,3,2,5,4,2],
-    [11,5,3,5,4,2],[12,6,3,5,5,2],[12,6,3,4,4,2],[14,8,3,4,5,2],[15,9,4,4,5,2],[17,10,4,3,5,3],
-    [18,11,4,4,5,2],[17,11,3,3,4,3],[20,13,4,3,5,2],[22,15,5,3,5,2],[21,14,4,3,5,2],[24,16,5,3,5,2],
-    null,null,null,null,null,null
-  ];
-  var svg=document.getElementById('freqChart');
-  if(!svg)return;
-  var tip=document.getElementById('freqTip');
   var NS='http://www.w3.org/2000/svg';
-  var W=960,H=330,padL=40,padR=14,padT=18,plotW=W-padL-padR,plotH=H-padT-48;
-  var n=MONTHS.length,slot=plotW/n,bw=slot*0.62,maxCount=60;
-  var mode='count',hidden={};
+  var DATA_URL='https://raw.githubusercontent.com/SimpleorNothing/market-insight/main/data/news.json';
+  // 제품군 7종 (총량순 고정) + 색
+  var CATS=[
+    {name:'HVAC',color:'#3D6FCB'},
+    {name:'세탁기',color:'#1F9E94'},
+    {name:'냉장고',color:'#B0791F'},
+    {name:'조리기기',color:'#DE3B39'},
+    {name:'건조기',color:'#2E9E54'},
+    {name:'청소기',color:'#8A92A3'},
+    {name:'식기세척기',color:'#A792AC'}
+  ];
+  var svg=document.getElementById('freqChart'); if(!svg)return;
+  var tip=document.getElementById('freqTip');
+  var legEl=document.getElementById('freqLegend');
+  var msEl=document.getElementById('freqMode');
+  var W=960,H=330,padL=44,padR=14,padT=18,plotW=W-padL-padR,plotH=H-padT-46;
+  var mode='share', hidden={};
+  var MONTHS=[], MAT=[], maxTotal=10;
+
   function el(t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function catIndex(name){for(var i=0;i<CATS.length;i++)if(CATS[i].name===name)return i;return -1;}
+  function ymLabel(ym){var p=ym.split('-');return p[0].slice(2)+'.'+p[1];}
+  function niceMax(v){var step=v<=20?5:v<=60?10:v<=150?25:v<=400?50:100;return Math.max(step,Math.ceil(v/step)*step);}
+
+  function setText(id,v){var e=document.getElementById(id);if(e)e.textContent=v;}
+  function aggregate(items){
+    var mset={};
+    items.forEach(function(it){
+      var p=it.publishedAt||''; if(p.length<7)return;
+      var ym=p.slice(0,7);
+      var prods=it.products||[]; if(!prods.length)return;
+      if(!mset[ym])mset[ym]=CATS.map(function(){return 0;});
+      prods.forEach(function(pr){var ci=catIndex(pr); if(ci>=0)mset[ym][ci]++;});
+    });
+    MONTHS=Object.keys(mset).sort();
+    MAT=MONTHS.map(function(m){return mset[m];});
+    maxTotal=10;
+    MAT.forEach(function(row){var s=0;row.forEach(function(x){s+=x;}); if(s>maxTotal)maxTotal=s;});
+    // 통계
+    var grand=0, perCat=CATS.map(function(){return 0;});
+    MAT.forEach(function(row){row.forEach(function(x,i){grand+=x;perCat[i]+=x;});});
+    var topI=0; perCat.forEach(function(x,i){if(x>perCat[topI])topI=i;});
+    setText('freqStatMonths', MONTHS.length+' / '+MONTHS.length);
+    setText('freqStatTop', grand?CATS[topI].name:'—');
+    setText('freqStatTotal', grand.toLocaleString()+'건');
+  }
+
   function render(){
     while(svg.firstChild)svg.removeChild(svg.firstChild);
-    var isShare=mode==='share',maxY=isShare?100:maxCount;
+    if(!MONTHS.length){
+      var t0=el('text',{x:W/2,y:H/2,fill:'#8A92A3','font-size':13,'text-anchor':'middle'});
+      t0.textContent='집계 가능한 월 데이터가 없습니다.'; svg.appendChild(t0); return;
+    }
+    var isShare=mode==='share';
+    var maxY=isShare?100:niceMax(maxTotal);
     function yOf(v){return padT+plotH-(v/maxY)*plotH;}
-    var ticks=isShare?[0,25,50,75,100]:[0,15,30,45,60];
+    var ticks=isShare?[0,25,50,75,100]:[0,maxY/4,maxY/2,maxY*3/4,maxY];
     ticks.forEach(function(g){
       svg.appendChild(el('line',{x1:padL,y1:yOf(g),x2:W-padR,y2:yOf(g),stroke:'rgba(20,25,40,.08)'}));
       var t=el('text',{x:padL-8,y:yOf(g)+3,fill:'#8A92A3','font-size':10,'text-anchor':'end'});
-      t.textContent=isShare?g+'%':g;svg.appendChild(t);
+      t.textContent=isShare?g+'%':g; svg.appendChild(t);
     });
-    var sepX=padL+slot*12;
-    svg.appendChild(el('line',{x1:sepX,y1:padT,x2:sepX,y2:padT+plotH,stroke:'rgba(20,25,40,.18)','stroke-dasharray':'3 3'}));
-    [['2025',padL+slot*6],['2026',padL+slot*18]].forEach(function(p){
-      var t=el('text',{x:p[1],y:H-10,fill:'#5A6275','font-size':11.5,'font-weight':600,'text-anchor':'middle'});
-      t.textContent=p[0];svg.appendChild(t);
-    });
-    MONTHS.forEach(function(m,i){
-      var cx=padL+slot*i+slot/2,x=cx-bw/2,row=SERIES[i];
-      if(row==null){
-        svg.appendChild(el('rect',{x:x,y:padT+plotH-14,width:bw,height:14,rx:3,fill:'#F5F6F8',stroke:'rgba(20,25,40,.20)','stroke-dasharray':'3 2'}));
-      }else{
-        var total=0;row.forEach(function(b,k){if(!hidden[k])total+=b;});
-        var acc=0;
-        row.forEach(function(v,k){
-          if(hidden[k]||v===0)return;
-          var val=isShare?(total?v/total*100:0):v;
-          var h=(val/maxY)*plotH;
-          var yTop=padT+plotH-((isShare?(acc/total*100):acc)/maxY*plotH)-h;
-          var r=el('rect',{x:x,y:yTop,width:bw,height:Math.max(h,0.5),fill:KW[k].color,'class':'seg'});
-          var share=total?Math.round(v/total*100):0;
-          (function(name,v2,share2){
-            r.addEventListener('mousemove',function(ev){
-              if(!tip)return;
-              tip.style.opacity=1;tip.style.left=ev.clientX+'px';tip.style.top=ev.clientY+'px';
-              tip.innerHTML='<b>'+name+'</b><br>'+m+' · '+v2+'건 · '+share2+'%';
-            });
-            r.addEventListener('mouseleave',function(){if(tip)tip.style.opacity=0;});
-          })(KW[k].name,v,share);
-          svg.appendChild(r);acc+=v;
-        });
-      }
-      if(i%2===0){
-        var t=el('text',{x:cx,y:padT+plotH+15,fill:'#8A92A3','font-size':9,'text-anchor':'middle'});
-        t.textContent=m.slice(3);svg.appendChild(t);
-      }
+    var n=MONTHS.length;
+    var slot=plotW/n, barW=Math.min(slot*0.5,130);
+    MONTHS.forEach(function(ym,i){
+      var x=padL+slot*i+(slot-barW)/2;
+      var row=MAT[i];
+      var total=0; row.forEach(function(v,k){if(!hidden[k])total+=v;});
+      var acc=0;
+      row.forEach(function(v,k){
+        if(hidden[k]||v===0)return;
+        var val=isShare?(total?v/total*100:0):v;
+        var hgt=(val/maxY)*plotH;
+        var yTop=padT+plotH-((isShare?(acc/total*100):acc)/maxY*plotH)-hgt;
+        var r=el('rect',{x:x,y:yTop,width:barW,height:Math.max(hgt,0.5),fill:CATS[k].color,'class':'seg'});
+        var share=total?Math.round(v/total*100):0;
+        (function(nm,vv,ss){
+          r.addEventListener('mousemove',function(ev){
+            if(!tip)return;
+            tip.style.opacity=1;tip.style.left=ev.clientX+'px';tip.style.top=ev.clientY+'px';
+            tip.innerHTML='<b>'+nm+'</b><br>'+ymLabel(ym)+' · '+vv+'건 · '+ss+'%';
+          });
+          r.addEventListener('mouseleave',function(){if(tip)tip.style.opacity=0;});
+        })(CATS[k].name,v,share);
+        svg.appendChild(r); acc+=v;
+      });
+      var tl=el('text',{x:x+barW/2,y:padT+plotH+16,fill:'#5A6275','font-size':11,'font-weight':600,'text-anchor':'middle'});
+      tl.textContent=ymLabel(ym); svg.appendChild(tl);
+      var tt=el('text',{x:x+barW/2,y:padT+plotH+30,fill:'#8A92A3','font-size':9,'text-anchor':'middle'});
+      tt.textContent='합 '+total+'건'; svg.appendChild(tt);
     });
   }
-  var leg=document.getElementById('freqLegend');
-  KW.forEach(function(k,i){
+
+  // 범례
+  CATS.forEach(function(k,i){
     var s=document.createElement('span');
     s.className='kw';
     s.innerHTML='<i style="background:'+k.color+'"></i>'+k.name;
@@ -1007,16 +500,29 @@ secs.forEach(s=>s&&obs.observe(s));
       else{hidden[i]=true;s.classList.add('off');}
       render();
     });
-    leg.appendChild(s);
+    legEl.appendChild(s);
   });
-  var ms=document.getElementById('freqMode');
-  ms.addEventListener('click',function(e){
-    var b=e.target.closest('button');if(!b)return;
+  // 토글
+  msEl.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b)return;
     mode=b.getAttribute('data-mode');
-    Array.prototype.forEach.call(ms.children,function(x){x.classList.toggle('on',x===b);});
+    Array.prototype.forEach.call(msEl.children,function(x){x.classList.toggle('on',x===b);});
     render();
   });
-  render();
+
+  // 로딩 표시
+  (function(){var t=el('text',{x:W/2,y:H/2,fill:'#8A92A3','font-size':13,'text-anchor':'middle'});
+    t.textContent='실집계 데이터 불러오는 중…'; svg.appendChild(t);})();
+
+  fetch(DATA_URL,{cache:'no-store'})
+    .then(function(r){if(!r.ok)throw 0; return r.json();})
+    .then(function(d){ aggregate((d&&d.items)||[]); render(); })
+    .catch(function(){
+      while(svg.firstChild)svg.removeChild(svg.firstChild);
+      var t=el('text',{x:W/2,y:H/2,fill:'#DE3B39','font-size':13,'text-anchor':'middle'});
+      t.textContent='데이터를 불러오지 못했습니다 (news.json).'; svg.appendChild(t);
+      setText('freqStatMonths','—');setText('freqStatTop','—');setText('freqStatTotal','—');
+    });
 })();
 </script>
 </body>
