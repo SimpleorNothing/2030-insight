@@ -62,7 +62,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           WEEK=$(date -u -d 'last monday - 7 days' '+%Y-%m-%d' 2>/dev/null || date -u -v-mon -v-7d '+%Y-%m-%d')
-          BRANCH="auto/weekly-trend-$(date -u +%Y%m%d)"
+          BRANCH="auto/weekly-trend-$(date -u +%Y%m%d-%H%M)"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
