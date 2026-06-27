@@ -1,874 +1,558 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DA 가전시장 2030 변화 통합 센싱 보드</title>
-<!-- 단일 정식 도메인: 2030.samsungda.net (구 samsungda.net/2030 통합) -->
-<link rel="canonical" href="https://2030.samsungda.net/">
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2030 가전 미래트렌드 — DA 기획팀</title>
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 :root{
-  --bg:#FFFFFF; --bg2:#F5F6F8; --surface:#FFFFFF; --surface2:#F0F2F5;
-  --line:rgba(20,25,40,.11); --line2:rgba(20,25,40,.20);
-  --txt:#1A1F2B; --muted:#5A6275; --muted2:#8A92A3;
-  --gold:#B0791F; --gold-soft:rgba(176,121,31,.10);
-  --teal:#1F9E94; --mint:#2DA876; --blue:#3D6FCB; --amber:#B5781E;
-  --red:#DE3B39; --green:#2E9E54;
-  --font:'Pretendard',system-ui,-apple-system,'Segoe UI',Roboto,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  --paper:#F5F6F8; --surface:#FFFFFF;
+  --ink:#15202B; --muted:#5B6672; --faint:#8A94A0;
+  --line:#E3E7EC; --line-strong:#CDD4DC;
+  --accent:#0B5FA5; --accent-soft:#E8F1F9;
+  --signal:#C2410C; --signal-soft:#FBEBE2;
+  --ok:#1E7A57; --ok-soft:#E6F2EC;
+  --font-sans:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-mono:ui-monospace,"SFMono-Regular","Menlo","Consolas",monospace;
+  --wrap:1180px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  background:var(--bg); color:var(--txt);
-  font-family:var(--font); font-weight:400;
-  line-height:1.65; letter-spacing:-.01em;
-  -webkit-font-smoothing:antialiased;
-  background-image:
-    radial-gradient(900px 500px at 80% -5%, rgba(176,121,31,.06), transparent 60%),
-    radial-gradient(700px 500px at 0% 30%, rgba(31,158,148,.05), transparent 55%);
-  background-attachment:fixed;
+  font-family:var(--font-sans); color:var(--ink); background:var(--paper);
+  line-height:1.6; -webkit-font-smoothing:antialiased;
 }
-.mono{font-family:var(--font)}
-.serif{font-family:var(--font)}
-a{color:inherit}
+.wrap{max-width:var(--wrap); margin:0 auto; padding:0 28px}
 
-/* ---------- NAV ---------- */
-nav{
-  position:sticky;top:0;z-index:50;
-  display:flex;align-items:center;gap:12px;
-  padding:14px 20px;
-  background:rgba(255,255,255,.85);backdrop-filter:blur(14px);
+/* ---------- 흐름 레일 (시그니처: 6단계 = 하나의 논리 사슬) ---------- */
+header.rail{
+  position:sticky; top:0; z-index:50;
+  background:rgba(255,255,255,.86); backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line);
 }
-nav .brand{font-family:var(--font);font-weight:600;font-size:13px;letter-spacing:.5px;color:var(--gold);white-space:nowrap}
-nav .brand small{display:block;color:var(--muted2);font-weight:400;font-size:10px;letter-spacing:1.5px;margin-top:1px}
-nav .links{display:flex;gap:2px;flex-wrap:wrap;margin-left:auto}
-nav .links a{
-  text-decoration:none;color:var(--muted);font-size:12px;font-weight:400;
-  padding:5px 9px;border-radius:7px;transition:.18s;white-space:nowrap;
+.rail-inner{
+  max-width:var(--wrap); margin:0 auto; padding:12px 28px;
+  display:flex; align-items:center; gap:24px;
 }
-nav .links a:hover{color:var(--txt);background:var(--surface)}
-nav .links a.on{color:var(--gold);background:var(--gold-soft)}
+.brand{
+  font-size:13px; font-weight:700; letter-spacing:-.01em; white-space:nowrap;
+}
+.brand span{display:block; font-family:var(--font-mono); font-size:10.5px; font-weight:500; color:var(--faint); letter-spacing:.02em}
+.flow{
+  display:flex; flex:1; align-items:center; gap:0; overflow-x:auto;
+}
+.flow a{
+  display:flex; align-items:center; gap:8px; text-decoration:none;
+  padding:6px 4px; flex:1; min-width:0; position:relative; color:var(--muted);
+}
+.flow a:not(:last-child)::after{
+  content:""; height:1px; flex:1; background:var(--line-strong); margin:0 4px; min-width:10px;
+}
+.flow .node{
+  font-family:var(--font-mono); font-size:11px; font-weight:600;
+  width:24px; height:24px; flex:none; border-radius:50%;
+  display:grid; place-items:center; border:1.5px solid var(--line-strong);
+  background:var(--surface); transition:.2s;
+}
+.flow .lbl{font-size:11.5px; font-weight:600; white-space:nowrap; transition:.2s}
+.flow a.active{color:var(--accent)}
+.flow a.active .node{border-color:var(--accent); background:var(--accent); color:#fff}
+.flow a.active .lbl{color:var(--accent)}
 
-/* ---------- LAYOUT ---------- */
-.wrap{max-width:1180px;margin:0 auto;padding:0 30px}
-section{padding:74px 0 24px;scroll-margin-top:70px}
-.eyebrow{font-family:var(--font);font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
-h1{font-family:var(--font);font-weight:800;font-size:clamp(34px,5vw,58px);line-height:1.12;letter-spacing:-.02em}
-h2{font-family:var(--font);font-weight:700;font-size:clamp(24px,3.4vw,36px);line-height:1.2;margin-bottom:6px}
-h3{font-weight:700;font-size:18px;margin-bottom:4px}
-.lead{color:var(--muted);font-size:15.5px;max-width:760px}
-.sec-note{color:var(--muted2);font-size:12.5px;margin-top:6px;max-width:780px}
+/* ---------- 히어로 ---------- */
+.hero{padding:72px 0 40px}
+.eyebrow{
+  font-family:var(--font-mono); font-size:12px; font-weight:600; letter-spacing:.08em;
+  color:var(--accent); text-transform:uppercase;
+}
+.hero h1{
+  font-size:clamp(30px,4.4vw,50px); line-height:1.12; letter-spacing:-.025em;
+  font-weight:800; margin:14px 0 18px;
+}
+.hero h1 em{font-style:normal; color:var(--accent)}
+.hero .lead{font-size:17px; color:var(--muted); max-width:680px}
+.flowmap{
+  display:grid; grid-template-columns:repeat(6,1fr); gap:10px; margin-top:40px;
+}
+.flowmap .step{
+  border:1px solid var(--line); background:var(--surface); border-radius:12px;
+  padding:16px 14px; text-decoration:none; color:inherit; transition:.18s;
+}
+.flowmap .step:hover{border-color:var(--accent); transform:translateY(-2px); box-shadow:0 8px 24px rgba(11,95,165,.08)}
+.flowmap .n{font-family:var(--font-mono); font-size:13px; font-weight:700; color:var(--accent)}
+.flowmap .t{font-size:13.5px; font-weight:700; margin:6px 0 4px; letter-spacing:-.01em}
+.flowmap .d{font-size:11.5px; color:var(--faint); line-height:1.45}
 
-/* ---------- HERO ---------- */
-.hero{padding-top:60px}
-.hero .greet{font-family:var(--font);color:var(--teal);font-size:13px;letter-spacing:.5px;margin-bottom:22px}
-.hero h1{margin:10px 0 22px}
-.hero h1 em{font-style:normal;color:var(--gold)}
-.hero .mission{font-size:16.5px;color:#37404F;max-width:820px;font-weight:300}
-.hero .meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:30px;font-family:var(--font);font-size:12px;color:var(--muted)}
-.hero .meta b{color:var(--txt);font-weight:500}
+/* ---------- 섹션 공통 ---------- */
+section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
+.sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:8px}
+.sec-num{
+  font-family:var(--font-mono); font-size:13px; font-weight:700; color:#fff;
+  background:var(--accent); padding:3px 10px; border-radius:20px; flex:none;
+}
+.sec-role{font-size:13px; color:var(--faint); font-family:var(--font-mono)}
+.sec-title{font-size:clamp(22px,3vw,30px); font-weight:800; letter-spacing:-.02em; margin:6px 0 10px}
+.sec-desc{font-size:15px; color:var(--muted); max-width:760px; margin-bottom:30px}
 
-/* ---------- COUNTERS ---------- */
-.counters{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
-.ctr{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 20px;position:relative;overflow:hidden}
-.ctr::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px}
-.ctr.s::before{background:var(--blue)} .ctr.t::before{background:var(--amber)}
-.ctr.m::before{background:var(--mint)} .ctr.d::before{background:var(--muted2)}
-.ctr .k{font-size:12px;color:var(--muted);letter-spacing:.3px}
-.ctr .v{font-family:var(--font);font-size:46px;font-weight:700;line-height:1;margin:8px 0 4px}
-.ctr .sub{font-size:11.5px;color:var(--muted2)}
+/* ---------- 채움 영역(다른 Claude가 콘텐츠 삽입) ---------- */
+.fill{
+  border:1.5px dashed var(--line-strong); border-radius:12px; background:var(--surface);
+  padding:22px; position:relative; min-height:90px;
+}
+.fill::before{
+  content:"✏ 채움 영역"; position:absolute; top:10px; right:12px;
+  font-family:var(--font-mono); font-size:10px; color:var(--faint); letter-spacing:.04em;
+}
+.fill-note{font-size:13px; color:var(--muted); line-height:1.55}
+.fill-note b{color:var(--ink); font-weight:700}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+.grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.grid4{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
 
-/* ---------- DELTA STRIP ---------- */
-.delta{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
-.delta .box{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
-.delta .box h4{font-size:12.5px;color:var(--muted);font-weight:500;letter-spacing:.3px;margin-bottom:12px;font-family:var(--font)}
-.delta ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-.delta li{display:flex;align-items:center;gap:10px;font-size:13.5px}
+/* ---------- 1단계 STEEP × 가전4축 매트릭스 ---------- */
+.matrix{border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface)}
+.matrix table{width:100%; border-collapse:collapse; font-size:12.5px}
+.matrix th,.matrix td{border:1px solid var(--line); padding:10px 8px; text-align:center; vertical-align:middle}
+.matrix thead th{background:#0E2433; color:#fff; font-weight:700; font-size:12px}
+.matrix .axis{background:var(--accent-soft); color:var(--accent); font-weight:700; text-align:left; white-space:nowrap}
+.matrix .axis small{display:block; color:var(--muted); font-weight:500; font-size:10.5px}
+.matrix td.cell{color:var(--ink); font-size:11px; font-weight:600; cursor:default}
+.matrix td.cell.hit{background:var(--accent-soft); color:var(--accent); font-weight:700}
+.matrix td.cell:hover{background:var(--accent-soft)}
+.legend{display:flex; gap:18px; margin-top:14px; font-size:12px; color:var(--muted); flex-wrap:wrap}
+.legend i{display:inline-block; width:11px; height:11px; border-radius:3px; margin-right:6px; vertical-align:-1px}
 
-/* ---------- PILLS ---------- */
-.pill{display:inline-flex;align-items:center;gap:5px;font-family:var(--font);font-size:10.5px;font-weight:500;padding:3px 9px;border-radius:20px;letter-spacing:.4px;line-height:1.4;white-space:nowrap}
-.pill.obs{background:rgba(110,155,230,.14);color:var(--blue);border:1px solid rgba(110,155,230,.3)}
-.pill.trd{background:rgba(232,180,90,.14);color:var(--amber);border:1px solid rgba(232,180,90,.32)}
-.pill.meg{background:rgba(121,226,181,.14);color:var(--mint);border:1px solid rgba(121,226,181,.32)}
-.pill.new{background:rgba(88,201,122,.16);color:var(--green);border:1px solid rgba(88,201,122,.34)}
-.pill.up{background:rgba(217,168,78,.16);color:var(--gold);border:1px solid rgba(217,168,78,.34)}
+/* ---------- 카드(트렌드/영향 등) ---------- */
+.card{
+  border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:18px;
+}
+.card .tag{font-family:var(--font-mono); font-size:11px; font-weight:700; color:var(--accent)}
+.card h4{font-size:15px; font-weight:700; margin:8px 0 6px; letter-spacing:-.01em}
+.card .chip{
+  display:inline-block; font-size:10.5px; font-family:var(--font-mono);
+  background:var(--accent-soft); color:var(--accent); padding:2px 8px; border-radius:20px; margin-top:8px;
+}
+.card .ph{font-size:12.5px; color:var(--faint); border-top:1px dashed var(--line); margin-top:10px; padding-top:10px}
 
-/* ---------- CARDS ---------- */
-.grid{display:grid;gap:18px}
-.g3{grid-template-columns:repeat(3,1fr)}
-.g2{grid-template-columns:repeat(2,1fr)}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;transition:.2s;position:relative;box-shadow:0 1px 3px rgba(20,25,40,.05)}
-.card:hover{border-color:var(--line2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(20,25,40,.10)}
-.card .top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:13px}
-.card .area{font-family:var(--font);font-size:10.5px;color:var(--teal);letter-spacing:1px;text-transform:uppercase;margin-right:auto}
-.card h3{font-family:var(--font);font-weight:700;font-size:21px;margin-bottom:8px}
-.card .desc{font-size:13.5px;color:var(--muted);margin-bottom:16px}
-.metrics{display:grid;grid-template-columns:1fr 1fr;gap:9px 14px;padding:14px 0;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);margin-bottom:14px}
-.metrics div{font-size:11.5px;color:var(--muted2)}
-.metrics b{display:block;color:var(--txt);font-family:var(--font);font-weight:500;font-size:13px;margin-top:1px}
-.sowhat{display:flex;flex-direction:column;gap:6px}
-.sowhat .row{display:flex;gap:9px;font-size:12.5px;align-items:baseline}
-.sowhat .tag{font-family:var(--font);font-size:10px;color:var(--gold);min-width:46px;letter-spacing:.5px}
-.sowhat .val{color:#3F4859}
+/* ---------- 2x2 매트릭스(영향/우선순위) ---------- */
+.quad{
+  display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:2px;
+  background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden;
+  aspect-ratio:16/9;
+}
+.quad .q{background:var(--surface); padding:18px; display:flex; flex-direction:column}
+.quad .q .qh{font-size:12px; font-weight:700; color:var(--muted); font-family:var(--font-mono)}
+.quad-axes{display:flex; justify-content:space-between; font-size:11.5px; color:var(--faint); margin-top:8px; font-family:var(--font-mono)}
 
-/* ---------- TABLES ---------- */
-.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;margin-top:18px}
-table{width:100%;border-collapse:collapse;font-size:13px;min-width:560px}
-th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
-th{background:var(--bg2);color:var(--muted);font-weight:500;font-family:var(--font);font-size:11px;letter-spacing:.5px;text-transform:uppercase}
-tr:last-child td{border-bottom:none}
-td b{color:var(--txt);font-weight:600}
+/* ---------- 경쟁사 히트맵 ---------- */
+.heat{border:1px solid var(--line); border-radius:14px; overflow:auto; background:var(--surface)}
+.heat table{width:100%; border-collapse:collapse; font-size:12px; min-width:760px}
+.heat th,.heat td{border:1px solid var(--line); padding:9px 10px; text-align:center}
+.heat thead th{background:#0E2433; color:#fff; font-weight:600; font-size:11.5px; position:sticky; top:0}
+.heat tbody th{background:var(--paper); text-align:left; font-weight:700; white-space:nowrap}
+.heat td{color:var(--muted); font-size:11px}
+.heat td.lead{background:var(--accent-soft); color:var(--accent); font-weight:700}
+.heat .own{border-left:2px solid var(--ok)}
+.heat thead th.own{background:var(--ok)}
+.heat td.own{background:var(--ok-soft); color:var(--ok); font-weight:600}
+.heat td.own.lead{background:var(--ok); color:#fff; font-weight:700}
 
-/* ---------- HYPE CYCLE ---------- */
-.hype{position:relative;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:30px 24px 22px;margin-top:20px;overflow-x:auto}
-.hype svg{display:block;min-width:620px;width:100%}
-.hype .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:11.5px;color:var(--muted)}
-.hype .legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
+/* ---------- 로드맵 ---------- */
+.road{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface)}
+.road .phase{padding:18px; border-right:1px solid var(--line)}
+.road .phase:last-child{border-right:none}
+.road .phase .ph-h{font-family:var(--font-mono); font-size:12px; font-weight:700; color:var(--accent)}
+.road .phase .ph-y{font-size:11px; color:var(--faint)}
 
-/* ---------- TIMELINE ---------- */
-.timeline{position:relative;margin-top:26px;padding-left:4px}
-.tl-axis{display:flex;justify-content:space-between;font-family:var(--font);font-size:11px;color:var(--muted2);border-bottom:1px solid var(--line2);padding-bottom:8px;margin-bottom:20px}
-.tl-row{display:grid;grid-template-columns:160px 1fr;gap:18px;align-items:center;margin-bottom:14px}
-.tl-row .lab{font-size:13px;color:var(--muted);text-align:right}
-.tl-track{position:relative;height:38px;background:var(--bg2);border:1px solid var(--line);border-radius:9px}
-.tl-bar{position:absolute;top:5px;bottom:5px;border-radius:6px;display:flex;align-items:center;padding:0 12px;font-size:11.5px;font-weight:500;color:#10131a;white-space:nowrap;overflow:hidden}
-
-/* ---------- SO WHAT ---------- */
-.horizon{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
-.hz{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;position:relative}
-.hz .h{font-family:var(--font);font-size:11px;letter-spacing:1.5px;color:var(--gold);margin-bottom:4px}
-.hz .t{font-family:var(--font);font-size:22px;font-weight:700;margin-bottom:16px}
-.hz ul{list-style:none;display:flex;flex-direction:column;gap:12px}
-.hz li{font-size:13.5px;padding-left:16px;position:relative;color:#3F4859}
-.hz li::before{content:"→";position:absolute;left:0;color:var(--teal)}
-.hz li b{color:var(--txt);font-weight:600}
-
-/* ---------- SOURCES ---------- */
-.src{font-family:var(--font);font-size:12.5px;color:var(--muted);line-height:2}
-.src h4{color:var(--gold);font-size:12px;letter-spacing:1px;margin:20px 0 8px;text-transform:uppercase}
-.src ol{padding-left:22px;color:#3F4859}
-.src li{margin-bottom:3px}
-.src .url{color:var(--teal)}
-
-/* ---------- CALLOUT ---------- */
-.sowhat-final{border:1px solid var(--gold);background:linear-gradient(180deg,var(--gold-soft),transparent);border-radius:18px;padding:30px 32px;margin-top:30px}
-.sowhat-final .eyebrow{margin-bottom:10px}
-.sowhat-final p{font-size:16px;color:#46442F;font-weight:300;max-width:840px}
-
-footer{border-top:1px solid var(--line);margin-top:60px;padding:34px 0;color:var(--muted2);font-size:12px;font-family:var(--font)}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-
-/* ---------- ANIM ---------- */
-@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.rise{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
-.d1{animation-delay:.05s}.d2{animation-delay:.12s}.d3{animation-delay:.2s}.d4{animation-delay:.28s}
-
-/* ---------- LIVE MARKET INSIGHT (auto-reflect) ---------- */
-.ctr.r::before{background:var(--red)}
-.ctr.mi{cursor:pointer}
-.ctr.mi:hover{border-color:var(--line2)}
-.ctr.mi.on{border-color:var(--line2);box-shadow:0 8px 22px rgba(20,25,40,.12);transform:translateY(-2px)}
-.mi-status{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 18px;margin-top:22px;font-family:var(--font);font-size:12px;color:var(--muted)}
-.mi-status .live{display:inline-flex;align-items:center;gap:7px;color:var(--green);font-weight:600;letter-spacing:.5px}
-.mi-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.8s infinite}
-.mi-status b{color:var(--txt);font-weight:500}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(46,158,84,.45)}70%{box-shadow:0 0 0 7px rgba(46,158,84,0)}100%{box-shadow:0 0 0 0 rgba(46,158,84,0)}}
-.mi-filters{display:flex;flex-direction:column;gap:9px;margin-top:18px}
-.mi-frow{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
-.mi-frow .flab{font-family:var(--font);font-size:10.5px;letter-spacing:1px;color:var(--muted2);min-width:46px;text-transform:uppercase}
-.mi-chip{cursor:pointer;font-family:var(--font);font-size:11.5px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:5px 12px;transition:.16s;white-space:nowrap}
-.mi-chip:hover{border-color:var(--line2);color:var(--txt)}
-.mi-chip.on{background:var(--gold-soft);border-color:rgba(176,121,31,.4);color:var(--gold);font-weight:600}
-.mi-chip .c{color:var(--muted2);font-weight:400;margin-left:4px}
-.mi-chip.on .c{color:var(--gold)}
-.mi-feed{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px;grid-auto-rows:1fr}
-.mi-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:0 1px 3px rgba(20,25,40,.05);transition:.2s;display:flex;flex-direction:column}
-.mi-card:hover{border-color:var(--line2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(20,25,40,.10)}
-.mi-card .top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:11px}
-.mi-card .lens{font-family:var(--font);font-size:10.5px;color:var(--teal);letter-spacing:1px;text-transform:uppercase;margin-right:auto}
-.mi-impact{font-family:var(--font);font-size:11px;font-weight:600;color:var(--txt);background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
-.mi-date{font-family:var(--font);font-size:10.5px;color:var(--muted2)}
-.mi-card h3{font-family:var(--font);font-weight:700;font-size:18px;line-height:1.32;margin-bottom:9px}
-.mi-card h3 a{color:inherit;text-decoration:none;transition:color .15s}
-.mi-card h3 a:hover{color:var(--gold);text-decoration:underline}
-.mi-card .sum{font-size:13px;color:var(--muted);margin-bottom:13px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-.mi-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;margin-bottom:11px}
-.mi-chips:empty{margin-bottom:0}
-.mi-tag{font-family:var(--font);font-size:10px;color:var(--muted);background:var(--bg2);border:1px solid var(--line);border-radius:5px;padding:2px 7px;cursor:pointer;transition:border-color .14s,box-shadow .14s,color .14s}
-.mi-tag.prd{color:var(--blue);border-color:rgba(61,111,203,.25);background:rgba(61,111,203,.07)}
-.mi-tag.cmp{color:var(--amber);border-color:rgba(181,120,30,.28);background:rgba(181,120,30,.07)}
-.mi-tag:hover{border-color:var(--line2)}
-.mi-tag.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold);color:var(--gold);font-weight:600}
-#miTagRow .mi-chip .mi-x{margin-left:6px;font-size:10px;opacity:.7}
-.mi-tagcount{font-family:var(--font);font-size:11px;color:var(--muted2);margin-left:6px}
-.mi-foot{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;padding-top:11px;border-top:1px dashed var(--line)}
-.mi-factors{display:flex;gap:13px;flex-wrap:wrap;font-family:var(--font);font-size:10.5px;color:var(--muted2)}
-.mi-factors b{color:var(--txt);font-weight:600}
-.mi-src{margin-left:auto;text-align:right}
-.mi-src a{font-family:var(--font);font-size:11px;color:var(--teal);text-decoration:none}
-.mi-src a:hover{text-decoration:underline}
-.mi-pill{display:inline-flex;align-items:center;gap:4px;font-family:var(--font);font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;letter-spacing:.4px}
-.g-urgent{background:rgba(222,59,57,.13);color:var(--red);border:1px solid rgba(222,59,57,.32)}
-.g-major{background:rgba(176,121,31,.13);color:var(--gold);border:1px solid rgba(176,121,31,.32)}
-.g-watch{background:rgba(61,111,203,.12);color:var(--blue);border:1px solid rgba(61,111,203,.3)}
-.g-ref{background:rgba(120,120,130,.12);color:var(--muted2);border:1px solid rgba(120,120,130,.28)}
-.mi-more{display:block;margin:22px auto 0;cursor:pointer;font-family:var(--font);font-size:12px;color:var(--gold);background:var(--gold-soft);border:1px solid rgba(176,121,31,.3);border-radius:9px;padding:10px 22px;transition:.16s}
-.mi-more:hover{background:rgba(176,121,31,.16)}
-.mi-msg{margin-top:22px;padding:30px;text-align:center;color:var(--muted2);font-family:var(--font);font-size:13px;background:var(--bg2);border:1px solid var(--line);border-radius:14px}
-.mi-msg.err{color:#9A3B3A;background:rgba(222,59,57,.05);border-color:rgba(222,59,57,.25)}
+footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint); font-size:12px; font-family:var(--font-mono)}
 
 @media(max-width:860px){
-  .mi-feed{grid-template-columns:1fr;grid-auto-rows:auto}
-  .counters,.horizon{grid-template-columns:repeat(2,1fr)}
-  .g3,.g2,.delta{grid-template-columns:1fr}
-  .tl-row{grid-template-columns:1fr}.tl-row .lab{text-align:left}
-  nav{padding:12px 18px;gap:12px}.wrap{padding:0 18px}
+  .flow .lbl{display:none}
+  .flowmap{grid-template-columns:repeat(2,1fr)}
+  .grid2,.grid3,.grid4,.road{grid-template-columns:1fr}
+  .quad{aspect-ratio:auto}
 }
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto; transition:none!important}}
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="brand">DA·SENSING<small>HOME APPLIANCE 2030</small></div>
-  <div class="links">
-    <a href="#home" class="on">대시보드</a>
-    <a href="#insight">실시간</a>
-    <a href="#board2030">2030 전망</a>
-    <a href="#consumer">소비자</a>
-    <a href="#tech">기술</a>
-    <a href="#comp">경쟁사</a>
-    <a href="#sowhat">So what</a>
-    <a href="#sources">출처</a>
+<!-- ════════ 흐름 레일 (6단계 = 하나의 논리 사슬) ════════ -->
+<header class="rail">
+  <div class="rail-inner">
+    <div class="brand">2030 가전 미래트렌드<span>DA 기획팀</span></div>
+    <nav class="flow" id="flow">
+      <a href="#s1"><span class="node">1</span><span class="lbl">분석 프레임</span></a>
+      <a href="#s2"><span class="node">2</span><span class="lbl">트렌드 도출</span></a>
+      <a href="#s3"><span class="node">3</span><span class="lbl">성숙도·영향</span></a>
+      <a href="#s4"><span class="node">4</span><span class="lbl">경쟁사 대응</span></a>
+      <a href="#s5"><span class="node">5</span><span class="lbl">당사 현 위치</span></a>
+      <a href="#s6"><span class="node">6</span><span class="lbl">당사 전략</span></a>
+    </nav>
   </div>
-  <a class="da-launcher" href="https://samsungda.net" title="도구모음 열기">
-    <svg class="da-gi" viewBox="0 0 16 16" aria-hidden="true"><rect x="0" y="0" width="7" height="7" rx="1"/><rect x="9" y="0" width="7" height="7" rx="1"/><rect x="0" y="9" width="7" height="7" rx="1"/><rect x="9" y="9" width="7" height="7" rx="1"/></svg>도구모음
-  </a>
-</nav>
+</header>
 
-<!-- ================= HOME ================= -->
-<section id="home" class="hero">
-  <div class="wrap">
-    <p class="greet rise">▍ SimpleorNothing — 통합 센싱 보드에 오신 것을 환영합니다.</p>
-    <p class="eyebrow rise d1">DA사업부 기획팀 · 가전시장 2030 변화 통합 센싱 에이전트</p>
-    <h1 class="rise d1">메가화 <em>2년 전</em>,<br>약(弱) 신호를 먼저 잡는다</h1>
-    <p class="mission lead rise d2">가전 메가트렌드 주기가 5~7년에서 2~3년으로 단축됐습니다. 트렌드가 메가화된 뒤 인지하면 신제품 리드타임(18~24개월)이 부족해 차별화 기회를 잃습니다. 이 보드는 소비자·기술·경쟁사 3축을 통합 추적해, 차별화 제품·서비스를 적시 출시하도록 사전 변화 정보를 공급합니다.</p>
-    <div class="meta rise d3">
-      <span>데이터 수집 <b id="miMetaUpdated">—</b></span>
-      <span>추적 범위 <b>소비자5 · 기술5 · 경쟁사11사 / 7제품군</b></span>
-      <span>위계 <b>Signal → Trend → Megatrend</b></span>
-      <span>청자 <b>사업부장 · 기획 · 상품기획 · R&D</b></span>
-      <span style="color:var(--green)">● 실시간 연동 <b id="miHeroCount" style="color:var(--green)">연동 중…</b> · 수집 <b id="miHeroUpdated" style="color:var(--green)">—</b></span>
-    </div>
+<!-- ════════ 히어로 ════════ -->
+<div class="hero wrap">
+  <div class="eyebrow">2030 Home Appliance Foresight</div>
+  <h1>가전의 미래는<br><em>프레임에서 전략까지</em> 하나의 사슬로 읽는다</h1>
+  <p class="lead">거시 신호를 어떤 렌즈로 볼지 정하고(①), 그 렌즈로 트렌드를 도출하며(②), 성숙도·영향도를 함께 가늠하고(③), 경쟁사 대응을 점검한 뒤(④), 그 속에서 당사 현 위치·격차를 진단하고(⑤), 당사의 차별화·선도 전략으로 닫는(⑥) 6단계 흐름.</p>
 
-    <!-- counters — 실시간 피드(news.json) 실집계 · 자동 갱신 -->
-    <div class="counters">
-      <div class="ctr m rise d1"><div class="k">총 신호 (Signals)</div><div class="v" id="heroTotal">115</div><div class="sub">수집·분류 완료 · 자동 갱신</div></div>
-      <div class="ctr r rise d2"><div class="k">의사결정 영향 (Actionable)</div><div class="v" id="heroActionable">74</div><div class="sub">긴급 + 주요 등급</div></div>
-      <div class="ctr t rise d3"><div class="k">지속 모니터링 (Watch)</div><div class="v" id="heroWatch">35</div><div class="sub">주시 등급</div></div>
-      <div class="ctr d rise d4"><div class="k">참고 (Reference)</div><div class="v" id="heroRef">6</div><div class="sub">배경·맥락 정보</div></div>
-    </div>
-
-    <!-- delta -->
-    <div class="delta">
-      <div class="box rise d2">
-        <h4>// 최근 7일 변동</h4>
-        <ul>
-          <li><span class="pill new">NEW</span> 펫팸 부상 — 라이프스타일축 신규 약 신호 등록</li>
-          <li><span class="pill new">NEW</span> EU DPP 의무화 — 표준/규제축 신규 약 신호 등록</li>
-        </ul>
-      </div>
-      <div class="box rise d3">
-        <h4>// 최근 30일 변동</h4>
-        <ul>
-          <li><span class="pill up">↑승격</span> 온디바이스 AI — 약 신호 → 트렌드 승격</li>
-          <li><span class="pill up">↑승격</span> 1인 가구 ↑ — 약 신호 → 트렌드 승격</li>
-        </ul>
-      </div>
-    </div>
+  <div class="flowmap">
+    <a class="step" href="#s1"><div class="n">01</div><div class="t">분석 프레임</div><div class="d">STEEP × 가전 4축</div></a>
+    <a class="step" href="#s2"><div class="n">02</div><div class="t">트렌드 도출</div><div class="d">선정기준 → 8대 트렌드</div></a>
+    <a class="step" href="#s3"><div class="n">03</div><div class="t">성숙도·영향</div><div class="d">영향도 × 성숙도</div></a>
+    <a class="step" href="#s4"><div class="n">04</div><div class="t">경쟁사 대응</div><div class="d">트렌드 × 경쟁사+당사</div></a>
+    <a class="step" href="#s5"><div class="n">05</div><div class="t">당사 현 위치</div><div class="d">역량·격차 진단</div></a>
+    <a class="step" href="#s6"><div class="n">06</div><div class="t">당사 전략</div><div class="d">클러스터·차별화·선도</div></a>
   </div>
-</section>
+</div>
 
-<!-- ================= LIVE MARKET INSIGHT ================= -->
-<section id="insight">
+<main>
+
+<!-- ════════ 1단계 — 분석 프레임 ════════ -->
+<section class="step-sec" id="s1">
   <div class="wrap">
-    <p class="eyebrow">실시간 데이터 · MARKET INSIGHT 자동 연동</p>
-    <h2>실시간 마켓 인사이트 피드</h2>
-    <p class="sec-note">market-insight 수집·분류 파이프라인(RSS 수집 → AI 렌즈/등급/영향도 분류, 시간 단위 자동 갱신)이 산출한 <b>실데이터 신호</b>를 자동으로 반영합니다. 상단 대시보드 카운터도 동일 피드의 실집계로 자동 산출됩니다. 렌즈(경쟁사·소비자·기술·정책·거시) × 등급(긴급·주요·주시·참고) × 영향도(1~5)로 분류됩니다. 등급 카운터를 클릭하면 해당 등급만 필터링됩니다.</p>
+    <div class="sec-head"><span class="sec-num">STEP 01</span><span class="sec-role">// 왜 이 렌즈로 보는가</span></div>
+    <h2 class="sec-title">분석 프레임 — STEEP 거시 렌즈 × 가전 특화 4축</h2>
+    <p class="sec-desc">STEEP 5축으로 외부 환경을 스캔하고, 그 흐름이 가전에 실제로 꽂히는 4개 접점(기술·소비자·규제·공급망)으로 좁히는 2층 깔때기. 이후 모든 트렌드는 "STEEP 어디서 와서 → 가전 어디에 꽂히는지" 한 줄로 추적된다.</p>
 
-    <div class="mi-status" id="miStatus">
-      <span class="live"><span class="mi-dot"></span>LIVE</span>
-      <span>연동 상태 <b id="miState">불러오는 중…</b></span>
-    </div>
-
-    <div class="counters" id="miCounters" style="display:none">
-      <div class="ctr r mi" data-grade="긴급"><div class="k">긴급 (Urgent)</div><div class="v" id="miCntUrgent">—</div><div class="sub">즉시 대응 / 최우선</div></div>
-      <div class="ctr t mi" data-grade="주요"><div class="k">주요 (Major)</div><div class="v" id="miCntMajor">—</div><div class="sub">의사결정 영향 신호</div></div>
-      <div class="ctr s mi" data-grade="주시"><div class="k">주시 (Watch)</div><div class="v" id="miCntWatch">—</div><div class="sub">지속 모니터링 대상</div></div>
-      <div class="ctr d mi" data-grade="참고"><div class="k">참고 (Reference)</div><div class="v" id="miCntRef">—</div><div class="sub">배경·맥락 정보</div></div>
-    </div>
-
-    <div class="mi-filters" id="miFilters" style="display:none">
-      <div class="mi-frow"><span class="flab">렌즈</span><span id="miLensChips"></span></div>
-      <div class="mi-frow"><span class="flab">정렬</span>
-        <span class="mi-chip sort on" data-sort="impact">영향순</span>
-        <span class="mi-chip sort" data-sort="recent">최신순</span>
-      </div>
-      <div class="mi-frow" id="miTagRow" style="display:none"><span class="flab">태그</span><span id="miActiveTag"></span></div>
-    </div>
-
-    <div class="mi-feed" id="miFeed"></div>
-    <div id="miMsgWrap"></div>
-  </div>
-</section>
-
-<!-- ================= 2030 BOARD ================= -->
-<section id="board2030">
-  <div class="wrap">
-    <p class="eyebrow">전망 보드 · OUTLOOK ~2030</p>
-    <h2>메가트렌드 후보 타임라인 & 기술 성숙도</h2>
-    <p class="sec-note">메가 후보를 ~2030 타임라인에 배치하고 Hype Cycle 4단계(혁신→정점→저점→안정) 위치를 표시합니다. 아래 배치는 분석가 정성 판단에 따른 예시 배치이며, 확정 메가트렌드가 아닙니다.</p>
-
-    <!-- Hype Cycle -->
-    <div class="hype">
-      <svg viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg" aria-label="Hype Cycle">
-        <defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#6E9BE6"/><stop offset=".35" stop-color="#E8B45A"/>
-          <stop offset=".6" stop-color="#FF6B6B"/><stop offset="1" stop-color="#79E2B5"/>
-        </linearGradient></defs>
-        <line x1="40" y1="240" x2="740" y2="240" stroke="rgba(20,25,40,.22)"/>
-        <line x1="40" y1="240" x2="40" y2="30" stroke="rgba(20,25,40,.22)"/>
-        <path d="M40 230 C 130 60, 200 40, 250 70 C 300 100, 330 210, 430 215 C 540 220, 560 150, 740 90"
-              fill="none" stroke="url(#hg)" stroke-width="2.5"/>
-        <text x="160" y="265" fill="#646C80" font-size="11" font-family="monospace" text-anchor="middle">혁신 촉발</text>
-        <text x="255" y="265" fill="#646C80" font-size="11" font-family="monospace" text-anchor="middle">기대 정점</text>
-        <text x="430" y="265" fill="#646C80" font-size="11" font-family="monospace" text-anchor="middle">환멸 저점</text>
-        <text x="600" y="265" fill="#646C80" font-size="11" font-family="monospace" text-anchor="middle">계몽·생산성 안정</text>
-        <!-- dots -->
-        <circle cx="250" cy="70" r="6" fill="#E8B45A"/><text x="262" y="64" fill="#1A1F2B" font-size="12">온디바이스 AI</text>
-        <circle cx="200" cy="48" r="6" fill="#6E9BE6"/><text x="212" y="42" fill="#1A1F2B" font-size="12">멀티모달 LLM 인터페이스</text>
-        <circle cx="470" cy="216" r="6" fill="#FF6B6B"/><text x="482" y="210" fill="#1A1F2B" font-size="12">Matter / Thread 연결성</text>
-        <circle cx="640" cy="118" r="6" fill="#79E2B5"/><text x="540" y="112" fill="#1A1F2B" font-size="12">고효율 인버터 컴프레서</text>
-      </svg>
-      <div class="legend">
-        <span><i style="background:#6E9BE6"></i>혁신</span>
-        <span><i style="background:#E8B45A"></i>정점</span>
-        <span><i style="background:#FF6B6B"></i>저점</span>
-        <span><i style="background:#79E2B5"></i>안정</span>
-        <span style="color:var(--muted2)">위치는 분석가 정성 배치</span>
-      </div>
-    </div>
-
-    <!-- timeline -->
-    <div class="timeline">
-      <div class="tl-axis"><span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span></div>
-      <div class="tl-row"><div class="lab">온디바이스 AI 가전</div>
-        <div class="tl-track"><div class="tl-bar" style="left:2%;right:18%;background:linear-gradient(90deg,#E8B45A,#79E2B5)">트렌드 → 메가 후보 (단기 라인업화)</div></div></div>
-      <div class="tl-row"><div class="lab">1인 가구 · 소형 프리미엄</div>
-        <div class="tl-track"><div class="tl-bar" style="left:5%;right:25%;background:linear-gradient(90deg,#E8B45A,#D9A84E)">트렌드 (지속 확대)</div></div></div>
-      <div class="tl-row"><div class="lab">EU DPP / 친환경 규제</div>
-        <div class="tl-track"><div class="tl-bar" style="left:35%;right:8%;background:linear-gradient(90deg,#6E9BE6,#57C9C0)">규제 의무화 구간 (중·장기 대응)</div></div></div>
-      <div class="tl-row"><div class="lab">스마트홈 표준 통합</div>
-        <div class="tl-track"><div class="tl-bar" style="left:18%;right:14%;background:linear-gradient(90deg,#6E9BE6,#79E2B5)">저점 통과 후 재확산 예상</div></div></div>
-    </div>
-
-    <!-- scenario cards -->
-    <div class="grid g3" style="margin-top:26px">
-      <div class="card"><div class="top"><span class="area">시나리오 A</span></div><h3>AI 네이티브 가전</h3><p class="desc">온디바이스 AI + 멀티모달이 본원 기능에 융합되어 '제어'에서 '자율 운영'으로 이동. 프리미엄 라인업의 핵심 차별화 축이 됨.</p><div class="sowhat"><div class="row"><span class="tag">트리거</span><span class="val">코어테크 · 인터페이스 동시 가속</span></div></div></div>
-      <div class="card"><div class="top"><span class="area">시나리오 B</span></div><h3>가구 축소 · 공간 효율</h3><p class="desc">1인·듀얼인컴·시니어 가구 확대로 소형 프리미엄 + 모듈식 수요 구조화. 가격대는 매스 프리미엄으로 상향.</p><div class="sowhat"><div class="row"><span class="tag">트리거</span><span class="val">라이프스타일 · 세그먼트 상관 신호</span></div></div></div>
-      <div class="card"><div class="top"><span class="area">시나리오 C</span></div><h3>규제 주도 ESG 전환</h3><p class="desc">EU DPP·Eco-design이 출시 가능성을 좌우. 재생 소재·탄소 저감이 원가가 아닌 시장 진입 요건으로 전환.</p><div class="sowhat"><div class="row"><span class="tag">트리거</span><span class="val">표준/규제 · 소재 결합</span></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CONSUMER ================= -->
-<section id="consumer">
-  <div class="wrap">
-    <p class="eyebrow">축 A · 소비자 5영역</p>
-    <h2>소비자 신호</h2>
-    <p class="sec-note">라이프스타일 · 페인포인트 · 세그먼트 · 가격대 · 채널. 영역 간 상관 신호(예: 1인 가구 + 소형)는 우선순위 가산점.</p>
-
-    <div class="grid g3" style="margin-top:22px">
-      <!-- card: 1인 가구 -->
-      <div class="card">
-        <div class="top"><span class="area">라이프스타일</span><span class="pill trd">트렌드</span><span class="pill up">↑승격</span></div>
-        <h3>1인 가구 ↑</h3>
-        <p class="desc">가구 축소·듀얼 인컴 확대로 소형·공간효율 수요 구조화. 세그먼트축과 상관 신호.</p>
-        <div class="sowhat">
-          <div class="row"><span class="tag">컨셉</span><span class="val">소형 프리미엄</span></div>
-          <div class="row"><span class="tag">R&D</span><span class="val">모듈 / 공간 효율</span></div>
-          <div class="row"><span class="tag">가격</span><span class="val">매스 프리미엄</span></div>
-          <div class="row"><span class="tag">채널</span><span class="val">D2C / 이커머스</span></div>
-        </div>
-      </div>
-
-      <!-- card: 펫팸 -->
-      <div class="card">
-        <div class="top"><span class="area">라이프스타일</span><span class="pill obs">관찰</span><span class="pill new">NEW</span></div>
-        <h3>펫팸 부상</h3>
-        <p class="desc">반려동물 동거 가구 확대. 탈취·소음·위생 중심의 신규 제품 카테고리 단서.</p>
-        <div class="sowhat">
-          <div class="row"><span class="tag">컨셉</span><span class="val">펫 케어 가전</span></div>
-          <div class="row"><span class="tag">R&D</span><span class="val">탈취 / 소음 저감</span></div>
-          <div class="row"><span class="tag">가격</span><span class="val">매스 ~ 프리미엄</span></div>
-          <div class="row"><span class="tag">채널</span><span class="val">펫 채널 / 구독</span></div>
-        </div>
-      </div>
-
-      <!-- card: 에너지비 -->
-      <div class="card">
-        <div class="top"><span class="area">페인 포인트</span><span class="pill obs">관찰</span></div>
-        <h3>에너지비 급등</h3>
-        <p class="desc">전기요금 부담이 구매 의사결정 변수로 부상. 절전 라벨 민감도 상승.</p>
-        <div class="sowhat">
-          <div class="row"><span class="tag">컨셉</span><span class="val">초절전 라벨</span></div>
-          <div class="row"><span class="tag">R&D</span><span class="val">고효율 컴프</span></div>
-          <div class="row"><span class="tag">가격</span><span class="val">가치형 신설</span></div>
-          <div class="row"><span class="tag">채널</span><span class="val">에너지 보조금</span></div>
-        </div>
-      </div>
-    </div>
-
-    <p class="sec-note" style="margin-top:18px">▍ 추적 키워드 사전 (분기 1회 사람 검토 갱신) — 세그먼트: Gen Z · 밀레니얼 부모 · 액티브 시니어 · 신혼 / 가격대: 가치형 · 매스 · 매스 프리미엄 · 프리미엄 · 리퍼브 · 구독 / 채널: D2C · 리퍼브 · 구독 · 옴니채널 · 라이브커머스. 세그먼트·가격대·채널 영역 카드는 데이터 확보 시 순차 추가 예정.</p>
-  </div>
-</section>
-
-<!-- ================= TECH ================= -->
-<section id="tech">
-  <div class="wrap">
-    <p class="eyebrow">축 B · 기술 5영역</p>
-    <h2>기술 신호</h2>
-    <p class="sec-note">코어테크 · 인터페이스 · 연결성 · 소재 · 표준/규제. 성숙도는 Hype Cycle 4단계로 표시.</p>
-
-    <div class="grid g3" style="margin-top:22px">
-      <!-- 온디바이스 AI -->
-      <div class="card">
-        <div class="top"><span class="area">코어테크 · 정점</span><span class="pill trd">트렌드</span><span class="pill up">↑승격</span></div>
-        <h3>온디바이스 AI</h3>
-        <p class="desc">NPU/SoC 내제화로 본원 기능 자율화. 인터페이스(멀티모달)와 결합 시 'AI 컨트롤 융합'.</p>
-        <div class="sowhat">
-          <div class="row"><span class="tag">컨셉</span><span class="val">AI 가전 라인업</span></div>
-          <div class="row"><span class="tag">R&D</span><span class="val">NPU / SoC 내제화</span></div>
-          <div class="row"><span class="tag">가격</span><span class="val">프리미엄 + α</span></div>
-          <div class="row"><span class="tag">채널</span><span class="val">체험 매장 강화</span></div>
-        </div>
-      </div>
-
-      <!-- 멀티모달 LLM -->
-      <div class="card">
-        <div class="top"><span class="area">인터페이스 · 혁신</span><span class="pill obs">관찰</span></div>
-        <h3>멀티모달 LLM 인터페이스</h3>
-        <p class="desc">음성·제스처·보이스 ID 통합 상호작용. 감성 차별화 단서.</p>
-        <div class="sowhat">
-          <div class="row"><span class="tag">컨셉</span><span class="val">대화형 가전 UX</span></div>
-          <div class="row"><span class="tag">R&D</span><span class="val">멀티모달 / 보이스 ID</span></div>
-          <div class="row"><span class="tag">판정</span><span class="val" style="color:var(--red)">가격·채널 매핑 — 사람 판정 요청</span></div>
-        </div>
-      </div>
-
-      <!-- EU DPP -->
-      <div class="card">
-        <div class="top"><span class="area">표준/규제 · 혁신</span><span class="pill obs">관찰</span><span class="pill new">NEW</span></div>
-        <h3>EU DPP 의무화</h3>
-        <p class="desc">디지털 제품 여권. 친환경 표준 부합이 EU 출시 가능성을 좌우.</p>
-        <div class="sowhat">
-          <div class="row"><span class="tag">컨셉</span><span class="val">친환경 표준 부합</span></div>
-          <div class="row"><span class="tag">R&D</span><span class="val">재생 소재</span></div>
-          <div class="row"><span class="tag">가격</span><span class="val">원가 반영</span></div>
-          <div class="row"><span class="tag">채널</span><span class="val">EU 우선 출시</span></div>
-        </div>
-      </div>
-    </div>
-
-    <p class="sec-note" style="margin-top:18px">▍ 추적 키워드 사전 — 연결성: Matter · Thread · Wi-Fi 7 · BLE · UWB · Edge AI · OTA / 소재: 재생 플라스틱 · 바이오 · 경량 강판 · 탄소 저감 · 항균 코팅 / 표준: Energy Star · GDPR · DPP · EU Eco-design · RoHS · REACH. 연결성·소재 영역 카드는 데이터 확보 시 순차 추가 예정.</p>
-  </div>
-</section>
-
-<!-- ================= COMPETITOR ================= -->
-<section id="comp">
-  <div class="wrap">
-    <p class="eyebrow">축 C · 경쟁사 11개사 / 7제품군</p>
-    <h2>경쟁사 동향</h2>
-    <p class="sec-note">검색 3단(총론·이벤트·시점) 결합 + 듀얼 쿼리(영문+모국어). 동일 사실은 2개 이상 1차 출처 교차 확인 후 흡수. 아래 카드는 가이드 작성 시 활용한 예시 사례로, 단일 출처 기반이라 1차 출처 교차검증이 필요합니다.</p>
-
-    <div class="grid g3" style="margin-top:22px">
-      <div class="card">
-        <div class="top"><span class="area">New · 변곡점</span><span class="pill obs">관찰</span></div>
-        <h3>Electrolux·Midea 북미 JV</h3>
-        <p class="desc">북미 합작 3건 체결 정황. 채널·생산 거점 재편 신호로 해석 가능.</p>
-        <div class="metrics">
-          <div>대상사<b>Electrolux · Midea</b></div>
-          <div>제품군<b>다제품</b></div>
-        </div>
-        <div class="sowhat"><div class="row"><span class="tag">단서</span><span class="val">북미 채널·생산 거점 경쟁 격화 → 당사 진입 전략 점검</span></div>
-        <div class="row"><span class="tag">검증</span><span class="val" style="color:var(--red)">IR·거래소 공시 2차 교차 확인 필요</span></div></div>
-      </div>
-
-      <div class="card">
-        <div class="top"><span class="area">Deep · 구조 동인</span><span class="pill obs">관찰</span></div>
-        <h3>'26 Q1 가전 둔화 vs ToB 가속</h3>
-        <p class="desc">소비자 가전 둔화와 ToB(HVAC·솔루션) 가속이 양 축으로 분기하는 구조.</p>
-        <div class="metrics">
-          <div>대상사<b>업계 공통</b></div>
-          <div>제품군<b>HVAC 등</b></div>
-        </div>
-        <div class="sowhat"><div class="row"><span class="tag">단서</span><span class="val">ToB·HVAC 포트폴리오 비중 재배분 검토</span></div>
-        <div class="row"><span class="tag">검증</span><span class="val" style="color:var(--red)">분기 실적(10-Q 등) 1차 출처 확인 필요</span></div></div>
-      </div>
-
-      <div class="card">
-        <div class="top"><span class="area">Insight · 분수령</span><span class="pill obs">관찰</span></div>
-        <h3>관세 우회 미국 직접 진입</h3>
-        <p class="desc">중국 가전사 전반에 결정적 카드로 작용 가능. 정책 이슈는 정부 공식 발표 우선 검증.</p>
-        <div class="metrics">
-          <div>대상사<b>중국 가전사</b></div>
-          <div>제품군<b>전제품</b></div>
-        </div>
-        <div class="sowhat"><div class="row"><span class="tag">단서</span><span class="val">미국 직접 진입 시 가격 경쟁 구도 변화 — 선제 포지셔닝 필요</span></div>
-        <div class="row"><span class="tag">검증</span><span class="val" style="color:var(--red)">관세·규제는 정부 공식 발표 1차 확인 필수</span></div></div>
-      </div>
-    </div>
-
-    <h3 style="margin-top:34px;font-family:var(--font);font-size:20px">11개사 1차 출처 매핑 & 하위 브랜드</h3>
-    <div class="tblwrap">
+    <!-- ✏ 채움: STEEP 5축 × 가전 4축 교차 셀에 도출 트렌드/신호 배치 (현재 빈 격자) -->
+    <div class="matrix">
       <table>
-        <tr><th>기업</th><th>1차 출처</th><th>하위 브랜드 (별도 검색 필수)</th></tr>
-        <tr><td><b>Midea</b></td><td>자체 IR · 홍콩/심천 거래소</td><td>Toshiba · COLMO · Comfee</td></tr>
-        <tr><td><b>Haier</b></td><td>자체 IR · 홍콩/상해 거래소</td><td>GE Appliances · Hotpoint · Casarte</td></tr>
-        <tr><td><b>Whirlpool</b></td><td>SEC 10-Q/10-K</td><td>KitchenAid · Maytag · JennAir</td></tr>
-        <tr><td><b>BSH</b></td><td>Bosch Group IR (비상장)</td><td>Bosch · Siemens · Gaggenau</td></tr>
-        <tr><td><b>Electrolux</b></td><td>스톡홀름 거래소</td><td>Frigidaire · AEG · Zanussi</td></tr>
-        <tr><td><b>Carrier</b></td><td>NYSE · SEC 공시</td><td>Carrier · Toshiba Carrier · Bryant</td></tr>
-        <tr><td><b>Trane</b></td><td>NYSE · SEC 공시</td><td>Trane · American Standard</td></tr>
-        <tr><td><b>JCI</b></td><td>NYSE · SEC 공시</td><td>York · Hitachi(JV) · Tyco</td></tr>
-        <tr><td><b>Daikin</b></td><td>EDINET · 도쿄 거래소</td><td>Daikin · Goodman · Amana</td></tr>
-        <tr><td><b>Lennox</b></td><td>NYSE · SEC 공시</td><td>Lennox · Armstrong Air</td></tr>
-        <tr><td><b>LG전자</b></td><td>DART · 자체 IR</td><td>LG · Signature Kitchen Suite</td></tr>
+        <thead>
+          <tr>
+            <th style="text-align:left">STEEP ↓ \ 가전축 →</th>
+            <th>기술축<br><small style="color:#9fb4c4">제품·폼팩터</small></th>
+            <th>소비자축<br><small style="color:#9fb4c4">구매·사용</small></th>
+            <th>규제축<br><small style="color:#9fb4c4">기준·진입</small></th>
+            <th>공급망축<br><small style="color:#9fb4c4">생산·조달</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="axis">Social <small>1인가구·고령화·웰니스</small></td><td class="cell">T8</td><td class="cell hit">T5·T8</td><td class="cell">·</td><td class="cell">·</td></tr>
+          <tr><td class="axis">Technological <small>AI·로봇·센서·연결</small></td><td class="cell hit">T1·T2</td><td class="cell hit">T1</td><td class="cell">T7</td><td class="cell">T2</td></tr>
+          <tr><td class="axis">Economic <small>가처분소득·구독·에너지비용</small></td><td class="cell">T2</td><td class="cell">T5</td><td class="cell">·</td><td class="cell">(+)관세</td></tr>
+          <tr><td class="axis">Environmental <small>탄소규제·효율·순환경제</small></td><td class="cell hit">T3·T4·T7</td><td class="cell">·</td><td class="cell hit">T3·T6 <small style="color:var(--faint)">歐</small></td><td class="cell">T6 <small style="color:var(--faint)">歐</small></td></tr>
+          <tr><td class="axis">Political <small>무역규제·관세·데이터주권</small></td><td class="cell">·</td><td class="cell">·</td><td class="cell hit">T3·T4 <small style="color:var(--faint)">美</small>·T6 <small style="color:var(--faint)">歐</small></td><td class="cell">관세 <small style="color:var(--faint)">美·中</small></td></tr>
+        </tbody>
       </table>
     </div>
-    <p class="sec-note" style="margin-top:14px">검색 우선순위: 자체 IR &gt; 거래소 공시 &gt; 회사 보도자료. 듀얼 쿼리(중국=중국어, 일본=일본어, 독일=독일어). 7제품군: 냉장고·세탁기·건조기·조리·HVAC·청소기·주방 소형.</p>
-  </div>
-</section>
-
-<!-- ================= SO WHAT ================= -->
-<section id="sowhat">
-  <div class="wrap">
-    <p class="eyebrow">So what for DA · 시점별 실행 시사점</p>
-    <h2>당사 시사점 — 단기 · 중기 · 장기</h2>
-    <p class="sec-note">트렌드/메가 신호를 컨셉·R&D·가격·채널 4축으로 연결하고, 6M / 1~2Y / 3Y+(~2030) 시점으로 정렬합니다.</p>
-
-    <div class="horizon">
-      <div class="hz">
-        <div class="h">// 단기 — 6M</div>
-        <div class="t">즉시 착수</div>
-        <ul>
-          <li><b>소형 프리미엄 라인업</b> 컨셉 확정 — 1인 가구 트렌드 대응 (가격: 매스 프리미엄)</li>
-          <li><b>AI 가전 라인업</b> 1차 적용 — 온디바이스 AI, 체험 매장 강화</li>
-          <li><b>경쟁사 북미 JV·관세 동향</b> 1차 출처 교차검증 후 진입 전략 점검</li>
-        </ul>
-      </div>
-      <div class="hz">
-        <div class="h">// 중기 — 1~2Y</div>
-        <div class="t">역량 구축</div>
-        <ul>
-          <li><b>NPU / SoC 내제화</b> R&D 우선순위 정렬 (코어테크)</li>
-          <li><b>모듈 / 공간효율</b> 설계 — 가구 축소 구조 대응</li>
-          <li><b>펫 케어 가전</b> 카테고리 검토 — 펫 채널·구독 모델 연계</li>
-        </ul>
-      </div>
-      <div class="hz">
-        <div class="h">// 장기 — 3Y+ ~2030</div>
-        <div class="t">구조 전환</div>
-        <ul>
-          <li><b>EU DPP·Eco-design 대응</b> — 재생 소재 전환, EU 우선 출시 체계</li>
-          <li><b>AI 네이티브 가전</b> 표준화 — '제어 → 자율 운영' 전환</li>
-          <li><b>ToB·HVAC 포트폴리오</b> 비중 재배분 — 양 축 분기 구조 대비</li>
-        </ul>
-      </div>
+    <div class="legend">
+      <span><i style="background:var(--accent)"></i>교차 셀 = 트렌드 발생 지점 (2단계로 연결)</span>
+      <span><b style="color:var(--faint)">美·歐·中</b> = 거점별 신호 상이 (지역 분리 필요)</span>
     </div>
 
-    <div class="sowhat-final">
-      <p class="eyebrow">SO WHAT FOR DA</p>
-      <p>SimpleorNothing — <b>당사</b>는 약 신호 단계의 사전 포착으로 신제품 리드타임을 확보하고, 컨셉·R&D·가격·채널을 메가화 이전에 정렬할 수 있습니다. 현 시점 확정 메가트렌드는 없으나(메가 후보 추적 중), 온디바이스 AI와 1인 가구는 트렌드로 승격되어 <b>단기 라인업 의사결정 시점</b>에 도달했습니다. 다음 액션은 ① 경쟁사 사례(JV·관세)의 1차 출처 교차검증, ② 소비자·기술 5종 채널 실데이터 수집 착수, ③ 분기 임계값 보정입니다.</p>
+    <div class="fill" style="margin-top:18px">
+      <p class="fill-note"><b>지역별 핵심 신호 분리(필수)</b> · 같은 교차 셀도 거점별로 신호가 다름 — <b>北美</b>(관세·대중국 규제, EPA 냉매) · <b>歐</b>(순환경제·수리권·F-Gas) · <b>中</b>(실버이코노미·내수 규모). 글로벌 단일 프레임이 아니라 거점별 키워드를 셀에 분리 기재해야 뒷단계 전략이 정교해짐 · 프레임 선택 사유·분석 범위(제품군/기간/지역)도 함께</p>
     </div>
   </div>
 </section>
 
-<!-- ================= SOURCES ================= -->
-<section id="sources">
+<!-- ════════ 2단계 — 트렌드 도출 ════════ -->
+<section class="step-sec" id="s2">
   <div class="wrap">
-    <p class="eyebrow">출처 아카이브 · 본문 인용 순 (가공 URL 금지)</p>
-    <h2>출처</h2>
-    <div class="src">
-      <h4>입력 자료 (프레임워크 정의서)</h4>
-      <ol>
-        <li>소비자·기술 센싱 가이드 v3 (DA사업부 기획팀, 2026-05-06)</li>
-        <li>경쟁사 동향 센싱 가이드 v3 (DA사업부 기획팀, 2026-05-06)</li>
-        <li>1·2·3단계 워드보고서 가이드 (스토리라인/작성/리뷰, 2026-05-05)</li>
-      </ol>
-      <h4>1차 출처 — 공시 · 거래소 (가이드 명시)</h4>
-      <ol start="4">
-        <li>SEC EDGAR (미국) — <span class="url">sec.gov/edgar</span></li>
-        <li>일본 EDINET — <span class="url">disclosure2.edinet-fsa.go.jp</span></li>
-        <li>한국 DART — <span class="url">dart.fss.or.kr</span></li>
-        <li>Hong Kong Stock Exchange HKEXnews — <span class="url">hkexnews.hk</span></li>
-        <li>Nasdaq Stockholm — <span class="url">nasdaqomxnordic.com</span></li>
-      </ol>
-      <h4>1차 출처 — 산업 박람회</h4>
-      <ol start="9">
-        <li>CES (1월, 美 라스베이거스) · IFA (9월, 獨 베를린) · KBIS (2월, 美) · AHR Expo (HVAC&R, 美)</li>
-      </ol>
-      <h4>Tier 1 매체</h4>
-      <ol start="10">
-        <li>Reuters · Bloomberg · Financial Times · WSJ</li>
-        <li>South China Morning Post · Caixin Global · Nikkei Asia · 연합뉴스 · 전자신문</li>
-      </ol>
-      <h4>참고 사례 (예시 카드 출처 — 추가 검증 필요)</h4>
-      <ol start="12">
-        <li>가이드 작성 시 활용한 Midea 검색 사례 (Electrolux JV · MIRO U · Q1 '26 실적 등)</li>
-      </ol>
-      <h4>외부 참고 표준 (입력 자료 미명시 — 사용자 검증 필요)</h4>
-      <ol start="13">
-        <li>Gartner Hype Cycle for Smart Home · Euromonitor Megatrends · Matter 1.x Spec · EU DPP</li>
-      </ol>
-      <h4>실시간 데이터 연동 (자동 · 시간 단위 갱신)</h4>
-      <ol start="14">
-        <li>market-insight 수집·분류 파이프라인 — RSS 수집 + AI(LLM) 렌즈/등급/영향도 분류</li>
-        <li>데이터 소스 — <span class="url">raw.githubusercontent.com/SimpleorNothing/market-insight/main/data/news.json</span> (CORS 허용 · 시간 단위 자동 갱신)</li>
-      </ol>
+    <div class="sec-head"><span class="sec-num">STEP 02</span><span class="sec-role">// 데이터를 프레임에 통과시켜 도출</span></div>
+    <h2 class="sec-title">데이터 기반 트렌드 도출 — 8대 트렌드</h2>
+    <p class="sec-desc">투입 데이터(시장규모·특허·소비자조사·정책)를 1단계 프레임에 통과시켜 트렌드가 "발견"되도록 한다. 각 트렌드는 프레임 출처(STEEP축 → 가전축)가 명시되어 자의적이지 않다.</p>
+
+    <!-- ✏ 채움: 투입 데이터 4종 요약 -->
+    <div class="fill" style="margin-bottom:20px">
+      <p class="fill-note"><b>투입 데이터</b> · 시장규모/성장률(Technavio·MarketsandMarkets·IEA 등) · 특허·신제품(CES 2026) · 소비자조사 · 정책·규제(EPA AIM·EU F-Gas·수리권 지침) — 기관 전망과 경쟁사 실행을 교차검증해 8개 트렌드로 수렴</p>
+    </div>
+
+    <!-- 선정 기준 + 탈락 트렌드 (도출이 자의적이지 않음을 입증) -->
+    <div class="grid2" style="margin-bottom:20px">
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <div class="tag">선정 기준</div>
+        <h4>3개 필터를 모두 통과한 트렌드만 채택</h4>
+        <div class="ph" style="color:var(--muted)">① 가전 직접 영향도(제품·BM·밸류체인) · ② 기관 전망 × 경쟁사 실행 교차검증 · ③ ~2030 시계 내 주류화 가능성 · <b>※ T2(DC냉각)는 전통 가전 정의를 넘지만, B2B 공조(HVAC)·FläktGroup 인수자산과 직결된 기술·공급망축 최대 성장기회로 포함</b></div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--faint)">
+        <div class="tag" style="color:var(--faint)">검토 후 제외</div>
+        <h4>가전 직접 영향도 미달로 탈락</h4>
+        <div class="ph" style="color:var(--muted)">메타버스·홈(체험 한정) · 완전자율 가사로봇(2030 후반) · 웨어러블(가전 외) — <b>제외 사유 명시로 8개 도출 정당성 확보</b></div>
+      </div>
+    </div>
+    <div class="grid4">
+      <div class="card"><div class="tag">T1</div><h4>AI 에이전트 가전</h4><span class="chip">Tech → 기술·소비자축</span><div class="ph">스마트가전 CAGR 20.6%($98B↑) · CES2026 Bespoke AI+Gemini</div></div>
+      <div class="card" style="border-left:3px solid var(--accent)"><div class="tag">T2</div><h4>AI 데이터센터 냉각</h4><span class="chip">Tech·Econ → 기술·공급망축</span><div class="ph">B2B 공조(HVAC)의 거대 성장축 · FläktGroup 인수자산 직결 · 액체냉각 $55억→$190억(CAGR 23%)</div></div>
+      <div class="card"><div class="tag">T3</div><h4>저GWP·자연냉매 전환</h4><span class="chip">Env·Pol → 규제·기술축</span><div class="ph">EPA 700GWP(25.1) · EU F-Gas 27년 · R-290 EU 38%</div></div>
+      <div class="card"><div class="tag">T4</div><h4>히트펌프 전기화</h4><span class="chip">Env·Pol → 규제·기술축</span><div class="ph">$832억→$1,626억(CAGR 14.3%) · IEA 연 $1,600억</div></div>
+      <div class="card"><div class="tag">T5</div><h4>가전 구독·서비스화</h4><span class="chip">Econ·Social → 소비자·BM</span><div class="ph">LG 구독 2.48조(+29%), 30년 6조 · 국내 100조</div></div>
+      <div class="card"><div class="tag">T6</div><h4>순환경제·수리권</h4><span class="chip">Env·Pol → 규제·공급망축</span><div class="ph">EU 수리권 26.7 전환 · 순환율 12→24%(30년)</div></div>
+      <div class="card"><div class="tag">T7</div><h4>그리드 인터랙티브 가전</h4><span class="chip">Env·Tech → 기술·규제축</span><div class="ph">VPP $62.8억→$393억(CAGR 22.6%) · 북미 37.5GW</div></div>
+      <div class="card"><div class="tag">T8</div><h4>실버·헬스케어 가전</h4><span class="chip">Social → 소비자·기술축</span><div class="ph">中 시니어가전 $14B→1조위안 · 가정용로봇 CAGR 18.8%</div></div>
     </div>
   </div>
 </section>
 
-<footer>
+<!-- ════════ 3단계 — 성숙도 × 영향 (통합) ════════ -->
+<section class="step-sec" id="s3">
   <div class="wrap">
-    <span>DA·SENSING 2030 · 가전시장 변화 통합 센싱 보드 · 누적·이력 보존 운영</span>
-    <span>데이터 수집 <span id="miFootUpdated">—</span> · 상단 카운터·실시간 피드 자동 연동</span>
+    <div class="sec-head"><span class="sec-num">STEP 03</span><span class="sec-role">// 언제 오나 × 얼마나 흔드나</span></div>
+    <h2 class="sec-title">성숙도 × 산업 영향 — 한 좌표에서</h2>
+    <p class="sec-desc">성숙도(Hype Cycle = 언제 주류화되나)와 영향도(산업을 얼마나 바꾸나)는 별개 축이다. 둘을 한 매트릭스에 합치면 "지금 당장 잡을 트렌드"와 "미성숙하나 선점할 트렌드"가 갈린다. 성숙도 축이 곧 Hype Cycle 진행 방향이다.</p>
+
+    <div class="grid2" style="align-items:start">
+      <!-- 영향도 × 성숙도 매트릭스 (Hype Cycle 흡수) -->
+      <div>
+        <div class="quad">
+          <div class="q"><div class="qh">高영향 · 미성숙</div><div class="ph" style="font-size:12px; color:var(--muted); margin-top:6px"><b style="color:var(--ink)">선점 베팅</b><br>T1 AI에이전트 · T7 VPP</div></div>
+          <div class="q" style="background:linear-gradient(135deg,var(--accent-soft),#fff)"><div class="qh" style="color:var(--accent)">高영향 · 성숙 ★즉시</div><div class="ph" style="font-size:12px; color:var(--accent); font-weight:700; margin-top:6px">T2 DC냉각 <span style="font-size:10px; background:var(--accent); color:#fff; padding:1px 5px; border-radius:8px">수주 가시</span><br>T5 구독 <span style="font-size:10px; background:var(--accent); color:#fff; padding:1px 5px; border-radius:8px">매출 가시</span><br>T3 자연냉매</div></div>
+          <div class="q"><div class="qh">低영향 · 미성숙</div><div class="ph" style="font-size:12px; color:var(--muted); margin-top:6px"><b style="color:var(--ink)">관찰</b><br>T8 실버·헬스</div></div>
+          <div class="q"><div class="qh">低영향 · 성숙</div><div class="ph" style="font-size:12px; color:var(--muted); margin-top:6px"><b style="color:var(--ink)">효율 대응</b><br>T4 히트펌프 · T6 수리권</div></div>
+        </div>
+        <div class="quad-axes"><span>← 미성숙(여명·과열기)</span><span>성숙(계몽·안정기) →</span></div>
+      </div>
+      <!-- 기회/위협 카드 + Hype Cycle 진행 참조 -->
+      <div style="display:flex; flex-direction:column; gap:12px">
+        <div class="card" style="border-left:3px solid var(--ok)"><div class="tag" style="color:var(--ok)">최대 기회 · T2 <span style="font-size:10px; background:var(--ok); color:#fff; padding:1px 5px; border-radius:8px">수주 가시</span></div><h4>DC냉각 = 장비판매→통합솔루션 B2B 전환</h4><div class="ph">액체냉각 $55억→$190억(2030, CAGR 23%) · <b>가시 수주잔고(보강)</b> · 과열기지만 실수주 동반</div></div>
+        <div class="card" style="border-left:3px solid var(--ok)"><div class="tag" style="color:var(--ok)">기회 · T5 <span style="font-size:10px; background:var(--ok); color:#fff; padding:1px 5px; border-radius:8px">매출 가시</span></div><h4>구독으로 정체 수요 돌파 + 리커링 락인</h4><div class="ph">국내 구독시장 100조(2025) · <b>당사 AI구독클럽 누적매출(보강)</b> · 계몽기, 한국 선도</div></div>
+        <div class="card"><div class="tag" style="color:var(--signal)">위협 · T3·T4</div><h4>냉매·전동화 규제 = 대응비용 + 부품 공급부족</h4><div class="ph">EPA 700GWP 제조금지(25.1) · 컴프레서 핵심부품 내재화 필요</div></div>
+      </div>
+    </div>
+
+    <!-- Hype Cycle 진행 참조 (성숙도 축 보조) -->
+    <div class="fill" style="margin-top:18px; min-height:auto">
+      <p class="fill-note"><b>Hype Cycle 진행(성숙도 축 = 가로축)</b> · 여명기 T7·T8 → 과열기 T1·T2 → 환멸기 T4 → 계몽기 T3·T5·T6 — 기존 페이지 곡선 SVG를 이 진행 위에 점으로 얹어 시각화</p>
+    </div>
   </div>
+</section>
+
+<!-- ════════ 4단계 — 경쟁사 대응 ════════ -->
+<section class="step-sec" id="s4">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">STEP 04</span><span class="sec-role">// 경쟁사는 이미 뭘 하나 (+당사 현재)</span></div>
+    <h2 class="sec-title">경쟁사 대응 현황 — 트렌드 × 경쟁사·당사</h2>
+    <p class="sec-desc">트렌드별로 경쟁사가 무엇을 하고 있는지 매핑하고, 같은 표에 당사 현 위치를 나란히 둔다. 선도사·대응 공백·당사 격차를 한 눈에 — 5단계 갭 진단과 6단계 전략의 발판.</p>
+
+    <!-- 트렌드 × 경쟁사+당사 히트맵 (● 선도 / ○ 대응 / – 미확인) -->
+    <div class="heat">
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left">트렌드 ↓ \ 경쟁사 →</th>
+            <th>Midea</th><th>Haier</th><th>BSH</th><th>Whirlpool</th>
+            <th>Electrolux</th><th>Daikin</th><th>LG전자<br><small>HS·ES</small></th>
+            <th class="own">당사<br><small>삼성DA</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th>T1 AI에이전트</th><td>○</td><td class="lead">● Flavorly AI</td><td>○ Home Connect</td><td>–</td><td>–</td><td>–</td><td class="lead">● ThinQ·CLOiD</td><td class="own lead">● Bespoke+Gemini</td></tr>
+          <tr><th>T2 DC냉각</th><td class="lead">● MBT Climate</td><td>–</td><td>–</td><td>–</td><td>–</td><td>○</td><td class="lead">● 20조 목표</td><td class="own lead">● FläktGroup</td></tr>
+          <tr><th>T3 자연냉매</th><td class="lead">● R290 620만대</td><td>○</td><td class="lead">● 프로판 €10억</td><td>–</td><td>○</td><td class="lead">● R-32 표준</td><td>○ R290</td><td class="own">○ 대응</td></tr>
+          <tr><th>T4 히트펌프</th><td>○</td><td>–</td><td class="lead">● JCI주거 인수</td><td>–</td><td>–</td><td class="lead">● 북미1위 추진</td><td>○ Therma V</td><td class="own">○ EHS</td></tr>
+          <tr><th>T5 구독·XaaS</th><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td class="lead">● 2.48조·30년6조</td><td class="own">○ AI구독클럽</td></tr>
+          <tr><th>T6 순환·수리권</th><td>–</td><td>○</td><td class="lead">● AI원격수리</td><td>–</td><td class="lead">● Circular Care</td><td>–</td><td>○</td><td class="own">○ 대응</td></tr>
+          <tr><th>T7 VPP·그리드</th><td>–</td><td>○ GE Smart</td><td>–</td><td>○ Matter</td><td>○ Matter</td><td>–</td><td>○ ThinQ Energy</td><td class="own">○ SmartThings</td></tr>
+          <tr><th>T8 실버·헬스</th><td>–</td><td class="lead">● 재활로봇</td><td>–</td><td>–</td><td>–</td><td>–</td><td>○ CLOiD</td><td class="own">○ EdgeAware</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--accent)"></i>● 선도 (실투자·출시·M&A)</span>
+      <span><i style="background:var(--accent-soft)"></i>○ 대응 중</span>
+      <span><i style="background:var(--paper)"></i>– 미확인 = 공백</span>
+      <span><i style="background:var(--ok-soft)"></i>당사 열 = 5단계 갭 진단 입력</span>
+    </div>
+
+    <!-- HVAC 전문기업 전용 비교 (T2~T4) -->
+    <h3 style="font-size:15px; font-weight:700; margin:26px 0 10px; color:var(--muted)">HVAC 전문기업 비교군 — 공조 트렌드(T2·T3·T4) 전용</h3>
+    <div class="heat">
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left">공조 트렌드 ↓ \ HVAC 전문 →</th>
+            <th>Carrier</th><th>Trane<br><small>+LiquidStack</small></th><th>JCI<br><small>York</small></th><th>Daikin<br><small>Goodman</small></th><th>Lennox</th>
+            <th class="own">당사<br><small>+FläktGroup</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th>T2 DC냉각</th><td>○</td><td class="lead">● CDU 10MW</td><td class="lead">● 백로그 $150억</td><td>○</td><td>–</td><td class="own lead">● FläktGroup</td></tr>
+          <tr><th>T3 자연냉매</th><td class="lead">● R-454B</td><td class="lead">● R-454B</td><td>○</td><td class="lead">● R-32 표준</td><td>○</td><td class="own">○ 대응</td></tr>
+          <tr><th>T4 히트펌프</th><td>○</td><td>○</td><td class="lead">● Bosch매각</td><td class="lead">● 북미1위</td><td class="lead">● 북미강세</td><td class="own">○ EHS</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="fill" style="margin-top:14px">
+      <p class="fill-note"><b>읽는 법</b> · 가전 경쟁사 표에선 안 보이던 <b>HVAC 순수강자(Trane·JCI·Lennox)</b>가 T2~T4에서 강력 — 당사가 공조 진입자로서 직면할 진짜 비교군. DC냉각은 FläktGroup으로 호각이나, 히트펌프 북미는 Daikin·Lennox 대비 열위</p>
+    </div>
+
+    <div class="fill" style="margin-top:14px">
+      <p class="fill-note"><b>읽는 법(가전 표)</b> · 당사 ● vs 경쟁사 ● = 호각 / 당사 ○ vs 경쟁사 ● = <b>격차(추격 필요)</b> / 모두 – 인데 당사 진입 = <b>선점 기회</b> · <b style="color:var(--signal)">중국계 경계:</b> Midea(R-290 620만대 ●)·Haier(실버 재활로봇 ●) 추격에서 당사 ○ 머무는 T3·T8 격차 주시</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 5단계 — 당사 현 위치 (갭 진단) ════════ -->
+<section class="step-sec" id="s5">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">STEP 05</span><span class="sec-role">// 당사는 지금 어디 서 있나</span></div>
+    <h2 class="sec-title">당사 현 위치 — 트렌드별 역량·격차 진단</h2>
+    <p class="sec-desc">"차별화·선도"를 말하기 전, 당사가 트렌드별로 선도사 대비 어디 있는지부터 못 박는다. 격차가 정량화돼야 6단계 목표가 정량화된다. 4단계 당사 열을 추격/호각/선점 3구간으로 진단한다.</p>
+
+    <div class="grid3">
+      <div class="card" style="border-top:3px solid var(--ok)">
+        <div class="tag" style="color:var(--ok)">호각·우위 (지킨다)</div>
+        <h4 style="font-size:14px">T1 AI에이전트 · T2 DC냉각</h4>
+        <div class="ph" style="color:var(--muted)">T1: Bespoke+Gemini로 선도권 · T2: FläktGroup 인수로 LG·Midea와 동일 출발선. <b>격차 KPI:</b> 선도 지위 유지율·수주 점유율</div>
+      </div>
+      <div class="card" style="border-top:3px solid var(--signal)">
+        <div class="tag" style="color:var(--signal)">격차·추격 (좁힌다)</div>
+        <h4 style="font-size:14px">T3 자연냉매 · T4 히트펌프 · T6 순환</h4>
+        <div class="ph" style="color:var(--muted)"><b style="color:var(--signal)">중국계 추격 경계:</b> Midea R-290 620만대(●)·Haier 실버로봇(●) 선점 vs 당사 ○. Daikin(R-32)·BSH(프로판)도 ● 선도. <b>격차 KPI:</b> 저GWP 라인업 비중·핵심부품 내재화율</div>
+      </div>
+      <div class="card" style="border-top:3px solid var(--accent)">
+        <div class="tag" style="color:var(--accent)">선점 (먼저 깃발)</div>
+        <h4 style="font-size:14px">T5 구독 · T7 VPP · T8 실버</h4>
+        <div class="ph" style="color:var(--muted)">T5: LG 외 글로벌 공백 = 해외 선점 여지 · T7·T8: 전 사 여명기. <b>격차 KPI:</b> 해외 구독 침투율·신BM 매출</div>
+      </div>
+    </div>
+
+    <div class="fill" style="margin-top:18px">
+      <p class="fill-note"><b>갭 정량화(보강)</b> · 각 트렌드별 당사 현 점유율/매출/기술수준 vs 선도사 = 격차 수치 확정 → 6단계 목표(점유율·매출·시점)의 출발점. <b>당사 내부 데이터 연계 필요 구간</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 6단계 — 당사 전략 ════════ -->
+<section class="step-sec" id="s6">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">STEP 06</span><span class="sec-role">// 그래서 당사는 — So What</span></div>
+    <h2 class="sec-title">당사 차별화·시장 선도 전략</h2>
+    <p class="sec-desc">결론. 먼저 트렌드를 단품이 아닌 클러스터(상호작용)로 묶어 시너지·충돌을 보고, 역량×우선순위로 정렬한 뒤, 단기·중장기 로드맵과 정량 목표로 닫는다.</p>
+
+    <!-- 트렌드 클러스터 (상호작용 관점) — 신규 -->
+    <div class="grid3" style="margin-bottom:20px">
+      <div class="card" style="background:var(--accent-soft); border-color:var(--accent)">
+        <div class="tag">클러스터 A · 락인</div>
+        <h4 style="font-size:14px">T1 AI에이전트 + T5 구독</h4>
+        <div class="ph" style="color:var(--muted)">AI가 소모품·케어 시점을 예측 → 구독으로 자동 전환. 결합 시 이탈장벽↑ 리커링 매출↑</div>
+      </div>
+      <div class="card" style="background:var(--accent-soft); border-color:var(--accent)">
+        <div class="tag">클러스터 B · 에너지</div>
+        <h4 style="font-size:14px">T2 DC냉각 + T3 냉매 + T7 VPP</h4>
+        <div class="ph" style="color:var(--muted)">DC 전력급증이 VPP 수요를 키우고, 냉매규제가 냉각효율을 강제. 에너지축으로 한 묶음</div>
+      </div>
+      <div class="card" style="background:var(--signal-soft); border-color:var(--signal)">
+        <div class="tag" style="color:var(--signal)">충돌 · 비용</div>
+        <h4 style="font-size:14px">T3 냉매 + T6 수리권 ↔ 원가</h4>
+        <div class="ph" style="color:var(--muted)">저GWP 부품+수리 가능 설계는 원가·복잡도↑. 규제 동시 대응 시 설계 부담 충돌</div>
+      </div>
+    </div>
+
+    <div class="grid2" style="align-items:start; margin-bottom:18px">
+      <!-- 전략 우선순위 매트릭스 (역량 × 우선순위) -->
+      <div>
+        <div class="quad">
+          <div class="q"><div class="qh">선도 영역 ★</div><div class="ph" style="font-size:12px; color:var(--accent); font-weight:700; margin-top:6px">T2 DC냉각<br>T1 AI에이전트</div></div>
+          <div class="q"><div class="qh">선택적 투자</div><div class="ph" style="font-size:12px; color:var(--muted); margin-top:6px">T5 구독(해외)<br>T7 VPP</div></div>
+          <div class="q"><div class="qh">관망·대응</div><div class="ph" style="font-size:12px; color:var(--muted); margin-top:6px">T8 실버·헬스</div></div>
+          <div class="q"><div class="qh">방어·추격</div><div class="ph" style="font-size:12px; color:var(--muted); margin-top:6px">T3 냉매 · T4 히트펌프<br>T6 수리권</div></div>
+        </div>
+        <div class="quad-axes"><span>← 당사 역량 낮음</span><span>당사 역량 높음 →</span></div>
+      </div>
+      <!-- 차별화 포인트 -->
+      <div class="fill" style="height:100%">
+        <p class="fill-note"><b>차별화 포인트</b> · 클러스터 A(AI+구독) 락인을 당사 SmartThings·AI구독클럽으로 선도 · 클러스터 B(에너지) FläktGroup 레버리지 · <b>당사 강점 연계·정량 목표는 보강 단계 확정</b></p>
+      </div>
+    </div>
+
+    <!-- 단기·중기·장기 로드맵 (충돌 해결책 + 정량 목표 종착지) -->
+    <div class="road">
+      <div class="phase"><div class="ph-h">단기</div><div class="ph-y">~2026</div><div class="ph" style="font-size:12.5px; color:var(--muted); margin-top:8px"><b style="color:var(--ink)">DC냉각 최우선 격상</b> — FläktGroup 시너지·NVIDIA 인증. AI+구독 락인 강화<br><span style="color:var(--signal)">▸충돌 대응: 표준 모듈화 설계 착수</span><br><span style="color:var(--accent); font-weight:700">◎ 목표: 신BM 매출비중 □□%</span></div></div>
+      <div class="phase"><div class="ph-h">중기</div><div class="ph-y">2027~2028</div><div class="ph" style="font-size:12.5px; color:var(--muted); margin-top:8px"><b style="color:var(--ink)">자연냉매 규제차익</b> — EU 27년 R-410A 금지 선제 R-290/454B 확보<br><span style="color:var(--signal)">▸충돌 대응: 컴프레서 핵심부품 내재화율 제고</span><br><span style="color:var(--accent); font-weight:700">◎ 목표: 저GWP 라인업 □□%</span></div></div>
+      <div class="phase"><div class="ph-h">장기</div><div class="ph-y">2029~2030</div><div class="ph" style="font-size:12.5px; color:var(--muted); margin-top:8px"><b style="color:var(--ink)">VPP·실버 신수익 + 글로벌 선도</b> — 유틸리티 DR·Samsung Health 결합<br><span style="color:var(--accent); font-weight:700">◎ 목표: 글로벌 냉각솔루션 점유율 □□% · 해외 구독 □□만</span></div></div>
+    </div>
+    <div class="fill" style="margin-top:18px">
+      <p class="fill-note"><b>정량 목표 종착지(□□ = 내부 데이터 매핑)</b> · 각 로드맵 단계에 당사 핵심자산(SmartThings·AI 가전·FläktGroup) 연계해 '2030 신BM 매출비중·글로벌 냉각 점유율' 등 명확한 Goal 확정 · <b>당사 선도 선언 후보:</b> T5 구독(글로벌 공백 선점) · T2 DC냉각(FläktGroup 레버리지)</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ───────── 참고 자료 ───────── -->
+<div style="border-top:2px solid var(--line-strong); margin-top:64px"></div>
+<section class="wrap" style="padding-top:48px; padding-bottom:64px">
+  <h2 style="font-size:15px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); font-family:var(--font-mono); margin-bottom:28px">참고 자료 · References</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 48px">
+
+    <div>
+      <p style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-family:var(--font-mono); margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid var(--line)">시장·산업 통계</p>
+      <ul style="list-style:none; font-size:12.5px; color:var(--muted); line-height:2">
+        <li>Statista Consumer Market Outlook 2025 — 스마트가전 시장 규모·CAGR</li>
+        <li>IEA, <em>The Future of Heat Pumps</em> 2024 — 연간 히트펌프 투자 $1,600억</li>
+        <li>EHPA (European Heat Pump Association) 2025 — EU 히트펌프 보급·통계</li>
+        <li>IFR, <em>World Robotics 2025</em> — 가정용 서비스로봇 CAGR 18.8%</li>
+        <li>FläktGroup 데이터센터 냉방 시장 보고서 2024 — 액체냉각 $5.5B→$19B (CAGR 23%)</li>
+        <li>Rocky Mountain Institute — VPP 시장 $6.28B→$39.3B (CAGR 22.6%)</li>
+      </ul>
+    </div>
+
+    <div>
+      <p style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-family:var(--font-mono); margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid var(--line)">규제·정책</p>
+      <ul style="list-style:none; font-size:12.5px; color:var(--muted); line-height:2">
+        <li>US EPA AIM Act — 700 GWP 상한 (2025.1 시행)</li>
+        <li>EU F-Gas Regulation (2024/573/EU) — R-410A 단계적 퇴출 2027</li>
+        <li>EU 수리권 지침 (Directive 2024/1799) — 2026.7 회원국 전환</li>
+        <li>REPowerEU Plan — 히트펌프 2030년까지 6,000만 대 목표</li>
+        <li>IEA Net Zero 2050 — 냉방·히트펌프 탄소중립 로드맵</li>
+      </ul>
+    </div>
+
+    <div style="margin-top:28px">
+      <p style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-family:var(--font-mono); margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid var(--line)">기술 트렌드·전망</p>
+      <ul style="list-style:none; font-size:12.5px; color:var(--muted); line-height:2">
+        <li>Gartner Hype Cycle for Emerging Technologies 2025</li>
+        <li>Gartner Hype Cycle for AI 2024–2025</li>
+        <li>Gartner Hype Cycle for Mobile Robots and Drones 2024</li>
+        <li>CES 2026 발표 자료 — Bespoke AI + Google Gemini, AI 가전 신제품</li>
+        <li>WRAP / Ellen MacArthur Foundation — 순환경제 전환율 12%→24% (2030)</li>
+      </ul>
+    </div>
+
+    <div style="margin-top:28px">
+      <p style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-family:var(--font-mono); margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid var(--line)">경쟁사 IR·발표</p>
+      <ul style="list-style:none; font-size:12.5px; color:var(--muted); line-height:2">
+        <li>Samsung Electronics IR 2024–2025 — FläktGroup 인수, DA 구독 실적</li>
+        <li>LG Electronics IR 2024–2025 — 구독 매출 2.48조 (+29%), CLOi, Therma V</li>
+        <li>BSH Hausgeräte Annual Report 2024 — 프로판 히트펌프 €10억 투자, Home Connect</li>
+        <li>Midea Group IR 2024 — R-290 공조기 620만 대, MBT Climate</li>
+        <li>Haier Smart Home 2024 — Flavorly AI, 재활로봇 신제품</li>
+        <li>Trane Technologies 2024 — CDU 10MW, LiquidStack 파트너십</li>
+        <li>Johnson Controls IR 2024 — 백로그 $150억, York 히트펌프</li>
+        <li>Daikin Industries 2024 — R-32 표준화, Goodman 확장</li>
+        <li>Lennox International 2024 — 북미 히트펌프 매출 강세</li>
+        <li>Carrier Global 2024 — R-454B 전환 로드맵</li>
+        <li>Electrolux Annual Report 2024 — Circular Care 순환경제 프로그램</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<footer class="wrap">
+  2030 가전 미래트렌드 · 6단계 흐름(프레임→도출→성숙·영향→경쟁사→당사 현위치→전략) · DA 기획팀
 </footer>
 
 <script>
-// nav active state on scroll
-const links=[...document.querySelectorAll('nav .links a')];
-const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
-const obs=new IntersectionObserver(es=>{
+// 스크롤스파이 — 현재 단계 활성화 (흐름 레일 + 노드)
+const sections=[...document.querySelectorAll('section.step-sec')];
+const links=[...document.querySelectorAll('.flow a')];
+const byId=id=>links.find(a=>a.getAttribute('href')==='#'+id);
+const obs=new IntersectionObserver((es)=>{
   es.forEach(e=>{
     if(e.isIntersecting){
-      const id='#'+e.target.id;
-      links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')===id));
+      links.forEach(a=>a.classList.remove('active'));
+      const a=byId(e.target.id); if(a) a.classList.add('active');
     }
   });
-},{rootMargin:'-45% 0px -50% 0px'});
-secs.forEach(s=>s&&obs.observe(s));
-
-/* ---------- LIVE MARKET INSIGHT — auto-reflect from market-insight pipeline ---------- */
-(function(){
-  // Cross-origin fetch from the market-insight repo (CORS: access-control-allow-origin *), auto-updated hourly.
-  const DATA_URLS=[
-    'https://raw.githubusercontent.com/SimpleorNothing/market-insight/main/data/news.json'
-  ];
-  const LENS_SEQ=['경쟁사','소비자','기술','정책','거시'];
-  const GRADE_RANK={'긴급':0,'주요':1,'주시':2,'참고':3};
-  const GRADE_CLS={'긴급':'g-urgent','주요':'g-major','주시':'g-watch','참고':'g-ref'};
-  const $=id=>document.getElementById(id);
-  const feed=$('miFeed'), msgWrap=$('miMsgWrap');
-  let ALL=[], state={lens:'전체',grade:null,sort:'impact',limit:30,tag:null};
-
-  function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
-  function relTime(iso){
-    const t=new Date(iso).getTime(); if(isNaN(t))return'';
-    const d=Math.floor((Date.now()-t)/1000);
-    if(d<60)return'방금'; if(d<3600)return Math.floor(d/60)+'분 전';
-    if(d<86400)return Math.floor(d/3600)+'시간 전'; if(d<2592000)return Math.floor(d/86400)+'일 전';
-    return Math.floor(d/2592000)+'개월 전';
-  }
-  function fmtDT(iso){const d=new Date(iso);if(isNaN(d.getTime()))return'';
-    const p=n=>String(n).padStart(2,'0');
-    return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes());}
-
-  function chip(label,count,active,on){
-    const c=el('span','mi-chip'+(active?' on':''));
-    c.appendChild(document.createTextNode(label));
-    if(count!=null)c.appendChild(el('span','c','('+count+')'));
-    c.addEventListener('click',on); return c;
-  }
-  function buildLensChips(){
-    const wrap=$('miLensChips'); wrap.textContent='';
-    const counts={}; ALL.forEach(i=>counts[i.lens]=(counts[i.lens]||0)+1);
-    const add=(label,count,val)=>{
-      const c=chip(label,count,state.lens===val,()=>{state.lens=val;state.limit=30;render();});
-      c.dataset.lens=val; wrap.appendChild(c);
-    };
-    add('전체',ALL.length,'전체');
-    LENS_SEQ.filter(l=>counts[l]).forEach(l=>add(l,counts[l],l));
-  }
-  function itemHasTag(i,t){
-    return (i.products||[]).includes(t)||(i.competitors||[]).includes(t)||(i.tags||[]).includes(t);
-  }
-  function tag(text,cls,val){
-    const e=el('span','mi-tag'+(cls?' '+cls:''),text);
-    if(val!=null){
-      if(state.tag===val)e.classList.add('on');
-      e.title='이 태그로 필터';
-      e.addEventListener('click',()=>{state.tag=(state.tag===val)?null:val;state.limit=30;render();});
-    }
-    return e;
-  }
-
-  // --- Google News redirect safety net (mirrors market-insight data-layer fix) ---
-  // Some feed items may still carry a news.google.com/rss/articles/... redirect URL.
-  // On networks that block the consent.google.com hop these links fail, so we prefer a
-  // direct publisher URL and, failing that, try to decode the one embedded in the path.
-  const isGNewsUrl=u=>/^https?:\/\/news\.google\.com\//i.test(u||'');
-  function decodeGNewsUrl(u){
-    try{
-      const m=String(u).match(/\/articles\/([^?\/#]+)/);
-      if(!m)return null;
-      let s=m[1].replace(/-/g,'+').replace(/_/g,'/');
-      while(s.length%4)s+='=';
-      const bytes=atob(s);
-      const urls=bytes.match(/https?:\/\/[^\s"'<>\\)]+/g);
-      if(!urls)return null;
-      const ext=urls.find(x=>!/(?:[^/]*\.)?google\.com(?:[\/:?]|$)/i.test(x));
-      return ext||null;
-    }catch(e){return null;}
-  }
-  function pickUrl(it){
-    const cands=[it.source&&it.source.url,it.url].filter(u=>u&&/^https?:\/\//.test(u));
-    const direct=cands.find(u=>!isGNewsUrl(u));
-    if(direct)return direct;
-    for(const u of cands){const d=decodeGNewsUrl(u);if(d)return d;}
-    return cands[0]||null;
-  }
-
-  function card(it){
-    const c=el('div','mi-card'), top=el('div','top');
-    top.appendChild(el('span','lens',it.lens||''));
-    if(GRADE_CLS[it.grade])top.appendChild(el('span','mi-pill '+GRADE_CLS[it.grade],it.grade));
-    if(typeof it.impact==='number')top.appendChild(el('span','mi-impact','영향 '+it.impact.toFixed(1)));
-    if(it.publishedAt)top.appendChild(el('span','mi-date',relTime(it.publishedAt)));
-    c.appendChild(top);
-    const url=pickUrl(it);
-    const hasUrl=!!url;
-    const h=el('h3'), title=it.headline||'(제목 없음)';
-    if(hasUrl){
-      const ha=el('a',null,title);
-      ha.href=url; ha.target='_blank'; ha.rel='noopener noreferrer';
-      h.appendChild(ha);
-    }else h.textContent=title;
-    c.appendChild(h);
-    if(it.summary)c.appendChild(el('p','sum',it.summary));
-    const chips=el('div','mi-chips');
-    (it.products||[]).forEach(p=>chips.appendChild(tag(p,'prd',p)));
-    (it.competitors||[]).forEach(p=>chips.appendChild(tag(p,'cmp',p)));
-    (it.tags||[]).slice(0,5).forEach(p=>chips.appendChild(tag('#'+p,null,p)));
-    c.appendChild(chips);
-    const foot=el('div','mi-foot');
-    const f=it.factors;
-    if(f){
-      const fe=el('div','mi-factors');
-      const add=(lab,v)=>{if(v==null)return;const s=el('span',null,lab+' ');s.appendChild(el('b',null,v));fe.appendChild(s);};
-      add('매출연관',f.salesRelevance);add('시급성',f.timeUrgency);add('시장규모',f.marketSize);add('출처신뢰',f.sourceReliability);
-      if(fe.children.length)foot.appendChild(fe);
-    }
-    if(hasUrl){
-      const sw=el('div','mi-src');
-      const a=el('a',null,(it.source&&it.source.name?it.source.name:'원문 보기')+' →');
-      a.href=url; a.target='_blank'; a.rel='noopener noreferrer';
-      sw.appendChild(a); foot.appendChild(sw);
-    }
-    if(foot.children.length)c.appendChild(foot);
-    return c;
-  }
-  function renderTagRow(count){
-    const row=$('miTagRow'), box=$('miActiveTag');
-    if(!row||!box)return;
-    if(!state.tag){row.style.display='none';box.textContent='';return;}
-    row.style.display=''; box.textContent='';
-    const c=el('span','mi-chip on');
-    c.appendChild(document.createTextNode('#'+state.tag));
-    c.appendChild(el('span','mi-x','✕'));
-    c.title='태그 필터 해제';
-    c.addEventListener('click',()=>{state.tag=null;state.limit=30;render();});
-    box.appendChild(c);
-    box.appendChild(el('span','mi-tagcount','결과 '+count+'건'));
-  }
-  function render(){
-    document.querySelectorAll('#miCounters .ctr').forEach(c=>c.classList.toggle('on',c.dataset.grade===state.grade));
-    document.querySelectorAll('#miFilters .sort').forEach(c=>c.classList.toggle('on',c.dataset.sort===state.sort));
-    document.querySelectorAll('#miLensChips .mi-chip').forEach(c=>c.classList.toggle('on',c.dataset.lens===state.lens));
-    let list=ALL.slice();
-    if(state.lens!=='전체')list=list.filter(i=>i.lens===state.lens);
-    if(state.grade)list=list.filter(i=>i.grade===state.grade);
-    if(state.tag)list=list.filter(i=>itemHasTag(i,state.tag));
-    list.sort(state.sort==='recent'
-      ? (a,b)=>new Date(b.publishedAt)-new Date(a.publishedAt)
-      : (a,b)=>((GRADE_RANK[a.grade]??9)-(GRADE_RANK[b.grade]??9))||((b.impact||0)-(a.impact||0)));
-    renderTagRow(list.length);
-    feed.textContent=''; msgWrap.textContent='';
-    if(!list.length){msgWrap.appendChild(el('div','mi-msg','해당 조건의 신호가 없습니다.'));return;}
-    list.slice(0,state.limit).forEach(it=>feed.appendChild(card(it)));
-    if(list.length>state.limit){
-      const more=el('button','mi-more','더 보기 ('+(list.length-state.limit)+'건 더 · 전체 '+list.length+'건)');
-      more.addEventListener('click',()=>{state.limit+=30;render();});
-      msgWrap.appendChild(more);
-    }
-  }
-  function onData(d){
-    ALL=Array.isArray(d&&d.items)?d.items:[];
-    if(!ALL.length){fail('수신된 신호 항목이 없습니다.');return;}
-    const g={}; ALL.forEach(i=>g[i.grade]=(g[i.grade]||0)+1);
-    $('miCntUrgent').textContent=g['긴급']||0;
-    $('miCntMajor').textContent=g['주요']||0;
-    $('miCntWatch').textContent=g['주시']||0;
-    $('miCntRef').textContent=g['참고']||0;
-    const setHero=(id,v)=>{const e=$(id); if(e)e.textContent=v;};
-    setHero('heroTotal', ALL.length);
-    setHero('heroActionable', (g['긴급']||0)+(g['주요']||0));
-    setHero('heroWatch', g['주시']||0);
-    setHero('heroRef', g['참고']||0);
-    const upd=d.updatedAt?fmtDT(d.updatedAt)+' ('+relTime(d.updatedAt)+')':'시각 미상';
-    $('miState').textContent='정상 · 총 '+ALL.length+'건 · 최종 수집 '+upd;
-    const hc=$('miHeroCount'); if(hc)hc.textContent=ALL.length+'건';
-    const hu=$('miHeroUpdated'); if(hu)hu.textContent=d.updatedAt?relTime(d.updatedAt):'—';
-    const collected=d.updatedAt?upd:'수집 시각 미상';
-    const mm=$('miMetaUpdated'); if(mm)mm.textContent=collected;
-    const mf=$('miFootUpdated'); if(mf)mf.textContent=collected;
-    $('miCounters').style.display='';
-    $('miFilters').style.display='';
-    document.querySelectorAll('#miCounters .ctr.mi').forEach(c=>c.addEventListener('click',()=>{
-      state.grade=(state.grade===c.dataset.grade)?null:c.dataset.grade; state.limit=30; render();}));
-    document.querySelectorAll('#miFilters .sort').forEach(c=>c.addEventListener('click',()=>{
-      state.sort=c.dataset.sort; render();}));
-    buildLensChips();
-    render();
-  }
-  function fail(msg){
-    $('miState').textContent='연동 실패 — '+(msg||'데이터 소스 접근 불가');
-    const dot=$('miStatus').querySelector('.mi-dot'); if(dot)dot.style.background='var(--red)';
-    const live=$('miStatus').querySelector('.live'); if(live)live.style.color='var(--red)';
-    msgWrap.appendChild(el('div','mi-msg err','실시간 데이터를 불러오지 못했습니다. '+(msg||'')+' 데이터 소스(market-insight) 연결을 확인하세요.'));
-    const mm=$('miMetaUpdated'); if(mm)mm.textContent='수집 실패';
-    const mf=$('miFootUpdated'); if(mf)mf.textContent='수집 실패';
-  }
-  (function load(i){
-    if(i>=DATA_URLS.length){fail('모든 데이터 소스 접근 실패.');return;}
-    fetch(DATA_URLS[i],{cache:'no-store'})
-      .then(r=>{if(!r.ok)throw 0; return r.json();})
-      .then(onData)
-      .catch(()=>load(i+1));
-  })(0);
-})();
+},{rootMargin:'-45% 0px -50% 0px', threshold:0});
+sections.forEach(s=>obs.observe(s));
 </script>
-<!-- 도구모음 런처 (상단 nav 우측 통합) -->
-<style>
-.da-launcher{display:inline-flex;align-items:center;gap:5px;flex:none;height:28px;padding:0 8px;border:1.5px solid var(--line);border-radius:7px;background:var(--surface);color:var(--txt);text-decoration:none;font-size:11.5px;font-weight:600;line-height:1;white-space:nowrap;transition:.15s}
-.da-launcher:hover{border-color:#1257d6;box-shadow:0 4px 18px rgba(18,87,214,.12)}
-.da-launcher .da-gi{display:block;width:15px;height:15px;flex:none}
-.da-launcher .da-gi rect{fill:var(--muted);transition:.15s}
-.da-launcher:hover .da-gi rect{fill:#1257d6}
-</style>
 </body>
 </html>
