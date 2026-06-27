@@ -199,10 +199,8 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 .s0-band .s0-eyebrow{font-family:var(--font-mono); font-size:12px; font-weight:600; letter-spacing:.06em; color:#7FB2D9}
 .s0-band h3{font-size:22px; font-weight:800; margin:8px 0 8px; letter-spacing:-.02em}
 .s0-band .s0-lead{font-size:14px; color:#B9C6D4; max-width:720px; margin-bottom:20px}
-.s0-routes{display:grid; grid-template-columns:1fr; gap:12px}
-.s0-route{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:18px; transition:.2s; cursor:pointer}
-.s0-route:hover{background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.2)}
-.s0-route.active{background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.3); box-shadow:0 0 12px rgba(127,178,217,.2)}
+.s0-routes{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+.s0-route{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:18px}
 .s0-route .r-tag{display:inline-block; font-family:var(--font-mono); font-size:11px; font-weight:700; padding:3px 9px; border-radius:20px; margin-bottom:10px}
 .s0-route.weekly .r-tag{background:#1E7A57; color:#fff}
 .s0-route.adhoc .r-tag{background:#C2410C; color:#fff}
@@ -211,7 +209,6 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 .s0-route .feeds{margin-top:12px; padding-top:12px; border-top:1px solid rgba(255,255,255,.12); font-size:11.5px; color:#8FA3B5}
 .s0-route .feeds b{color:#CFE0EE}
 .s0-flowto{display:flex; align-items:center; justify-content:center; gap:10px; margin-top:18px; font-family:var(--font-mono); font-size:12px; color:#7FB2D9}
-.s0-content-toggle{margin-top:16px; padding:16px 0; border-top:1px solid rgba(255,255,255,.1)}
 @media(max-width:860px){.s0-routes{grid-template-columns:1fr} .rail-s0 .lbl{display:none}}
 
 /* ════════ 자동 항목 추출 ════════ */
@@ -311,85 +308,104 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       <p class="s0-lead">S1~S6 분석이 도는 "엔진"이라면, 이 단계는 최신 신호를 끊임없이 넣어주는 "연료 공급"이다. 두 경로로 들어온 정보가 트렌드 도출·경쟁사·당사 위치를 주기적으로 갱신한다.</p>
 
       <div class="s0-routes">
-        <div class="s0-route weekly" data-s0-toggle="weekly">
+        <div class="s0-route weekly" data-s0-toggle="weekly" style="cursor:pointer">
           <span class="r-tag">방법 1 · 정기</span>
           <h4>위클리 업데이트 (매주 월)</h4>
           <p>매주 월요일, 전주(前週) 기사를 모아 반영. 경쟁사 신제품·M&A·규제 동향 등 빠르게 변하는 신호를 정기 리듬으로 포착.</p>
           <div class="feeds">→ 주로 <b>S4 경쟁사 대응</b>·<b>S2 트렌드 도출</b> 갱신</div>
         </div>
-
-        <!-- 1. 위클리 — S1~S6 체크리스트 -->
-        <div class="s0-content-toggle" id="mi-articles-section" style="display:none; background:#FFF8E6; padding:20px; border-radius:12px">
-      <div style="margin-bottom:16px">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px">
-          <div style="color:var(--ink); font-size:13px"><b>이번 주 MI 핵심:</b> 삼성·LG AI 플랫폼 가속 / Midea 에이전틱 팩토리 부상 / 반도체 원가 급등</div>
-          <div style="display:flex; gap:8px">
-            <button onclick="s0WeeklySelectAll()" style="padding:6px 12px; background:#FFA500; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:12px">전체 선택</button>
-            <button onclick="s0WeeklyClearAll()" style="padding:6px 12px; background:#D4D4D4; border:none; border-radius:6px; color:var(--ink); font-weight:600; cursor:pointer; font-size:12px">선택 해제</button>
-          </div>
-        </div>
-      </div>
-      <div style="display:grid; gap:14px">
-        <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
-          <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px">S1 분석 프레임 · STEEP 신호</div>
-          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
-            <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb"> <span><b>반도체 원가 급등</b> — Economic×기술축 신호 추가</span></label></li>
-            <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb"> <span><b>소비자 지출 위축</b> — Economic×소비자축 신호 추가</span></label></li>
-            <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb"> <span><b>AI 플랫폼 생태계</b> — Technological×소비자축 추가</span></label></li>
-          </ul>
-        </div>
-        <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
-          <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px">S2 트렌드 도출 · 근거 갱신</div>
-          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
-            <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb"> <span><b>삼성 AI 모듈러 홈</b> — T1 카드 근거 추가</span></label></li>
-            <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb"> <span><b>Midea 에이전틱 팩토리</b> — 카테고리 표 시사 추가</span></label></li>
-          </ul>
-        </div>
-        <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
-          <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px">S3 성숙도·영향</div>
-          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
-            <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb"> <span><b>T1 성숙도 상향</b> — 배지 추가</span></label></li>
-          </ul>
-        </div>
-        <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
-          <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px">S4 경쟁사 대응</div>
-          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
-            <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb"> <span><b>삼성 AI 모듈러</b> — T1 히트맵 업데이트</span></label></li>
-          </ul>
-        </div>
-        </div>
-
-        <div class="s0-route adhoc" data-s0-toggle="adhoc">
+        <div class="s0-route adhoc" data-s0-toggle="adhoc" style="cursor:pointer">
           <span class="r-tag">방법 2 · 비정기</span>
           <h4>수시 업데이트 (이벤트 기반)</h4>
           <p>보고서·심층 기사·정책 발표 등을 수시로 반영. CES·규제 발효·대형 M&A 같은 비정기 변곡점을 그때그때 흡수.</p>
           <div class="feeds">→ 주로 <b>S1 프레임</b>·<b>S3 성숙도</b>·<b>S5 당사 위치</b> 갱신</div>
         </div>
-
-        <!-- 2. 비정기 — URL/파일/텍스트 입력 폼 -->
-        <div class="s0-content-toggle" id="vending-report-section" style="display:none; background:#F9F9F9; padding:20px; border-radius:12px">
-          <div style="margin-bottom:18px">
-            <div style="display:flex; gap:12px; margin-bottom:14px; border-bottom:1px solid var(--line)">
-              <button onclick="s0AdhocTab('url')" class="s0-adhoc-tab-btn" data-tab="url" style="padding:10px 16px; background:none; border:none; border-bottom:2px solid var(--accent); color:var(--accent); font-weight:600; cursor:pointer; font-size:13px">URL</button>
-              <button onclick="s0AdhocTab('file')" class="s0-adhoc-tab-btn" data-tab="file" style="padding:10px 16px; background:none; border:none; color:var(--muted); font-weight:600; cursor:pointer; font-size:13px">파일</button>
-              <button onclick="s0AdhocTab('text')" class="s0-adhoc-tab-btn" data-tab="text" style="padding:10px 16px; background:none; border:none; color:var(--muted); font-weight:600; cursor:pointer; font-size:13px">텍스트</button>
-            </div>
-          </div>
-          <div id="s0-adhoc-url" class="s0-adhoc-tab-content" style="display:block">
-            <input type="url" placeholder="https://www.example.com/article..." style="width:100%; padding:10px; border:1px solid var(--line); border-radius:6px; font-size:13px; margin-bottom:8px">
-            <div style="font-size:11px; color:var(--faint)">뉴스·블로그 등 기사 링크를 입력하세요. 유튜브는 별도 운영.</div>
-          </div>
-          <div id="s0-adhoc-file" class="s0-adhoc-tab-content" style="display:none">
-            <input type="file" accept=".pdf,.docx,.txt,.doc" style="width:100%; padding:10px; border:1px solid var(--line); border-radius:6px; font-size:13px; margin-bottom:8px">
-            <div style="font-size:11px; color:var(--faint)">PDF, DOCX, TXT 형식 지원</div>
-          </div>
-          <div id="s0-adhoc-text" class="s0-adhoc-tab-content" style="display:none">
-            <textarea placeholder="분석할 텍스트를 붙여넣으세요..." style="width:100%; padding:10px; border:1px solid var(--line); border-radius:6px; font-size:13px; height:100px; font-family:inherit; resize:vertical"></textarea>
-          </div>
-        </div>
       </div>
 
       <div class="s0-flowto">방법 1 · 2 &nbsp;→&nbsp; 신호 누적 &nbsp;→&nbsp; S1~S6 분석 사슬 갱신</div>
+    </div>
+
+    <!-- S0 Interactive Content Sections -->
+    <!-- 1. 위클리 — S1~S6 체크리스트 -->
+    <div class="s0-content-toggle" id="mi-articles-section" style="display:block; margin-top:24px; background:#FFF8E6; padding:20px; border-radius:12px">
+      <div style="margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid #E0D5C7; display:flex; justify-content:space-between; align-items:center">
+        <div style="color:var(--ink); font-size:13px"><b id="s0-weekly-status">이번 주 MI 핵심</b></div>
+        <button id="s0WeeklyToggleBtn" onclick="s0WeeklyToggleAll()" style="padding:6px 12px; background:#FFA500; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:12px">전체 선택</button>
+      </div>
+      <div style="display:grid; gap:14px">
+        <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start">
+            <div>
+              <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px">S1 분석 프레임 · STEEP 신호</div>
+              <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
+                <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb s0-weekly-s1"> <span><b>반도체 원가 급등</b> — Economic×기술축 신호 추가</span></label></li>
+                <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb s0-weekly-s1"> <span><b>소비자 지출 위축</b> — Economic×소비자축 신호 추가</span></label></li>
+                <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb s0-weekly-s1"> <span><b>AI 플랫폼 생태계</b> — Technological×소비자축 추가</span></label></li>
+              </ul>
+            </div>
+            <button id="s0WeeklyS1Btn" onclick="s0WeeklyToggleStep('s1')" style="padding:6px 12px; background:#FFA500; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:11px; white-space:nowrap; margin-left:12px">선택</button>
+          </div>
+        </div>
+        <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start">
+            <div>
+              <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px">S2 트렌드 도출 · 근거 갱신</div>
+              <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
+                <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb s0-weekly-s2"> <span><b>삼성 AI 모듈러 홈</b> — T1 카드 근거 추가</span></label></li>
+                <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb s0-weekly-s2"> <span><b>Midea 에이전틱 팩토리</b> — 카테고리 표 시사 추가</span></label></li>
+              </ul>
+            </div>
+            <button id="s0WeeklyS2Btn" onclick="s0WeeklyToggleStep('s2')" style="padding:6px 12px; background:#FFA500; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:11px; white-space:nowrap; margin-left:12px">선택</button>
+          </div>
+        </div>
+        <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start">
+            <div>
+              <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px">S3 성숙도·영향</div>
+              <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
+                <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb s0-weekly-s3"> <span><b>T1 성숙도 상향</b> — 배지 추가</span></label></li>
+              </ul>
+            </div>
+            <button id="s0WeeklyS3Btn" onclick="s0WeeklyToggleStep('s3')" style="padding:6px 12px; background:#FFA500; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:11px; white-space:nowrap; margin-left:12px">선택</button>
+          </div>
+        </div>
+        <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start">
+            <div>
+              <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px">S4 경쟁사 대응</div>
+              <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
+                <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb s0-weekly-s4"> <span><b>삼성 AI 모듈러</b> — T1 히트맵 업데이트</span></label></li>
+              </ul>
+            </div>
+            <button id="s0WeeklyS4Btn" onclick="s0WeeklyToggleStep('s4')" style="padding:6px 12px; background:#FFA500; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:11px; white-space:nowrap; margin-left:12px">선택</button>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:18px; padding-top:18px; border-top:1px solid #E0D5C7; display:flex; justify-content:flex-end">
+        <button onclick="s0WeeklySubmit()" style="padding:10px 20px; background:#1E7A57; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:13px">완료</button>
+      </div>
+    </div>
+
+    <!-- 2. 비정기 — URL/파일/텍스트 입력 폼 -->
+    <div class="s0-content-toggle" id="vending-report-section" style="display:block; margin-top:24px; background:#F9F9F9; padding:20px; border-radius:12px">
+      <div style="margin-bottom:18px">
+        <div style="display:flex; gap:12px; margin-bottom:14px; border-bottom:1px solid var(--line)">
+          <button onclick="s0AdhocTab('url')" class="s0-adhoc-tab-btn" data-tab="url" style="padding:10px 16px; background:none; border:none; border-bottom:2px solid var(--accent); color:var(--accent); font-weight:600; cursor:pointer; font-size:13px">URL</button>
+          <button onclick="s0AdhocTab('file')" class="s0-adhoc-tab-btn" data-tab="file" style="padding:10px 16px; background:none; border:none; color:var(--muted); font-weight:600; cursor:pointer; font-size:13px">파일</button>
+          <button onclick="s0AdhocTab('text')" class="s0-adhoc-tab-btn" data-tab="text" style="padding:10px 16px; background:none; border:none; color:var(--muted); font-weight:600; cursor:pointer; font-size:13px">텍스트</button>
+        </div>
+      </div>
+      <div id="s0-adhoc-url" class="s0-adhoc-tab-content" style="display:block">
+        <input type="url" placeholder="https://www.example.com/article..." style="width:100%; padding:10px; border:1px solid var(--line); border-radius:6px; font-size:13px; margin-bottom:8px">
+        <div style="font-size:11px; color:var(--faint)">뉴스·블로그 등 기사 링크를 입력하세요. 유튜브는 별도 운영.</div>
+      </div>
+      <div id="s0-adhoc-file" class="s0-adhoc-tab-content" style="display:none">
+        <input type="file" accept=".pdf,.docx,.txt,.doc" style="width:100%; padding:10px; border:1px solid var(--line); border-radius:6px; font-size:13px; margin-bottom:8px">
+        <div style="font-size:11px; color:var(--faint)">PDF, DOCX, TXT 형식 지원</div>
+      </div>
+      <div id="s0-adhoc-text" class="s0-adhoc-tab-content" style="display:none">
+        <textarea placeholder="분석할 텍스트를 붙여넣으세요..." style="width:100%; padding:10px; border:1px solid var(--line); border-radius:6px; font-size:13px; height:100px; font-family:inherit; resize:vertical"></textarea>
+      </div>
     </div>
 
     <div class="fill" style="margin-top:18px">
@@ -823,31 +839,129 @@ const obs=new IntersectionObserver((es)=>{
 sections.forEach(s=>obs.observe(s));
 
 // S0 routes toggle — 위클리 & 비정기 입력 UI
+// Helper functions for weekly visibility management
+window.s0IsMonday10AM=function(){
+  const now=new Date();
+  return now.getDay()===1 && now.getHours()>=10;
+};
+window.s0GetLastSubmissionTime=function(){
+  return localStorage.getItem('s0WeeklySubmissionTime');
+};
+window.s0SetSubmissionTime=function(){
+  const now=new Date().getTime();
+  localStorage.setItem('s0WeeklySubmissionTime',now);
+};
+window.s0IsWithinSevenDays=function(){
+  const lastSubmission=window.s0GetLastSubmissionTime();
+  if(!lastSubmission) return false;
+  const now=new Date().getTime();
+  const sevenDaysMs=7*24*60*60*1000;
+  return (now-parseInt(lastSubmission))<sevenDaysMs;
+};
+window.s0UpdateWeeklyVisibility=function(){
+  const weeklySection=document.getElementById('mi-articles-section');
+  const weeklyRoute=document.querySelector('[data-s0-toggle="weekly"]');
+  const statusLabel=document.getElementById('s0-weekly-status');
+  if(!weeklySection || !weeklyRoute) return;
+
+  const isMonday=new Date().getDay()===1;
+  const isWithinSevenDays=window.s0IsWithinSevenDays();
+
+  // Always show weekly section and route
+  weeklySection.style.display='block';
+  weeklyRoute.style.display='block';
+
+  // Update label based on day
+  if(statusLabel){
+    statusLabel.textContent=isMonday?'지난주 MI 핵심':'이번 주 MI 핵심';
+  }
+
+  // Hide content if within 7 days of submission (Monday only)
+  if(isMonday && isWithinSevenDays){
+    weeklySection.style.opacity='0.5';
+    document.querySelectorAll('.s0-weekly-cb').forEach(cb=>cb.disabled=true);
+    document.querySelectorAll('[id^="s0WeeklyS"]').forEach(btn=>btn.disabled=true);
+    document.getElementById('s0WeeklyToggleBtn').disabled=true;
+  } else {
+    weeklySection.style.opacity='1';
+    document.querySelectorAll('.s0-weekly-cb').forEach(cb=>cb.disabled=false);
+    document.querySelectorAll('[id^="s0WeeklyS"]').forEach(btn=>btn.disabled=false);
+    document.getElementById('s0WeeklyToggleBtn').disabled=false;
+  }
+};
+
+// Initialize visibility on page load
+document.addEventListener('DOMContentLoaded',function(){
+  window.s0UpdateWeeklyVisibility();
+});
+
+// Check visibility every minute (60000ms)
+setInterval(function(){
+  window.s0UpdateWeeklyVisibility();
+}, 60000);
+
 document.querySelectorAll('[data-s0-toggle]').forEach(route=>{
   route.addEventListener('click',()=>{
     const toggleId=route.getAttribute('data-s0-toggle');
     const sectionId=toggleId==='weekly'?'mi-articles-section':'vending-report-section';
     const section=document.getElementById(sectionId);
-
-    // Active 상태 토글
-    const isActive=route.classList.contains('active');
-    document.querySelectorAll('[data-s0-toggle]').forEach(r=>r.classList.remove('active'));
-    document.querySelectorAll('.s0-content-toggle').forEach(s=>s.style.display='none');
-
-    if(!isActive){
-      route.classList.add('active');
-      if(section) section.style.display='block';
+    if(section){
+      section.style.display=section.style.display==='none'?'block':'none';
     }
   });
 });
 
 // 위클리 체크리스트 함수
-window.s0WeeklySelectAll=function(){
-  document.querySelectorAll('.s0-weekly-cb').forEach(cb=>cb.checked=true);
+window.s0WeeklyToggleAll=function(){
+  const allChecked=Array.from(document.querySelectorAll('.s0-weekly-cb')).every(cb=>cb.checked);
+  document.querySelectorAll('.s0-weekly-cb').forEach(cb=>cb.checked=!allChecked);
+  window.s0UpdateWeeklyButtons();
 };
-window.s0WeeklyClearAll=function(){
-  document.querySelectorAll('.s0-weekly-cb').forEach(cb=>cb.checked=false);
+window.s0WeeklyToggleStep=function(step){
+  const stepClass='s0-weekly-'+step;
+  const stepCheckboxes=document.querySelectorAll('.'+stepClass);
+  const allChecked=Array.from(stepCheckboxes).every(cb=>cb.checked);
+  stepCheckboxes.forEach(cb=>cb.checked=!allChecked);
+  window.s0UpdateWeeklyButtons();
 };
+window.s0UpdateWeeklyButtons=function(){
+  // Update global toggle button
+  const allCbs=Array.from(document.querySelectorAll('.s0-weekly-cb'));
+  const allChecked=allCbs.every(cb=>cb.checked);
+  const someChecked=allCbs.some(cb=>cb.checked);
+  const globalBtn=document.getElementById('s0WeeklyToggleBtn');
+  if(globalBtn){
+    globalBtn.textContent=allChecked?'전체 해제':'전체 선택';
+    globalBtn.style.background=allChecked?'#D4D4D4':'#FFA500';
+    globalBtn.style.color=allChecked?'var(--ink)':'#fff';
+  }
+
+  // Update step buttons
+  ['s1','s2','s3','s4'].forEach(step=>{
+    const stepCbs=Array.from(document.querySelectorAll('.s0-weekly-'+step));
+    const stepAllChecked=stepCbs.length>0 && stepCbs.every(cb=>cb.checked);
+    const btn=document.getElementById('s0WeeklyS'+step.toUpperCase()+'Btn');
+    if(btn){
+      btn.textContent=stepAllChecked?'해제':'선택';
+      btn.style.background=stepAllChecked?'#D4D4D4':'#FFA500';
+      btn.style.color=stepAllChecked?'var(--ink)':'#fff';
+    }
+  });
+};
+window.s0WeeklySubmit=function(){
+  // Store submission time and hide weekly section
+  window.s0SetSubmissionTime();
+  window.s0UpdateWeeklyVisibility();
+  alert('주간 반영이 완료되었습니다. 다음 주 월요일에 다시 표시됩니다.');
+};
+
+// Add event listeners to weekly checkboxes
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.s0-weekly-cb').forEach(cb=>{
+    cb.addEventListener('change',window.s0UpdateWeeklyButtons);
+  });
+  window.s0UpdateWeeklyButtons();
+});
 
 // 비정기 탭 전환 함수
 window.s0AdhocTab=function(tab){
