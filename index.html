@@ -253,24 +253,15 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 <main>
 
 <!-- ════════ S0 — 정보 업데이트 (인풋 단계) ════════ -->
-<section class="step-sec" id="s0" style="border-top:none; padding-top:48px">
+<section class="step-sec" id="s0">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">00</span>
-      <span class="sec-role">INPUT LAYER</span>
-    </div>
+    <div class="sec-head"><span class="sec-num">STEP 00</span><span class="sec-role">// 신호 공급 경로 — 0.1 위클리 → 0.2 수시</span></div>
     <h2 class="sec-title">정보 업데이트 — 분석 사슬에 신호를 공급하는 단계</h2>
     <p class="sec-desc">S1~S6 분석이 도는 "엔진"이라면, 이 단계는 최신 신호를 끊임없이 넣어주는 "연료 공급"이다. 두 경로로 들어온 정보가 트렌드 도출·경쟁사·당사 위치를 주기적으로 갱신한다.</p>
 
     <!-- 0.1 위클리 MI -->
-    <div style="margin-top:40px">
-      <div class="sec-head" style="margin-bottom:8px">
-        <span class="sec-num">0.1</span>
-      </div>
-      <h3 style="font-size:18px; font-weight:700; margin:0 0 8px; letter-spacing:-.01em">위클리 업데이트 (매주 월)</h3>
-      <p style="font-size:14px; color:var(--muted); margin-bottom:16px">매주 월요일, 전주(前週) 기사를 모아 반영. 경쟁사 신제품·M&A·규제 동향 등 빠르게 변하는 신호를 정기 리듬으로 포착.</p>
-      <p style="font-size:12px; color:var(--faint); margin-bottom:20px">→ 주로 <b style="color:var(--muted)">S4 경쟁사 대응</b>·<b style="color:var(--muted)">S2 트렌드 도출</b> 갱신</p>
-    </div>
+    <h3 style="font-size:16px; font-weight:800; margin:24px 0 6px"><span class="substep">0.1</span>위클리 업데이트 — S2·S4 갱신</h3>
+    <p class="sec-desc" style="margin-bottom:14px">매주 월요일, 전주(前週) 기사를 모아 반영. 경쟁사 신제품·M&A·규제 동향 등 빠르게 변하는 신호를 정기 리듬으로 포착.</p>
 
     <!-- 1. 위클리 — S1~S6 체크리스트 -->
     <div class="s0-content-toggle" id="mi-articles-section" style="display:block; margin-top:16px; background:#FFF8E6; padding:20px; border-radius:12px">
@@ -332,15 +323,9 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       </div>
     </div>
 
-    <!-- 방법 2 섹션 -->
-    <div style="margin-top:32px; padding-top:20px; border-top:2px solid rgba(255,255,255,.1); color:#fff">
-      <div style="margin-bottom:16px">
-        <span class="r-tag" style="background:#C2410C; color:#fff">방법 2 · 비정기</span>
-        <h4 style="color:#fff; margin:8px 0">수시 업데이트 (이벤트 기반)</h4>
-        <p style="color:#B9C6D4; font-size:13px; line-height:1.5">보고서·심층 기사·정책 발표 등을 수시로 반영. CES·규제 발효·대형 M&A 같은 비정기 변곡점을 그때그때 흡수.</p>
-        <div style="color:#8FA3B5; font-size:12px; margin-top:8px">→ 주로 <b style="color:#CFE0EE">S1 프레임</b>·<b style="color:#CFE0EE">S3 성숙도</b>·<b style="color:#CFE0EE">S5 당사 위치</b> 갱신</div>
-      </div>
-    </div>
+    <!-- 0.2 수시 업데이트 -->
+    <h3 style="font-size:16px; font-weight:800; margin:24px 0 6px"><span class="substep">0.2</span>수시 업데이트 — S1·S3·S5 갱신</h3>
+    <p class="sec-desc" style="margin-bottom:14px">보고서·심층 기사·정책 발표 등을 수시로 반영. CES·규제 발효·대형 M&A 같은 비정기 변곡점을 그때그때 흡수.</p>
 
     <!-- 2. 비정기 — URL/파일/텍스트 입력 폼 -->
     <div class="s0-content-toggle" id="vending-report-section" style="display:block; margin-top:16px; background:#F9F9F9; padding:20px; border-radius:12px">
