@@ -258,6 +258,20 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .freqtip b{font-weight:600}
 .wip-badge{display:inline-flex;align-items:center;gap:5px;flex:none;font-family:var(--font);font-size:11px;font-weight:700;letter-spacing:.5px;color:#7A4E00;background:#FCD34D;border:1px solid #E3B100;border-radius:7px;padding:4px 9px;line-height:1;white-space:nowrap;box-shadow:0 1px 4px rgba(227,177,0,.35)}
 .wip-badge .dot{width:6px;height:6px;border-radius:50%;background:#C2410C}
+
+/* ---------- SKELETON PLACEHOLDER (작업중: 리서치로 채울 빈칸 — 내용 채운 뒤 .ph 제거) ---------- */
+.ph{border:1.5px dashed var(--line2);border-radius:10px;
+  background:repeating-linear-gradient(135deg,rgba(176,121,31,.045),rgba(176,121,31,.045) 9px,transparent 9px,transparent 18px);
+  padding:14px 16px;margin:10px 0;font-family:var(--font);font-size:12.5px;color:var(--muted);line-height:1.75}
+.ph .pht{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.5px;color:#7A4E00;background:#FCD34D;border:1px solid #E3B100;border-radius:5px;padding:2px 7px;margin-bottom:7px}
+.ph b{color:var(--txt);font-weight:600}
+.ph ul{margin:6px 0 0 16px;display:flex;flex-direction:column;gap:3px}
+.ph-inline{display:inline-block;font-size:9.5px;font-weight:700;color:#7A4E00;background:#FCD34D;border-radius:4px;padding:1px 5px;margin-left:5px;letter-spacing:.3px;vertical-align:middle}
+.ph-row td{color:var(--muted2);font-style:italic;background:rgba(176,121,31,.03)}
+.step-flow{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 2px;font-family:var(--font);font-size:11px;color:var(--muted2)}
+.step-flow span{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:4px 11px}
+.step-flow span.on{background:var(--gold-soft);border-color:rgba(176,121,31,.35);color:var(--gold);font-weight:600}
+.step-flow b{color:var(--muted2);font-weight:400}
 </style>
 </head>
 <body>
@@ -266,22 +280,114 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <span class="wip-badge"><span class="dot"></span>작업중</span>
   <div class="brand">2030 미래트렌드<small>HOME APPLIANCE 2030</small></div>
   <div class="links">
-    <a href="#board2030" class="on">2030 전망</a>
-    <a href="#mega">메가트렌드 비교</a>
+    <a href="#frame" class="on">1 분석 프레임</a>
+    <a href="#trends">2 트렌드 도출</a>
+    <a href="#hype">3 Hype 진단</a>
+    <a href="#impact">4 산업 영향</a>
+    <a href="#rivals">5 경쟁사 대응</a>
+    <a href="#strategy">6 당사 전략</a>
   </div>
   <a class="da-launcher" href="https://samsungda.net" title="도구모음 열기">
     <svg class="da-gi" viewBox="0 0 16 16" aria-hidden="true"><rect x="0" y="0" width="7" height="7" rx="1"/><rect x="9" y="0" width="7" height="7" rx="1"/><rect x="0" y="9" width="7" height="7" rx="1"/><rect x="9" y="9" width="7" height="7" rx="1"/></svg>도구모음
   </a>
 </nav>
 
-<!-- ================= 2030 BOARD ================= -->
-<section id="board2030">
+<!-- ================= STEP 1 · 분석 프레임 (NEW · 리서치 보강 필요) ================= -->
+<section id="frame">
   <div class="wrap">
-    <p class="eyebrow">전망 보드 · OUTLOOK ~2030</p>
-    <h2>메가트렌드 후보 타임라인 & 기술 성숙도</h2>
-    <p class="sec-note">가전·스마트홈 8대 메가트렌드 후보를 Hype Cycle 성숙도(혁신 촉발→정점→저점→계몽→안정)와 ~2030 타임라인에 배치했습니다. <b>실제 공개 자료 근거</b>(Gartner Hype Cycle 2024–25, Statista·IEA·EHPA·IFR 등 시장조사, 기업 IR/뉴스룸, CES 2025·26/IFA 2025, EU 규제 일정)로 도출했으며, 점 색은 메가트렌드(아래 비교 차트와 동일)를 나타냅니다.</p>
+    <p class="eyebrow">STEP 1 · ANALYSIS FRAME</p>
+    <h2>어떤 렌즈로 가전의 미래를 보는가</h2>
+    <p class="sec-note">트렌드를 나열하기 전에, 무엇을 '메가트렌드'로 볼지 판단하는 4개의 축을 먼저 세웁니다. 기술 성숙도 × 시장 성장성 × 규제 압력 × 인구·사회구조 — 이 네 렌즈를 교차시킬 때 비로소 노이즈와 진짜 구조 변화가 갈립니다. 이 프레임이 이후 모든 섹션을 읽는 좌표계가 됩니다.</p>
 
-    <!-- Hype Cycle -->
+    <div class="step-flow">
+      <span class="on">1 분석 프레임</span><b>→</b><span>2 트렌드 도출</span><b>→</b><span>3 Hype 진단</span><b>→</b><span>4 산업 영향</span><b>→</b><span>5 경쟁사 대응</span><b>→</b><span>6 당사 전략</span>
+    </div>
+
+    <!-- 프레임 스케일 카운터 -->
+    <!-- [[리서치: 프레임 스케일 카운터 수치]] 렌즈4·트렌드8 고정 / 전망~2030 / 출처 건수=기존 출처+신규 리서치 합산 -->
+    <div class="counters">
+      <div class="ctr s"><div class="k">분석 렌즈</div><div class="v">4</div><div class="sub">성숙도·성장성·규제·인구구조</div></div>
+      <div class="ctr t"><div class="k">메가트렌드</div><div class="v">8</div><div class="sub">4축 교차로 수렴</div></div>
+      <div class="ctr m"><div class="k">전망 시계</div><div class="v" style="font-size:34px">~2030</div><div class="sub">중기 구조 변화</div></div>
+      <div class="ctr d"><div class="k">데이터 출처</div><div class="v">N<span class="ph-inline">리서치</span></div><div class="sub">시장조사·규제·IR</div></div>
+    </div>
+
+    <!-- 4축 렌즈 카드 -->
+    <div class="grid g2" style="margin-top:18px">
+      <div class="card"><div class="top"><span class="area">렌즈 ①</span><span class="pill obs">성숙도</span></div><h3>기술 성숙도</h3><p class="desc">기술이 기대의 거품을 지나 실제 양산·보급 단계에 얼마나 가까운가 — Hype Cycle 5단계로 측정.</p>
+        <div class="ph"><span class="pht">[[리서치: 4축 렌즈 정의·대표 데이터 소스]]</span>이 렌즈로 보는 질문 1줄 · 측정 지표(Hype 5단계: 촉발→정점→저점→계몽→안정) · 대표 출처 1~2개<br><b>가이드:</b> Gartner Hype Cycle 방법론(AI 2024-25·Emerging Tech 2025)에서 단계 정의·plateau 도달 기간 확보.</div></div>
+      <div class="card"><div class="top"><span class="area">렌즈 ②</span><span class="pill meg">성장성</span></div><h3>시장 성장성</h3><p class="desc">시장이 얼마나 빠르게·크게 커지는가 — 연평균 성장률(CAGR)과 2030년경 예상 시장규모로 측정.</p>
+        <div class="ph"><span class="pht">[[리서치: 4축 렌즈 정의·대표 데이터 소스]]</span>측정 지표(CAGR% · 2030 시장규모$) · 대표 출처<br><b>가이드:</b> Statista/IEA/EHPA/IFR/NextMSC의 CAGR 산정 기준·시장규모 정의 확보.</div></div>
+      <div class="card"><div class="top"><span class="area">렌즈 ③</span><span class="pill up">규제</span></div><h3>규제·정책 압력</h3><p class="desc">규제가 제품 로드맵을 강제로 재편하는가 — 발효 시점과 적용 범위로 측정.</p>
+        <div class="ph"><span class="pht">[[리서치: 4축 렌즈 정의·대표 데이터 소스]]</span>측정 지표(발효 시점 · 적용 범위) · 대표 출처<br><b>가이드:</b> EU ESPR 2024/1781·DPP·에너지라벨 일정, REPowerEU 목표에서 규제 타임라인 확보.</div></div>
+      <div class="card"><div class="top"><span class="area">렌즈 ④</span><span class="pill new">인구구조</span></div><h3>인구·사회구조</h3><p class="desc">수요의 토대가 바뀌는가 — 1인가구 비중·고령화율·B2B 전환 등 구조 변수로 측정.</p>
+        <div class="ph"><span class="pht">[[리서치: 4축 렌즈 정의·대표 데이터 소스]]</span>측정 지표(1인가구 비중 · 65세+ 비율 · B2B 전환) · 대표 출처<br><b>가이드:</b> UN/통계청·일본 총무성 인구구조 통계에서 대표 수치 확보.</div></div>
+    </div>
+
+    <!-- 프레임 결합 방법론 콜아웃 -->
+    <div class="sowhat-final">
+      <p class="eyebrow">METHODOLOGY · 읽는 규칙</p>
+      <div class="ph"><span class="pht">[[리서치: 프레임→8대 도출 전환 카피]]</span>"이 4축을 동시에 통과한 신호만 메가트렌드로 채택했다"는 방법론 선언 + 4축 교차가 왜 8개로 수렴하는지 + step2로 넘기는 전환 문장 1~2줄.<br><b>가이드:</b> 새 데이터 불필요 — 기존 8대 트렌드 리스트와 DATA 배열을 근거로 논리만 서술.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STEP 2 · 트렌드 도출 (기존 #mega 버블차트 재사용) ================= -->
+<section id="trends">
+  <div class="wrap">
+    <p class="eyebrow">STEP 2 · DATA → TRENDS</p>
+    <h2>데이터가 가리키는 8대 메가트렌드</h2>
+    <p class="sec-note">앞의 4축으로 공개 시장조사·규제·기업 IR 데이터를 훑었더니, 가전·스마트홈에서 반복적으로 잡히는 신호가 8개로 수렴했습니다. 각 트렌드를 성숙도 × 성장성 × 시장규모 세 좌표 위에 올려, 어디까지가 기대이고 어디부터가 실측인지 한눈에 비교합니다.</p>
+
+    <!-- 8대 메가트렌드 버블차트 (기존 자산: #megaChart·DATA 스크립트 하단 유지) -->
+    <div class="freq">
+      <div class="freq-head">
+        <div class="freq-stats">
+          <div class="stat"><div class="k">메가트렌드</div><div class="v">8<small> 종</small></div></div>
+          <div class="stat"><div class="k">최고 성장성</div><div class="v kw" id="megaStatTop">—</div></div>
+          <div class="stat"><div class="k">전망 기준</div><div class="v" style="font-size:16px">~2030</div></div>
+        </div>
+        <div class="modeswitch" id="megaMode">
+          <button data-mode="map" class="on">성숙도 맵</button>
+          <button data-mode="bar">성장성 비교</button>
+        </div>
+      </div>
+      <div class="kwlegend" id="megaLegend"></div>
+      <div class="chart-scroll">
+        <svg id="megaChart" class="chart" viewBox="0 0 960 400" xmlns="http://www.w3.org/2000/svg" aria-label="8대 메가트렌드 비교"></svg>
+      </div>
+    </div>
+
+    <!-- 8대 트렌드 도출 근거 표 (신규 · 행=step2~6 공통 8트렌드 축) -->
+    <div class="tblwrap" style="margin-top:18px">
+      <table>
+        <thead><tr><th>메가트렌드</th><th>포착 신호 (데이터)</th><th>핵심 수치 (CAGR·규모)</th><th>잡힌 축</th><th>대표 출처</th></tr></thead>
+        <tbody>
+          <!-- [[리서치: 8대 트렌드 도출 근거 표]] 8개 행 — 기존 DATA(name/cagr/size/src) 시드, '포착 신호' 1줄 채우기, 각 트렌드를 step1 4축 중 어디서 포착했는지 .pill 태그. 가이드: AI UX 21.3%(InsightAce)/AI스마트가전 11.0%(Statista)/서비스로봇 19.1%(NextMSC)/Matter·Thread 15.1%(Market Intelo·ABI)/HVAC 14.3%(IEA·EHPA)/B2B공조 18.0%(삼성IR)/Ecodesign·DPP(EU ESPR)/HEMS(Gartner) -->
+          <tr class="ph-row"><td><b>생성형·온디바이스 AI 가전 UX</b></td><td>포착 신호 1줄 [[리서치]]</td><td>21.3% · 1,041억$(2034)</td><td><span class="pill meg">성장성</span></td><td>InsightAce 2025</td></tr>
+          <tr class="ph-row"><td><b>AI 스마트 가전</b></td><td>—</td><td>11.0% · 712.8억$(2030)</td><td><span class="pill meg">성장성</span></td><td>Statista 2025</td></tr>
+          <tr class="ph-row"><td><b>가정용 서비스 로봇·휴머노이드</b></td><td>—</td><td>19.1% · 341억$(2030)</td><td><span class="pill new">인구구조</span></td><td>NextMSC</td></tr>
+          <tr class="ph-row"><td><b>스마트홈 표준(Matter·Thread)</b></td><td>—</td><td>15.1% · 526억$(2034)</td><td><span class="pill obs">성숙도</span></td><td>Market Intelo·ABI</td></tr>
+          <tr class="ph-row"><td><b>EU Ecodesign·DPP 규제</b></td><td>—</td><td>N/A · 규제(비해당)</td><td><span class="pill up">규제</span></td><td>EU ESPR 2024/1781</td></tr>
+          <tr class="ph-row"><td><b>HVAC·히트펌프</b></td><td>—</td><td>14.3% · 1,626억$(2030)</td><td><span class="pill up">규제</span></td><td>IEA 2024·EHPA 2025</td></tr>
+          <tr class="ph-row"><td><b>데이터센터 냉방·B2B 공조</b></td><td>—</td><td>18.0% · 990억$(2030)</td><td><span class="pill new">인구구조</span></td><td>삼성 IR</td></tr>
+          <tr class="ph-row"><td><b>HEMS·AI 에이전트</b></td><td>—</td><td>N/A · 신흥(미확정)</td><td><span class="pill obs">성숙도</span></td><td>Gartner Emerging Tech 2025</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sec-note" style="margin-top:14px">▍ 출처: Gartner Hype Cycle for AI 2024–25 / Mobile Robots and Drones 2024 / Emerging Tech 2025, AI in Smart Home(InsightAce 2025, CAGR 21.3%), Smart Appliances(Statista 2025, 11.0%), Household Robots(NextMSC, 19.1%), Matter device(Market Intelo·ABI, 15.1%), Heat Pump(IEA 2024·EHPA 2025), EU ESPR 2024/1781·DPP, 삼성 IR(FläktGroup 인수·데이터센터 냉방 연18%), CES 2025·26/IFA 2025. ※ Gartner 스마트홈 단독 Hype Cycle은 2018년판 이후 미공개 — 인접 사이클·시장조사 교차 적용. 시장규모·CAGR은 기관별 편차가 있어 대표치를 사용했습니다.</p>
+    <!-- [[리서치: step3 전환 카피]] 버블차트 성숙도 축 → 다음 Hype Cycle 섹션을 잇는 문장 1줄 -->
+  </div>
+</section>
+
+<!-- ================= STEP 3 · Hype 진단 (기존 #board2030 Hype Cycle·타임라인·시나리오 재사용) ================= -->
+<section id="hype">
+  <div class="wrap">
+    <p class="eyebrow">STEP 3 · HYPE CYCLE POSITION</p>
+    <h2>지금, 기대 곡선의 어디에 서 있나</h2>
+    <p class="sec-note">같은 8개 트렌드라도 '얼마나 뜨거운가'와 '얼마나 무르익었나'는 다릅니다. Hype Cycle 위에 각 트렌드를 올리면 어떤 것이 환멸의 저점을 지나는 중이고 어떤 것이 아직 정점의 거품인지 갈립니다. 여기에 ~2030 타임라인과 3개 미래 시나리오를 더해, 진단을 시간축과 분기로 확장합니다.</p>
+
+    <!-- Hype Cycle (기존 자산) -->
     <div class="hype">
       <svg viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg" aria-label="Hype Cycle">
         <defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="0">
@@ -330,7 +436,11 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <div class="tl-track"><div class="tl-bar" style="left:88%;right:0%;background:linear-gradient(90deg,#B0791F,#D9A84E)">2030+ 대중화 (10년+)</div></div></div>
     </div>
 
-    <!-- scenario cards -->
+    <!-- Hype 단계별 투자 시그널 (consulting 접목) -->
+    <div class="ph"><span class="pht">[[리서치: Hype 단계별 투자 시그널 주석]]</span>5개 Hype 단계(촉발/정점/저점/계몽/안정)가 가전 의사결정에 주는 한 줄 시그널 (예: 저점=ROI 재검증 구간, 계몽=양산 투자 적기).<br><b>가이드:</b> Gartner Hype Cycle 2024-25 단계 정의·plateau 도달 기간을 가전 맥락으로 번역.</div>
+
+    <!-- 미래 시나리오 3카드 (기존 자산) -->
+    <!-- [[리서치: Hype 점 위치·시나리오 트리거 갱신]] 8점 stage(1~5)·라벨이 최신 Gartner 사이클과 정합하는지 검증 + 시나리오 A/B/C 트리거·근거·리스크 수치 최신화(REPowerEU·EU DPP·IFR 2025) -->
     <div class="grid g3" style="margin-top:26px">
       <div class="card"><div class="top"><span class="area">시나리오 A</span><span class="pill new">성장</span></div><h3>AI 네이티브 가전</h3><p class="desc">생성형·에이전트 AI가 가전 UX를 표준화. 온디바이스 SLM·AI 에이전트가 "제어"에서 "이해·자율 운영"으로 이동.</p><div class="sowhat"><div class="row"><span class="tag">트리거</span><span class="val">온디바이스 SLM 보급 · AI 에이전트 2~5년 내 plateau</span></div><div class="row"><span class="tag">근거</span><span class="val">AI 스마트홈 CAGR 21.3% (InsightAce, 2034년 1,041억$)</span></div><div class="row"><span class="tag">리스크</span><span class="val" style="color:var(--red)">GenAI 환멸의 저점 — ROI 미검증 · 2,000€+ 가격장벽</span></div></div></div>
       <div class="card"><div class="top"><span class="area">시나리오 B</span><span class="pill up">규제</span></div><h3>규제 주도 ESG 전환</h3><p class="desc">EU Ecodesign·DPP·에너지라벨이 제품 로드맵을 재편. 친환경 HVAC/히트펌프가 B2B 성장축으로.</p><div class="sowhat"><div class="row"><span class="tag">트리거</span><span class="val">DPP 배터리 27.2 → 가전 28~30 · REPowerEU 30년 6천만대</span></div><div class="row"><span class="tag">근거</span><span class="val">히트펌프 용량 2030 2,600GW (IEA) · ESPR 발효 24.7</span></div><div class="row"><span class="tag">리스크</span><span class="val" style="color:var(--red)">유럽 히트펌프 수요 정상화(24년 211만대) · 보조금 의존</span></div></div></div>
@@ -339,31 +449,150 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   </div>
 </section>
 
-<!-- ================= 8대 메가트렌드 비교 ================= -->
-<section id="mega">
+<!-- ================= STEP 4 · 산업 영향 (NEW · 리서치 보강 필요) ================= -->
+<section id="impact">
   <div class="wrap">
-    <p class="eyebrow">메가트렌드 비교 · TOWARD 2030</p>
-    <h2>가전 8대 메가트렌드 — 성숙도 × 성장성 × 시장규모</h2>
-    <p class="sec-note">2030년까지의 트렌드 전망을 위해, 가전·스마트홈 8대 메가트렌드 후보를 <b>성숙도(Hype Cycle 단계)</b>·<b>성장성(시장 CAGR)</b>·<b>시장규모(버블 크기)</b>로 비교합니다. 성숙도 맵은 가로축이 Hype Cycle 진행도, 세로축이 시장 CAGR이며, 버블이 클수록 2030년경 예상 시장이 큽니다. 모든 수치는 공개 시장조사·규제 자료 기반입니다(하단 출처).</p>
+    <p class="eyebrow">STEP 4 · INDUSTRY IMPACT</p>
+    <h2>이 트렌드들이 가전산업을 어떻게 바꾸는가</h2>
+    <p class="sec-note">트렌드의 위치를 알았으니, 이제 그것이 가전 비즈니스에 미치는 실제 충격을 가늠합니다. 각 트렌드를 제품·UX, 원가·공급망, 채널·BM, 규제·리스크라는 가치사슬 단면에 투사해 기회와 위협을 동시에 진단합니다.</p>
+    <!-- [[리서치: 영향→경쟁 전환 카피]] 직전 step3 진단 → 이 섹션 영향으로 잇는 문장(intro 보강용) -->
 
-    <div class="freq">
-      <div class="freq-head">
-        <div class="freq-stats">
-          <div class="stat"><div class="k">메가트렌드</div><div class="v">8<small> 종</small></div></div>
-          <div class="stat"><div class="k">최고 성장성</div><div class="v kw" id="megaStatTop">—</div></div>
-          <div class="stat"><div class="k">전망 기준</div><div class="v" style="font-size:16px">~2030</div></div>
-        </div>
-        <div class="modeswitch" id="megaMode">
-          <button data-mode="map" class="on">성숙도 맵</button>
-          <button data-mode="bar">성장성 비교</button>
-        </div>
-      </div>
-      <div class="kwlegend" id="megaLegend"></div>
-      <div class="chart-scroll">
-        <svg id="megaChart" class="chart" viewBox="0 0 960 400" xmlns="http://www.w3.org/2000/svg" aria-label="8대 메가트렌드 비교"></svg>
-      </div>
+    <!-- 트렌드 × 가전산업 영향 매트릭스 (신규 · step2와 동일 8트렌드 행 축) -->
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>메가트렌드</th><th>주 영향 영역</th><th>기회</th><th>위협</th><th>영향 강도</th></tr></thead>
+        <tbody>
+          <!-- [[리서치: 트렌드×산업영향 매트릭스 본문]] 8개 행 — 가치사슬 영향(제품·UX/원가·공급망/채널·BM/규제·리스크), 기회 1~2, 위협 1~2, 강도 .pill(.new=고/.up=중/.obs=저)+시점. 가이드: 맥킨지·BCG·딜로이트 가전 전망, Gartner·IDC 출하 전망, 온디바이스 AI칩·SLM·히트펌프 BOM·공급망, EU DPP·Ecodesign 준수비용, CES 2025·26/IFA 2025 제품 트렌드 -->
+          <tr class="ph-row"><td><b>생성형·온디바이스 AI 가전 UX</b></td><td>제품·UX [[리서치]]</td><td>—</td><td>—</td><td><span class="pill new">고</span></td></tr>
+          <tr class="ph-row"><td><b>AI 스마트 가전</b></td><td>—</td><td>—</td><td>—</td><td><span class="pill up">중</span></td></tr>
+          <tr class="ph-row"><td><b>가정용 서비스 로봇·휴머노이드</b></td><td>—</td><td>—</td><td>—</td><td><span class="pill new">고</span></td></tr>
+          <tr class="ph-row"><td><b>스마트홈 표준(Matter·Thread)</b></td><td>—</td><td>—</td><td>—</td><td><span class="pill up">중</span></td></tr>
+          <tr class="ph-row"><td><b>EU Ecodesign·DPP 규제</b></td><td>규제·공급망 [[리서치]]</td><td>—</td><td>—</td><td><span class="pill new">고</span></td></tr>
+          <tr class="ph-row"><td><b>HVAC·히트펌프</b></td><td>—</td><td>—</td><td>—</td><td><span class="pill new">고</span></td></tr>
+          <tr class="ph-row"><td><b>데이터센터 냉방·B2B 공조</b></td><td>—</td><td>—</td><td>—</td><td><span class="pill up">중</span></td></tr>
+          <tr class="ph-row"><td><b>HEMS·AI 에이전트</b></td><td>—</td><td>—</td><td>—</td><td><span class="pill obs">저</span></td></tr>
+        </tbody>
+      </table>
     </div>
-    <p class="sec-note" style="margin-top:14px">▍ 출처: Gartner Hype Cycle for AI 2024–25 / Mobile Robots and Drones 2024 / Emerging Tech 2025, AI in Smart Home(InsightAce 2025, CAGR 21.3%), Smart Appliances(Statista 2025, 11.0%), Household Robots(NextMSC, 19.1%), Matter device(Market Intelo·ABI, 15.1%), Heat Pump(IEA 2024·EHPA 2025), EU ESPR 2024/1781·DPP, 삼성 IR(FläktGroup 인수·데이터센터 냉방 연18%), CES 2025·26/IFA 2025. ※ Gartner 스마트홈 단독 Hype Cycle은 2018년판 이후 미공개 — 인접 사이클·시장조사 교차 적용. 시장규모·CAGR은 기관별 편차가 있어 대표치를 사용했습니다.</p>
+
+    <!-- 영향-시급성 4분면 우선순위 매트릭스 (consulting 접목 · 선택 강화물) -->
+    <div class="hype" style="margin-top:20px">
+      <div class="ph" style="margin:0"><span class="pht">[[리서치: 영향-시급성 4분면 좌표값]]</span>8개 트렌드의 (가전 영향도, 시급성) 좌표 + 사분면 분류(Act now / Prepare / Watch / Monitor). 구현 시 .hype 컨테이너 + 정적 좌표 배열로 인라인 SVG 추가(기존 #megaChart renderMap 패턴 차용 — 신규 CSS 불필요).<br><b>가이드:</b> step3 Hype 단계(시급성)×step2 시장규모·CAGR(영향도) 결합해 1차 좌표 산정 후 산업 리포트 검증. McKinsey 'where to play' 2x2·Gartner Priority Matrix 참조.</div>
+    </div>
+
+    <!-- 기회 vs 위협 3-호라이즌 -->
+    <div class="horizon">
+      <div class="hz"><div class="h">HORIZON 1 · 단기 ~2027</div><div class="t">즉시 충격</div>
+        <div class="ph" style="margin:0"><span class="pht">[[리서치: 3-Horizon 산업 영향 불릿]]</span>단기 핵심 충격 3~4개.<br><b>가이드:</b> McKinsey Three Horizons로 배분 — H1=AI UX·Matter 즉시.</div></div>
+      <div class="hz"><div class="h">HORIZON 2 · 중기 2028-29</div><div class="t">전환 압력</div>
+        <div class="ph" style="margin:0"><span class="pht">[[리서치: 3-Horizon 산업 영향 불릿]]</span>중기 핵심 충격 3~4개.<br><b>가이드:</b> H2=히트펌프·DPP 전환.</div></div>
+      <div class="hz"><div class="h">HORIZON 3 · 장기 2030+</div><div class="t">신시장</div>
+        <div class="ph" style="margin:0"><span class="pht">[[리서치: 3-Horizon 산업 영향 불릿]]</span>장기 핵심 충격 3~4개.<br><b>가이드:</b> H3=휴머노이드·B2B 신시장.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STEP 5 · 경쟁사 대응 (NEW · 리서치 보강 필요) ================= -->
+<section id="rivals">
+  <div class="wrap">
+    <p class="eyebrow">STEP 5 · COMPETITOR MOVES</p>
+    <h2>경쟁사는 이미 이렇게 움직이고 있다</h2>
+    <p class="sec-note">같은 트렌드를 두고 LG·Bosch(BSH)·Haier·Whirlpool·중국 가전(메이디·하이센스 등)이 각기 다른 베팅을 하고 있습니다. 어디에 누가 먼저 들어왔고 어디가 비어 있는지 — 경쟁 지형을 펼쳐 당사가 파고들 '빈칸(화이트스페이스)'을 찾습니다.</p>
+
+    <!-- 트렌드 × 경쟁사 대응 매트릭스 (신규) -->
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>메가트렌드</th><th>LG</th><th>Bosch (BSH)</th><th>Haier</th><th>Whirlpool</th><th>중국 가전</th><th>당사 현위치</th></tr></thead>
+        <tbody>
+          <!-- [[리서치: 경쟁사 대응 매트릭스]] 핵심 트렌드별 각 사 대표 대응(제품·M&A·표준/규제 대응·진입시점) 1~2줄 + 대응강도 .pill(.new=선도/.up=추격/.obs=관망). 가이드: 각 사 IR·뉴스룸·연차보고서(LG ThinQ ON, BSH Home Connect, Haier GE/Candy, Midea·Hisense·Roborock), CES 2025·26/IFA 2025, Matter/CSA 회원·인증, 히트펌프·데이터센터 공조 M&A -->
+          <tr class="ph-row"><td><b>생성형·온디바이스 AI UX</b></td><td><span class="pill up">추격</span> [[리서치]]</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr class="ph-row"><td><b>스마트홈 표준(Matter·Thread)</b></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr class="ph-row"><td><b>HVAC·히트펌프</b></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr class="ph-row"><td><b>EU Ecodesign·DPP</b></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr class="ph-row"><td><b>데이터센터·B2B 공조</b></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 경쟁사 5사 프로필 카드 (consulting 접목 · .metrics 활용) -->
+    <div class="grid g3" style="margin-top:22px">
+      <div class="card"><div class="top"><span class="area">LG</span><span class="pill new">위협 高</span></div><h3>전략 슬로건 [[리서치]]</h3><p class="desc">핵심 베팅 트렌드 1줄.</p>
+        <div class="metrics"><div>가전 매출/점유율<b>—</b></div><div>R&amp;D<b>—</b></div><div>강점<b>—</b></div><div>약점<b>—</b></div></div>
+        <div class="ph" style="margin:0"><span class="pht">[[리서치: 경쟁사 5사 프로필 카드 데이터]]</span>대표 행보 1~2개.<br><b>가이드:</b> LG 연간보고서·IR, ThinQ ON·AI홈.</div></div>
+      <div class="card"><div class="top"><span class="area">Bosch (BSH)</span><span class="pill up">위협 中</span></div><h3>전략 슬로건 [[리서치]]</h3><p class="desc">핵심 베팅 트렌드 1줄.</p>
+        <div class="metrics"><div>가전 매출/점유율<b>—</b></div><div>R&amp;D<b>—</b></div><div>강점<b>—</b></div><div>약점<b>—</b></div></div>
+        <div class="ph" style="margin:0"><span class="pht">[[리서치: 경쟁사 5사 프로필 카드 데이터]]</span>대표 행보.<br><b>가이드:</b> BSH Home Connect·Ecodesign 대응.</div></div>
+      <div class="card"><div class="top"><span class="area">Haier</span><span class="pill up">위협 中</span></div><h3>전략 슬로건 [[리서치]]</h3><p class="desc">핵심 베팅 트렌드 1줄.</p>
+        <div class="metrics"><div>가전 매출/점유율<b>—</b></div><div>R&amp;D<b>—</b></div><div>강점<b>—</b></div><div>약점<b>—</b></div></div>
+        <div class="ph" style="margin:0"><span class="pht">[[리서치: 경쟁사 5사 프로필 카드 데이터]]</span>대표 행보.<br><b>가이드:</b> Haier·GE/Candy.</div></div>
+      <div class="card"><div class="top"><span class="area">Whirlpool</span><span class="pill obs">위협 低</span></div><h3>전략 슬로건 [[리서치]]</h3><p class="desc">핵심 베팅 트렌드 1줄.</p>
+        <div class="metrics"><div>가전 매출/점유율<b>—</b></div><div>R&amp;D<b>—</b></div><div>강점<b>—</b></div><div>약점<b>—</b></div></div>
+        <div class="ph" style="margin:0"><span class="pht">[[리서치: 경쟁사 5사 프로필 카드 데이터]]</span>대표 행보.<br><b>가이드:</b> Whirlpool IR.</div></div>
+      <div class="card"><div class="top"><span class="area">중국 가전</span><span class="pill new">위협 高</span></div><h3>메이디·하이센스 등 [[리서치]]</h3><p class="desc">핵심 베팅 트렌드 1줄.</p>
+        <div class="metrics"><div>가전 매출/점유율<b>—</b></div><div>R&amp;D<b>—</b></div><div>강점<b>—</b></div><div>약점<b>—</b></div></div>
+        <div class="ph" style="margin:0"><span class="pht">[[리서치: 경쟁사 5사 프로필 카드 데이터]]</span>대표 행보.<br><b>가이드:</b> Midea·Hisense·Roborock, 합산/대표사 기준 명시.</div></div>
+    </div>
+
+    <!-- 화이트스페이스 콜아웃 -->
+    <div class="sowhat-final">
+      <p class="eyebrow">WHITE SPACE · 빈칸 = 기회</p>
+      <div class="ph"><span class="pht">[[리서치: 화이트스페이스 식별]]</span>경쟁사 모두가 약한(관망) 트렌드·세그먼트 = 당사 차별화 기회 2~3개.<br><b>가이드:</b> 매트릭스에서 '관망' 셀이 몰린 트렌드를 화이트스페이스로 식별, 당사 역량(생성형·온디바이스 AI, 데이터센터 공조, HEMS)과 겹치는 빈칸 우선순위화 → step6 연결.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STEP 6 · 당사 전략 (NEW · 리서치 보강 필요) ================= -->
+<section id="strategy">
+  <div class="wrap">
+    <p class="eyebrow">STEP 6 · OUR STRATEGY</p>
+    <h2>당사는 이렇게 차별화하고 시장을 선도한다</h2>
+    <p class="sec-note">프레임에서 출발해 8대 트렌드를 진단하고, 산업 영향과 경쟁 지형까지 펼쳤습니다. 마지막으로 그 모든 발견을 당사의 행동으로 번역합니다 — 무엇에 먼저 베팅하고(Now), 무엇을 준비하며(Next), 무엇을 관망할지(Later). 우리가 선점할 차별화 포인트와 실행 로드맵으로 마무리합니다.</p>
+
+    <!-- 당사 전략 Now / Next / Later 3-호라이즌 -->
+    <div class="horizon">
+      <div class="hz"><div class="h">NOW · 2026-27</div><div class="t">즉시 베팅</div>
+        <div class="ph" style="margin:0"><span class="pht">[[리서치: 당사 Now/Next/Later 3-호라이즌 이니셔티브]]</span>즉시 베팅 트렌드·이니셔티브 3~4개 + 근거 1줄(예: AI UX·Matter).<br><b>가이드:</b> step3 저점 통과=Now 적기, step5 화이트스페이스 결합. 당사 강점(스마트싱스·Bespoke AI·온디바이스 AI) 레버.</div></div>
+      <div class="hz"><div class="h">NEXT · 2028-29</div><div class="t">준비</div>
+        <div class="ph" style="margin:0"><span class="pht">[[리서치: 당사 Now/Next/Later 3-호라이즌 이니셔티브]]</span>준비 트렌드 3~4개(예: 친환경 HVAC·DPP 대응).<br><b>가이드:</b> FläktGroup 인수 B2B 공조 레버.</div></div>
+      <div class="hz"><div class="h">LATER · 2030+</div><div class="t">관망·옵션</div>
+        <div class="ph" style="margin:0"><span class="pht">[[리서치: 당사 Now/Next/Later 3-호라이즌 이니셔티브]]</span>관망·옵션 트렌드 3~4개(예: 서비스로봇·B2B 신시장).</div></div>
+    </div>
+
+    <!-- 차별화 전략 매트릭스 (신규 · 실행 로드맵) -->
+    <div class="tblwrap" style="margin-top:22px">
+      <table>
+        <thead><tr><th>핵심 트렌드</th><th>당사 포지션</th><th>차별화 포인트</th><th>핵심 역량·자산</th><th>실행 액션</th><th>KPI·시점</th></tr></thead>
+        <tbody>
+          <!-- [[리서치: 차별화 전략 매트릭스 본문]] 핵심 트렌드별 포지션(.pill 선도/추격/관망)·차별화·역량·액션·KPI. 가이드: 당사 IR·뉴스룸·CES 발표 역량 확인 후 step5 빈칸과 매칭, KPI=점유율·신제품·연결기기수·B2B 매출비중 -->
+          <tr class="ph-row"><td><b>생성형·온디바이스 AI UX</b></td><td><span class="pill new">선도</span> [[리서치]]</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr class="ph-row"><td><b>스마트홈 표준(Matter·Thread)</b></td><td><span class="pill up">추격</span></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr class="ph-row"><td><b>데이터센터·B2B 공조</b></td><td><span class="pill new">선도</span></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr class="ph-row"><td><b>HVAC·히트펌프 / Ecodesign·DPP</b></td><td><span class="pill up">추격</span></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr class="ph-row"><td><b>HEMS·AI 에이전트</b></td><td><span class="pill obs">관망</span></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 우선순위 로드맵 타임라인 (기존 .timeline 컴포넌트 재사용 · 내용=당사 액션) -->
+    <div class="timeline" style="margin-top:26px">
+      <div class="tl-axis"><span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span></div>
+      <!-- [[리서치: 우선순위 로드맵 막대 일정]] 당사 이니셔티브 4~5개의 실행 구간·라벨. 가이드: 3-호라이즌 액션을 막대로, 규제·시장 도달 시점(EU DPP 2028~30, 온디바이스 AI 2025~28, 서비스로봇 2030+)과 동기화 -->
+      <div class="tl-row"><div class="lab">이니셔티브 1 [[리서치]]</div><div class="tl-track"><div class="tl-bar" style="left:0%;right:55%;background:linear-gradient(90deg,#3D6FCB,#6E9BE6)">Now 베팅 구간</div></div></div>
+      <div class="tl-row"><div class="lab">이니셔티브 2 [[리서치]]</div><div class="tl-track"><div class="tl-bar" style="left:30%;right:20%;background:linear-gradient(90deg,#1F9E94,#2DA876)">Next 준비 구간</div></div></div>
+      <div class="tl-row"><div class="lab">이니셔티브 3 [[리서치]]</div><div class="tl-track"><div class="tl-bar" style="left:60%;right:0%;background:linear-gradient(90deg,#B0791F,#D9A84E)">Later 옵션 구간</div></div></div>
+    </div>
+
+    <!-- 최종 전략 선언 -->
+    <div class="sowhat-final">
+      <p class="eyebrow">2030 STRATEGIC THESIS</p>
+      <div class="ph"><span class="pht">[[리서치: 최종 전략 명제 한 문장]]</span>6단계 내러티브를 닫는 당사 2030 전략 명제 한 문장 — 화이트스페이스(step5)+당사 강점(step6)을 결합한 차별화·시장 선도 선언.<br><b>가이드:</b> 새 데이터 불필요 — step1~6 종합 결론을 압축, 맥킨지/BCG closing recommendation 톤.</div>
+    </div>
+
+    <!-- 출처·방법론 (step4~6 신규 출처 집약) -->
+    <div class="src">
+      <h4>출처 · 방법론</h4>
+      <div class="ph"><span class="pht">[[리서치: step4~6 출처 집약]]</span>step4(산업영향)·step5(경쟁사)·step6(당사전략)에서 인용한 전략 근거·경쟁사 IR·산업 리포트 출처를 ol 목록으로 정리. step2 출처(기존 버블차트 하단 주석)는 해당 섹션에 승계.</div>
+    </div>
   </div>
 </section>
 
