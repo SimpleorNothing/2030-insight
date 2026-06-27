@@ -14,6 +14,7 @@
   --accent:#0B5FA5; --accent-soft:#E8F1F9;
   --signal:#C2410C; --signal-soft:#FBEBE2;
   --ok:#1E7A57; --ok-soft:#E6F2EC;
+  --warn:#92400E; --warn-soft:#FEF3C7; --warn-border:#F59E0B;
   --font-sans:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --font-mono:ui-monospace,"SFMono-Regular","Menlo","Consolas",monospace;
   --wrap:1180px;
@@ -168,6 +169,56 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 
 footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint); font-size:12px; font-family:var(--font-mono)}
 
+/* ---------- 주간 MI 트렌드 점검 ---------- */
+.weekly-check{
+  border:1.5px solid var(--warn-border); border-radius:14px;
+  background:var(--warn-soft); overflow:hidden;
+  margin:32px 0 0;
+}
+.weekly-check-head{
+  display:flex; align-items:center; gap:12px;
+  padding:14px 20px; background:rgba(245,158,11,.12);
+  border-bottom:1px solid var(--warn-border);
+}
+.weekly-check-head .wc-badge{
+  font-family:var(--font-mono); font-size:10.5px; font-weight:700;
+  background:var(--warn-border); color:#fff;
+  padding:2px 8px; border-radius:20px; flex:none;
+}
+.weekly-check-head .wc-title{
+  font-size:13.5px; font-weight:700; color:var(--warn); flex:1;
+}
+.weekly-check-head .wc-date{
+  font-family:var(--font-mono); font-size:11px; color:var(--warn); opacity:.75;
+}
+.weekly-check-head .wc-status{
+  font-family:var(--font-mono); font-size:10.5px; font-weight:700;
+  padding:2px 9px; border-radius:20px; border:1px solid;
+}
+.wc-status.pending{ color:var(--warn); border-color:var(--warn-border); background:#fff8e1; }
+.wc-status.reflected{ color:var(--ok); border-color:var(--ok); background:var(--ok-soft); }
+.weekly-check-body{padding:18px 20px; display:flex; flex-direction:column; gap:14px;}
+.wc-stage-row{display:flex; gap:12px; align-items:flex-start;}
+.wc-stage-badge{
+  font-family:var(--font-mono); font-size:11px; font-weight:700;
+  background:var(--warn-border); color:#fff;
+  padding:2px 7px; border-radius:6px; flex:none; margin-top:2px;
+}
+.wc-stage-content{flex:1;}
+.wc-stage-content .wc-headline{font-size:13px; font-weight:700; color:var(--warn); margin-bottom:3px;}
+.wc-stage-content .wc-news{font-size:12px; color:var(--muted); line-height:1.55;}
+.wc-stage-content .wc-news b{color:var(--ink);}
+.wc-action{
+  margin-top:6px; padding:12px 16px;
+  background:rgba(245,158,11,.08); border-radius:8px; border:1px dashed var(--warn-border);
+  font-size:12.5px; color:var(--warn); font-weight:600;
+}
+.wc-empty{
+  padding:28px 20px; text-align:center;
+  font-size:13px; color:var(--muted); font-family:var(--font-mono);
+}
+.wc-empty span{display:block; font-size:11px; color:var(--faint); margin-top:4px;}
+
 @media(max-width:860px){
   .flow .lbl{display:none}
   .flowmap{grid-template-columns:repeat(2,1fr)}
@@ -211,6 +262,26 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 </div>
 
 <main>
+
+<!-- ════════ 주간 MI 트렌드 점검 ════════ -->
+<!-- WEEKLY-CHECK-START -->
+<section id="weekly-check" class="wrap" style="padding-top:32px">
+  <div class="weekly-check">
+    <div class="weekly-check-head">
+      <span class="wc-badge">📰 주간 점검</span>
+      <span class="wc-title">MI 트렌드 점검 — 1~6단계 반영 검토</span>
+      <span class="wc-date">분석 기간: —</span>
+      <span class="wc-status pending">검토 전</span>
+    </div>
+    <div class="weekly-check-body">
+      <div class="wc-empty">
+        아직 분석 데이터가 없습니다. 매주 월요일 오전 10시에 자동 갱신됩니다.
+        <span>market-insight MI 뉴스 기반 · Claude 분석 → PR 알람</span>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- WEEKLY-CHECK-END -->
 
 <!-- ════════ 1단계 — 분석 프레임 ════════ -->
 <section class="step-sec" id="s1">
