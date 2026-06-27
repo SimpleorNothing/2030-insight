@@ -326,71 +326,67 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     </div>
 
     <!-- S0 Interactive Content Sections -->
-    <div class="s0-content-toggle" id="mi-articles-section" style="display:none; margin-top:24px">
-      <div style="background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:20px">
-        <h4 style="color:#fff; margin-bottom:14px; font-size:14px; font-weight:700">주간 MI 기사 체크</h4>
-        <div style="color:#B9C6D4; font-size:13px; line-height:1.6">
-          <p style="margin-bottom:14px">매주 월요일에 수집된 주간 MI 기사들을 체크하고 분류합니다.</p>
-          <div style="display:grid; gap:10px">
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer; padding:8px 0; transition:.2s">
-              <input type="checkbox" style="width:16px; height:16px; cursor:pointer"> <span>기사 1: 삼성 신형 냉장고 AI 기능 탑재</span>
-            </label>
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer; padding:8px 0; transition:.2s">
-              <input type="checkbox" style="width:16px; height:16px; cursor:pointer"> <span>기사 2: EU 냉매 규제 강화 발표</span>
-            </label>
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer; padding:8px 0; transition:.2s">
-              <input type="checkbox" style="width:16px; height:16px; cursor:pointer"> <span>기사 3: LG와 삼성의 에너지효율등급 경쟁</span>
-            </label>
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer; padding:8px 0; transition:.2s">
-              <input type="checkbox" style="width:16px; height:16px; cursor:pointer"> <span>기사 4: 다이슨 공기청정 기술 특허</span>
-            </label>
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer; padding:8px 0; transition:.2s">
-              <input type="checkbox" style="width:16px; height:16px; cursor:pointer"> <span>기사 5: 올브라이트 자동세제 투입 기술</span>
-            </label>
+    <!-- 1. 위클리 — S1~S6 체크리스트 -->
+    <div class="s0-content-toggle" id="mi-articles-section" style="display:none; margin-top:24px; background:#FFF8E6; padding:20px; border-radius:12px">
+      <div style="margin-bottom:16px">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px">
+          <div style="color:var(--ink); font-size:13px"><b>이번 주 MI 핵심:</b> 삼성·LG AI 플랫폼 가속 / Midea 에이전틱 팩토리 부상 / 반도체 원가 급등</div>
+          <div style="display:flex; gap:8px">
+            <button onclick="s0WeeklySelectAll()" style="padding:6px 12px; background:#FFA500; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:12px">전체 선택</button>
+            <button onclick="s0WeeklyClearAll()" style="padding:6px 12px; background:#D4D4D4; border:none; border-radius:6px; color:var(--ink); font-weight:600; cursor:pointer; font-size:12px">선택 해제</button>
           </div>
+        </div>
+      </div>
+      <div style="display:grid; gap:14px">
+        <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
+          <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px">S1 분석 프레임 · STEEP 신호</div>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
+            <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb"> <span><b>반도체 원가 급등</b> — Economic×기술축 신호 추가</span></label></li>
+            <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb"> <span><b>소비자 지출 위축</b> — Economic×소비자축 신호 추가</span></label></li>
+            <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb"> <span><b>AI 플랫폼 생태계</b> — Technological×소비자축 추가</span></label></li>
+          </ul>
+        </div>
+        <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
+          <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px">S2 트렌드 도출 · 근거 갱신</div>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
+            <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb"> <span><b>삼성 AI 모듈러 홈</b> — T1 카드 근거 추가</span></label></li>
+            <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb"> <span><b>Midea 에이전틱 팩토리</b> — 카테고리 표 시사 추가</span></label></li>
+          </ul>
+        </div>
+        <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
+          <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px">S3 성숙도·영향</div>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
+            <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb"> <span><b>T1 성숙도 상향</b> — 배지 추가</span></label></li>
+          </ul>
+        </div>
+        <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
+          <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px">S4 경쟁사 대응</div>
+          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
+            <li><label style="display:flex; gap:10px; cursor:pointer; font-size:12px"><input type="checkbox" class="s0-weekly-cb"> <span><b>삼성 AI 모듈러</b> — T1 히트맵 업데이트</span></label></li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <div class="s0-content-toggle" id="vending-report-section" style="display:none; margin-top:24px">
-      <div style="background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:20px">
-        <h4 style="color:#fff; margin-bottom:14px; font-size:14px; font-weight:700">자판기 보고서</h4>
-        <div style="color:#B9C6D4; font-size:13px; line-height:1.6">
-          <p style="margin-bottom:16px">비정기 업데이트로 반영되는 심층 분석 보고서입니다.</p>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px">
-            <div style="background:rgba(255,255,255,.06); padding:14px; border-radius:8px; border:1px solid rgba(255,255,255,.1)">
-              <div style="font-size:11px; color:#8FA3B5; margin-bottom:6px; font-family:var(--font-mono); font-weight:600">운영 자판기</div>
-              <div style="font-size:20px; font-weight:700; color:#CFE0EE">1,234</div>
-              <div style="font-size:11px; color:#7FB2D9; margin-top:4px">+3.2% vs 지난주</div>
-            </div>
-            <div style="background:rgba(255,255,255,.06); padding:14px; border-radius:8px; border:1px solid rgba(255,255,255,.1)">
-              <div style="font-size:11px; color:#8FA3B5; margin-bottom:6px; font-family:var(--font-mono); font-weight:600">평균 판매액</div>
-              <div style="font-size:20px; font-weight:700; color:#CFE0EE">284만 원</div>
-              <div style="font-size:11px; color:#7FB2D9; margin-top:4px">+5.1% vs 지난달</div>
-            </div>
-          </div>
-          <div style="background:rgba(255,255,255,.06); padding:14px; border-radius:8px; border:1px solid rgba(255,255,255,.1)">
-            <div style="font-size:11px; color:#8FA3B5; margin-bottom:8px; font-family:var(--font-mono); font-weight:600">상위 판매 상품</div>
-            <div style="display:grid; gap:6px; font-size:12px">
-              <div style="display:flex; justify-content:space-between; align-items:center">
-                <span>음료 (무알콜)</span>
-                <span style="color:#7FB2D9">34%</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center">
-                <span>스낵류</span>
-                <span style="color:#7FB2D9">28%</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center">
-                <span>커피</span>
-                <span style="color:#7FB2D9">22%</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center">
-                <span>유제품</span>
-                <span style="color:#7FB2D9">16%</span>
-              </div>
-            </div>
-          </div>
+    <!-- 2. 비정기 — URL/파일/텍스트 입력 폼 -->
+    <div class="s0-content-toggle" id="vending-report-section" style="display:none; margin-top:24px; background:#F9F9F9; padding:20px; border-radius:12px">
+      <div style="margin-bottom:18px">
+        <div style="display:flex; gap:12px; margin-bottom:14px; border-bottom:1px solid var(--line)">
+          <button onclick="s0AdhocTab('url')" class="s0-adhoc-tab-btn" data-tab="url" style="padding:10px 16px; background:none; border:none; border-bottom:2px solid var(--accent); color:var(--accent); font-weight:600; cursor:pointer; font-size:13px">URL</button>
+          <button onclick="s0AdhocTab('file')" class="s0-adhoc-tab-btn" data-tab="file" style="padding:10px 16px; background:none; border:none; color:var(--muted); font-weight:600; cursor:pointer; font-size:13px">파일</button>
+          <button onclick="s0AdhocTab('text')" class="s0-adhoc-tab-btn" data-tab="text" style="padding:10px 16px; background:none; border:none; color:var(--muted); font-weight:600; cursor:pointer; font-size:13px">텍스트</button>
         </div>
+      </div>
+      <div id="s0-adhoc-url" class="s0-adhoc-tab-content" style="display:block">
+        <input type="url" placeholder="https://www.example.com/article..." style="width:100%; padding:10px; border:1px solid var(--line); border-radius:6px; font-size:13px; margin-bottom:8px">
+        <div style="font-size:11px; color:var(--faint)">뉴스·블로그 등 기사 링크를 입력하세요. 유튜브는 별도 운영.</div>
+      </div>
+      <div id="s0-adhoc-file" class="s0-adhoc-tab-content" style="display:none">
+        <input type="file" accept=".pdf,.docx,.txt,.doc" style="width:100%; padding:10px; border:1px solid var(--line); border-radius:6px; font-size:13px; margin-bottom:8px">
+        <div style="font-size:11px; color:var(--faint)">PDF, DOCX, TXT 형식 지원</div>
+      </div>
+      <div id="s0-adhoc-text" class="s0-adhoc-tab-content" style="display:none">
+        <textarea placeholder="분석할 텍스트를 붙여넣으세요..." style="width:100%; padding:10px; border:1px solid var(--line); border-radius:6px; font-size:13px; height:100px; font-family:inherit; resize:vertical"></textarea>
       </div>
     </div>
 
@@ -824,7 +820,7 @@ const obs=new IntersectionObserver((es)=>{
 },{rootMargin:'-45% 0px -50% 0px', threshold:0});
 sections.forEach(s=>obs.observe(s));
 
-// S0 routes toggle — 주간 MI 기사 체크 & 자판기 보고서
+// S0 routes toggle — 위클리 & 비정기 입력 UI
 document.querySelectorAll('[data-s0-toggle]').forEach(route=>{
   route.addEventListener('click',()=>{
     const toggleId=route.getAttribute('data-s0-toggle');
@@ -835,6 +831,24 @@ document.querySelectorAll('[data-s0-toggle]').forEach(route=>{
     }
   });
 });
+
+// 위클리 체크리스트 함수
+window.s0WeeklySelectAll=function(){
+  document.querySelectorAll('.s0-weekly-cb').forEach(cb=>cb.checked=true);
+};
+window.s0WeeklyClearAll=function(){
+  document.querySelectorAll('.s0-weekly-cb').forEach(cb=>cb.checked=false);
+};
+
+// 비정기 탭 전환 함수
+window.s0AdhocTab=function(tab){
+  document.querySelectorAll('.s0-adhoc-tab-content').forEach(el=>el.style.display='none');
+  document.querySelectorAll('.s0-adhoc-tab-btn').forEach(btn=>btn.style.color=btn.style.borderBottom='');
+  document.getElementById('s0-adhoc-'+tab).style.display='block';
+  const activeBtn=document.querySelector('[data-tab="'+tab+'"]');
+  activeBtn.style.color='var(--accent)';
+  activeBtn.style.borderBottom='2px solid var(--accent)';
+};
 
 // 자동 항목 추출
 (function(){
