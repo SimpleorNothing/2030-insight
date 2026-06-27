@@ -539,6 +539,16 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
   2030 가전 미래트렌드 · 6단계 흐름(프레임→도출→성숙·영향→경쟁사→당사 현위치→전략) · DA 기획팀
 </footer>
 
+<div class="freqtip" id="megaTip"></div>
+
+<style>
+.da-launcher{display:inline-flex;align-items:center;gap:5px;flex:none;height:28px;padding:0 8px;border:1.5px solid var(--line);border-radius:7px;background:var(--surface);color:var(--txt);text-decoration:none;font-size:11.5px;font-weight:600;line-height:1;white-space:nowrap;transition:.15s}
+.da-launcher:hover{border-color:#1257d6;box-shadow:0 4px 18px rgba(18,87,214,.12)}
+.da-launcher .da-gi{display:block;width:15px;height:15px;flex:none}
+.da-launcher .da-gi rect{fill:var(--muted);transition:.15s}
+.da-launcher:hover .da-gi rect{fill:#1257d6}
+</style>
+
 <script>
 // 스크롤스파이 — 현재 단계 활성화 (흐름 레일 + 노드)
 const sections=[...document.querySelectorAll('section.step-sec')];
