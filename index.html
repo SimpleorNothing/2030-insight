@@ -271,43 +271,51 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       </div>
       <div style="display:grid; gap:14px">
         <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
-          <div style="margin-bottom:10px; display:flex; justify-content:space-between; align-items:center">
-            <div style="font-weight:700; color:var(--ink); font-size:13px">S1 분석 프레임 · STEEP 신호</div>
-            <button id="s0WeeklyS1Btn" onclick="s0WeeklyToggleStep('s1')" style="padding:6px 12px; background:#FFA500; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:11px; white-space:nowrap; margin-left:12px">선택</button>
-          </div>
-          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
-                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:default" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">1.1</span> 반도체 원가 급등으로 인한 가전 제조원가 상승 및 제품 가격 경쟁력 악화</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s1" style="margin-left:auto; flex-shrink:0"></li>
-                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:default" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">1.2</span> 경기 부진에 따른 소비자 가전 구매력 위축 및 내수시장 둔화</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s1" style="margin-left:auto; flex-shrink:0"></li>
-                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:default" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">1.3</span> AI 플랫폼 중심의 가전 생태계 재편으로 제품 방향성 재정의</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s1" style="margin-left:auto; flex-shrink:0"></li>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start">
+            <div style="flex:1">
+              <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px; padding:8px; cursor:pointer; border-radius:6px; transition:background-color 0.2s" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="s0ToggleSection('s1')">S1 분석 프레임 · STEEP 신호</div>
+              <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
+                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">1.1</span> 반도체 원가 급등으로 인한 가전 제조원가 상승 및 제품 가격 경쟁력 악화</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s1" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
+                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">1.2</span> 경기 부진에 따른 소비자 가전 구매력 위축 및 내수시장 둔화</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s1" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
+                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">1.3</span> AI 플랫폼 중심의 가전 생태계 재편으로 제품 방향성 재정의</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s1" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
               </ul>
+            </div>
+            <input type="checkbox" id="s0WeeklyS1Btn" class="s0-section-cb" style="width:20px; height:20px; margin-left:12px; cursor:pointer; margin-top:8px" onchange="s0ToggleSectionCheckboxes('s1')">
+          </div>
         </div>
         <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
-          <div style="margin-bottom:10px; display:flex; justify-content:space-between; align-items:center">
-            <div style="font-weight:700; color:var(--ink); font-size:13px">S2 트렌드 도출 · 근거 갱신</div>
-            <button id="s0WeeklyS2Btn" onclick="s0WeeklyToggleStep('s2')" style="padding:6px 12px; background:#FFA500; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:11px; white-space:nowrap; margin-left:12px">선택</button>
-          </div>
-          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
-                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:default" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">2.1</span> 삼성의 AI 모듈러 홈 전략으로 T1 생태계 기반 근거 강화 및 경쟁우위 구축</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s2" style="margin-left:auto; flex-shrink:0"></li>
-                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:default" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">2.2</span> Midea의 에이전틱 팩토리 추진으로 스마트 홈 카테고리 재편 및 혁신 신호</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s2" style="margin-left:auto; flex-shrink:0"></li>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start">
+            <div style="flex:1">
+              <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px; padding:8px; cursor:pointer; border-radius:6px; transition:background-color 0.2s" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="s0ToggleSection('s2')">S2 트렌드 도출 · 근거 갱신</div>
+              <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
+                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">2.1</span> 삼성의 AI 모듈러 홈 전략으로 T1 생태계 기반 근거 강화 및 경쟁우위 구축</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s2" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
+                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">2.2</span> Midea의 에이전틱 팩토리 추진으로 스마트 홈 카테고리 재편 및 혁신 신호</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s2" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
               </ul>
+            </div>
+            <input type="checkbox" id="s0WeeklyS2Btn" class="s0-section-cb" style="width:20px; height:20px; margin-left:12px; cursor:pointer; margin-top:8px" onchange="s0ToggleSectionCheckboxes('s2')">
+          </div>
         </div>
         <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
-          <div style="margin-bottom:10px; display:flex; justify-content:space-between; align-items:center">
-            <div style="font-weight:700; color:var(--ink); font-size:13px">S3 성숙도·영향</div>
-            <button id="s0WeeklyS3Btn" onclick="s0WeeklyToggleStep('s3')" style="padding:6px 12px; background:#FFA500; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:11px; white-space:nowrap; margin-left:12px">선택</button>
-          </div>
-          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
-                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:default" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">3.1</span> T1 아마존 생태계의 성숙도 상향으로 가전 통합 전략의 신뢰도 강화</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s3" style="margin-left:auto; flex-shrink:0"></li>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start">
+            <div style="flex:1">
+              <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px; padding:8px; cursor:pointer; border-radius:6px; transition:background-color 0.2s" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="s0ToggleSection('s3')">S3 성숙도·영향</div>
+              <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
+                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">3.1</span> T1 아마존 생태계의 성숙도 상향으로 가전 통합 전략의 신뢰도 강화</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s3" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
               </ul>
+            </div>
+            <input type="checkbox" id="s0WeeklyS3Btn" class="s0-section-cb" style="width:20px; height:20px; margin-left:12px; cursor:pointer; margin-top:8px" onchange="s0ToggleSectionCheckboxes('s3')">
+          </div>
         </div>
         <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
-          <div style="margin-bottom:10px; display:flex; justify-content:space-between; align-items:center">
-            <div style="font-weight:700; color:var(--ink); font-size:13px">S4 경쟁사 대응</div>
-            <button id="s0WeeklyS4Btn" onclick="s0WeeklyToggleStep('s4')" style="padding:6px 12px; background:#FFA500; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:11px; white-space:nowrap; margin-left:12px">선택</button>
-          </div>
-          <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
-                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:default" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">4.1</span> 삼성의 AI 모듈러 경쟁사 대응 현황을 T1 경쟁사 분석 히트맵에 반영 및 추적</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s4" style="margin-left:auto; flex-shrink:0"></li>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start">
+            <div style="flex:1">
+              <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px; padding:8px; cursor:pointer; border-radius:6px; transition:background-color 0.2s" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="s0ToggleSection('s4')">S4 경쟁사 대응</div>
+              <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
+                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">4.1</span> 삼성의 AI 모듈러 경쟁사 대응 현황을 T1 경쟁사 분석 히트맵에 반영 및 추적</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s4" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
               </ul>
+            </div>
+            <input type="checkbox" id="s0WeeklyS4Btn" class="s0-section-cb" style="width:20px; height:20px; margin-left:12px; cursor:pointer; margin-top:8px" onchange="s0ToggleSectionCheckboxes('s4')">
+          </div>
         </div>
       </div>
       <div style="margin-top:18px; padding-top:18px; border-top:1px solid #E0D5C7; display:flex; justify-content:flex-end">
@@ -852,6 +860,36 @@ window.s0AdhocTab=function(tab){
   activeBtn.style.color='var(--accent)';
   activeBtn.style.borderBottom='2px solid var(--accent)';
 };
+
+// S0 섹션 헤더 및 체크박스 토글 함수
+window.s0ToggleSection=function(step){
+  const stepClass='s0-weekly-'+step;
+  const stepCheckboxes=document.querySelectorAll('.'+stepClass);
+  const allChecked=Array.from(stepCheckboxes).every(cb=>cb.checked);
+  stepCheckboxes.forEach(cb=>cb.checked=!allChecked);
+  const sectionBtn=document.getElementById('s0Weekly'+step.toUpperCase()+'Btn');
+  if(sectionBtn) sectionBtn.checked=!allChecked;
+  window.s0UpdateWeeklyButtons();
+};
+
+window.s0ToggleSectionCheckboxes=function(step){
+  const stepClass='s0-weekly-'+step;
+  const stepCheckboxes=document.querySelectorAll('.'+stepClass);
+  const sectionBtn=document.getElementById('s0Weekly'+step.toUpperCase()+'Btn');
+  const isChecked=sectionBtn.checked;
+  stepCheckboxes.forEach(cb=>cb.checked=isChecked);
+  window.s0UpdateWeeklyButtons();
+};
+
+// Update button styling to work with checkboxes
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.s0-section-cb').forEach(cb=>{
+    cb.addEventListener('change',function(){
+      const stepId=this.id.replace('s0Weekly','').replace('Btn','').toLowerCase();
+      window.s0ToggleSectionCheckboxes(stepId);
+    });
+  });
+});
 </script>
 </body>
 </html>
