@@ -14,7 +14,6 @@
   --accent:#0B5FA5; --accent-soft:#E8F1F9;
   --signal:#C2410C; --signal-soft:#FBEBE2;
   --ok:#1E7A57; --ok-soft:#E6F2EC;
-  --warn:#92400E; --warn-soft:#FEF3C7; --warn-border:#F59E0B;
   --font-sans:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --font-mono:ui-monospace,"SFMono-Regular","Menlo","Consolas",monospace;
   --wrap:1180px;
@@ -40,7 +39,7 @@ header.rail{
 .brand{
   font-size:13px; font-weight:700; letter-spacing:-.01em; white-space:nowrap;
 }
-.brand span{display:block; font-family:var(--font-sans); font-size:10.5px; font-weight:500; color:var(--faint); letter-spacing:.02em}
+.brand span{display:block; font-family:var(--font-mono); font-size:10.5px; font-weight:500; color:var(--faint); letter-spacing:.02em}
 .flow{
   display:flex; flex:1; align-items:center; gap:0; overflow-x:auto;
 }
@@ -52,7 +51,7 @@ header.rail{
   content:""; height:1px; flex:1; background:var(--line-strong); margin:0 4px; min-width:10px;
 }
 .flow .node{
-  font-family:var(--font-sans); font-size:11px; font-weight:600;
+  font-family:var(--font-mono); font-size:11px; font-weight:600;
   width:24px; height:24px; flex:none; border-radius:50%;
   display:grid; place-items:center; border:1.5px solid var(--line-strong);
   background:var(--surface); transition:.2s;
@@ -65,7 +64,7 @@ header.rail{
 /* ---------- 히어로 ---------- */
 .hero{padding:72px 0 40px}
 .eyebrow{
-  font-family:var(--font-sans); font-size:12px; font-weight:600; letter-spacing:.08em;
+  font-family:var(--font-mono); font-size:12px; font-weight:600; letter-spacing:.08em;
   color:var(--accent); text-transform:uppercase;
 }
 .hero h1{
@@ -82,7 +81,7 @@ header.rail{
   padding:16px 14px; text-decoration:none; color:inherit; transition:.18s;
 }
 .flowmap .step:hover{border-color:var(--accent); transform:translateY(-2px); box-shadow:0 8px 24px rgba(11,95,165,.08)}
-.flowmap .n{font-family:var(--font-sans); font-size:13px; font-weight:700; color:var(--accent)}
+.flowmap .n{font-family:var(--font-mono); font-size:13px; font-weight:700; color:var(--accent)}
 .flowmap .t{font-size:13.5px; font-weight:700; margin:6px 0 4px; letter-spacing:-.01em}
 .flowmap .d{font-size:11.5px; color:var(--faint); line-height:1.45}
 
@@ -90,10 +89,10 @@ header.rail{
 section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:8px}
 .sec-num{
-  font-family:var(--font-sans); font-size:13px; font-weight:700; color:#fff;
+  font-family:var(--font-mono); font-size:13px; font-weight:700; color:#fff;
   background:var(--accent); padding:3px 10px; border-radius:20px; flex:none;
 }
-.sec-role{font-size:13px; color:var(--faint); font-family:var(--font-sans)}
+.sec-role{font-size:13px; color:var(--faint); font-family:var(--font-mono)}
 .sec-title{font-size:clamp(22px,3vw,30px); font-weight:800; letter-spacing:-.02em; margin:6px 0 10px}
 .sec-desc{font-size:15px; color:var(--muted); max-width:760px; margin-bottom:30px}
 
@@ -104,7 +103,7 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 }
 .fill::before{
   content:"✏ 채움 영역"; position:absolute; top:10px; right:12px;
-  font-family:var(--font-sans); font-size:10px; color:var(--faint); letter-spacing:.04em;
+  font-family:var(--font-mono); font-size:10px; color:var(--faint); letter-spacing:.04em;
 }
 .fill-note{font-size:13px; color:var(--muted); line-height:1.55}
 .fill-note b{color:var(--ink); font-weight:700}
@@ -129,10 +128,10 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .card{
   border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:18px;
 }
-.card .tag{font-family:var(--font-sans); font-size:11px; font-weight:700; color:var(--accent)}
+.card .tag{font-family:var(--font-mono); font-size:11px; font-weight:700; color:var(--accent)}
 .card h4{font-size:15px; font-weight:700; margin:8px 0 6px; letter-spacing:-.01em}
 .card .chip{
-  display:inline-block; font-size:10.5px; font-family:var(--font-sans);
+  display:inline-block; font-size:10.5px; font-family:var(--font-mono);
   background:var(--accent-soft); color:var(--accent); padding:2px 8px; border-radius:20px; margin-top:8px;
 }
 .card .ph{font-size:12.5px; color:var(--faint); border-top:1px dashed var(--line); margin-top:10px; padding-top:10px}
@@ -144,8 +143,8 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
   aspect-ratio:16/9;
 }
 .quad .q{background:var(--surface); padding:18px; display:flex; flex-direction:column}
-.quad .q .qh{font-size:12px; font-weight:700; color:var(--muted); font-family:var(--font-sans)}
-.quad-axes{display:flex; justify-content:space-between; font-size:11.5px; color:var(--faint); margin-top:8px; font-family:var(--font-sans)}
+.quad .q .qh{font-size:12px; font-weight:700; color:var(--muted); font-family:var(--font-mono)}
+.quad-axes{display:flex; justify-content:space-between; font-size:11.5px; color:var(--faint); margin-top:8px; font-family:var(--font-mono)}
 
 /* ---------- 경쟁사 히트맵 ---------- */
 .heat{border:1px solid var(--line); border-radius:14px; overflow:auto; background:var(--surface)}
@@ -164,78 +163,10 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .road{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface)}
 .road .phase{padding:18px; border-right:1px solid var(--line)}
 .road .phase:last-child{border-right:none}
-.road .phase .ph-h{font-family:var(--font-sans); font-size:12px; font-weight:700; color:var(--accent)}
+.road .phase .ph-h{font-family:var(--font-mono); font-size:12px; font-weight:700; color:var(--accent)}
 .road .phase .ph-y{font-size:11px; color:var(--faint)}
 
-footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint); font-size:12px; font-family:var(--font-sans)}
-
-/* ---------- 주간 MI 트렌드 점검 ---------- */
-.weekly-check{
-  border:1.5px solid var(--warn-border); border-radius:14px;
-  background:var(--warn-soft); overflow:hidden;
-  margin:32px 0 0;
-}
-.weekly-check-head{
-  display:flex; align-items:center; gap:12px;
-  padding:14px 20px; background:rgba(245,158,11,.12);
-  border-bottom:1px solid var(--warn-border);
-}
-.weekly-check-head .wc-badge{
-  font-family:var(--font-sans); font-size:10.5px; font-weight:700;
-  background:var(--warn-border); color:#fff;
-  padding:2px 8px; border-radius:20px; flex:none;
-}
-.weekly-check-head .wc-title{
-  font-size:13.5px; font-weight:700; color:var(--warn); flex:1;
-}
-.weekly-check-head .wc-date{
-  font-family:var(--font-sans); font-size:11px; color:var(--warn); opacity:.75;
-}
-.weekly-check-head .wc-status{
-  font-family:var(--font-sans); font-size:10.5px; font-weight:700;
-  padding:2px 9px; border-radius:20px; border:1px solid;
-}
-.wc-status.pending{ color:var(--warn); border-color:var(--warn-border); background:#fff8e1; }
-.wc-status.reflected{ color:var(--ok); border-color:var(--ok); background:var(--ok-soft); }
-.weekly-check-body{padding:18px 20px; display:flex; flex-direction:column; gap:14px;}
-.wc-stage-row{display:flex; gap:12px; align-items:flex-start;}
-.wc-stage-badge{
-  font-family:var(--font-sans); font-size:11px; font-weight:700;
-  background:var(--warn-border); color:#fff;
-  padding:2px 7px; border-radius:6px; flex:none; margin-top:2px;
-}
-.wc-stage-content{flex:1;}
-.wc-stage-content .wc-headline{font-size:13px; font-weight:700; color:var(--warn); margin-bottom:3px;}
-.wc-stage-content .wc-news{font-size:12px; color:var(--muted); line-height:1.55;}
-.wc-stage-content .wc-news b{color:var(--ink);}
-.wc-action{
-  margin-top:6px; padding:12px 16px;
-  background:rgba(245,158,11,.08); border-radius:8px; border:1px dashed var(--warn-border);
-  font-size:12.5px; color:var(--warn); font-weight:600;
-}
-.wc-empty{
-  padding:28px 20px; text-align:center;
-  font-size:13px; color:var(--muted); font-family:var(--font-sans);
-}
-.wc-empty span{display:block; font-size:11px; color:var(--faint); margin-top:4px;}
-.wc-checklist{list-style:none; padding:0; margin:6px 0 0; display:flex; flex-direction:column; gap:2px}
-.wc-item{display:flex; align-items:center; justify-content:space-between; gap:12px; font-size:12.5px; color:var(--muted); cursor:pointer; padding:7px 10px; border-radius:6px; transition:.15s; line-height:1.5; user-select:none}
-.wc-item:hover{background:rgba(245,158,11,.08)}
-.wc-item.checked{background:rgba(245,158,11,.16); color:var(--ink)}
-.wc-item span{flex:1}
-.wc-item input[type=checkbox]{flex:none; accent-color:var(--warn-border); width:15px; height:15px; cursor:pointer; margin:0}
-.wc-stage-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:2px}
-.wc-stage-sel-btn{font-family:var(--font-sans); font-size:10.5px; font-weight:600; color:var(--warn); background:rgba(245,158,11,.1); border:1px solid rgba(245,158,11,.3); border-radius:5px; padding:2px 8px; cursor:pointer; transition:.15s; white-space:nowrap}
-.wc-stage-sel-btn:hover{background:rgba(245,158,11,.2)}
-.wc-stage-row{border-bottom:1px solid rgba(245,158,11,.15); padding-bottom:12px; margin-bottom:2px}
-.wc-stage-row:last-child{border-bottom:none; padding-bottom:0}
-.wc-global-bar{display:flex; align-items:center; gap:8px; padding:0 0 12px; border-bottom:1px solid rgba(245,158,11,.25); margin-bottom:8px}
-.wc-global-btn{font-family:var(--font-sans); font-size:11px; font-weight:600; color:var(--warn); background:rgba(245,158,11,.1); border:1px solid rgba(245,158,11,.3); border-radius:5px; padding:3px 10px; cursor:pointer; transition:.15s}
-.wc-global-btn:hover{background:rgba(245,158,11,.2)}
-.wc-apply-bar{padding:12px 20px 16px; border-top:1px solid rgba(245,158,11,.3); display:flex; align-items:center; gap:12px; flex-wrap:wrap}
-.wc-apply-btn{font-family:var(--font-sans); font-size:12.5px; font-weight:700; color:#fff; background:var(--warn-border); border:none; border-radius:8px; padding:7px 18px; cursor:pointer; transition:.15s}
-.wc-apply-btn:hover{background:var(--warn)}
-.wc-selected-panel{margin-top:12px; background:var(--surface); border:1px solid var(--warn-border); border-radius:10px; padding:16px 20px; display:none}
+footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint); font-size:12px; font-family:var(--font-mono)}
 
 @media(max-width:860px){
   .flow .lbl{display:none}
@@ -244,6 +175,89 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
   .quad{aspect-ratio:auto}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto; transition:none!important}}
+
+/* 검증 필요(예시·미검증) 표기 */
+.unver{color:#C2410C; font-style:italic}
+/* 1.1 지역 매트릭스 */
+.region{border:1px solid var(--line); border-radius:14px; overflow:auto; background:var(--surface)}
+.region table{width:100%; border-collapse:collapse; font-size:11.5px; min-width:680px}
+.region th,.region td{border:1px solid var(--line); padding:9px 10px; text-align:left; vertical-align:top}
+.region thead th{background:#0E2433; color:#fff; font-weight:700; font-size:12px; text-align:center}
+.region tbody th{background:var(--accent-soft); color:var(--accent); font-weight:700; white-space:nowrap; width:130px}
+.region tbody th small{display:block; color:var(--muted); font-weight:500; font-size:10px}
+.region td b{color:var(--ink)}
+.substep{font-family:var(--font-mono); font-size:12px; font-weight:700; color:#fff; background:var(--ink); padding:3px 9px; border-radius:6px; margin-right:8px}
+
+/* S0 인풋 단계 (분석 6단계와 위계 구분) */
+.rail-s0{display:flex; align-items:center; gap:8px; padding-right:14px; margin-right:4px; border-right:1px dashed var(--line-strong); white-space:nowrap}
+.rail-s0 a{display:flex; align-items:center; gap:7px; text-decoration:none; color:var(--muted); padding:6px 4px}
+.rail-s0 .node{font-family:var(--font-mono); font-size:11px; font-weight:700; width:24px; height:24px; flex:none; border-radius:7px; display:grid; place-items:center; border:1.5px dashed var(--line-strong); background:var(--surface)}
+.rail-s0 a.active{color:var(--ink)}
+.rail-s0 a.active .node{border-style:solid; border-color:var(--ink); background:var(--ink); color:#fff}
+.rail-s0 .lbl{font-size:11.5px; font-weight:600}
+.s0-band{background:linear-gradient(180deg,#0E2433,#16202E); color:#fff; border-radius:16px; padding:26px; margin-top:40px}
+.s0-band .s0-eyebrow{font-family:var(--font-mono); font-size:12px; font-weight:600; letter-spacing:.06em; color:#7FB2D9}
+.s0-band h3{font-size:22px; font-weight:800; margin:8px 0 8px; letter-spacing:-.02em}
+.s0-band .s0-lead{font-size:14px; color:#B9C6D4; max-width:720px; margin-bottom:20px}
+.s0-routes{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+.s0-route{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:18px}
+.s0-route .r-tag{display:inline-block; font-family:var(--font-mono); font-size:11px; font-weight:700; padding:3px 9px; border-radius:20px; margin-bottom:10px}
+.s0-route.weekly .r-tag{background:#1E7A57; color:#fff}
+.s0-route.adhoc .r-tag{background:#C2410C; color:#fff}
+.s0-route h4{font-size:15px; font-weight:700; margin-bottom:6px}
+.s0-route p{font-size:12.5px; color:#B9C6D4; line-height:1.55}
+.s0-route .feeds{margin-top:12px; padding-top:12px; border-top:1px solid rgba(255,255,255,.12); font-size:11.5px; color:#8FA3B5}
+.s0-route .feeds b{color:#CFE0EE}
+.s0-flowto{display:flex; align-items:center; justify-content:center; gap:10px; margin-top:18px; font-family:var(--font-mono); font-size:12px; color:#7FB2D9}
+@media(max-width:860px){.s0-routes{grid-template-columns:1fr} .rail-s0 .lbl{display:none}}
+
+/* ════════ 자동 항목 추출 ════════ */
+.auto-extract-section{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:32px}
+.ae-header{margin-bottom:28px}
+.ae-eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;display:block}
+.ae-title{font-size:clamp(20px,2.8vw,28px);font-weight:800;letter-spacing:-.02em;margin:12px 0 10px}
+.ae-desc{font-size:14px;color:var(--muted);max-width:680px}
+
+.ae-input-box{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:24px}
+.ae-input-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.ae-input-field{display:flex;flex-direction:column;gap:6px}
+.ae-input-field label{font-weight:600;font-size:13px;color:var(--ink)}
+.ae-input-field input[type="file"],.ae-input-field input[type="url"]{padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px}
+.ae-input-field textarea{padding:10px;border:1px solid var(--line);border-radius:6px;font-size:13px;font-family:inherit;resize:vertical;height:100px}
+.ae-hint{font-size:11px;color:var(--faint)}
+
+.ae-buttons{display:flex;gap:10px;margin-bottom:16px}
+.ae-btn-primary,.ae-btn-secondary{padding:8px 16px;border:none;border-radius:6px;font-weight:600;cursor:pointer;font-size:13px;transition:.2s}
+.ae-btn-primary{background:var(--accent);color:#fff}
+.ae-btn-primary:hover{opacity:.9}
+.ae-btn-secondary{background:var(--line);color:var(--muted)}
+.ae-btn-secondary:hover{opacity:.9}
+
+.ae-progress{padding:12px 14px;background:var(--paper);border-radius:6px;border:1px solid var(--line);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.ae-progress::before{content:"";display:inline-block;width:12px;height:12px;border:2px solid var(--accent);border-top-color:transparent;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+.ae-result-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:16px}
+.ae-result-header h3{font-size:18px;font-weight:700;margin:0}
+.ae-toggle-btn{padding:6px 12px;background:var(--accent);color:#fff;border:none;border-radius:6px;font-weight:600;cursor:pointer;font-size:12px}
+
+.ae-items-list{display:flex;flex-direction:column;gap:14px}
+.ae-step-group{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px;overflow:hidden}
+.ae-step-title{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid var(--line)}
+.ae-step-badge{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--accent);color:#fff;border-radius:5px;font-weight:700;font-size:10px;font-family:var(--font-mono);flex-shrink:0}
+.ae-step-name{font-weight:600;font-size:14px;color:var(--ink)}
+.ae-step-btn{padding:4px 10px;background:var(--accent);color:#fff;border:none;border-radius:5px;font-weight:500;cursor:pointer;font-size:11px;font-family:var(--font-mono);white-space:nowrap;flex-shrink:0}
+
+.ae-items-container{display:flex;flex-direction:column;gap:8px}
+.ae-item{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:10px;background:var(--surface);border-radius:6px;border:1px solid var(--line)}
+.ae-item input[type="checkbox"]{margin-top:2px;cursor:pointer;width:14px;height:14px;flex-shrink:0}
+.ae-item-content{display:flex;flex-direction:column;gap:4px}
+.ae-item-title{font-weight:600;font-size:13px;color:var(--ink)}
+.ae-item-desc{font-size:12px;color:var(--muted);line-height:1.4}
+.ae-item-conf{font-size:10px;color:var(--faint);font-family:var(--font-mono)}
+
+.ae-error{padding:12px 14px;background:rgba(194,65,12,.06);border:1px solid rgba(194,65,12,.2);border-radius:6px;color:#8B2E0B;font-size:13px}
+
 </style>
 </head>
 <body>
@@ -252,6 +266,9 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 <header class="rail">
   <div class="rail-inner">
     <div class="brand">2030 가전 미래트렌드<span>DA 기획팀</span></div>
+    <div class="rail-s0">
+      <a href="#s0"><span class="node">0</span><span class="lbl">정보 업데이트</span></a>
+    </div>
     <nav class="flow" id="flow">
       <a href="#s1"><span class="node">1</span><span class="lbl">분석 프레임</span></a>
       <a href="#s2"><span class="node">2</span><span class="lbl">트렌드 도출</span></a>
@@ -267,9 +284,10 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 <div class="hero wrap">
   <div class="eyebrow">2030 Home Appliance Foresight</div>
   <h1>가전의 미래는<br><em>프레임에서 전략까지</em> 하나의 사슬로 읽는다</h1>
-  <p class="lead">거시 신호를 어떤 렌즈로 볼지 정하고(①), 그 렌즈로 트렌드를 도출하며(②), 성숙도·영향도를 함께 가늠하고(③), 경쟁사 대응을 점검한 뒤(④), 그 속에서 당사 현 위치·격차를 진단하고(⑤), 당사의 차별화·선도 전략으로 닫는(⑥) 6단계 흐름.</p>
+  <p class="lead">먼저 <b>정보 업데이트(⓪)</b>가 위클리·비정기 두 경로로 최신 신호를 모아 분석 사슬에 공급한다. 그 위에서 — 거시 신호를 어떤 렌즈로 볼지 정하고(①), 트렌드를 도출하며(②), 성숙도·영향도를 가늠하고(③), 경쟁사 대응을 점검한 뒤(④), 당사 현 위치·격차를 진단하고(⑤), 당사의 차별화·선도 전략으로 닫는(⑥) 흐름.</p>
 
   <div class="flowmap">
+    <a class="step" href="#s0" style="border-color:var(--line-strong); border-style:dashed"><div class="n" style="color:var(--ink)">00</div><div class="t">정보 업데이트</div><div class="d">위클리·비정기 인풋</div></a>
     <a class="step" href="#s1"><div class="n">01</div><div class="t">분석 프레임</div><div class="d">STEEP × 가전 4축</div></a>
     <a class="step" href="#s2"><div class="n">02</div><div class="t">트렌드 도출</div><div class="d">선정기준 → 8대 트렌드</div></a>
     <a class="step" href="#s3"><div class="n">03</div><div class="t">성숙도·영향</div><div class="d">영향도 × 성숙도</div></a>
@@ -280,6 +298,38 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 </div>
 
 <main>
+
+<!-- ════════ S0 — 정보 업데이트 (인풋 단계) ════════ -->
+<section class="step-sec" id="s0" style="border-top:none; padding-top:48px">
+  <div class="wrap">
+    <div class="s0-band">
+      <div class="s0-eyebrow">STEP 00 · INPUT LAYER</div>
+      <h3>정보 업데이트 — 분석 사슬에 신호를 공급하는 단계</h3>
+      <p class="s0-lead">S1~S6 분석이 도는 "엔진"이라면, 이 단계는 최신 신호를 끊임없이 넣어주는 "연료 공급"이다. 두 경로로 들어온 정보가 트렌드 도출·경쟁사·당사 위치를 주기적으로 갱신한다.</p>
+
+      <div class="s0-routes">
+        <div class="s0-route weekly">
+          <span class="r-tag">방법 1 · 정기</span>
+          <h4>위클리 업데이트 (매주 월)</h4>
+          <p>매주 월요일, 전주(前週) 기사를 모아 반영. 경쟁사 신제품·M&A·규제 동향 등 빠르게 변하는 신호를 정기 리듬으로 포착.</p>
+          <div class="feeds">→ 주로 <b>S4 경쟁사 대응</b>·<b>S2 트렌드 도출</b> 갱신</div>
+        </div>
+        <div class="s0-route adhoc">
+          <span class="r-tag">방법 2 · 비정기</span>
+          <h4>수시 업데이트 (이벤트 기반)</h4>
+          <p>보고서·심층 기사·정책 발표 등을 수시로 반영. CES·규제 발효·대형 M&A 같은 비정기 변곡점을 그때그때 흡수.</p>
+          <div class="feeds">→ 주로 <b>S1 프레임</b>·<b>S3 성숙도</b>·<b>S5 당사 위치</b> 갱신</div>
+        </div>
+      </div>
+
+      <div class="s0-flowto">방법 1 · 2 &nbsp;→&nbsp; 신호 누적 &nbsp;→&nbsp; S1~S6 분석 사슬 갱신</div>
+    </div>
+
+    <div class="fill" style="margin-top:18px">
+      <p class="fill-note"><b>운영 메모</b> · 위클리는 고정 리듬(월요일)으로 누락 방지 · 비정기는 변곡점 발생 시 즉시 반영 · 두 경로 모두 출처·날짜를 함께 기록해 S2~S5의 근거 추적성 유지 · <b>갱신 이력 로그는 보강 단계에서 자동화 연계</b></p>
+    </div>
+  </div>
+</section>
 
 <!-- ════════ 자동 항목 추출 ════════ -->
 <section id="auto-extract" class="wrap" style="padding-top:64px">
@@ -334,129 +384,62 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
   </div>
 </section>
 
-<!-- ════════ 주간 MI 트렌드 점검 ════════ -->
-<!-- WEEKLY-CHECK-START -->
-<section id="weekly-check" class="wrap" style="padding-top:32px">
-  <div class="weekly-check">
-    <div class="weekly-check-head">
-      <span class="wc-badge">📰 주간 점검</span>
-      <span class="wc-title">MI 트렌드 점검 — 단계별 반영 선택</span>
-      <span class="wc-date">2026-06-15 ~ 2026-06-21</span>
-      <span class="wc-status pending" id="wc-count-badge">미선택</span>
-    </div>
-    <div class="weekly-check-body">
-      <div class="wc-global-bar">
-        <span style="font-size:12px; color:var(--muted); flex:1">이번 주 MI 핵심: 삼성·LG AI 플랫폼 가속 / Midea 에이전틱 팩토리 부상 / 반도체 원가 급등 + 소비지출 위축</span>
-        <button class="wc-global-btn" onclick="wcSelectAll()">전체 선택</button>
-        <button class="wc-global-btn" onclick="wcDeselectAll()">선택 해제</button>
-      </div>
-
-      <div class="wc-stage-row">
-        <div class="wc-stage-head">
-          <div style="display:flex; align-items:center; gap:10px">
-            <span class="wc-stage-badge">S1</span>
-            <span class="wc-headline" style="margin:0">분석 프레임 · STEEP 신호</span>
-          </div>
-          <button class="wc-stage-sel-btn" onclick="wcSelectStage('S1')">S1 전체 선택</button>
-        </div>
-        <ul class="wc-checklist">
-          <li><label class="wc-item"><span><b>반도체 원가 급등</b> — Economic×기술축에 "(+)반도체원가↑" 신호 추가</span><input type="checkbox" class="wc-cb" data-stage="S1" data-desc="반도체 원가 급등 → Economic×기술축 &quot;(+)반도체원가↑&quot; 신호 추가"></label></li>
-          <li><label class="wc-item"><span><b>소비자 지출 위축</b> — Economic×소비자축에 "소비지출↓(26H1)" 신호 추가</span><input type="checkbox" class="wc-cb" data-stage="S1" data-desc="소비자 지출 위축 → Economic×소비자축 &quot;소비지출↓(26H1)&quot; 신호 추가"></label></li>
-          <li><label class="wc-item"><span><b>AI 플랫폼 생태계 경쟁</b> — Technological×소비자축에 "AI모듈러홈 생태계" 추가</span><input type="checkbox" class="wc-cb" data-stage="S1" data-desc="AI 플랫폼 생태계 경쟁 → Technological×소비자축에 &quot;AI모듈러홈 생태계&quot; 추가"></label></li>
-        </ul>
-      </div>
-
-      <div class="wc-stage-row">
-        <div class="wc-stage-head">
-          <div style="display:flex; align-items:center; gap:10px">
-            <span class="wc-stage-badge">S2</span>
-            <span class="wc-headline" style="margin:0">트렌드 도출 · 근거 갱신</span>
-          </div>
-          <button class="wc-stage-sel-btn" onclick="wcSelectStage('S2')">S2 전체 선택</button>
-        </div>
-        <ul class="wc-checklist">
-          <li><label class="wc-item"><span><b>삼성 AI 모듈러 홈 플랫폼 출시</b> (impact 5.0) — T1 AI에이전트 카드 근거 추가</span><input type="checkbox" class="wc-cb" data-stage="S2" data-desc="삼성 AI 모듈러 홈 플랫폼 출시(impact 5.0) → T1 카드 근거에 추가 반영"></label></li>
-          <li><label class="wc-item"><span><b>Midea 에이전틱 팩토리 부상</b> — 카테고리 표 핵심 시사에 자율제조 사례 추가</span><input type="checkbox" class="wc-cb" data-stage="S2" data-desc="Midea 에이전틱 팩토리 부상 → 카테고리 표 핵심 시사에 자율제조 사례 추가"></label></li>
-        </ul>
-      </div>
-
-      <div class="wc-stage-row">
-        <div class="wc-stage-head">
-          <div style="display:flex; align-items:center; gap:10px">
-            <span class="wc-stage-badge">S3</span>
-            <span class="wc-headline" style="margin:0">성숙도·영향 · 위치 및 위협 갱신</span>
-          </div>
-          <button class="wc-stage-sel-btn" onclick="wcSelectStage('S3')">S3 전체 선택</button>
-        </div>
-        <ul class="wc-checklist">
-          <li><label class="wc-item"><span><b>T1 성숙도 상향</b> — "선점 베팅" → "즉시 대응" 경계 진입, 배지 추가</span><input type="checkbox" class="wc-cb" data-stage="S3" data-desc="T1 AI에이전트 성숙도 상향 → &quot;선점 베팅&quot; → &quot;즉시 대응&quot; 경계 진입 배지 추가"></label></li>
-          <li><label class="wc-item"><span><b>반도체 원가·소비지출 이중 역풍</b> — 신규 위협 카드 추가</span><input type="checkbox" class="wc-cb" data-stage="S3" data-desc="반도체 원가 급등 + 소비자 지출 위축 이중 역풍 → 신규 위협 카드 추가"></label></li>
-        </ul>
-      </div>
-
-      <div class="wc-stage-row">
-        <div class="wc-stage-head">
-          <div style="display:flex; align-items:center; gap:10px">
-            <span class="wc-stage-badge">S4</span>
-            <span class="wc-headline" style="margin:0">경쟁사 대응 · 신규 동향 반영</span>
-          </div>
-          <button class="wc-stage-sel-btn" onclick="wcSelectStage('S4')">S4 전체 선택</button>
-        </div>
-        <ul class="wc-checklist">
-          <li><label class="wc-item"><span><b>삼성 AI 모듈러 홈</b> — 당사 T1 히트맵 셀 업데이트</span><input type="checkbox" class="wc-cb" data-stage="S4" data-desc="삼성 AI 모듈러 홈 → 당사 T1 히트맵 셀에 &quot;+AI모듈러홈(26.6)&quot; 추가"></label></li>
-          <li><label class="wc-item"><span><b>Midea 에이전틱 팩토리</b> — Midea 행 T2 셀 추가</span><input type="checkbox" class="wc-cb" data-stage="S4" data-desc="Midea 에이전틱 팩토리 → Midea 행 T2 셀에 &quot;+에이전틱팩토리&quot; 추가"></label></li>
-          <li><label class="wc-item"><span><b>fill-note [26.6 업데이트]</b> — T1 선도 재확인 + 에이전틱 팩토리 심층 주시 추가</span><input type="checkbox" class="wc-cb" data-stage="S4" data-desc="S4 fill-note에 [26.6 업데이트] — T1 선도 재확인 + Midea 에이전틱 팩토리 심층 주시 문구 추가"></label></li>
-        </ul>
-      </div>
-
-      <div class="wc-stage-row">
-        <div class="wc-stage-head">
-          <div style="display:flex; align-items:center; gap:10px">
-            <span class="wc-stage-badge">S5</span>
-            <span class="wc-headline" style="margin:0">당사 현위치 · 갭 진단 보강</span>
-          </div>
-          <button class="wc-stage-sel-btn" onclick="wcSelectStage('S5')">S5 전체 선택</button>
-        </div>
-        <ul class="wc-checklist">
-          <li><label class="wc-item"><span><b>AI 플랫폼 선도권 재확인</b> — 호각·우위 카드 T1 설명 갱신</span><input type="checkbox" class="wc-cb" data-stage="S5" data-desc="AI 모듈러 홈 선도권 → 호각·우위 카드 T1 설명에 &quot;AI모듈러홈(26.6) 선도권 재확인&quot; 추가"></label></li>
-          <li><label class="wc-item"><span><b>원가 리스크 주석</b> — 반도체 원가 급등 반영, 구독 전환 대응 병기</span><input type="checkbox" class="wc-cb" data-stage="S5" data-desc="반도체 원가 급등 → 호각·우위 카드에 &quot;[26.6] 원가 리스크 + 구독 전환 대응&quot; 주석 추가"></label></li>
-        </ul>
-      </div>
-
-      <div class="wc-stage-row">
-        <div class="wc-stage-head">
-          <div style="display:flex; align-items:center; gap:10px">
-            <span class="wc-stage-badge">S6</span>
-            <span class="wc-headline" style="margin:0">당사 전략 · 로드맵 조기화</span>
-          </div>
-          <button class="wc-stage-sel-btn" onclick="wcSelectStage('S6')">S6 전체 선택</button>
-        </div>
-        <ul class="wc-checklist">
-          <li><label class="wc-item"><span><b>AI 스마트홈 마일스톤 조기화</b> — SmartThings 생태계 2026 내 가속, 단기 로드맵 반영</span><input type="checkbox" class="wc-cb" data-stage="S6" data-desc="AI 모듈러 홈 마일스톤 조기화 → 단기 로드맵에 &quot;[26.6 조기화] SmartThings 파트너 생태계 2026 내 가속&quot; + 반도체 원가 쇼크 대응 구독 번들 확대 추가"></label></li>
-          <li><label class="wc-item"><span><b>경기 위축 시나리오</b> — 장기 로드맵에 방어 포트폴리오 조정 옵션 추가</span><input type="checkbox" class="wc-cb" data-stage="S6" data-desc="경기 위축 시나리오 → 장기 로드맵에 &quot;소비자 지출 위축 시 구독·HaaS 비중 확대&quot; 옵션 추가"></label></li>
-        </ul>
-      </div>
-    </div>
-    <div class="wc-apply-bar">
-      <button class="wc-apply-btn" onclick="wcShowSelected()">선택 항목 확인</button>
-      <span style="font-size:11.5px; color:var(--muted)">체크한 항목만 단계별 본문에 반영됩니다</span>
-    </div>
-  </div>
-  <div class="wc-selected-panel" id="wc-selected-panel">
-    <div style="font-size:13px; font-weight:700; color:var(--warn); margin-bottom:8px">✅ 반영 요청 항목</div>
-    <div id="wc-selected-list" style="font-size:12.5px; color:var(--muted); line-height:1.9"></div>
-  </div>
-</section>
-<!-- WEEKLY-CHECK-END -->
-
 <!-- ════════ 1단계 — 분석 프레임 ════════ -->
 <section class="step-sec" id="s1">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">STEP 01</span><span class="sec-role">// 왜 이 렌즈로 보는가</span></div>
+    <div class="sec-head"><span class="sec-num">STEP 01</span><span class="sec-role">// 왜 이 렌즈로 — 1.1 거점 스캔 → 1.2 가전축</span></div>
     <h2 class="sec-title">분석 프레임 — STEEP 거시 렌즈 × 가전 특화 4축</h2>
-    <p class="sec-desc">STEEP 5축으로 외부 환경을 스캔하고, 그 흐름이 가전에 실제로 꽂히는 4개 접점(기술·소비자·규제·공급망)으로 좁히는 2층 깔때기. 이후 모든 트렌드는 "STEEP 어디서 와서 → 가전 어디에 꽂히는지" 한 줄로 추적된다.</p>
+    <p class="sec-desc">두 단계 깔때기. <b>1.1</b> STEEP 5축을 거점별(미국·유럽·한국)로 스캔해 거시 신호를 검증하고 → <b>1.2</b> 그 신호를 가전 4축(기술·소비자·규제·공급망)으로 좁혀 트렌드 발생 지점을 짚는다. 이후 모든 트렌드는 "STEEP 어디서 와서 → 가전 어디에 꽂히는지" 한 줄로 추적된다.</p>
 
-    <!-- ✏ 채움: STEEP 5축 × 가전 4축 교차 셀에 도출 트렌드/신호 배치 (현재 빈 격자) -->
+    <!-- ───────── STEP 1.1 : STEEP × 거점(미국·유럽·한국) ───────── -->
+    <h3 style="font-size:16px; font-weight:800; margin:24px 0 6px"><span class="substep">1.1</span>거점별 거시 신호 스캔 — STEEP × 미국·유럽·한국</h3>
+    <p class="sec-desc" style="margin-bottom:14px">같은 STEEP 축이라도 거점별 신호가 완전히 다르다. 정책명·발효시점·수치는 검증 출처 기준이며, <span class="unver">빨간 이탤릭</span>은 추가 검증 필요 항목.</p>
+    <div class="region">
+      <table>
+        <thead>
+          <tr><th style="text-align:left">STEEP ↓ \ 거점 →</th><th>🇺🇸 미국</th><th>🇪🇺 유럽</th><th>🇰🇷 한국</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Social<small>인구·생활</small></th>
+            <td>1인가구 <b>29%</b> · 65세+ 18% · 헬스/웰니스(74% 헬스기능 선호)</td>
+            <td>초고령 65세+ <b>22%</b> · 1인가구 급증 · 저출산 1.38</td>
+            <td>1인가구 <span class="unver">~35%</span> · 초저출산 <span class="unver">0.7대</span> · 초고령사회 진입</td>
+          </tr>
+          <tr>
+            <th>Technological<small>기술</small></th>
+            <td>온디바이스 LLM 에이전트 · Matter 1.5 · 예지보전</td>
+            <td>Data Act 데이터접근 강제 · Matter · 효율연동</td>
+            <td>SmartThings·ThinQ 양강 · AI가전 선도 · 온디바이스 AI</td>
+          </tr>
+          <tr>
+            <th>Economic<small>경제</small></th>
+            <td>전기요금 급등(+30%) · 관세발 가격상승 · 소비위축</td>
+            <td>전기:가스 가격비 불리 · 히트펌프 변동 · ETS2(27)</td>
+            <td>구독시장 <b>100조</b> · 내수부진(24년 -5.7%) · <span class="unver">전기료 인상</span></td>
+          </tr>
+          <tr>
+            <th>Environmental<small>환경</small></th>
+            <td>EPA 냉매규제(700GWP)+<span class="unver">완화 추진</span> · DOE 효율 롤백</td>
+            <td>F-Gas(26 냉장고 GWP150) · ESPR·수리권(26.7) · CBAM</td>
+            <td>에너지효율등급제 · <span class="unver">으뜸효율 환급</span> · 2050 탄소중립</td>
+          </tr>
+          <tr>
+            <th>Political<small>정치</small></th>
+            <td>철강파생품 <b>50% 관세</b>(가전 적용) · 리쇼어링 · 대중규제</td>
+            <td>CBAM(28 백색가전 확대안) · Data Act · 에코디자인</td>
+            <td><span class="unver">통상 간접영향</span> · 보조금 · 개인정보보호</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="fill" style="margin-top:14px">
+      <p class="fill-note"><b>거점별 가장 강한 축</b> · <b>미국</b> = Political(관세)+Environmental(규제 롤백) · <b>유럽</b> = Environmental(F-Gas·ESPR·수리권)+Political(CBAM) · <b>한국</b> = Economic(구독·내수) · <b style="color:var(--signal)">한국 셀은 이번 리서치 심층대상 아님 — 빨간 이탤릭은 내부 데이터로 확정 필요</b> (중국 신호는 1.2 종합·5단계 경쟁사에 반영)</p>
+    </div>
+
+    <!-- ───────── STEP 1.2 : STEEP × 가전 4축 ───────── -->
+    <h3 style="font-size:16px; font-weight:800; margin:32px 0 6px"><span class="substep">1.2</span>가전 4축으로 좁히기 — STEEP × 제품 접점</h3>
+    <p class="sec-desc" style="margin-bottom:14px">1.1의 거점 신호를 종합한 STEEP 행을, 가전에 실제로 꽂히는 4개 접점으로 좁힌다. 교차 셀의 T1~T8이 트렌드 발생 지점(2단계로 연결).</p>
     <div class="matrix">
       <table>
         <thead>
@@ -469,21 +452,20 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
           </tr>
         </thead>
         <tbody>
-          <tr><td class="axis">Social <small>1인가구·고령화·웰니스</small></td><td class="cell">T8</td><td class="cell hit">T5·T8</td><td class="cell">·</td><td class="cell">·</td></tr>
-          <tr><td class="axis">Technological <small>AI·로봇·센서·연결</small></td><td class="cell hit">T1·T2</td><td class="cell hit">T1</td><td class="cell">T7</td><td class="cell">T2</td></tr>
-          <tr><td class="axis">Economic <small>가처분소득·구독·에너지비용</small></td><td class="cell">T2</td><td class="cell">T5</td><td class="cell">·</td><td class="cell">(+)관세</td></tr>
-          <tr><td class="axis">Environmental <small>탄소규제·효율·순환경제</small></td><td class="cell hit">T3·T4·T7</td><td class="cell">·</td><td class="cell hit">T3·T6 <small style="color:var(--faint)">歐</small></td><td class="cell">T6 <small style="color:var(--faint)">歐</small></td></tr>
-          <tr><td class="axis">Political <small>무역규제·관세·데이터주권</small></td><td class="cell">·</td><td class="cell">·</td><td class="cell hit">T3·T4 <small style="color:var(--faint)">美</small>·T6 <small style="color:var(--faint)">歐</small></td><td class="cell">관세 <small style="color:var(--faint)">美·中</small></td></tr>
+          <tr><td class="axis">Social <small>1인가구·초고령·실버/웰니스</small></td><td class="cell">T8</td><td class="cell hit">T5·T8</td><td class="cell">·</td><td class="cell">·</td></tr>
+          <tr><td class="axis">Technological <small>온디바이스AI·Matter·데이터주권</small></td><td class="cell hit">T1·T2</td><td class="cell hit">T1</td><td class="cell">T7</td><td class="cell">T2</td></tr>
+          <tr><td class="axis">Economic <small>전기요금·구독렌탈·보조금/내수</small></td><td class="cell">T2</td><td class="cell">T5</td><td class="cell">·</td><td class="cell">(+)관세</td></tr>
+          <tr><td class="axis">Environmental <small>냉매·효율·수리권 규제분기</small></td><td class="cell hit">T3·T4·T7</td><td class="cell">·</td><td class="cell hit">T3·T6 <small style="color:var(--faint)">歐</small></td><td class="cell">T6 <small style="color:var(--faint)">歐</small></td></tr>
+          <tr><td class="axis">Political <small>관세·CBAM·보조금</small></td><td class="cell">·</td><td class="cell">·</td><td class="cell hit">T3·T4 <small style="color:var(--faint)">美</small>·T6 <small style="color:var(--faint)">歐</small></td><td class="cell">관세 <small style="color:var(--faint)">美·中</small></td></tr>
         </tbody>
       </table>
     </div>
     <div class="legend">
-      <span><i style="background:var(--accent)"></i>교차 셀 = 트렌드 발생 지점 (2단계로 연결)</span>
-      <span><b style="color:var(--faint)">美·歐·中</b> = 거점별 신호 상이 (지역 분리 필요)</span>
+      <span><i style="background:var(--accent)"></i>교차 셀 T1~T8 = 트렌드 발생 지점 (2단계로 연결)</span>
+      <span><b style="color:var(--faint)">美·歐·中</b> = 해당 신호가 강한 거점</span>
     </div>
-
-    <div class="fill" style="margin-top:18px">
-      <p class="fill-note"><b>지역별 핵심 신호 분리(필수)</b> · 같은 교차 셀도 거점별로 신호가 다름 — <b>北美</b>(관세·대중국 규제, EPA 냉매) · <b>歐</b>(순환경제·수리권·F-Gas) · <b>中</b>(실버이코노미·내수 규모). 글로벌 단일 프레임이 아니라 거점별 키워드를 셀에 분리 기재해야 뒷단계 전략이 정교해짐 · 프레임 선택 사유·분석 범위(제품군/기간/지역)도 함께</p>
+    <div class="fill" style="margin-top:14px">
+      <p class="fill-note"><b>가장 밀집한 교차점</b> · Technological×기술축(T1·T2)·Environmental×규제축(T3·T6) = 당사 R&D·규제대응 자원 우선 배치 · STEEP 행 라벨은 1.1 거점통합 신호로 교체 완료(일반론 제거)</p>
     </div>
   </div>
 </section>
@@ -588,35 +570,26 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     <h2 class="sec-title">경쟁사 대응 현황 — 트렌드 × 경쟁사·당사</h2>
     <p class="sec-desc">트렌드별로 경쟁사가 무엇을 하고 있는지 매핑하고, 같은 표에 당사 현 위치를 나란히 둔다. 선도사·대응 공백·당사 격차를 한 눈에 — 5단계 갭 진단과 6단계 전략의 발판.</p>
 
-    <!-- 기업 × 트렌드 통합 히트맵 (● 선도 / ○ 대응 / – 미확인) -->
+    <!-- 트렌드 × 경쟁사+당사 히트맵 (● 선도 / ○ 대응 / – 미확인) -->
     <div class="heat">
-      <table style="min-width:900px">
+      <table>
         <thead>
           <tr>
-            <th style="text-align:left; min-width:130px">기업 ↓ \ 트렌드 →</th>
-            <th>T1<br><small style="color:#9fb4c4">AI에이전트</small></th>
-            <th>T2<br><small style="color:#9fb4c4">DC냉각</small></th>
-            <th>T3<br><small style="color:#9fb4c4">자연냉매</small></th>
-            <th>T4<br><small style="color:#9fb4c4">히트펌프</small></th>
-            <th>T5<br><small style="color:#9fb4c4">구독·XaaS</small></th>
-            <th>T6<br><small style="color:#9fb4c4">순환·수리권</small></th>
-            <th>T7<br><small style="color:#9fb4c4">VPP·그리드</small></th>
-            <th>T8<br><small style="color:#9fb4c4">실버·헬스</small></th>
+            <th style="text-align:left">트렌드 ↓ \ 경쟁사 →</th>
+            <th>Midea</th><th>Haier</th><th>BSH</th><th>Whirlpool</th>
+            <th>Electrolux</th><th>Daikin</th><th>LG전자<br><small>HS·ES</small></th>
+            <th class="own">당사<br><small>삼성DA</small></th>
           </tr>
         </thead>
         <tbody>
-          <tr><th>Midea</th><td>○</td><td class="lead">● MBT Climate</td><td class="lead">● R290 620만대</td><td>○</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-          <tr><th>Haier</th><td class="lead">● Flavorly AI</td><td>–</td><td>○</td><td>–</td><td>–</td><td>○</td><td>○ GE Smart</td><td class="lead">● 재활로봇</td></tr>
-          <tr><th>LG전자<br><small>HS·ES</small></th><td class="lead">● ThinQ·CLOiD</td><td class="lead">● 20조 목표</td><td>○ R290</td><td>○ Therma V</td><td class="lead">● 2.48조·30년6조</td><td>○</td><td>○ ThinQ Energy</td><td>○ CLOiD</td></tr>
-          <tr><th>Whirlpool</th><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>○ Matter</td><td>–</td></tr>
-          <tr><th>Electrolux</th><td>–</td><td>–</td><td>○</td><td>–</td><td>–</td><td class="lead">● Circular Care</td><td>○ Matter</td><td>–</td></tr>
-          <tr><th>BSH<br><small>Bosch 공조 포함</small></th><td>○ Home Connect</td><td>–</td><td class="lead">● 프로판 €10억</td><td class="lead">● JCI주거 인수</td><td>–</td><td class="lead">● AI원격수리</td><td>–</td><td>–</td></tr>
-          <tr><th>Carrier</th><td>–</td><td>○</td><td class="lead">● R-454B</td><td>○</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-          <tr><th>Trane<br><small>+LiquidStack</small></th><td>–</td><td class="lead">● CDU 10MW</td><td class="lead">● R-454B</td><td>○</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-          <tr><th>Daikin<br><small>Goodman</small></th><td>–</td><td>○</td><td class="lead">● R-32 표준</td><td class="lead">● 북미1위</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-          <tr><th>JCI<br><small>York</small></th><td>–</td><td class="lead">● 백로그 $150억</td><td>○</td><td class="lead">● Bosch매각</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-          <tr><th>Lennox</th><td>–</td><td>–</td><td>○</td><td class="lead">● 북미강세</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-          <tr><th class="own">당사<br><small>삼성DA+FläktGroup</small></th><td class="own lead">● Bespoke+Gemini</td><td class="own lead">● FläktGroup</td><td class="own">○ 대응</td><td class="own">○ EHS</td><td class="own">○ AI구독클럽</td><td class="own">○ 대응</td><td class="own">○ SmartThings</td><td class="own">○ EdgeAware</td></tr>
+          <tr><th>T1 AI에이전트</th><td>○</td><td class="lead">● Flavorly AI</td><td>○ Home Connect</td><td>–</td><td>–</td><td>–</td><td class="lead">● ThinQ·CLOiD</td><td class="own lead">● Bespoke+Gemini</td></tr>
+          <tr><th>T2 DC냉각</th><td class="lead">● MBT Climate</td><td>–</td><td>–</td><td>–</td><td>–</td><td>○</td><td class="lead">● 20조 목표</td><td class="own lead">● FläktGroup</td></tr>
+          <tr><th>T3 자연냉매</th><td class="lead">● R290 620만대</td><td>○</td><td class="lead">● 프로판 €10억</td><td>–</td><td>○</td><td class="lead">● R-32 표준</td><td>○ R290</td><td class="own">○ 대응</td></tr>
+          <tr><th>T4 히트펌프</th><td>○</td><td>–</td><td class="lead">● JCI주거 인수</td><td>–</td><td>–</td><td class="lead">● 북미1위 추진</td><td>○ Therma V</td><td class="own">○ EHS</td></tr>
+          <tr><th>T5 구독·XaaS</th><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td class="lead">● 2.48조·30년6조</td><td class="own">○ AI구독클럽</td></tr>
+          <tr><th>T6 순환·수리권</th><td>–</td><td>○</td><td class="lead">● AI원격수리</td><td>–</td><td class="lead">● Circular Care</td><td>–</td><td>○</td><td class="own">○ 대응</td></tr>
+          <tr><th>T7 VPP·그리드</th><td>–</td><td>○ GE Smart</td><td>–</td><td>○ Matter</td><td>○ Matter</td><td>–</td><td>○ ThinQ Energy</td><td class="own">○ SmartThings</td></tr>
+          <tr><th>T8 실버·헬스</th><td>–</td><td class="lead">● 재활로봇</td><td>–</td><td>–</td><td>–</td><td>–</td><td>○ CLOiD</td><td class="own">○ EdgeAware</td></tr>
         </tbody>
       </table>
     </div>
@@ -624,11 +597,33 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       <span><i style="background:var(--accent)"></i>● 선도 (실투자·출시·M&A)</span>
       <span><i style="background:var(--accent-soft)"></i>○ 대응 중</span>
       <span><i style="background:var(--paper)"></i>– 미확인 = 공백</span>
-      <span><i style="background:var(--ok-soft)"></i>당사 행 = 5단계 갭 진단 입력</span>
+      <span><i style="background:var(--ok-soft)"></i>당사 열 = 5단계 갭 진단 입력</span>
+    </div>
+
+    <!-- HVAC 전문기업 전용 비교 (T2~T4) -->
+    <h3 style="font-size:15px; font-weight:700; margin:26px 0 10px; color:var(--muted)">HVAC 전문기업 비교군 — 공조 트렌드(T2·T3·T4) 전용</h3>
+    <div class="heat">
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left">공조 트렌드 ↓ \ HVAC 전문 →</th>
+            <th>Carrier</th><th>Trane<br><small>+LiquidStack</small></th><th>JCI<br><small>York</small></th><th>Daikin<br><small>Goodman</small></th><th>Lennox</th>
+            <th class="own">당사<br><small>+FläktGroup</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th>T2 DC냉각</th><td>○</td><td class="lead">● CDU 10MW</td><td class="lead">● 백로그 $150억</td><td>○</td><td>–</td><td class="own lead">● FläktGroup</td></tr>
+          <tr><th>T3 자연냉매</th><td class="lead">● R-454B</td><td class="lead">● R-454B</td><td>○</td><td class="lead">● R-32 표준</td><td>○</td><td class="own">○ 대응</td></tr>
+          <tr><th>T4 히트펌프</th><td>○</td><td>○</td><td class="lead">● Bosch매각</td><td class="lead">● 북미1위</td><td class="lead">● 북미강세</td><td class="own">○ EHS</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="fill" style="margin-top:14px">
+      <p class="fill-note"><b>읽는 법</b> · 가전 경쟁사 표에선 안 보이던 <b>HVAC 순수강자(Trane·JCI·Lennox)</b>가 T2~T4에서 강력 — 당사가 공조 진입자로서 직면할 진짜 비교군. DC냉각은 FläktGroup으로 호각이나, 히트펌프 북미는 Daikin·Lennox 대비 열위</p>
     </div>
 
     <div class="fill" style="margin-top:14px">
-      <p class="fill-note"><b>읽는 법</b> · 당사 ● vs 경쟁사 ● = 호각 / 당사 ○ vs 경쟁사 ● = <b>격차(추격 필요)</b> / 모두 – 인데 당사 진입 = <b>선점 기회</b><br>· <b style="color:var(--signal)">중국계 경계:</b> Midea(T3 R-290 620만대 ●)·Haier(T8 재활로봇 ●) — 당사 ○ 머무는 T3·T8 격차 주시<br>· <b>HVAC 순수강자(Trane·JCI·Lennox)</b>는 T2~T4에 집중 — DC냉각은 FläktGroup으로 호각, 히트펌프 북미는 Daikin·Lennox 대비 열위</p>
+      <p class="fill-note"><b>읽는 법(가전 표)</b> · 당사 ● vs 경쟁사 ● = 호각 / 당사 ○ vs 경쟁사 ● = <b>격차(추격 필요)</b> / 모두 – 인데 당사 진입 = <b>선점 기회</b> · <b style="color:var(--signal)">중국계 경계:</b> Midea(R-290 620만대 ●)·Haier(실버 재활로봇 ●) 추격에서 당사 ○ 머무는 T3·T8 격차 주시</p>
     </div>
   </div>
 </section>
@@ -645,7 +640,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       <div class="card" style="border-top:3px solid var(--ok)">
         <div class="tag" style="color:var(--ok)">호각·우위 (지킨다)</div>
         <h4 style="font-size:14px">T1 AI에이전트 · T2 DC냉각</h4>
-        <div class="ph" style="color:var(--muted)">T1: Bespoke+Gemini 선도 · T2: FläktGroup 인수로 LG·Midea와 동일 출발선. <b>격차 KPI:</b> 선도 지위 유지율·수주 점유율</div>
+        <div class="ph" style="color:var(--muted)">T1: Bespoke+Gemini로 선도권 · T2: FläktGroup 인수로 LG·Midea와 동일 출발선. <b>격차 KPI:</b> 선도 지위 유지율·수주 점유율</div>
       </div>
       <div class="card" style="border-top:3px solid var(--signal)">
         <div class="tag" style="color:var(--signal)">격차·추격 (좁힌다)</div>
@@ -741,165 +736,24 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 
 </main>
 
-<!-- ───────── 참고 자료 ───────── -->
-<div style="border-top:2px solid var(--line-strong); margin-top:64px"></div>
-<section class="wrap" style="padding-top:48px; padding-bottom:64px">
-  <h2 style="font-size:15px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); font-family:var(--font-sans); margin-bottom:28px">참고 자료 · References</h2>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 48px">
-
-    <div>
-      <p style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-family:var(--font-sans); margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid var(--line)">시장·산업 통계</p>
-      <ul style="list-style:none; font-size:12.5px; color:var(--muted); line-height:2">
-        <li>Statista Consumer Market Outlook 2025 — 스마트가전 시장 규모·CAGR</li>
-        <li>IEA, <em>The Future of Heat Pumps</em> 2024 — 연간 히트펌프 투자 $1,600억</li>
-        <li>EHPA (European Heat Pump Association) 2025 — EU 히트펌프 보급·통계</li>
-        <li>IFR, <em>World Robotics 2025</em> — 가정용 서비스로봇 CAGR 18.8%</li>
-        <li>FläktGroup 데이터센터 냉방 시장 보고서 2024 — 액체냉각 $5.5B→$19B (CAGR 23%)</li>
-        <li>Rocky Mountain Institute — VPP 시장 $6.28B→$39.3B (CAGR 22.6%)</li>
-      </ul>
-    </div>
-
-    <div>
-      <p style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-family:var(--font-sans); margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid var(--line)">규제·정책</p>
-      <ul style="list-style:none; font-size:12.5px; color:var(--muted); line-height:2">
-        <li>US EPA AIM Act — 700 GWP 상한 (2025.1 시행)</li>
-        <li>EU F-Gas Regulation (2024/573/EU) — R-410A 단계적 퇴출 2027</li>
-        <li>EU 수리권 지침 (Directive 2024/1799) — 2026.7 회원국 전환</li>
-        <li>REPowerEU Plan — 히트펌프 2030년까지 6,000만 대 목표</li>
-        <li>IEA Net Zero 2050 — 냉방·히트펌프 탄소중립 로드맵</li>
-      </ul>
-    </div>
-
-    <div style="margin-top:28px">
-      <p style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-family:var(--font-sans); margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid var(--line)">기술 트렌드·전망</p>
-      <ul style="list-style:none; font-size:12.5px; color:var(--muted); line-height:2">
-        <li>Gartner Hype Cycle for Emerging Technologies 2025</li>
-        <li>Gartner Hype Cycle for AI 2024–2025</li>
-        <li>Gartner Hype Cycle for Mobile Robots and Drones 2024</li>
-        <li>CES 2026 발표 자료 — Bespoke AI + Google Gemini, AI 가전 신제품</li>
-        <li>WRAP / Ellen MacArthur Foundation — 순환경제 전환율 12%→24% (2030)</li>
-      </ul>
-    </div>
-
-    <div style="margin-top:28px">
-      <p style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-family:var(--font-sans); margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid var(--line)">경쟁사 IR·발표</p>
-      <ul style="list-style:none; font-size:12.5px; color:var(--muted); line-height:2">
-        <li>Samsung Electronics IR 2024–2025 — FläktGroup 인수, DA 구독 실적</li>
-        <li>LG Electronics IR 2024–2025 — 구독 매출 2.48조 (+29%), CLOi, Therma V</li>
-        <li>BSH Hausgeräte Annual Report 2024 — 프로판 히트펌프 €10억 투자, Home Connect</li>
-        <li>Midea Group IR 2024 — R-290 공조기 620만 대, MBT Climate</li>
-        <li>Haier Smart Home 2024 — Flavorly AI, 재활로봇 신제품</li>
-        <li>Trane Technologies 2024 — CDU 10MW, LiquidStack 파트너십</li>
-        <li>Johnson Controls IR 2024 — 백로그 $150억, York 히트펌프</li>
-        <li>Daikin Industries 2024 — R-32 표준화, Goodman 확장</li>
-        <li>Lennox International 2024 — 북미 히트펌프 매출 강세</li>
-        <li>Carrier Global 2024 — R-454B 전환 로드맵</li>
-        <li>Electrolux Annual Report 2024 — Circular Care 순환경제 프로그램</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
 <footer class="wrap">
-  2030 가전 미래트렌드 · 6단계 흐름(프레임→도출→성숙·영향→경쟁사→당사 현위치→전략) · DA 기획팀
+  2030 가전 미래트렌드 · 정보 업데이트(⓪ 위클리·비정기) → 6단계 분석(프레임→도출→성숙·영향→경쟁사→당사 현위치→전략) · DA 기획팀
 </footer>
 
-<div class="freqtip" id="megaTip"></div>
-
-<style>
-/* ════════ 자동 항목 추출 ════════ */
-.auto-extract-section{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:32px}
-.ae-header{margin-bottom:28px}
-.ae-eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;display:block}
-.ae-title{font-size:clamp(20px,2.8vw,28px);font-weight:800;letter-spacing:-.02em;margin:12px 0 10px}
-.ae-desc{font-size:14px;color:var(--muted);max-width:680px}
-
-.ae-input-box{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:24px}
-.ae-input-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-.ae-input-field{display:flex;flex-direction:column;gap:6px}
-.ae-input-field label{font-weight:600;font-size:13px;color:var(--ink)}
-.ae-input-field input[type="file"],.ae-input-field input[type="url"]{padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:13px}
-.ae-input-field textarea{padding:10px;border:1px solid var(--line);border-radius:6px;font-size:13px;font-family:inherit;resize:vertical;height:100px}
-.ae-hint{font-size:11px;color:var(--faint)}
-
-.ae-buttons{display:flex;gap:10px;margin-bottom:16px}
-.ae-btn-primary,.ae-btn-secondary{padding:8px 16px;border:none;border-radius:6px;font-weight:600;cursor:pointer;font-size:13px;transition:.2s}
-.ae-btn-primary{background:var(--accent);color:#fff}
-.ae-btn-primary:hover{opacity:.9}
-.ae-btn-secondary{background:var(--line);color:var(--muted)}
-.ae-btn-secondary:hover{opacity:.9}
-
-.ae-progress{padding:12px 14px;background:var(--paper);border-radius:6px;border:1px solid var(--line);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
-.ae-progress::before{content:"";display:inline-block;width:12px;height:12px;border:2px solid var(--accent);border-top-color:transparent;border-radius:50%;animation:spin .8s linear infinite}
-@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-
-.ae-result-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:16px}
-.ae-result-header h3{font-size:18px;font-weight:700;margin:0}
-.ae-toggle-btn{padding:6px 12px;background:var(--accent);color:#fff;border:none;border-radius:6px;font-weight:600;cursor:pointer;font-size:12px}
-
-.ae-items-list{display:flex;flex-direction:column;gap:14px}
-.ae-step-group{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px;overflow:hidden}
-.ae-step-title{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid var(--line)}
-.ae-step-badge{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--accent);color:#fff;border-radius:5px;font-weight:700;font-size:10px;font-family:var(--font-mono);flex-shrink:0}
-.ae-step-name{font-weight:600;font-size:14px;color:var(--ink)}
-.ae-step-btn{padding:4px 10px;background:var(--accent);color:#fff;border:none;border-radius:5px;font-weight:500;cursor:pointer;font-size:11px;font-family:var(--font-mono);white-space:nowrap;flex-shrink:0}
-
-.ae-items-container{display:flex;flex-direction:column;gap:8px}
-.ae-item{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:10px;background:var(--surface);border-radius:6px;border:1px solid var(--line)}
-.ae-item input[type="checkbox"]{margin-top:2px;cursor:pointer;width:14px;height:14px;flex-shrink:0}
-.ae-item-content{display:flex;flex-direction:column;gap:4px}
-.ae-item-title{font-weight:600;font-size:13px;color:var(--ink)}
-.ae-item-desc{font-size:12px;color:var(--muted);line-height:1.4}
-.ae-item-conf{font-size:10px;color:var(--faint);font-family:var(--font-mono)}
-
-.ae-error{padding:12px 14px;background:rgba(194,65,12,.06);border:1px solid rgba(194,65,12,.2);border-radius:6px;color:#8B2E0B;font-size:13px}
-
-.da-launcher{display:inline-flex;align-items:center;gap:5px;flex:none;height:28px;padding:0 8px;border:1.5px solid var(--line);border-radius:7px;background:var(--surface);color:var(--txt);text-decoration:none;font-size:11.5px;font-weight:600;line-height:1;white-space:nowrap;transition:.15s}
-.da-launcher:hover{border-color:#1257d6;box-shadow:0 4px 18px rgba(18,87,214,.12)}
-.da-launcher .da-gi{display:block;width:15px;height:15px;flex:none}
-.da-launcher .da-gi rect{fill:var(--muted);transition:.15s}
-.da-launcher:hover .da-gi rect{fill:#1257d6}
-</style>
-
 <script>
-// 주간 점검 체크박스
-function wcUpdate(){
-  const cbs=[...document.querySelectorAll('.wc-cb')];
-  const n=cbs.filter(c=>c.checked).length;
-  const badge=document.getElementById('wc-count-badge');
-  if(badge){badge.textContent=n?n+'개 선택':'미선택';badge.className='wc-status '+(n?'reflected':'pending');}
-  document.querySelectorAll('.wc-item').forEach(l=>{l.classList.toggle('checked',l.querySelector('input').checked);});
-  // 단계별 선택 버튼 텍스트 갱신
-  ['S1','S2','S3','S4','S5','S6'].forEach(s=>{
-    const stageCbs=[...document.querySelectorAll(`.wc-cb[data-stage="${s}"]`)];
-    const btn=document.querySelector(`[onclick="wcSelectStage('${s}')"]`);
-    if(!btn||!stageCbs.length)return;
-    const allChecked=stageCbs.every(c=>c.checked);
-    btn.textContent=allChecked?`${s} 선택 해제`:`${s} 전체 선택`;
+// 스크롤스파이 — 현재 단계 활성화 (흐름 레일 + 노드)
+const sections=[...document.querySelectorAll('section.step-sec')];
+const links=[...document.querySelectorAll('.flow a, .rail-s0 a')];
+const byId=id=>links.find(a=>a.getAttribute('href')==='#'+id);
+const obs=new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(a=>a.classList.remove('active'));
+      const a=byId(e.target.id); if(a) a.classList.add('active');
+    }
   });
-}
-function wcSelectAll(){
-  document.querySelectorAll('.wc-cb').forEach(c=>{c.checked=true;});wcUpdate();
-}
-function wcDeselectAll(){
-  document.querySelectorAll('.wc-cb').forEach(c=>{c.checked=false;});wcUpdate();
-}
-function wcSelectStage(stage){
-  const cbs=[...document.querySelectorAll(`.wc-cb[data-stage="${stage}"]`)];
-  const allChecked=cbs.every(c=>c.checked);
-  cbs.forEach(c=>{c.checked=!allChecked;});wcUpdate();
-}
-function wcShowSelected(){
-  const cbs=[...document.querySelectorAll('.wc-cb')].filter(c=>c.checked);
-  const panel=document.getElementById('wc-selected-panel');
-  const list=document.getElementById('wc-selected-list');
-  if(!cbs.length){alert('선택된 항목이 없습니다.');return;}
-  list.innerHTML=cbs.map(c=>`<div style="padding:4px 0; border-bottom:1px solid var(--line)"><span style="font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--warn);background:rgba(245,158,11,.15);padding:1px 6px;border-radius:4px;margin-right:8px">${c.dataset.stage}</span>${c.dataset.desc}</div>`).join('');
-  panel.style.display='block';
-  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
-}
-document.addEventListener('change',e=>{if(e.target.classList.contains('wc-cb'))wcUpdate();});
+},{rootMargin:'-45% 0px -50% 0px', threshold:0});
+sections.forEach(s=>obs.observe(s));
 
 // 자동 항목 추출
 (function(){
@@ -1041,20 +895,6 @@ document.addEventListener('change',e=>{if(e.target.classList.contains('wc-cb'))w
     aeResults.style.display='';
   }
 })();
-
-// 스크롤스파이 — 현재 단계 활성화 (흐름 레일 + 노드)
-const sections=[...document.querySelectorAll('section.step-sec')];
-const links=[...document.querySelectorAll('.flow a')];
-const byId=id=>links.find(a=>a.getAttribute('href')==='#'+id);
-const obs=new IntersectionObserver((es)=>{
-  es.forEach(e=>{
-    if(e.isIntersecting){
-      links.forEach(a=>a.classList.remove('active'));
-      const a=byId(e.target.id); if(a) a.classList.add('active');
-    }
-  });
-},{rootMargin:'-45% 0px -50% 0px', threshold:0});
-sections.forEach(s=>obs.observe(s));
 </script>
 </body>
 </html>
