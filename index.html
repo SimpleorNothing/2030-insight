@@ -8,12 +8,12 @@
   href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 :root{
-  --paper:#F5F6F8; --surface:#FFFFFF;
-  --ink:#15202B; --muted:#5B6672; --faint:#8A94A0;
-  --line:#E3E7EC; --line-strong:#CDD4DC;
-  --accent:#0B5FA5; --accent-soft:#E8F1F9;
-  --signal:#C2410C; --signal-soft:#FBEBE2;
-  --ok:#1E7A57; --ok-soft:#E6F2EC;
+  --paper:#F0EFEB; --surface:#FBFAF7;
+  --ink:#2E2A26; --muted:#837E78; --faint:#A7A29B;
+  --line:#E2DED7; --line-strong:#CFC9C0;
+  --accent:#496176; --accent-soft:#E5E9EE;
+  --signal:#A07C3A; --signal-soft:#F1EAD8;
+  --ok:#5E9468; --ok-soft:#DDEADD;
   --font-sans:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --font-mono:ui-monospace,"SFMono-Regular","Menlo","Consolas",monospace;
   --wrap:1180px;
@@ -115,7 +115,7 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .matrix{border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface)}
 .matrix table{width:100%; border-collapse:collapse; font-size:12.5px}
 .matrix th,.matrix td{border:1px solid var(--line); padding:10px 8px; text-align:center; vertical-align:middle}
-.matrix thead th{background:#0E2433; color:#fff; font-weight:700; font-size:12px}
+.matrix thead th{background:#3E5263; color:#fff; font-weight:700; font-size:12px}
 .matrix .axis{background:var(--accent-soft); color:var(--accent); font-weight:700; text-align:left; white-space:nowrap}
 .matrix .axis small{display:block; color:var(--muted); font-weight:500; font-size:10.5px}
 .matrix td.cell{color:var(--ink); font-size:11px; font-weight:600; cursor:default}
@@ -150,7 +150,7 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .heat{border:1px solid var(--line); border-radius:14px; overflow:auto; background:var(--surface)}
 .heat table{width:100%; border-collapse:collapse; font-size:12px; min-width:760px}
 .heat th,.heat td{border:1px solid var(--line); padding:9px 10px; text-align:center}
-.heat thead th{background:#0E2433; color:#fff; font-weight:600; font-size:11.5px; position:sticky; top:0}
+.heat thead th{background:#3E5263; color:#fff; font-weight:600; font-size:11.5px; position:sticky; top:0}
 .heat tbody th{background:var(--paper); text-align:left; font-weight:700; white-space:nowrap}
 .heat td{color:var(--muted); font-size:11px}
 .heat td.lead{background:var(--accent-soft); color:var(--accent); font-weight:700}
@@ -177,12 +177,12 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto; transition:none!important}}
 
 /* 검증 필요(예시·미검증) 표기 */
-.unver{color:#C2410C; font-style:italic}
+.unver{color:#A07C3A; font-style:italic}
 /* 1.1 지역 매트릭스 */
 .region{border:1px solid var(--line); border-radius:14px; overflow:auto; background:var(--surface)}
 .region table{width:100%; border-collapse:collapse; font-size:11.5px; min-width:680px}
 .region th,.region td{border:1px solid var(--line); padding:9px 10px; text-align:left; vertical-align:top}
-.region thead th{background:#0E2433; color:#fff; font-weight:700; font-size:12px; text-align:center}
+.region thead th{background:#3E5263; color:#fff; font-weight:700; font-size:12px; text-align:center}
 .region tbody th{background:var(--accent-soft); color:var(--accent); font-weight:700; white-space:nowrap; width:130px}
 .region tbody th small{display:block; color:var(--muted); font-weight:500; font-size:10px}
 .region td b{color:var(--ink)}
@@ -202,8 +202,8 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 .s0-routes{display:grid; grid-template-columns:1fr 1fr; gap:16px}
 .s0-route{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:18px}
 .s0-route .r-tag{display:inline-block; font-family:var(--font-mono); font-size:11px; font-weight:700; padding:3px 9px; border-radius:20px; margin-bottom:10px}
-.s0-route.weekly .r-tag{background:#1E7A57; color:#fff}
-.s0-route.adhoc .r-tag{background:#C2410C; color:#fff}
+.s0-route.weekly .r-tag{background:#5E9468; color:#fff}
+.s0-route.adhoc .r-tag{background:#A07C3A; color:#fff}
 .s0-route h4{font-size:15px; font-weight:700; margin-bottom:6px}
 .s0-route p{font-size:12.5px; color:#B9C6D4; line-height:1.55}
 .s0-route .feeds{margin-top:12px; padding-top:12px; border-top:1px solid rgba(255,255,255,.12); font-size:11.5px; color:#8FA3B5}
@@ -264,62 +264,62 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     <p class="sec-desc" style="margin-bottom:14px">매주 월요일, 전주(前週) 기사를 모아 반영. 경쟁사 신제품·M&A·규제 동향 등 빠르게 변하는 신호를 정기 리듬으로 포착.</p>
 
     <!-- 1. 위클리 — S1~S6 체크리스트 -->
-    <div class="s0-content-toggle" id="mi-articles-section" style="display:block; margin-top:16px; background:#FFF8E6; padding:20px; border-radius:12px">
-      <div style="margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid #E0D5C7; display:flex; justify-content:space-between; align-items:center">
+    <div class="s0-content-toggle" id="mi-articles-section" style="display:block; margin-top:16px; background:#F3EEE2; padding:20px; border-radius:12px">
+      <div style="margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid #DAD3C6; display:flex; justify-content:space-between; align-items:center">
         <div style="color:var(--ink); font-size:13px"><b id="s0-weekly-status">이번 주 MI 핵심</b></div>
-        <button id="s0WeeklyToggleBtn" onclick="s0WeeklyToggleAll()" style="padding:6px 12px; background:#FFA500; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:12px">전체 선택</button>
+        <button id="s0WeeklyToggleBtn" onclick="s0WeeklyToggleAll()" style="padding:6px 12px; background:#496176; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:12px">전체 선택</button>
       </div>
       <div style="display:grid; gap:14px">
-        <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
+        <div style="border:1px solid #DAD3C6; border-radius:8px; padding:12px">
           <div style="display:flex; justify-content:space-between; align-items:flex-start">
             <div style="flex:1">
-              <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px; padding:8px; cursor:pointer; border-radius:6px; transition:background-color 0.2s" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="s0ToggleSection('s1')">S1 분석 프레임 · STEEP 신호</div>
+              <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px; padding:8px; cursor:pointer; border-radius:6px; transition:background-color 0.2s" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="s0ToggleSection('s1')">S1 분석 프레임 · STEEP 신호</div>
               <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
-                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">1.1</span> 반도체 원가 급등으로 인한 가전 제조원가 상승 및 제품 가격 경쟁력 악화</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s1" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
-                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">1.2</span> 경기 부진에 따른 소비자 가전 구매력 위축 및 내수시장 둔화</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s1" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
-                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">1.3</span> AI 플랫폼 중심의 가전 생태계 재편으로 제품 방향성 재정의</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s1" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
+                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#496176; font-weight:700">1.1</span> 반도체 원가 급등으로 인한 가전 제조원가 상승 및 제품 가격 경쟁력 악화</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s1" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
+                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#496176; font-weight:700">1.2</span> 경기 부진에 따른 소비자 가전 구매력 위축 및 내수시장 둔화</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s1" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
+                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#496176; font-weight:700">1.3</span> AI 플랫폼 중심의 가전 생태계 재편으로 제품 방향성 재정의</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s1" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
               </ul>
             </div>
             <input type="checkbox" id="s0WeeklyS1Btn" class="s0-section-cb" style="width:20px; height:20px; margin-left:12px; cursor:pointer; margin-top:8px" onchange="s0ToggleSectionCheckboxes('s1')">
           </div>
         </div>
-        <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
+        <div style="border:1px solid #DAD3C6; border-radius:8px; padding:12px">
           <div style="display:flex; justify-content:space-between; align-items:flex-start">
             <div style="flex:1">
-              <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px; padding:8px; cursor:pointer; border-radius:6px; transition:background-color 0.2s" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="s0ToggleSection('s2')">S2 트렌드 도출 · 근거 갱신</div>
+              <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px; padding:8px; cursor:pointer; border-radius:6px; transition:background-color 0.2s" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="s0ToggleSection('s2')">S2 트렌드 도출 · 근거 갱신</div>
               <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
-                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">2.1</span> 삼성의 AI 모듈러 홈 전략으로 T1 생태계 기반 근거 강화 및 경쟁우위 구축</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s2" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
-                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">2.2</span> Midea의 에이전틱 팩토리 추진으로 스마트 홈 카테고리 재편 및 혁신 신호</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s2" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
+                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#496176; font-weight:700">2.1</span> 삼성의 AI 모듈러 홈 전략으로 T1 생태계 기반 근거 강화 및 경쟁우위 구축</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s2" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
+                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#496176; font-weight:700">2.2</span> Midea의 에이전틱 팩토리 추진으로 스마트 홈 카테고리 재편 및 혁신 신호</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s2" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
               </ul>
             </div>
             <input type="checkbox" id="s0WeeklyS2Btn" class="s0-section-cb" style="width:20px; height:20px; margin-left:12px; cursor:pointer; margin-top:8px" onchange="s0ToggleSectionCheckboxes('s2')">
           </div>
         </div>
-        <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
+        <div style="border:1px solid #DAD3C6; border-radius:8px; padding:12px">
           <div style="display:flex; justify-content:space-between; align-items:flex-start">
             <div style="flex:1">
-              <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px; padding:8px; cursor:pointer; border-radius:6px; transition:background-color 0.2s" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="s0ToggleSection('s3')">S3 성숙도·영향</div>
+              <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px; padding:8px; cursor:pointer; border-radius:6px; transition:background-color 0.2s" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="s0ToggleSection('s3')">S3 성숙도·영향</div>
               <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
-                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">3.1</span> T1 아마존 생태계의 성숙도 상향으로 가전 통합 전략의 신뢰도 강화</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s3" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
+                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#496176; font-weight:700">3.1</span> T1 아마존 생태계의 성숙도 상향으로 가전 통합 전략의 신뢰도 강화</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s3" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
               </ul>
             </div>
             <input type="checkbox" id="s0WeeklyS3Btn" class="s0-section-cb" style="width:20px; height:20px; margin-left:12px; cursor:pointer; margin-top:8px" onchange="s0ToggleSectionCheckboxes('s3')">
           </div>
         </div>
-        <div style="border:1px solid #E0D5C7; border-radius:8px; padding:12px">
+        <div style="border:1px solid #DAD3C6; border-radius:8px; padding:12px">
           <div style="display:flex; justify-content:space-between; align-items:flex-start">
             <div style="flex:1">
-              <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px; padding:8px; cursor:pointer; border-radius:6px; transition:background-color 0.2s" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="s0ToggleSection('s4')">S4 경쟁사 대응</div>
+              <div style="font-weight:700; color:var(--ink); margin-bottom:10px; font-size:13px; padding:8px; cursor:pointer; border-radius:6px; transition:background-color 0.2s" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="s0ToggleSection('s4')">S4 경쟁사 대응</div>
               <ul style="list-style:none; margin:0; padding:0; display:grid; gap:8px">
-                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#FFE8B3'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#FFA500; font-weight:700">4.1</span> 삼성의 AI 모듈러 경쟁사 대응 현황을 T1 경쟁사 분석 히트맵에 반영 및 추적</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s4" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
+                <li style="display:flex; width:100%; align-items:center; padding:8px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked"><span style="cursor:pointer; font-size:12px; flex:1"><span style="color:#496176; font-weight:700">4.1</span> 삼성의 AI 모듈러 경쟁사 대응 현황을 T1 경쟁사 분석 히트맵에 반영 및 추적</span><input type="checkbox" class="s0-weekly-cb s0-weekly-s4" style="margin-left:auto; flex-shrink:0; pointer-events:none"></li>
               </ul>
             </div>
             <input type="checkbox" id="s0WeeklyS4Btn" class="s0-section-cb" style="width:20px; height:20px; margin-left:12px; cursor:pointer; margin-top:8px" onchange="s0ToggleSectionCheckboxes('s4')">
           </div>
         </div>
       </div>
-      <div style="margin-top:18px; padding-top:18px; border-top:1px solid #E0D5C7; display:flex; justify-content:flex-end">
-        <button onclick="s0WeeklySubmit()" style="padding:10px 20px; background:#1E7A57; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:13px">완료</button>
+      <div style="margin-top:18px; padding-top:18px; border-top:1px solid #DAD3C6; display:flex; justify-content:flex-end">
+        <button onclick="s0WeeklySubmit()" style="padding:10px 20px; background:#5E9468; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:13px">완료</button>
       </div>
     </div>
 
@@ -328,7 +328,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     <p class="sec-desc" style="margin-bottom:14px">보고서·심층 기사·정책 발표 등을 수시로 반영. CES·규제 발효·대형 M&A 같은 비정기 변곡점을 그때그때 흡수.</p>
 
     <!-- 2. 비정기 — URL/파일/텍스트 입력 폼 -->
-    <div class="s0-content-toggle" id="vending-report-section" style="display:block; margin-top:16px; background:#FFF8E6; padding:20px; border-radius:12px">
+    <div class="s0-content-toggle" id="vending-report-section" style="display:block; margin-top:16px; background:#F3EEE2; padding:20px; border-radius:12px">
       <div style="margin-bottom:18px">
         <div style="display:flex; gap:12px; margin-bottom:14px; border-bottom:1px solid var(--line)">
           <button onclick="s0AdhocTab('url')" class="s0-adhoc-tab-btn" data-tab="url" style="padding:10px 16px; background:none; border:none; border-bottom:2px solid var(--accent); color:var(--accent); font-weight:600; cursor:pointer; font-size:13px">URL</button>
@@ -416,10 +416,10 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
         <thead>
           <tr>
             <th style="text-align:left">STEEP ↓ \ 가전축 →</th>
-            <th>기술축<br><small style="color:#9fb4c4">제품·폼팩터</small></th>
-            <th>소비자축<br><small style="color:#9fb4c4">구매·사용</small></th>
-            <th>규제축<br><small style="color:#9fb4c4">기준·진입</small></th>
-            <th>공급망축<br><small style="color:#9fb4c4">생산·조달</small></th>
+            <th>기술축<br><small style="color:#AFBDC9">제품·폼팩터</small></th>
+            <th>소비자축<br><small style="color:#AFBDC9">구매·사용</small></th>
+            <th>규제축<br><small style="color:#AFBDC9">기준·진입</small></th>
+            <th>공급망축<br><small style="color:#AFBDC9">생산·조달</small></th>
           </tr>
         </thead>
         <tbody>
@@ -820,7 +820,7 @@ window.s0UpdateWeeklyButtons=function(){
   const globalBtn=document.getElementById('s0WeeklyToggleBtn');
   if(globalBtn){
     globalBtn.textContent=allChecked?'전체 해제':'전체 선택';
-    globalBtn.style.background=allChecked?'#D4D4D4':'#FFA500';
+    globalBtn.style.background=allChecked?'#C7C2BA':'#496176';
     globalBtn.style.color=allChecked?'var(--ink)':'#fff';
   }
 
@@ -831,7 +831,7 @@ window.s0UpdateWeeklyButtons=function(){
     const btn=document.getElementById('s0WeeklyS'+step.toUpperCase()+'Btn');
     if(btn){
       btn.textContent=stepAllChecked?'해제':'선택';
-      btn.style.background=stepAllChecked?'#D4D4D4':'#FFA500';
+      btn.style.background=stepAllChecked?'#C7C2BA':'#496176';
       btn.style.color=stepAllChecked?'var(--ink)':'#fff';
     }
   });
