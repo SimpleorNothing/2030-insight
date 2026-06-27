@@ -34,14 +34,15 @@ if (lastWeekItems.length === 0) {
   process.exit(0);
 }
 
-// 중요도순 정렬, 최대 60건
+// 중요도순 정렬, 최대 30건 (토큰 절약)
 const topItems = lastWeekItems
   .sort((a, b) => b.impact - a.impact)
-  .slice(0, 60);
+  .slice(0, 30);
 
+// 뉴스 요약 (summary는 생략, headline + point만)
 const newsSummary = topItems.map(item =>
-  `[${item.grade}/${item.lens}] impact:${item.impact} | ${item.headline}\n${item.summary}\n제품: ${(item.products||[]).join(', ')} | 경쟁사: ${(item.competitors||[]).join(', ')}\n`
-).join('\n---\n');
+  `[${item.grade}/${item.lens}] impact:${item.impact} | ${item.headline} | 제품: ${(item.products||[]).join(',')} | 경쟁사: ${(item.competitors||[]).join(',')}`
+).join('\n');
 
 // 현재 index.html 읽기
 const html = fs.readFileSync('index.html', 'utf-8');
@@ -50,7 +51,7 @@ const html = fs.readFileSync('index.html', 'utf-8');
 console.log('Claude 분석 시작...');
 const response = await client.messages.create({
   model: 'claude-sonnet-4-6',
-  max_tokens: 6000,
+  max_tokens: 8192,
   messages: [{
     role: 'user',
     content: `당신은 삼성다이나믹바이저리의 2030 미래 트렌드 보고서 편집자입니다.
