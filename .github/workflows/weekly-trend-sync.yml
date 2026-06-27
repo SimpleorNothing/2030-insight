@@ -1,0 +1,76 @@
+name: Weekly MI Trend Sync
+
+on:
+  schedule:
+    - cron: '0 1 * * 1'   # 매주 월요일 01:00 UTC (한국 오전 10시)
+  workflow_dispatch:       # 수동 실행 버튼
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  analyze-and-update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout 2030-insight
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --no-save @anthropic-ai/sdk
+
+      - name: Fetch last week news from market-insight
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -s -H "Authorization: Bearer $GH_TOKEN" \
+            "https://api.github.com/repos/simpleornothing/market-insight/contents/data/news.json" \
+            | node -e "
+              const chunks = [];
+              process.stdin.on('data', c => chunks.push(c));
+              process.stdin.on('end', () => {
+                const res = JSON.parse(Buffer.concat(chunks).toString());
+                const decoded = Buffer.from(res.content, 'base64').toString('utf-8');
+                require('fs').writeFileSync('news_raw.json', decoded);
+              });
+            "
+
+      - name: Analyze and update index.html
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/weekly-trend-analysis.js
+
+      - name: Check for changes
+        id: check
+        run: |
+          if git diff --quiet index.html; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create PR if updated
+        if: steps.check.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          WEEK=$(date -u -d 'last monday - 7 days' '+%Y-%m-%d' 2>/dev/null || date -u -v-mon -v-7d '+%Y-%m-%d')
+          BRANCH="auto/weekly-trend-$(date -u +%Y%m%d)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add index.html
+          git commit -m "Auto: 주간 MI 트렌드 반영 (${WEEK} 주)"
+          git push origin "$BRANCH"
+          gh pr create \
+            --title "[주간 MI 싱크] ${WEEK} 주 트렌드 반영" \
+            --body "$(cat pr_body.md)" \
+            --base main \
+            --head "$BRANCH"
