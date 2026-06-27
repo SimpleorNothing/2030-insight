@@ -340,7 +340,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <div class="wrap">
     <p class="eyebrow">키워드 모니터링 · MARKET INSIGHT 실집계</p>
     <h2>가전 키워드별 주별 발생 비중</h2>
-    <p class="sec-note">market-insight 수집 데이터(news.json)에서 가장 많이 등장한 가전 키워드 상위 8종을 주(週) 단위로 집계해 발생 건수와 키워드별 비중을 봅니다. <b>실제 수집된 주만</b> 표시되며(현재 2026년 5월 둘째주~), 건수/비중 토글·범례 클릭 필터를 지원합니다. 시간 단위 자동 갱신.</p>
+    <p class="sec-note">market-insight 수집 데이터(news.json)에서 회사·지역명을 제외하고 이슈(내용) 키워드 상위 8종을 추려 주(週) 단위로 집계해 발생 건수와 키워드별 비중을 봅니다. <b>실제 수집된 주만</b> 표시되며(현재 2026년 5월 둘째주~), 건수/비중 토글·범례 클릭 필터를 지원합니다. 시간 단위 자동 갱신.</p>
 
     <div class="freq">
       <div class="freq-head">
@@ -359,7 +359,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <svg id="freqChart" class="chart" viewBox="0 0 960 330" xmlns="http://www.w3.org/2000/svg" aria-label="키워드별 주별 비중"></svg>
       </div>
     </div>
-    <p class="sec-note" style="margin-top:14px">▍ 키워드는 market-insight AI가 부여한 태그 기준 상위 8종(기사별 복수 태그 가능). 막대 hover 시 키워드·주·건수·비중 표시. 데이터 소스: raw.githubusercontent.com/SimpleorNothing/market-insight/main/data/news.json</p>
+    <p class="sec-note" style="margin-top:14px">▍ 키워드는 market-insight 태그에서 회사·지역명을 제외한 이슈 태그 상위 8종(기사별 복수 태그 가능). 막대 hover 시 키워드·주·건수·비중 표시. 데이터 소스: raw.githubusercontent.com/SimpleorNothing/market-insight/main/data/news.json</p>
   </div>
 </section>
 
@@ -419,9 +419,15 @@ navSecs.forEach(function(s){s&&navObs.observe(s);});
   function niceMax(v){var step=v<=20?5:v<=60?10:v<=150?25:v<=400?50:100;return Math.max(step,Math.ceil(v/step)*step);}
 
   function aggregate(items){
-    // 1) 전체 태그 빈도 → 상위 TOPN
+    // 0) 제외 집합: 회사명(competitors) + 지역/시장명 → 내용(이슈) 키워드만 남김
+    var COMP={};
+    items.forEach(function(it){(it.competitors||[]).forEach(function(c){COMP[c]=1;});});
+    ['LG전자','삼성전자','월풀','Whirlpool','Midea','Haier','BSH','Electrolux','일렉트로룩스','하이얼','미데아','보쉬','지멘스','캐리어','다이킨','Gree'].forEach(function(c){COMP[c]=1;});
+    var REGION=/^(미국|중국|유럽|인도|북미|한국|일본|글로벌|국내|아시아|중남미|중동|남미|독일|동남아)(시장)?$/;
+    function excluded(t){return !!COMP[t]||REGION.test(t);}
+    // 1) 회사·지역 제외 후 태그 빈도 → 상위 TOPN(이슈 키워드)
     var freq={};
-    items.forEach(function(it){(it.tags||[]).forEach(function(t){freq[t]=(freq[t]||0)+1;});});
+    items.forEach(function(it){(it.tags||[]).forEach(function(t){if(!excluded(t))freq[t]=(freq[t]||0)+1;});});
     var top=Object.keys(freq).sort(function(a,b){return freq[b]-freq[a]||(a<b?-1:1);}).slice(0,TOPN);
     CATS=top.map(function(t,i){return {name:t,color:PALETTE[i%PALETTE.length]};});
     var idx={}; top.forEach(function(t,i){idx[t]=i;});
