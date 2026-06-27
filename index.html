@@ -308,13 +308,13 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       <p class="s0-lead">S1~S6 분석이 도는 "엔진"이라면, 이 단계는 최신 신호를 끊임없이 넣어주는 "연료 공급"이다. 두 경로로 들어온 정보가 트렌드 도출·경쟁사·당사 위치를 주기적으로 갱신한다.</p>
 
       <div class="s0-routes">
-        <div class="s0-route weekly">
+        <div class="s0-route weekly" data-s0-toggle="weekly" style="cursor:pointer">
           <span class="r-tag">방법 1 · 정기</span>
           <h4>위클리 업데이트 (매주 월)</h4>
           <p>매주 월요일, 전주(前週) 기사를 모아 반영. 경쟁사 신제품·M&A·규제 동향 등 빠르게 변하는 신호를 정기 리듬으로 포착.</p>
           <div class="feeds">→ 주로 <b>S4 경쟁사 대응</b>·<b>S2 트렌드 도출</b> 갱신</div>
         </div>
-        <div class="s0-route adhoc">
+        <div class="s0-route adhoc" data-s0-toggle="adhoc" style="cursor:pointer">
           <span class="r-tag">방법 2 · 비정기</span>
           <h4>수시 업데이트 (이벤트 기반)</h4>
           <p>보고서·심층 기사·정책 발표 등을 수시로 반영. CES·규제 발효·대형 M&A 같은 비정기 변곡점을 그때그때 흡수.</p>
@@ -323,6 +323,75 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       </div>
 
       <div class="s0-flowto">방법 1 · 2 &nbsp;→&nbsp; 신호 누적 &nbsp;→&nbsp; S1~S6 분석 사슬 갱신</div>
+    </div>
+
+    <!-- S0 Interactive Content Sections -->
+    <div class="s0-content-toggle" id="mi-articles-section" style="display:none; margin-top:24px">
+      <div style="background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:20px">
+        <h4 style="color:#fff; margin-bottom:14px; font-size:14px; font-weight:700">주간 MI 기사 체크</h4>
+        <div style="color:#B9C6D4; font-size:13px; line-height:1.6">
+          <p style="margin-bottom:14px">매주 월요일에 수집된 주간 MI 기사들을 체크하고 분류합니다.</p>
+          <div style="display:grid; gap:10px">
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer; padding:8px 0; transition:.2s">
+              <input type="checkbox" style="width:16px; height:16px; cursor:pointer"> <span>기사 1: 삼성 신형 냉장고 AI 기능 탑재</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer; padding:8px 0; transition:.2s">
+              <input type="checkbox" style="width:16px; height:16px; cursor:pointer"> <span>기사 2: EU 냉매 규제 강화 발표</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer; padding:8px 0; transition:.2s">
+              <input type="checkbox" style="width:16px; height:16px; cursor:pointer"> <span>기사 3: LG와 삼성의 에너지효율등급 경쟁</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer; padding:8px 0; transition:.2s">
+              <input type="checkbox" style="width:16px; height:16px; cursor:pointer"> <span>기사 4: 다이슨 공기청정 기술 특허</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer; padding:8px 0; transition:.2s">
+              <input type="checkbox" style="width:16px; height:16px; cursor:pointer"> <span>기사 5: 올브라이트 자동세제 투입 기술</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s0-content-toggle" id="vending-report-section" style="display:none; margin-top:24px">
+      <div style="background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:20px">
+        <h4 style="color:#fff; margin-bottom:14px; font-size:14px; font-weight:700">자판기 보고서</h4>
+        <div style="color:#B9C6D4; font-size:13px; line-height:1.6">
+          <p style="margin-bottom:16px">비정기 업데이트로 반영되는 심층 분석 보고서입니다.</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px">
+            <div style="background:rgba(255,255,255,.06); padding:14px; border-radius:8px; border:1px solid rgba(255,255,255,.1)">
+              <div style="font-size:11px; color:#8FA3B5; margin-bottom:6px; font-family:var(--font-mono); font-weight:600">운영 자판기</div>
+              <div style="font-size:20px; font-weight:700; color:#CFE0EE">1,234</div>
+              <div style="font-size:11px; color:#7FB2D9; margin-top:4px">+3.2% vs 지난주</div>
+            </div>
+            <div style="background:rgba(255,255,255,.06); padding:14px; border-radius:8px; border:1px solid rgba(255,255,255,.1)">
+              <div style="font-size:11px; color:#8FA3B5; margin-bottom:6px; font-family:var(--font-mono); font-weight:600">평균 판매액</div>
+              <div style="font-size:20px; font-weight:700; color:#CFE0EE">284만 원</div>
+              <div style="font-size:11px; color:#7FB2D9; margin-top:4px">+5.1% vs 지난달</div>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,.06); padding:14px; border-radius:8px; border:1px solid rgba(255,255,255,.1)">
+            <div style="font-size:11px; color:#8FA3B5; margin-bottom:8px; font-family:var(--font-mono); font-weight:600">상위 판매 상품</div>
+            <div style="display:grid; gap:6px; font-size:12px">
+              <div style="display:flex; justify-content:space-between; align-items:center">
+                <span>음료 (무알콜)</span>
+                <span style="color:#7FB2D9">34%</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center">
+                <span>스낵류</span>
+                <span style="color:#7FB2D9">28%</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center">
+                <span>커피</span>
+                <span style="color:#7FB2D9">22%</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center">
+                <span>유제품</span>
+                <span style="color:#7FB2D9">16%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="fill" style="margin-top:18px">
@@ -754,6 +823,18 @@ const obs=new IntersectionObserver((es)=>{
   });
 },{rootMargin:'-45% 0px -50% 0px', threshold:0});
 sections.forEach(s=>obs.observe(s));
+
+// S0 routes toggle — 주간 MI 기사 체크 & 자판기 보고서
+document.querySelectorAll('[data-s0-toggle]').forEach(route=>{
+  route.addEventListener('click',()=>{
+    const toggleId=route.getAttribute('data-s0-toggle');
+    const sectionId=toggleId==='weekly'?'mi-articles-section':'vending-report-section';
+    const section=document.getElementById(sectionId);
+    if(section){
+      section.style.display=section.style.display==='none'?'block':'none';
+    }
+  });
+});
 
 // 자동 항목 추출
 (function(){
