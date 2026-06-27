@@ -218,11 +218,20 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
   font-size:13px; color:var(--muted); font-family:var(--font-sans);
 }
 .wc-empty span{display:block; font-size:11px; color:var(--faint); margin-top:4px;}
-.wc-checklist{list-style:none; padding:0; margin:8px 0 0; display:flex; flex-direction:column; gap:4px}
-.wc-item{display:flex; align-items:flex-start; gap:8px; font-size:12.5px; color:var(--muted); cursor:pointer; padding:6px 8px; border-radius:6px; transition:.15s; line-height:1.5; user-select:none}
+.wc-checklist{list-style:none; padding:0; margin:6px 0 0; display:flex; flex-direction:column; gap:2px}
+.wc-item{display:flex; align-items:center; justify-content:space-between; gap:12px; font-size:12.5px; color:var(--muted); cursor:pointer; padding:7px 10px; border-radius:6px; transition:.15s; line-height:1.5; user-select:none}
 .wc-item:hover{background:rgba(245,158,11,.08)}
 .wc-item.checked{background:rgba(245,158,11,.16); color:var(--ink)}
-.wc-item input[type=checkbox]{margin-top:2px; flex:none; accent-color:var(--warn-border); width:14px; height:14px; cursor:pointer}
+.wc-item span{flex:1}
+.wc-item input[type=checkbox]{flex:none; accent-color:var(--warn-border); width:15px; height:15px; cursor:pointer; margin:0}
+.wc-stage-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:2px}
+.wc-stage-sel-btn{font-family:var(--font-sans); font-size:10.5px; font-weight:600; color:var(--warn); background:rgba(245,158,11,.1); border:1px solid rgba(245,158,11,.3); border-radius:5px; padding:2px 8px; cursor:pointer; transition:.15s; white-space:nowrap}
+.wc-stage-sel-btn:hover{background:rgba(245,158,11,.2)}
+.wc-stage-row{border-bottom:1px solid rgba(245,158,11,.15); padding-bottom:12px; margin-bottom:2px}
+.wc-stage-row:last-child{border-bottom:none; padding-bottom:0}
+.wc-global-bar{display:flex; align-items:center; gap:8px; padding:0 0 12px; border-bottom:1px solid rgba(245,158,11,.25); margin-bottom:8px}
+.wc-global-btn{font-family:var(--font-sans); font-size:11px; font-weight:600; color:var(--warn); background:rgba(245,158,11,.1); border:1px solid rgba(245,158,11,.3); border-radius:5px; padding:3px 10px; cursor:pointer; transition:.15s}
+.wc-global-btn:hover{background:rgba(245,158,11,.2)}
 .wc-apply-bar{padding:12px 20px 16px; border-top:1px solid rgba(245,158,11,.3); display:flex; align-items:center; gap:12px; flex-wrap:wrap}
 .wc-apply-btn{font-family:var(--font-sans); font-size:12.5px; font-weight:700; color:#fff; background:var(--warn-border); border:none; border-radius:8px; padding:7px 18px; cursor:pointer; transition:.15s}
 .wc-apply-btn:hover{background:var(--warn)}
@@ -283,74 +292,96 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       <span class="wc-status pending" id="wc-count-badge">미선택</span>
     </div>
     <div class="weekly-check-body">
-      <p style="font-size:12px; color:var(--muted); padding:0 0 12px; border-bottom:1px solid rgba(245,158,11,.25); margin-bottom:4px">이번 주 MI 핵심: 삼성·LG AI 플랫폼 가속 / Midea 에이전틱 팩토리 부상 / 반도체 원가 급등 + 소비지출 위축. 아래 항목 중 <b style="color:var(--ink)">반영할 것만 체크</b>하고 "선택 항목 확인"을 누르세요.</p>
-
-      <div class="wc-stage-row">
-        <span class="wc-stage-badge">S1</span>
-        <div class="wc-stage-content">
-          <div class="wc-headline">분석 프레임 · STEEP 신호</div>
-          <ul class="wc-checklist">
-            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S1" data-desc="반도체 원가 급등 → Economic×기술축 &quot;(+)반도체원가↑&quot; 신호 추가"><span><b>반도체 원가 급등</b> — Economic×기술축에 "(+)반도체원가↑" 신호 추가</span></label></li>
-            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S1" data-desc="소비자 지출 위축 → Economic×소비자축 &quot;소비지출↓(26H1)&quot; 신호 추가"><span><b>소비자 지출 위축</b> — Economic×소비자축에 "소비지출↓(26H1)" 신호 추가</span></label></li>
-            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S1" data-desc="AI 플랫폼 생태계 경쟁 → Technological×소비자축에 &quot;AI모듈러홈 생태계&quot; 추가"><span><b>AI 플랫폼 생태계 경쟁</b> — Technological×소비자축에 "AI모듈러홈 생태계" 추가</span></label></li>
-          </ul>
-        </div>
+      <div class="wc-global-bar">
+        <span style="font-size:12px; color:var(--muted); flex:1">이번 주 MI 핵심: 삼성·LG AI 플랫폼 가속 / Midea 에이전틱 팩토리 부상 / 반도체 원가 급등 + 소비지출 위축</span>
+        <button class="wc-global-btn" onclick="wcSelectAll()">전체 선택</button>
+        <button class="wc-global-btn" onclick="wcDeselectAll()">선택 해제</button>
       </div>
 
       <div class="wc-stage-row">
-        <span class="wc-stage-badge">S2</span>
-        <div class="wc-stage-content">
-          <div class="wc-headline">트렌드 도출 · 근거 갱신</div>
-          <ul class="wc-checklist">
-            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S2" data-desc="삼성 AI 모듈러 홈 플랫폼 출시(impact 5.0) → T1 카드 근거에 추가 반영"><span><b>삼성 AI 모듈러 홈 플랫폼 출시</b> (impact 5.0) — T1 AI에이전트 카드 근거 추가</span></label></li>
-            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S2" data-desc="Midea 에이전틱 팩토리 부상 → 카테고리 표 핵심 시사에 자율제조 사례 추가"><span><b>Midea 에이전틱 팩토리 부상</b> — 카테고리 표 핵심 시사에 자율제조 사례 추가</span></label></li>
-          </ul>
+        <div class="wc-stage-head">
+          <div style="display:flex; align-items:center; gap:10px">
+            <span class="wc-stage-badge">S1</span>
+            <span class="wc-headline" style="margin:0">분석 프레임 · STEEP 신호</span>
+          </div>
+          <button class="wc-stage-sel-btn" onclick="wcSelectStage('S1')">S1 전체 선택</button>
         </div>
+        <ul class="wc-checklist">
+          <li><label class="wc-item"><span><b>반도체 원가 급등</b> — Economic×기술축에 "(+)반도체원가↑" 신호 추가</span><input type="checkbox" class="wc-cb" data-stage="S1" data-desc="반도체 원가 급등 → Economic×기술축 &quot;(+)반도체원가↑&quot; 신호 추가"></label></li>
+          <li><label class="wc-item"><span><b>소비자 지출 위축</b> — Economic×소비자축에 "소비지출↓(26H1)" 신호 추가</span><input type="checkbox" class="wc-cb" data-stage="S1" data-desc="소비자 지출 위축 → Economic×소비자축 &quot;소비지출↓(26H1)&quot; 신호 추가"></label></li>
+          <li><label class="wc-item"><span><b>AI 플랫폼 생태계 경쟁</b> — Technological×소비자축에 "AI모듈러홈 생태계" 추가</span><input type="checkbox" class="wc-cb" data-stage="S1" data-desc="AI 플랫폼 생태계 경쟁 → Technological×소비자축에 &quot;AI모듈러홈 생태계&quot; 추가"></label></li>
+        </ul>
       </div>
 
       <div class="wc-stage-row">
-        <span class="wc-stage-badge">S3</span>
-        <div class="wc-stage-content">
-          <div class="wc-headline">성숙도·영향 · 위치 및 위협 갱신</div>
-          <ul class="wc-checklist">
-            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S3" data-desc="T1 AI에이전트 성숙도 상향 → &quot;선점 베팅&quot; → &quot;즉시 대응&quot; 경계 진입 배지 추가"><span><b>T1 성숙도 상향</b> — "선점 베팅" → "즉시 대응" 경계 진입, 배지 추가</span></label></li>
-            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S3" data-desc="반도체 원가 급등 + 소비자 지출 위축 이중 역풍 → 신규 위협 카드 추가"><span><b>반도체 원가·소비지출 이중 역풍</b> — 신규 위협 카드 추가</span></label></li>
-          </ul>
+        <div class="wc-stage-head">
+          <div style="display:flex; align-items:center; gap:10px">
+            <span class="wc-stage-badge">S2</span>
+            <span class="wc-headline" style="margin:0">트렌드 도출 · 근거 갱신</span>
+          </div>
+          <button class="wc-stage-sel-btn" onclick="wcSelectStage('S2')">S2 전체 선택</button>
         </div>
+        <ul class="wc-checklist">
+          <li><label class="wc-item"><span><b>삼성 AI 모듈러 홈 플랫폼 출시</b> (impact 5.0) — T1 AI에이전트 카드 근거 추가</span><input type="checkbox" class="wc-cb" data-stage="S2" data-desc="삼성 AI 모듈러 홈 플랫폼 출시(impact 5.0) → T1 카드 근거에 추가 반영"></label></li>
+          <li><label class="wc-item"><span><b>Midea 에이전틱 팩토리 부상</b> — 카테고리 표 핵심 시사에 자율제조 사례 추가</span><input type="checkbox" class="wc-cb" data-stage="S2" data-desc="Midea 에이전틱 팩토리 부상 → 카테고리 표 핵심 시사에 자율제조 사례 추가"></label></li>
+        </ul>
       </div>
 
       <div class="wc-stage-row">
-        <span class="wc-stage-badge">S4</span>
-        <div class="wc-stage-content">
-          <div class="wc-headline">경쟁사 대응 · 신규 동향 반영</div>
-          <ul class="wc-checklist">
-            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S4" data-desc="삼성 AI 모듈러 홈 → 당사 T1 히트맵 셀에 &quot;+AI모듈러홈(26.6)&quot; 추가"><span><b>삼성 AI 모듈러 홈</b> — 당사 T1 히트맵 셀 업데이트</span></label></li>
-            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S4" data-desc="Midea 에이전틱 팩토리 → Midea 행 T2 셀에 &quot;+에이전틱팩토리&quot; 추가"><span><b>Midea 에이전틱 팩토리</b> — Midea 행 T2 셀 추가</span></label></li>
-            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S4" data-desc="S4 fill-note에 [26.6 업데이트] — T1 선도 재확인 + Midea 에이전틱 팩토리 심층 주시 문구 추가"><span><b>fill-note [26.6 업데이트]</b> — T1 선도 재확인 + 에이전틱 팩토리 심층 주시 추가</span></label></li>
-          </ul>
+        <div class="wc-stage-head">
+          <div style="display:flex; align-items:center; gap:10px">
+            <span class="wc-stage-badge">S3</span>
+            <span class="wc-headline" style="margin:0">성숙도·영향 · 위치 및 위협 갱신</span>
+          </div>
+          <button class="wc-stage-sel-btn" onclick="wcSelectStage('S3')">S3 전체 선택</button>
         </div>
+        <ul class="wc-checklist">
+          <li><label class="wc-item"><span><b>T1 성숙도 상향</b> — "선점 베팅" → "즉시 대응" 경계 진입, 배지 추가</span><input type="checkbox" class="wc-cb" data-stage="S3" data-desc="T1 AI에이전트 성숙도 상향 → &quot;선점 베팅&quot; → &quot;즉시 대응&quot; 경계 진입 배지 추가"></label></li>
+          <li><label class="wc-item"><span><b>반도체 원가·소비지출 이중 역풍</b> — 신규 위협 카드 추가</span><input type="checkbox" class="wc-cb" data-stage="S3" data-desc="반도체 원가 급등 + 소비자 지출 위축 이중 역풍 → 신규 위협 카드 추가"></label></li>
+        </ul>
       </div>
 
       <div class="wc-stage-row">
-        <span class="wc-stage-badge">S5</span>
-        <div class="wc-stage-content">
-          <div class="wc-headline">당사 현위치 · 갭 진단 보강</div>
-          <ul class="wc-checklist">
-            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S5" data-desc="AI 모듈러 홈 선도권 → 호각·우위 카드 T1 설명에 &quot;AI모듈러홈(26.6) 선도권 재확인&quot; 추가"><span><b>AI 플랫폼 선도권 재확인</b> — 호각·우위 카드 T1 설명 갱신</span></label></li>
-            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S5" data-desc="반도체 원가 급등 → 호각·우위 카드에 &quot;[26.6] 원가 리스크 + 구독 전환 대응&quot; 주석 추가"><span><b>원가 리스크 주석</b> — 반도체 원가 급등 반영, 구독 전환 대응 병기</span></label></li>
-          </ul>
+        <div class="wc-stage-head">
+          <div style="display:flex; align-items:center; gap:10px">
+            <span class="wc-stage-badge">S4</span>
+            <span class="wc-headline" style="margin:0">경쟁사 대응 · 신규 동향 반영</span>
+          </div>
+          <button class="wc-stage-sel-btn" onclick="wcSelectStage('S4')">S4 전체 선택</button>
         </div>
+        <ul class="wc-checklist">
+          <li><label class="wc-item"><span><b>삼성 AI 모듈러 홈</b> — 당사 T1 히트맵 셀 업데이트</span><input type="checkbox" class="wc-cb" data-stage="S4" data-desc="삼성 AI 모듈러 홈 → 당사 T1 히트맵 셀에 &quot;+AI모듈러홈(26.6)&quot; 추가"></label></li>
+          <li><label class="wc-item"><span><b>Midea 에이전틱 팩토리</b> — Midea 행 T2 셀 추가</span><input type="checkbox" class="wc-cb" data-stage="S4" data-desc="Midea 에이전틱 팩토리 → Midea 행 T2 셀에 &quot;+에이전틱팩토리&quot; 추가"></label></li>
+          <li><label class="wc-item"><span><b>fill-note [26.6 업데이트]</b> — T1 선도 재확인 + 에이전틱 팩토리 심층 주시 추가</span><input type="checkbox" class="wc-cb" data-stage="S4" data-desc="S4 fill-note에 [26.6 업데이트] — T1 선도 재확인 + Midea 에이전틱 팩토리 심층 주시 문구 추가"></label></li>
+        </ul>
       </div>
 
       <div class="wc-stage-row">
-        <span class="wc-stage-badge">S6</span>
-        <div class="wc-stage-content">
-          <div class="wc-headline">당사 전략 · 로드맵 조기화</div>
-          <ul class="wc-checklist">
-            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S6" data-desc="AI 모듈러 홈 마일스톤 조기화 → 단기 로드맵에 &quot;[26.6 조기화] SmartThings 파트너 생태계 2026 내 가속&quot; + 반도체 원가 쇼크 대응 구독 번들 확대 추가"><span><b>AI 스마트홈 마일스톤 조기화</b> — SmartThings 생태계 2026 내 가속, 단기 로드맵 반영</span></label></li>
-            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S6" data-desc="경기 위축 시나리오 → 장기 로드맵에 &quot;소비자 지출 위축 시 구독·HaaS 비중 확대&quot; 옵션 추가"><span><b>경기 위축 시나리오</b> — 장기 로드맵에 방어 포트폴리오 조정 옵션 추가</span></label></li>
-          </ul>
+        <div class="wc-stage-head">
+          <div style="display:flex; align-items:center; gap:10px">
+            <span class="wc-stage-badge">S5</span>
+            <span class="wc-headline" style="margin:0">당사 현위치 · 갭 진단 보강</span>
+          </div>
+          <button class="wc-stage-sel-btn" onclick="wcSelectStage('S5')">S5 전체 선택</button>
         </div>
+        <ul class="wc-checklist">
+          <li><label class="wc-item"><span><b>AI 플랫폼 선도권 재확인</b> — 호각·우위 카드 T1 설명 갱신</span><input type="checkbox" class="wc-cb" data-stage="S5" data-desc="AI 모듈러 홈 선도권 → 호각·우위 카드 T1 설명에 &quot;AI모듈러홈(26.6) 선도권 재확인&quot; 추가"></label></li>
+          <li><label class="wc-item"><span><b>원가 리스크 주석</b> — 반도체 원가 급등 반영, 구독 전환 대응 병기</span><input type="checkbox" class="wc-cb" data-stage="S5" data-desc="반도체 원가 급등 → 호각·우위 카드에 &quot;[26.6] 원가 리스크 + 구독 전환 대응&quot; 주석 추가"></label></li>
+        </ul>
+      </div>
+
+      <div class="wc-stage-row">
+        <div class="wc-stage-head">
+          <div style="display:flex; align-items:center; gap:10px">
+            <span class="wc-stage-badge">S6</span>
+            <span class="wc-headline" style="margin:0">당사 전략 · 로드맵 조기화</span>
+          </div>
+          <button class="wc-stage-sel-btn" onclick="wcSelectStage('S6')">S6 전체 선택</button>
+        </div>
+        <ul class="wc-checklist">
+          <li><label class="wc-item"><span><b>AI 스마트홈 마일스톤 조기화</b> — SmartThings 생태계 2026 내 가속, 단기 로드맵 반영</span><input type="checkbox" class="wc-cb" data-stage="S6" data-desc="AI 모듈러 홈 마일스톤 조기화 → 단기 로드맵에 &quot;[26.6 조기화] SmartThings 파트너 생태계 2026 내 가속&quot; + 반도체 원가 쇼크 대응 구독 번들 확대 추가"></label></li>
+          <li><label class="wc-item"><span><b>경기 위축 시나리오</b> — 장기 로드맵에 방어 포트폴리오 조정 옵션 추가</span><input type="checkbox" class="wc-cb" data-stage="S6" data-desc="경기 위축 시나리오 → 장기 로드맵에 &quot;소비자 지출 위축 시 구독·HaaS 비중 확대&quot; 옵션 추가"></label></li>
+        </ul>
       </div>
     </div>
     <div class="wc-apply-bar">
@@ -739,13 +770,32 @@ function wcUpdate(){
   const badge=document.getElementById('wc-count-badge');
   if(badge){badge.textContent=n?n+'개 선택':'미선택';badge.className='wc-status '+(n?'reflected':'pending');}
   document.querySelectorAll('.wc-item').forEach(l=>{l.classList.toggle('checked',l.querySelector('input').checked);});
+  // 단계별 선택 버튼 텍스트 갱신
+  ['S1','S2','S3','S4','S5','S6'].forEach(s=>{
+    const stageCbs=[...document.querySelectorAll(`.wc-cb[data-stage="${s}"]`)];
+    const btn=document.querySelector(`[onclick="wcSelectStage('${s}')"]`);
+    if(!btn||!stageCbs.length)return;
+    const allChecked=stageCbs.every(c=>c.checked);
+    btn.textContent=allChecked?`${s} 선택 해제`:`${s} 전체 선택`;
+  });
+}
+function wcSelectAll(){
+  document.querySelectorAll('.wc-cb').forEach(c=>{c.checked=true;});wcUpdate();
+}
+function wcDeselectAll(){
+  document.querySelectorAll('.wc-cb').forEach(c=>{c.checked=false;});wcUpdate();
+}
+function wcSelectStage(stage){
+  const cbs=[...document.querySelectorAll(`.wc-cb[data-stage="${stage}"]`)];
+  const allChecked=cbs.every(c=>c.checked);
+  cbs.forEach(c=>{c.checked=!allChecked;});wcUpdate();
 }
 function wcShowSelected(){
   const cbs=[...document.querySelectorAll('.wc-cb')].filter(c=>c.checked);
   const panel=document.getElementById('wc-selected-panel');
   const list=document.getElementById('wc-selected-list');
   if(!cbs.length){alert('선택된 항목이 없습니다.');return;}
-  list.innerHTML=cbs.map(c=>`<div style="padding:3px 0; border-bottom:1px solid var(--line)"><span style="font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--warn);background:rgba(245,158,11,.15);padding:1px 6px;border-radius:4px;margin-right:6px">${c.dataset.stage}</span>${c.dataset.desc}</div>`).join('');
+  list.innerHTML=cbs.map(c=>`<div style="padding:4px 0; border-bottom:1px solid var(--line)"><span style="font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--warn);background:rgba(245,158,11,.15);padding:1px 6px;border-radius:4px;margin-right:8px">${c.dataset.stage}</span>${c.dataset.desc}</div>`).join('');
   panel.style.display='block';
   panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
