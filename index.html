@@ -218,6 +218,15 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
   font-size:13px; color:var(--muted); font-family:var(--font-sans);
 }
 .wc-empty span{display:block; font-size:11px; color:var(--faint); margin-top:4px;}
+.wc-checklist{list-style:none; padding:0; margin:8px 0 0; display:flex; flex-direction:column; gap:4px}
+.wc-item{display:flex; align-items:flex-start; gap:8px; font-size:12.5px; color:var(--muted); cursor:pointer; padding:6px 8px; border-radius:6px; transition:.15s; line-height:1.5; user-select:none}
+.wc-item:hover{background:rgba(245,158,11,.08)}
+.wc-item.checked{background:rgba(245,158,11,.16); color:var(--ink)}
+.wc-item input[type=checkbox]{margin-top:2px; flex:none; accent-color:var(--warn-border); width:14px; height:14px; cursor:pointer}
+.wc-apply-bar{padding:12px 20px 16px; border-top:1px solid rgba(245,158,11,.3); display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+.wc-apply-btn{font-family:var(--font-sans); font-size:12.5px; font-weight:700; color:#fff; background:var(--warn-border); border:none; border-radius:8px; padding:7px 18px; cursor:pointer; transition:.15s}
+.wc-apply-btn:hover{background:var(--warn)}
+.wc-selected-panel{margin-top:12px; background:var(--surface); border:1px solid var(--warn-border); border-radius:10px; padding:16px 20px; display:none}
 
 @media(max-width:860px){
   .flow .lbl{display:none}
@@ -269,87 +278,89 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
   <div class="weekly-check">
     <div class="weekly-check-head">
       <span class="wc-badge">📰 주간 점검</span>
-      <span class="wc-title">MI 트렌드 점검 — 1~6단계 반영 검토</span>
-      <span class="wc-date">분석 기간: 2026-06-15 ~ 2026-06-21</span>
-      <span class="wc-status" style="background:var(--ok); color:#fff; font-size:11px; padding:2px 8px; border-radius:20px; font-weight:700">반영 완료</span>
+      <span class="wc-title">MI 트렌드 점검 — 단계별 반영 선택</span>
+      <span class="wc-date">2026-06-15 ~ 2026-06-21</span>
+      <span class="wc-status pending" id="wc-count-badge">미선택</span>
     </div>
     <div class="weekly-check-body">
-      <p style="font-size:13px; color:var(--warn); font-weight:600; padding:0 0 10px; border-bottom:1px solid rgba(245,158,11,.3); margin-bottom:6px">이번 주 MI는 삼성·LG의 AI 플랫폼 전략 가속화, 중국 Midea의 에이전틱 팩토리 부상, 그리고 반도체 원가 급등·소비자 지출 위축이라는 거시 역풍이 동시에 포착된 고밀도 주간이었습니다. 전 단계에 걸쳐 반영 완료.</p>
+      <p style="font-size:12px; color:var(--muted); padding:0 0 12px; border-bottom:1px solid rgba(245,158,11,.25); margin-bottom:4px">이번 주 MI 핵심: 삼성·LG AI 플랫폼 가속 / Midea 에이전틱 팩토리 부상 / 반도체 원가 급등 + 소비지출 위축. 아래 항목 중 <b style="color:var(--ink)">반영할 것만 체크</b>하고 "선택 항목 확인"을 누르세요.</p>
 
       <div class="wc-stage-row">
         <span class="wc-stage-badge">S1</span>
         <div class="wc-stage-content">
-          <div class="wc-headline">분석 프레임 · STEEP 신호 5개 추가</div>
-          <ul class="wc-news" style="padding-left:16px; margin-top:4px">
-            <li><b>반도체 원가 급등</b> — Economic×기술축 셀에 "(+)반도체원가↑" 신호 추가</li>
-            <li><b>소비자 지출 위축</b> — Economic×소비자축 셀에 "소비지출↓(26H1)" 신호 추가</li>
-            <li><b>AI 플랫폼 생태계 경쟁</b> — Technological×소비자축에 "AI모듈러홈 생태계 경쟁" 추가</li>
+          <div class="wc-headline">분석 프레임 · STEEP 신호</div>
+          <ul class="wc-checklist">
+            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S1" data-desc="반도체 원가 급등 → Economic×기술축 &quot;(+)반도체원가↑&quot; 신호 추가"><span><b>반도체 원가 급등</b> — Economic×기술축에 "(+)반도체원가↑" 신호 추가</span></label></li>
+            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S1" data-desc="소비자 지출 위축 → Economic×소비자축 &quot;소비지출↓(26H1)&quot; 신호 추가"><span><b>소비자 지출 위축</b> — Economic×소비자축에 "소비지출↓(26H1)" 신호 추가</span></label></li>
+            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S1" data-desc="AI 플랫폼 생태계 경쟁 → Technological×소비자축에 &quot;AI모듈러홈 생태계&quot; 추가"><span><b>AI 플랫폼 생태계 경쟁</b> — Technological×소비자축에 "AI모듈러홈 생태계" 추가</span></label></li>
           </ul>
-          <div class="wc-action">▶ STEEP 매트릭스 Economic·Technological 셀 가정치를 2026년 상반기 실적 기반으로 갱신 완료</div>
         </div>
       </div>
 
       <div class="wc-stage-row">
         <span class="wc-stage-badge">S2</span>
         <div class="wc-stage-content">
-          <div class="wc-headline">트렌드 도출 · T1 근거 갱신, 자율제조 사례 추가</div>
-          <ul class="wc-news" style="padding-left:16px; margin-top:4px">
-            <li><b>삼성 AI 모듈러 홈 플랫폼 출시(impact 5.0)</b> — T1 AI에이전트 카드 근거에 추가 반영</li>
-            <li><b>Midea 에이전틱 팩토리</b> — 카테고리 표 핵심 시사에 자율제조 상용화 사례로 추가</li>
+          <div class="wc-headline">트렌드 도출 · 근거 갱신</div>
+          <ul class="wc-checklist">
+            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S2" data-desc="삼성 AI 모듈러 홈 플랫폼 출시(impact 5.0) → T1 카드 근거에 추가 반영"><span><b>삼성 AI 모듈러 홈 플랫폼 출시</b> (impact 5.0) — T1 AI에이전트 카드 근거 추가</span></label></li>
+            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S2" data-desc="Midea 에이전틱 팩토리 부상 → 카테고리 표 핵심 시사에 자율제조 사례 추가"><span><b>Midea 에이전틱 팩토리 부상</b> — 카테고리 표 핵심 시사에 자율제조 사례 추가</span></label></li>
           </ul>
-          <div class="wc-action">▶ T1 카드 및 카테고리 표 핵심 시사 업데이트 완료</div>
         </div>
       </div>
 
       <div class="wc-stage-row">
         <span class="wc-stage-badge">S3</span>
         <div class="wc-stage-content">
-          <div class="wc-headline">성숙도·영향 · T1 성숙도 상향, 원가 위협 카드 추가</div>
-          <ul class="wc-news" style="padding-left:16px; margin-top:4px">
-            <li><b>T1 AI에이전트 성숙도 상향</b> — 삼성 AI 모듈러 홈 실제 출시로 "선점 베팅" → "즉시 대응" 경계 진입</li>
-            <li><b>반도체 원가·소비지출 이중 역풍</b> — 신규 위협 카드 추가</li>
+          <div class="wc-headline">성숙도·영향 · 위치 및 위협 갱신</div>
+          <ul class="wc-checklist">
+            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S3" data-desc="T1 AI에이전트 성숙도 상향 → &quot;선점 베팅&quot; → &quot;즉시 대응&quot; 경계 진입 배지 추가"><span><b>T1 성숙도 상향</b> — "선점 베팅" → "즉시 대응" 경계 진입, 배지 추가</span></label></li>
+            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S3" data-desc="반도체 원가 급등 + 소비자 지출 위축 이중 역풍 → 신규 위협 카드 추가"><span><b>반도체 원가·소비지출 이중 역풍</b> — 신규 위협 카드 추가</span></label></li>
           </ul>
-          <div class="wc-action">▶ T1 위치 주석 업데이트, 원가 위협 카드 S3 섹션에 반영 완료</div>
         </div>
       </div>
 
       <div class="wc-stage-row">
         <span class="wc-stage-badge">S4</span>
         <div class="wc-stage-content">
-          <div class="wc-headline">경쟁사 대응 · 6건 신규 동향 추가</div>
-          <ul class="wc-news" style="padding-left:16px; margin-top:4px">
-            <li><b>삼성 AI 모듈러 홈 플랫폼</b> — 당사 T1 셀 업데이트 (Bespoke+Gemini·AI모듈러홈)</li>
-            <li><b>Midea 에이전틱 팩토리</b> — Midea 행 T2 셀에 ○ 에이전틱팩토리 추가</li>
-            <li><b>LG AI 플랫폼 가속</b> — LG 행 T1 셀 코멘트 보강</li>
+          <div class="wc-headline">경쟁사 대응 · 신규 동향 반영</div>
+          <ul class="wc-checklist">
+            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S4" data-desc="삼성 AI 모듈러 홈 → 당사 T1 히트맵 셀에 &quot;+AI모듈러홈(26.6)&quot; 추가"><span><b>삼성 AI 모듈러 홈</b> — 당사 T1 히트맵 셀 업데이트</span></label></li>
+            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S4" data-desc="Midea 에이전틱 팩토리 → Midea 행 T2 셀에 &quot;+에이전틱팩토리&quot; 추가"><span><b>Midea 에이전틱 팩토리</b> — Midea 행 T2 셀 추가</span></label></li>
+            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S4" data-desc="S4 fill-note에 [26.6 업데이트] — T1 선도 재확인 + Midea 에이전틱 팩토리 심층 주시 문구 추가"><span><b>fill-note [26.6 업데이트]</b> — T1 선도 재확인 + 에이전틱 팩토리 심층 주시 추가</span></label></li>
           </ul>
-          <div class="wc-action">▶ 경쟁사 히트맵 + fill note 업데이트 완료, Midea 에이전틱 팩토리 심층 주시 필요</div>
         </div>
       </div>
 
       <div class="wc-stage-row">
         <span class="wc-stage-badge">S5</span>
         <div class="wc-stage-content">
-          <div class="wc-headline">당사 현위치 · AI 플랫폼 갭 기준값 재산정</div>
-          <ul class="wc-news" style="padding-left:16px; margin-top:4px">
-            <li><b>AI 플랫폼 역량 기준값 갱신</b> — 삼성 AI 모듈러 홈 출시 기준으로 선도 지위 재확인</li>
-            <li><b>원가 구조 갭</b> — 반도체 원가 급등 반영한 위협 주석 추가</li>
+          <div class="wc-headline">당사 현위치 · 갭 진단 보강</div>
+          <ul class="wc-checklist">
+            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S5" data-desc="AI 모듈러 홈 선도권 → 호각·우위 카드 T1 설명에 &quot;AI모듈러홈(26.6) 선도권 재확인&quot; 추가"><span><b>AI 플랫폼 선도권 재확인</b> — 호각·우위 카드 T1 설명 갱신</span></label></li>
+            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S5" data-desc="반도체 원가 급등 → 호각·우위 카드에 &quot;[26.6] 원가 리스크 + 구독 전환 대응&quot; 주석 추가"><span><b>원가 리스크 주석</b> — 반도체 원가 급등 반영, 구독 전환 대응 병기</span></label></li>
           </ul>
-          <div class="wc-action">▶ 갭 진단 카드 보강 완료, 원가 구조 갭 항목 분기 실적 후 재산정 권고</div>
         </div>
       </div>
 
       <div class="wc-stage-row">
         <span class="wc-stage-badge">S6</span>
         <div class="wc-stage-content">
-          <div class="wc-headline">당사 전략 · AI 스마트홈 마일스톤 조기화</div>
-          <ul class="wc-news" style="padding-left:16px; margin-top:4px">
-            <li><b>AI 모듈러 홈 플랫폼 대응 마일스톤 조기화</b> — 단기 로드맵에 2025 내 생태계 연동 확대 반영</li>
-            <li><b>경기 위축 시나리오</b> — 로드맵에 방어 포트폴리오 조정 옵션 주석 추가</li>
+          <div class="wc-headline">당사 전략 · 로드맵 조기화</div>
+          <ul class="wc-checklist">
+            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S6" data-desc="AI 모듈러 홈 마일스톤 조기화 → 단기 로드맵에 &quot;[26.6 조기화] SmartThings 파트너 생태계 2026 내 가속&quot; + 반도체 원가 쇼크 대응 구독 번들 확대 추가"><span><b>AI 스마트홈 마일스톤 조기화</b> — SmartThings 생태계 2026 내 가속, 단기 로드맵 반영</span></label></li>
+            <li><label class="wc-item"><input type="checkbox" class="wc-cb" data-stage="S6" data-desc="경기 위축 시나리오 → 장기 로드맵에 &quot;소비자 지출 위축 시 구독·HaaS 비중 확대&quot; 옵션 추가"><span><b>경기 위축 시나리오</b> — 장기 로드맵에 방어 포트폴리오 조정 옵션 추가</span></label></li>
           </ul>
-          <div class="wc-action">▶ 로드맵 단기 항목 및 충돌 대응 내용 업데이트 완료</div>
         </div>
       </div>
     </div>
+    <div class="wc-apply-bar">
+      <button class="wc-apply-btn" onclick="wcShowSelected()">선택 항목 확인</button>
+      <span style="font-size:11.5px; color:var(--muted)">체크한 항목만 단계별 본문에 반영됩니다</span>
+    </div>
+  </div>
+  <div class="wc-selected-panel" id="wc-selected-panel">
+    <div style="font-size:13px; font-weight:700; color:var(--warn); margin-bottom:8px">✅ 반영 요청 항목</div>
+    <div id="wc-selected-list" style="font-size:12.5px; color:var(--muted); line-height:1.9"></div>
   </div>
 </section>
 <!-- WEEKLY-CHECK-END -->
@@ -375,8 +386,8 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
         </thead>
         <tbody>
           <tr><td class="axis">Social <small>1인가구·고령화·웰니스</small></td><td class="cell">T8</td><td class="cell hit">T5·T8</td><td class="cell">·</td><td class="cell">·</td></tr>
-          <tr><td class="axis">Technological <small>AI·로봇·센서·연결</small></td><td class="cell hit">T1·T2</td><td class="cell hit">T1 <small style="color:var(--accent)">AI모듈러홈 생태계</small></td><td class="cell">T7</td><td class="cell">T2 <small style="color:var(--muted)">에이전틱팩토리</small></td></tr>
-          <tr><td class="axis">Economic <small>가처분소득·구독·에너지비용</small></td><td class="cell">T2 <small style="color:var(--signal)">(+)반도체원가↑</small></td><td class="cell">T5 <small style="color:var(--signal)">소비지출↓(26H1)</small></td><td class="cell">·</td><td class="cell">(+)관세</td></tr>
+          <tr><td class="axis">Technological <small>AI·로봇·센서·연결</small></td><td class="cell hit">T1·T2</td><td class="cell hit">T1</td><td class="cell">T7</td><td class="cell">T2</td></tr>
+          <tr><td class="axis">Economic <small>가처분소득·구독·에너지비용</small></td><td class="cell">T2</td><td class="cell">T5</td><td class="cell">·</td><td class="cell">(+)관세</td></tr>
           <tr><td class="axis">Environmental <small>탄소규제·효율·순환경제</small></td><td class="cell hit">T3·T4·T7</td><td class="cell">·</td><td class="cell hit">T3·T6 <small style="color:var(--faint)">歐</small></td><td class="cell">T6 <small style="color:var(--faint)">歐</small></td></tr>
           <tr><td class="axis">Political <small>무역규제·관세·데이터주권</small></td><td class="cell">·</td><td class="cell">·</td><td class="cell hit">T3·T4 <small style="color:var(--faint)">美</small>·T6 <small style="color:var(--faint)">歐</small></td><td class="cell">관세 <small style="color:var(--faint)">美·中</small></td></tr>
         </tbody>
@@ -419,7 +430,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       </div>
     </div>
     <div class="grid4">
-      <div class="card"><div class="tag">T1</div><h4>AI 에이전트 가전</h4><span class="chip">Tech → 기술·소비자축</span><div class="ph">스마트가전 CAGR 20.6%($98B↑) · CES2026 Bespoke AI+Gemini · <b style="color:var(--signal)">삼성 AI 모듈러 홈 플랫폼 출시(26.6, impact 5.0)</b> — 생태계 경쟁 가속</div></div>
+      <div class="card"><div class="tag">T1</div><h4>AI 에이전트 가전</h4><span class="chip">Tech → 기술·소비자축</span><div class="ph">스마트가전 CAGR 20.6%($98B↑) · CES2026 Bespoke AI+Gemini</div></div>
       <div class="card" style="border-left:3px solid var(--accent)"><div class="tag">T2</div><h4>AI 데이터센터 냉각</h4><span class="chip">Tech·Econ → 기술·공급망축</span><div class="ph">B2B 공조(HVAC)의 거대 성장축 · FläktGroup 인수자산 직결 · 액체냉각 $55억→$190억(CAGR 23%)</div></div>
       <div class="card"><div class="tag">T3</div><h4>저GWP·자연냉매 전환</h4><span class="chip">Env·Pol → 규제·기술축</span><div class="ph">EPA 700GWP(25.1) · EU F-Gas 27년 · R-290 EU 38%</div></div>
       <div class="card"><div class="tag">T4</div><h4>히트펌프 전기화</h4><span class="chip">Env·Pol → 규제·기술축</span><div class="ph">$832억→$1,626억(CAGR 14.3%) · IEA 연 $1,600억</div></div>
@@ -448,7 +459,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       </table>
     </div>
     <div class="fill" style="margin-top:14px">
-      <p class="fill-note"><b>핵심 시사</b> · 냉장고·세탁·조리는 당사 선도(AI비전·익스트랙터 인덕션·비스포크 콤보) · <b style="color:var(--signal)">청소기 구조적 열세</b>(국내 매출 로보락 46% vs 삼성 22%)와 <b style="color:var(--signal)">식기세척 자동세제투입 공백</b>, <b style="color:var(--accent)">소형가전 미진입</b>이 5단계 갭 진단의 핵심 입력 · 인오븐카메라 AI는 경쟁사 모두 80개급 추격으로 차별화 소진 국면 · <b style="color:var(--signal)">[26.6 추가]</b> Midea 에이전틱 팩토리(자율제조) 부상 — 제조 원가 경쟁 심화 예고, 당사 제조 지능화 대응 긴급 점검 필요</p>
+      <p class="fill-note"><b>핵심 시사</b> · 냉장고·세탁·조리는 당사 선도(AI비전·익스트랙터 인덕션·비스포크 콤보) · <b style="color:var(--signal)">청소기 구조적 열세</b>(국내 매출 로보락 46% vs 삼성 22%)와 <b style="color:var(--signal)">식기세척 자동세제투입 공백</b>, <b style="color:var(--accent)">소형가전 미진입</b>이 5단계 갭 진단의 핵심 입력 · 인오븐카메라 AI는 경쟁사 모두 80개급 추격으로 차별화 소진 국면</p>
     </div>
   </div>
 </section>
@@ -464,7 +475,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       <!-- 영향도 × 성숙도 매트릭스 (Hype Cycle 흡수) -->
       <div>
         <div class="quad">
-          <div class="q"><div class="qh">高영향 · 미성숙</div><div class="ph" style="font-size:12px; color:var(--muted); margin-top:6px"><b style="color:var(--ink)">선점 베팅</b><br>T1 AI에이전트 <span style="font-size:10px; background:var(--signal); color:#fff; padding:1px 5px; border-radius:8px">→성숙 진입</span> · T7 VPP</div></div>
+          <div class="q"><div class="qh">高영향 · 미성숙</div><div class="ph" style="font-size:12px; color:var(--muted); margin-top:6px"><b style="color:var(--ink)">선점 베팅</b><br>T1 AI에이전트 · T7 VPP</div></div>
           <div class="q" style="background:linear-gradient(135deg,var(--accent-soft),#fff)"><div class="qh" style="color:var(--accent)">高영향 · 성숙 ★즉시</div><div class="ph" style="font-size:12px; color:var(--accent); font-weight:700; margin-top:6px">T2 DC냉각 <span style="font-size:10px; background:var(--accent); color:#fff; padding:1px 5px; border-radius:8px">수주 가시</span><br>T5 구독 <span style="font-size:10px; background:var(--accent); color:#fff; padding:1px 5px; border-radius:8px">매출 가시</span><br>T3 자연냉매</div></div>
           <div class="q"><div class="qh">低영향 · 미성숙</div><div class="ph" style="font-size:12px; color:var(--muted); margin-top:6px"><b style="color:var(--ink)">관찰</b><br>T8 실버·헬스</div></div>
           <div class="q"><div class="qh">低영향 · 성숙</div><div class="ph" style="font-size:12px; color:var(--muted); margin-top:6px"><b style="color:var(--ink)">효율 대응</b><br>T4 히트펌프 · T6 수리권</div></div>
@@ -476,7 +487,6 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
         <div class="card" style="border-left:3px solid var(--ok)"><div class="tag" style="color:var(--ok)">최대 기회 · T2 <span style="font-size:10px; background:var(--ok); color:#fff; padding:1px 5px; border-radius:8px">수주 가시</span></div><h4>DC냉각 = 장비판매→통합솔루션 B2B 전환</h4><div class="ph">액체냉각 $55억→$190억(2030, CAGR 23%) · <b>가시 수주잔고(보강)</b> · 과열기지만 실수주 동반</div></div>
         <div class="card" style="border-left:3px solid var(--ok)"><div class="tag" style="color:var(--ok)">기회 · T5 <span style="font-size:10px; background:var(--ok); color:#fff; padding:1px 5px; border-radius:8px">매출 가시</span></div><h4>구독으로 정체 수요 돌파 + 리커링 락인</h4><div class="ph">국내 구독시장 100조(2025) · <b>당사 AI구독클럽 누적매출(보강)</b> · 계몽기, 한국 선도</div></div>
         <div class="card"><div class="tag" style="color:var(--signal)">위협 · T3·T4</div><h4>냉매·전동화 규제 = 대응비용 + 부품 공급부족</h4><div class="ph">EPA 700GWP 제조금지(25.1) · 컴프레서 핵심부품 내재화 필요</div></div>
-        <div class="card" style="border-left:3px solid var(--signal)"><div class="tag" style="color:var(--signal)">신규 위협 · 거시역풍 <small style="font-size:10px; background:var(--signal); color:#fff; padding:1px 5px; border-radius:8px">26.6 추가</small></div><h4>반도체 원가 급등 + 소비자 지출 위축 = 이중 역풍</h4><div class="ph">반도체 원가 쇼크로 AI 가전 BOM 상승 압력 · 소비자 지출 위축으로 교체 수요 둔화 우려 → 구독·HaaS 전환으로 초기 구매 부담 완화 필요</div></div>
       </div>
     </div>
 
@@ -511,7 +521,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
           </tr>
         </thead>
         <tbody>
-          <tr><th>Midea</th><td>○</td><td class="lead">● MBT Climate <small style="color:var(--signal)">+에이전틱팩토리</small></td><td class="lead">● R290 620만대</td><td>○</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><th>Midea</th><td>○</td><td class="lead">● MBT Climate</td><td class="lead">● R290 620만대</td><td>○</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
           <tr><th>Haier</th><td class="lead">● Flavorly AI</td><td>–</td><td>○</td><td>–</td><td>–</td><td>○</td><td>○ GE Smart</td><td class="lead">● 재활로봇</td></tr>
           <tr><th>LG전자<br><small>HS·ES</small></th><td class="lead">● ThinQ·CLOiD</td><td class="lead">● 20조 목표</td><td>○ R290</td><td>○ Therma V</td><td class="lead">● 2.48조·30년6조</td><td>○</td><td>○ ThinQ Energy</td><td>○ CLOiD</td></tr>
           <tr><th>Whirlpool</th><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>○ Matter</td><td>–</td></tr>
@@ -522,7 +532,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
           <tr><th>Daikin<br><small>Goodman</small></th><td>–</td><td>○</td><td class="lead">● R-32 표준</td><td class="lead">● 북미1위</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
           <tr><th>JCI<br><small>York</small></th><td>–</td><td class="lead">● 백로그 $150억</td><td>○</td><td class="lead">● Bosch매각</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
           <tr><th>Lennox</th><td>–</td><td>–</td><td>○</td><td class="lead">● 북미강세</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
-          <tr><th class="own">당사<br><small>삼성DA+FläktGroup</small></th><td class="own lead">● Bespoke+Gemini<br><small style="color:var(--ok)">+AI모듈러홈(26.6)</small></td><td class="own lead">● FläktGroup</td><td class="own">○ 대응</td><td class="own">○ EHS</td><td class="own">○ AI구독클럽</td><td class="own">○ 대응</td><td class="own">○ SmartThings</td><td class="own">○ EdgeAware</td></tr>
+          <tr><th class="own">당사<br><small>삼성DA+FläktGroup</small></th><td class="own lead">● Bespoke+Gemini</td><td class="own lead">● FläktGroup</td><td class="own">○ 대응</td><td class="own">○ EHS</td><td class="own">○ AI구독클럽</td><td class="own">○ 대응</td><td class="own">○ SmartThings</td><td class="own">○ EdgeAware</td></tr>
         </tbody>
       </table>
     </div>
@@ -534,7 +544,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     </div>
 
     <div class="fill" style="margin-top:14px">
-      <p class="fill-note"><b>읽는 법</b> · 당사 ● vs 경쟁사 ● = 호각 / 당사 ○ vs 경쟁사 ● = <b>격차(추격 필요)</b> / 모두 – 인데 당사 진입 = <b>선점 기회</b><br>· <b style="color:var(--signal)">중국계 경계:</b> Midea(T3 R-290 620만대 ●, 에이전틱팩토리 T2)·Haier(T8 재활로봇 ●) — 당사 ○ 머무는 T3·T8 격차 주시<br>· <b>HVAC 순수강자(Trane·JCI·Lennox)</b>는 T2~T4에 집중 — DC냉각은 FläktGroup으로 호각, 히트펌프 북미는 Daikin·Lennox 대비 열위<br>· <b style="color:var(--signal)">[26.6 업데이트]</b> 삼성 AI 모듈러 홈 플랫폼 출시(impact 5.0) — 당사 T1 ● 선도 지위 재확인. Midea 에이전틱 팩토리는 제조 원가 경쟁력 위협 요소로 별도 심층 분석 필요</p>
+      <p class="fill-note"><b>읽는 법</b> · 당사 ● vs 경쟁사 ● = 호각 / 당사 ○ vs 경쟁사 ● = <b>격차(추격 필요)</b> / 모두 – 인데 당사 진입 = <b>선점 기회</b><br>· <b style="color:var(--signal)">중국계 경계:</b> Midea(T3 R-290 620만대 ●)·Haier(T8 재활로봇 ●) — 당사 ○ 머무는 T3·T8 격차 주시<br>· <b>HVAC 순수강자(Trane·JCI·Lennox)</b>는 T2~T4에 집중 — DC냉각은 FläktGroup으로 호각, 히트펌프 북미는 Daikin·Lennox 대비 열위</p>
     </div>
   </div>
 </section>
@@ -551,7 +561,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       <div class="card" style="border-top:3px solid var(--ok)">
         <div class="tag" style="color:var(--ok)">호각·우위 (지킨다)</div>
         <h4 style="font-size:14px">T1 AI에이전트 · T2 DC냉각</h4>
-        <div class="ph" style="color:var(--muted)">T1: Bespoke+Gemini·AI모듈러홈(26.6)으로 선도권 재확인 · T2: FläktGroup 인수로 LG·Midea와 동일 출발선. <b>격차 KPI:</b> 선도 지위 유지율·수주 점유율 · <b style="color:var(--signal)">[26.6]</b> 반도체 원가 급등으로 AI 가전 BOM 상승 → 구독 전환을 통한 초기 구매 부담 완화 병행 필요</div>
+        <div class="ph" style="color:var(--muted)">T1: Bespoke+Gemini 선도 · T2: FläktGroup 인수로 LG·Midea와 동일 출발선. <b>격차 KPI:</b> 선도 지위 유지율·수주 점유율</div>
       </div>
       <div class="card" style="border-top:3px solid var(--signal)">
         <div class="tag" style="color:var(--signal)">격차·추격 (좁힌다)</div>
@@ -635,9 +645,9 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 
     <!-- 단기·중기·장기 로드맵 (충돌 해결책 + 정량 목표 종착지) -->
     <div class="road">
-      <div class="phase"><div class="ph-h">단기</div><div class="ph-y">~2026</div><div class="ph" style="font-size:12.5px; color:var(--muted); margin-top:8px"><b style="color:var(--ink)">DC냉각 최우선 격상</b> — FläktGroup 시너지·NVIDIA 인증. AI+구독 락인 강화<br><b style="color:var(--signal)">[26.6 조기화]</b> <span style="color:var(--accent)">AI 모듈러 홈 플랫폼 생태계 연동 확대 — SmartThings 파트너 생태계 2026 내 가속 (삼성 출시 대응, 마일스톤 1년 앞당김)</span><br><span style="color:var(--signal)">▸기존사업 방어: 청소기 롤러물걸레·자동급배수 추격 + 식기세척 자동세제투입 탑재 + 소형 듀얼존 진입</span><br><span style="color:var(--signal)">▸충돌 대응: 표준 모듈화 설계 착수 · 반도체 원가 쇼크 대응 구독 번들 확대</span><br><span style="color:var(--accent); font-weight:700">◎ 목표: 신BM 매출비중 □□% · 청소기 국내점유 22→□□%</span></div></div>
+      <div class="phase"><div class="ph-h">단기</div><div class="ph-y">~2026</div><div class="ph" style="font-size:12.5px; color:var(--muted); margin-top:8px"><b style="color:var(--ink)">DC냉각 최우선 격상</b> — FläktGroup 시너지·NVIDIA 인증. AI+구독 락인 강화<br><span style="color:var(--signal)">▸기존사업 방어: 청소기 롤러물걸레·자동급배수 추격 + 식기세척 자동세제투입 탑재 + 소형 듀얼존 진입</span><br><span style="color:var(--signal)">▸충돌 대응: 표준 모듈화 설계 착수</span><br><span style="color:var(--accent); font-weight:700">◎ 목표: 신BM 매출비중 □□% · 청소기 국내점유 22→□□%</span></div></div>
       <div class="phase"><div class="ph-h">중기</div><div class="ph-y">2027~2028</div><div class="ph" style="font-size:12.5px; color:var(--muted); margin-top:8px"><b style="color:var(--ink)">자연냉매 규제차익</b> — EU 27년 R-410A 금지 선제 R-290/454B 확보<br><span style="color:var(--signal)">▸충돌 대응: 컴프레서 핵심부품 내재화율 제고</span><br><span style="color:var(--accent); font-weight:700">◎ 목표: 저GWP 라인업 □□%</span></div></div>
-      <div class="phase"><div class="ph-h">장기</div><div class="ph-y">2029~2030</div><div class="ph" style="font-size:12.5px; color:var(--muted); margin-top:8px"><b style="color:var(--ink)">VPP·실버 신수익 + 글로벌 선도</b> — 유틸리티 DR·Samsung Health 결합<br><span style="color:var(--signal)">▸경기 위축 시나리오: 소비자 지출 위축 지속 시 구독·HaaS 비중 확대 + 모듈 업그레이드형 포트폴리오 조정 옵션 검토(이번 분기 내 전략 회의 상정)</span><br><span style="color:var(--accent); font-weight:700">◎ 목표: 글로벌 냉각솔루션 점유율 □□% · 해외 구독 □□만</span></div></div>
+      <div class="phase"><div class="ph-h">장기</div><div class="ph-y">2029~2030</div><div class="ph" style="font-size:12.5px; color:var(--muted); margin-top:8px"><b style="color:var(--ink)">VPP·실버 신수익 + 글로벌 선도</b> — 유틸리티 DR·Samsung Health 결합<br><span style="color:var(--accent); font-weight:700">◎ 목표: 글로벌 냉각솔루션 점유율 □□% · 해외 구독 □□만</span></div></div>
     </div>
     <div class="fill" style="margin-top:18px">
       <p class="fill-note"><b>정량 목표 종착지(□□ = 내부 데이터 매핑)</b> · 각 로드맵 단계에 당사 핵심자산(SmartThings·AI 가전·FläktGroup) 연계해 '2030 신BM 매출비중·글로벌 냉각 점유율' 등 명확한 Goal 확정 · <b>당사 선도 선언 후보:</b> T5 구독(글로벌 공백 선점) · T2 DC냉각(FläktGroup 레버리지)</p>
@@ -722,6 +732,25 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 </style>
 
 <script>
+// 주간 점검 체크박스
+function wcUpdate(){
+  const cbs=[...document.querySelectorAll('.wc-cb')];
+  const n=cbs.filter(c=>c.checked).length;
+  const badge=document.getElementById('wc-count-badge');
+  if(badge){badge.textContent=n?n+'개 선택':'미선택';badge.className='wc-status '+(n?'reflected':'pending');}
+  document.querySelectorAll('.wc-item').forEach(l=>{l.classList.toggle('checked',l.querySelector('input').checked);});
+}
+function wcShowSelected(){
+  const cbs=[...document.querySelectorAll('.wc-cb')].filter(c=>c.checked);
+  const panel=document.getElementById('wc-selected-panel');
+  const list=document.getElementById('wc-selected-list');
+  if(!cbs.length){alert('선택된 항목이 없습니다.');return;}
+  list.innerHTML=cbs.map(c=>`<div style="padding:3px 0; border-bottom:1px solid var(--line)"><span style="font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--warn);background:rgba(245,158,11,.15);padding:1px 6px;border-radius:4px;margin-right:6px">${c.dataset.stage}</span>${c.dataset.desc}</div>`).join('');
+  panel.style.display='block';
+  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+document.addEventListener('change',e=>{if(e.target.classList.contains('wc-cb'))wcUpdate();});
+
 // 스크롤스파이 — 현재 단계 활성화 (흐름 레일 + 노드)
 const sections=[...document.querySelectorAll('section.step-sec')];
 const links=[...document.querySelectorAll('.flow a')];
