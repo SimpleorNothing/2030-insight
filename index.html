@@ -351,26 +351,35 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     <h2 class="sec-title">경쟁사 대응 현황 — 트렌드 × 경쟁사·당사</h2>
     <p class="sec-desc">트렌드별로 경쟁사가 무엇을 하고 있는지 매핑하고, 같은 표에 당사 현 위치를 나란히 둔다. 선도사·대응 공백·당사 격차를 한 눈에 — 5단계 갭 진단과 6단계 전략의 발판.</p>
 
-    <!-- 트렌드 × 경쟁사+당사 히트맵 (● 선도 / ○ 대응 / – 미확인) -->
+    <!-- 기업 × 트렌드 통합 히트맵 (● 선도 / ○ 대응 / – 미확인) -->
     <div class="heat">
-      <table>
+      <table style="min-width:900px">
         <thead>
           <tr>
-            <th style="text-align:left">트렌드 ↓ \ 경쟁사 →</th>
-            <th>Midea</th><th>Haier</th><th>BSH</th><th>Whirlpool</th>
-            <th>Electrolux</th><th>Daikin</th><th>LG전자<br><small>HS·ES</small></th>
-            <th class="own">당사<br><small>삼성DA</small></th>
+            <th style="text-align:left; min-width:130px">기업 ↓ \ 트렌드 →</th>
+            <th>T1<br><small style="color:#9fb4c4">AI에이전트</small></th>
+            <th>T2<br><small style="color:#9fb4c4">DC냉각</small></th>
+            <th>T3<br><small style="color:#9fb4c4">자연냉매</small></th>
+            <th>T4<br><small style="color:#9fb4c4">히트펌프</small></th>
+            <th>T5<br><small style="color:#9fb4c4">구독·XaaS</small></th>
+            <th>T6<br><small style="color:#9fb4c4">순환·수리권</small></th>
+            <th>T7<br><small style="color:#9fb4c4">VPP·그리드</small></th>
+            <th>T8<br><small style="color:#9fb4c4">실버·헬스</small></th>
           </tr>
         </thead>
         <tbody>
-          <tr><th>T1 AI에이전트</th><td>○</td><td class="lead">● Flavorly AI</td><td>○ Home Connect</td><td>–</td><td>–</td><td>–</td><td class="lead">● ThinQ·CLOiD</td><td class="own lead">● Bespoke+Gemini</td></tr>
-          <tr><th>T2 DC냉각</th><td class="lead">● MBT Climate</td><td>–</td><td>–</td><td>–</td><td>–</td><td>○</td><td class="lead">● 20조 목표</td><td class="own lead">● FläktGroup</td></tr>
-          <tr><th>T3 자연냉매</th><td class="lead">● R290 620만대</td><td>○</td><td class="lead">● 프로판 €10억</td><td>–</td><td>○</td><td class="lead">● R-32 표준</td><td>○ R290</td><td class="own">○ 대응</td></tr>
-          <tr><th>T4 히트펌프</th><td>○</td><td>–</td><td class="lead">● JCI주거 인수</td><td>–</td><td>–</td><td class="lead">● 북미1위 추진</td><td>○ Therma V</td><td class="own">○ EHS</td></tr>
-          <tr><th>T5 구독·XaaS</th><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td class="lead">● 2.48조·30년6조</td><td class="own">○ AI구독클럽</td></tr>
-          <tr><th>T6 순환·수리권</th><td>–</td><td>○</td><td class="lead">● AI원격수리</td><td>–</td><td class="lead">● Circular Care</td><td>–</td><td>○</td><td class="own">○ 대응</td></tr>
-          <tr><th>T7 VPP·그리드</th><td>–</td><td>○ GE Smart</td><td>–</td><td>○ Matter</td><td>○ Matter</td><td>–</td><td>○ ThinQ Energy</td><td class="own">○ SmartThings</td></tr>
-          <tr><th>T8 실버·헬스</th><td>–</td><td class="lead">● 재활로봇</td><td>–</td><td>–</td><td>–</td><td>–</td><td>○ CLOiD</td><td class="own">○ EdgeAware</td></tr>
+          <tr><th>Midea</th><td>○</td><td class="lead">● MBT Climate</td><td class="lead">● R290 620만대</td><td>○</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><th>Haier</th><td class="lead">● Flavorly AI</td><td>–</td><td>○</td><td>–</td><td>–</td><td>○</td><td>○ GE Smart</td><td class="lead">● 재활로봇</td></tr>
+          <tr><th>LG전자<br><small>HS·ES</small></th><td class="lead">● ThinQ·CLOiD</td><td class="lead">● 20조 목표</td><td>○ R290</td><td>○ Therma V</td><td class="lead">● 2.48조·30년6조</td><td>○</td><td>○ ThinQ Energy</td><td>○ CLOiD</td></tr>
+          <tr><th>Whirlpool</th><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>–</td><td>○ Matter</td><td>–</td></tr>
+          <tr><th>Electrolux</th><td>–</td><td>–</td><td>○</td><td>–</td><td>–</td><td class="lead">● Circular Care</td><td>○ Matter</td><td>–</td></tr>
+          <tr><th>BSH<br><small>Bosch 공조 포함</small></th><td>○ Home Connect</td><td>–</td><td class="lead">● 프로판 €10억</td><td class="lead">● JCI주거 인수</td><td>–</td><td class="lead">● AI원격수리</td><td>–</td><td>–</td></tr>
+          <tr><th>Carrier</th><td>–</td><td>○</td><td class="lead">● R-454B</td><td>○</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><th>Trane<br><small>+LiquidStack</small></th><td>–</td><td class="lead">● CDU 10MW</td><td class="lead">● R-454B</td><td>○</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><th>Daikin<br><small>Goodman</small></th><td>–</td><td>○</td><td class="lead">● R-32 표준</td><td class="lead">● 북미1위</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><th>JCI<br><small>York</small></th><td>–</td><td class="lead">● 백로그 $150억</td><td>○</td><td class="lead">● Bosch매각</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><th>Lennox</th><td>–</td><td>–</td><td>○</td><td class="lead">● 북미강세</td><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          <tr><th class="own">당사<br><small>삼성DA+FläktGroup</small></th><td class="own lead">● Bespoke+Gemini</td><td class="own lead">● FläktGroup</td><td class="own">○ 대응</td><td class="own">○ EHS</td><td class="own">○ AI구독클럽</td><td class="own">○ 대응</td><td class="own">○ SmartThings</td><td class="own">○ EdgeAware</td></tr>
         </tbody>
       </table>
     </div>
@@ -378,33 +387,11 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       <span><i style="background:var(--accent)"></i>● 선도 (실투자·출시·M&A)</span>
       <span><i style="background:var(--accent-soft)"></i>○ 대응 중</span>
       <span><i style="background:var(--paper)"></i>– 미확인 = 공백</span>
-      <span><i style="background:var(--ok-soft)"></i>당사 열 = 5단계 갭 진단 입력</span>
-    </div>
-
-    <!-- HVAC 전문기업 전용 비교 (T2~T4) -->
-    <h3 style="font-size:15px; font-weight:700; margin:26px 0 10px; color:var(--muted)">HVAC 전문기업 비교군 — 공조 트렌드(T2·T3·T4) 전용</h3>
-    <div class="heat">
-      <table>
-        <thead>
-          <tr>
-            <th style="text-align:left">공조 트렌드 ↓ \ HVAC 전문 →</th>
-            <th>Carrier</th><th>Trane<br><small>+LiquidStack</small></th><th>JCI<br><small>York</small></th><th>Daikin<br><small>Goodman</small></th><th>Lennox</th>
-            <th class="own">당사<br><small>+FläktGroup</small></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><th>T2 DC냉각</th><td>○</td><td class="lead">● CDU 10MW</td><td class="lead">● 백로그 $150억</td><td>○</td><td>–</td><td class="own lead">● FläktGroup</td></tr>
-          <tr><th>T3 자연냉매</th><td class="lead">● R-454B</td><td class="lead">● R-454B</td><td>○</td><td class="lead">● R-32 표준</td><td>○</td><td class="own">○ 대응</td></tr>
-          <tr><th>T4 히트펌프</th><td>○</td><td>○</td><td class="lead">● Bosch매각</td><td class="lead">● 북미1위</td><td class="lead">● 북미강세</td><td class="own">○ EHS</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="fill" style="margin-top:14px">
-      <p class="fill-note"><b>읽는 법</b> · 가전 경쟁사 표에선 안 보이던 <b>HVAC 순수강자(Trane·JCI·Lennox)</b>가 T2~T4에서 강력 — 당사가 공조 진입자로서 직면할 진짜 비교군. DC냉각은 FläktGroup으로 호각이나, 히트펌프 북미는 Daikin·Lennox 대비 열위</p>
+      <span><i style="background:var(--ok-soft)"></i>당사 행 = 5단계 갭 진단 입력</span>
     </div>
 
     <div class="fill" style="margin-top:14px">
-      <p class="fill-note"><b>읽는 법(가전 표)</b> · 당사 ● vs 경쟁사 ● = 호각 / 당사 ○ vs 경쟁사 ● = <b>격차(추격 필요)</b> / 모두 – 인데 당사 진입 = <b>선점 기회</b> · <b style="color:var(--signal)">중국계 경계:</b> Midea(R-290 620만대 ●)·Haier(실버 재활로봇 ●) 추격에서 당사 ○ 머무는 T3·T8 격차 주시</p>
+      <p class="fill-note"><b>읽는 법</b> · 당사 ● vs 경쟁사 ● = 호각 / 당사 ○ vs 경쟁사 ● = <b>격차(추격 필요)</b> / 모두 – 인데 당사 진입 = <b>선점 기회</b><br>· <b style="color:var(--signal)">중국계 경계:</b> Midea(T3 R-290 620만대 ●)·Haier(T8 재활로봇 ●) — 당사 ○ 머무는 T3·T8 격차 주시<br>· <b>HVAC 순수강자(Trane·JCI·Lennox)</b>는 T2~T4에 집중 — DC냉각은 FläktGroup으로 호각, 히트펌프 북미는 Daikin·Lennox 대비 열위</p>
     </div>
   </div>
 </section>
