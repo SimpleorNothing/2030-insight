@@ -262,107 +262,120 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 <!-- ════════ S0 — 정보 업데이트 (인풋 단계) ════════ -->
 <section class="step-sec" id="s0">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">STEP 00</span><span class="sec-role">// 신호 공급 경로 — 0.1 위클리 → 0.2 수시</span></div>
+    <div class="sec-head"><span class="sec-num">STEP 00</span><span class="sec-role">// 신호 공급 — ① 소스 → ② Insight → ③ 반영</span></div>
     <h2 class="sec-title">정보 업데이트 — 분석 사슬에 신호를 공급하는 단계</h2>
-    <p class="sec-desc">S1~S6 분석이 도는 "엔진"이라면, 이 단계는 최신 신호를 끊임없이 넣어주는 "연료 공급"이다. 두 경로로 들어온 정보가 트렌드 도출·경쟁사·당사 위치를 주기적으로 갱신한다.</p>
+    <p class="sec-desc">S1~S6 분석이 도는 "엔진"이라면, 이 단계는 최신 신호를 끊임없이 넣어주는 "연료 공급"이다. 소스를 고르면 Claude가 Insight를 도출하고, 그중 필요한 것만 골라 해당 단계에 반영한다.</p>
 
-    <!-- 0.1 위클리 MI -->
-    <h3 style="font-size:16px; font-weight:800; margin:24px 0 6px"><span class="substep">0.1</span>위클리 업데이트 — S2·S4 갱신</h3>
-    <p class="sec-desc" style="margin-bottom:14px">매주 월요일, 전주(前週) 기사를 모아 반영. 경쟁사 신제품·M&A·규제 동향 등 빠르게 변하는 신호를 정기 리듬으로 포착.</p>
+    <style>
+    #s0 .s0-src{display:flex;align-items:flex-start;gap:11px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:15px 16px;cursor:pointer;transition:.15s;position:relative;text-align:left}
+    #s0 .s0-src:hover{border-color:var(--accent)}
+    #s0 .s0-src.on{border-color:var(--accent);background:var(--accent-soft)}
+    #s0 .s0-src .ico{width:30px;height:30px;flex:none;border-radius:8px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);color:var(--accent)}
+    #s0 .s0-src.on .ico{border-color:var(--accent)}
+    #s0 .s0-src h4{font-size:14px;font-weight:700;color:var(--ink);margin:0 0 2px}
+    #s0 .s0-src p{font-size:11px;color:var(--muted);margin:0}
+    #s0 .s0-src .tk{position:absolute;top:12px;right:12px;width:17px;height:17px;margin:0;pointer-events:none;accent-color:var(--accent)}
+    #s0 .s0-grp{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px;margin-bottom:12px}
+    #s0 .s0-row{display:flex;align-items:center;gap:14px;padding:10px 16px;border-radius:6px;transition:background-color .2s}
+    #s0 .s0-ghead{cursor:pointer}
+    #s0 .s0-ghead:hover,#s0 .s0-item:hover{background:#E6E1D6}
+    #s0 .s0-item{cursor:pointer}
+    #s0 .s0-stag{flex:none;font-size:11px;font-weight:700;color:#fff;background:var(--accent);border-radius:5px;padding:2px 7px;letter-spacing:.3px}
+    #s0 .s0-gname{flex:1;min-width:0;font-weight:700;color:var(--ink);font-size:13px}
+    #s0 .s0-gdesc{font-size:11px;color:var(--muted);font-weight:400;margin-left:2px}
+    #s0 .s0-itx{flex:1;min-width:0;font-size:12px;color:var(--ink);line-height:1.5}
+    #s0 .s0-cb{flex-shrink:0;margin:0;width:17px;height:17px;cursor:pointer;accent-color:var(--accent)}
+    #s0 .s0-bitem{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-top:1px solid #DAD3C6}
+    #s0 .s0-bitem:first-child{border-top:none}
+    #s0 .s0-del{flex:none;width:22px;height:22px;border:none;border-radius:6px;background:#E6E1D6;color:var(--muted);cursor:pointer;font-size:15px;line-height:1;transition:.12s}
+    #s0 .s0-del:hover{background:#EAD7D7;color:#A8453C}
+    #s0 .s0-btn{padding:10px 20px;border:none;border-radius:6px;color:#fff;font-weight:600;cursor:pointer;font-size:13px;transition:.15s}
+    #s0 .s0-btn:disabled{background:#C7C2BA !important;cursor:not-allowed}
+    #s0 .s0-spin{width:15px;height:15px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;display:inline-block;animation:s0spin .7s linear infinite}
+    @keyframes s0spin{to{transform:rotate(360deg)}}
+    </style>
 
-    <!-- 1. 위클리 — S1~S6 체크리스트 -->
-    <div class="s0-content-toggle" id="mi-articles-section" style="display:block; margin-top:16px; background:#F3EEE2; padding:20px; border-radius:12px">
-      <div style="margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid #DAD3C6; display:flex; justify-content:space-between; align-items:center">
-        <div style="color:var(--ink); font-size:13px"><b id="s0-weekly-status">이번 주 MI 핵심</b></div>
-        <button id="s0WeeklyToggleBtn" onclick="s0WeeklyToggleAll()" style="padding:6px 12px; background:#496176; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:12px">전체 선택</button>
-      </div>
-      <div style="display:grid; gap:14px">
-        <div style="border:1px solid #DAD3C6; border-radius:8px; padding:6px">
-          <div style="display:flex; align-items:center; gap:16px; padding:10px 16px; border-radius:6px; transition:background-color 0.2s" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'">
-            <span style="flex:1; min-width:0; font-weight:700; color:var(--ink); font-size:13px; cursor:pointer" onclick="s0ToggleSection('s1')">S1 분석 프레임 · STEEP 신호</span>
-            <input type="checkbox" id="s0WeeklyS1Btn" class="s0-section-cb" style="flex-shrink:0; margin:0; width:17px; height:17px; cursor:pointer" onchange="s0ToggleSectionCheckboxes('s1')">
-          </div>
-          <div style="display:flex; align-items:center; gap:16px; padding:10px 16px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked">
-            <span style="flex:1; min-width:0; font-size:12px"><span style="color:#496176; font-weight:700">1.1</span> 반도체 원가 급등으로 인한 가전 제조원가 상승 및 제품 가격 경쟁력 악화</span>
-            <input type="checkbox" class="s0-weekly-cb s0-weekly-s1" style="flex-shrink:0; margin:0; width:17px; height:17px; pointer-events:none">
-          </div>
-          <div style="display:flex; align-items:center; gap:16px; padding:10px 16px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked">
-            <span style="flex:1; min-width:0; font-size:12px"><span style="color:#496176; font-weight:700">1.2</span> 경기 부진에 따른 소비자 가전 구매력 위축 및 내수시장 둔화</span>
-            <input type="checkbox" class="s0-weekly-cb s0-weekly-s1" style="flex-shrink:0; margin:0; width:17px; height:17px; pointer-events:none">
-          </div>
-          <div style="display:flex; align-items:center; gap:16px; padding:10px 16px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked">
-            <span style="flex:1; min-width:0; font-size:12px"><span style="color:#496176; font-weight:700">1.3</span> AI 플랫폼 중심의 가전 생태계 재편으로 제품 방향성 재정의</span>
-            <input type="checkbox" class="s0-weekly-cb s0-weekly-s1" style="flex-shrink:0; margin:0; width:17px; height:17px; pointer-events:none">
-          </div>
+    <!-- ① 정보 소스 선택 -->
+    <h3 style="font-size:16px; font-weight:800; margin:24px 0 6px"><span class="substep">①</span>정보 소스 선택</h3>
+    <p class="sec-desc" style="margin-bottom:14px">Insight 도출에 쓸 소스를 고른다. 기존 도구 결과물 또는 직접 추가한 자료를 함께 넣을 수 있다.</p>
+
+    <div class="s0-content-toggle" style="background:#F3EEE2; padding:20px; border-radius:12px">
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:12px">
+        <div class="s0-src" data-src="MI" onclick="s0SrcToggle(this)">
+          <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span>
+          <span><h4>Market Insight</h4><p>mi.samsungda.net · 시장 신호</p></span>
+          <input type="checkbox" class="s0-cb tk">
         </div>
-        <div style="border:1px solid #DAD3C6; border-radius:8px; padding:6px">
-          <div style="display:flex; align-items:center; gap:16px; padding:10px 16px; border-radius:6px; transition:background-color 0.2s" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'">
-            <span style="flex:1; min-width:0; font-weight:700; color:var(--ink); font-size:13px; cursor:pointer" onclick="s0ToggleSection('s2')">S2 트렌드 도출 · 근거 갱신</span>
-            <input type="checkbox" id="s0WeeklyS2Btn" class="s0-section-cb" style="flex-shrink:0; margin:0; width:17px; height:17px; cursor:pointer" onchange="s0ToggleSectionCheckboxes('s2')">
-          </div>
-          <div style="display:flex; align-items:center; gap:16px; padding:10px 16px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked">
-            <span style="flex:1; min-width:0; font-size:12px"><span style="color:#496176; font-weight:700">2.1</span> 삼성의 AI 모듈러 홈 전략으로 T1 생태계 기반 근거 강화 및 경쟁우위 구축</span>
-            <input type="checkbox" class="s0-weekly-cb s0-weekly-s2" style="flex-shrink:0; margin:0; width:17px; height:17px; pointer-events:none">
-          </div>
-          <div style="display:flex; align-items:center; gap:16px; padding:10px 16px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked">
-            <span style="flex:1; min-width:0; font-size:12px"><span style="color:#496176; font-weight:700">2.2</span> Midea의 에이전틱 팩토리 추진으로 스마트 홈 카테고리 재편 및 혁신 신호</span>
-            <input type="checkbox" class="s0-weekly-cb s0-weekly-s2" style="flex-shrink:0; margin:0; width:17px; height:17px; pointer-events:none">
-          </div>
+        <div class="s0-src" data-src="2030" onclick="s0SrcToggle(this)">
+          <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <span><h4>2030 미래 트렌드</h4><p>2030.samsungda.net · 메가트렌드</p></span>
+          <input type="checkbox" class="s0-cb tk">
         </div>
-        <div style="border:1px solid #DAD3C6; border-radius:8px; padding:6px">
-          <div style="display:flex; align-items:center; gap:16px; padding:10px 16px; border-radius:6px; transition:background-color 0.2s" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'">
-            <span style="flex:1; min-width:0; font-weight:700; color:var(--ink); font-size:13px; cursor:pointer" onclick="s0ToggleSection('s3')">S3 성숙도·영향</span>
-            <input type="checkbox" id="s0WeeklyS3Btn" class="s0-section-cb" style="flex-shrink:0; margin:0; width:17px; height:17px; cursor:pointer" onchange="s0ToggleSectionCheckboxes('s3')">
-          </div>
-          <div style="display:flex; align-items:center; gap:16px; padding:10px 16px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked">
-            <span style="flex:1; min-width:0; font-size:12px"><span style="color:#496176; font-weight:700">3.1</span> T1 아마존 생태계의 성숙도 상향으로 가전 통합 전략의 신뢰도 강화</span>
-            <input type="checkbox" class="s0-weekly-cb s0-weekly-s3" style="flex-shrink:0; margin:0; width:17px; height:17px; pointer-events:none">
-          </div>
+        <div class="s0-src" data-src="agentguide" onclick="s0SrcToggle(this)">
+          <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h6"/></svg></span>
+          <span><h4>agentguide 보고서</h4><p>agentguide.samsungda.net · 조사 결과물</p></span>
+          <input type="checkbox" class="s0-cb tk">
         </div>
-        <div style="border:1px solid #DAD3C6; border-radius:8px; padding:6px">
-          <div style="display:flex; align-items:center; gap:16px; padding:10px 16px; border-radius:6px; transition:background-color 0.2s" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'">
-            <span style="flex:1; min-width:0; font-weight:700; color:var(--ink); font-size:13px; cursor:pointer" onclick="s0ToggleSection('s4')">S4 경쟁사 대응</span>
-            <input type="checkbox" id="s0WeeklyS4Btn" class="s0-section-cb" style="flex-shrink:0; margin:0; width:17px; height:17px; cursor:pointer" onchange="s0ToggleSectionCheckboxes('s4')">
-          </div>
-          <div style="display:flex; align-items:center; gap:16px; padding:10px 16px; border-radius:6px; transition:background-color 0.2s; cursor:pointer" onmouseenter="this.style.backgroundColor='#E6E1D6'" onmouseleave="this.style.backgroundColor='transparent'" onclick="this.querySelector('input[type=checkbox]').checked = !this.querySelector('input[type=checkbox]').checked">
-            <span style="flex:1; min-width:0; font-size:12px"><span style="color:#496176; font-weight:700">4.1</span> 삼성의 AI 모듈러 경쟁사 대응 현황을 T1 경쟁사 분석 히트맵에 반영 및 추적</span>
-            <input type="checkbox" class="s0-weekly-cb s0-weekly-s4" style="flex-shrink:0; margin:0; width:17px; height:17px; pointer-events:none">
-          </div>
+        <div class="s0-src" data-src="extra" onclick="s0SrcToggle(this)">
+          <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+          <span><h4>추가 소스</h4><p>URL · 파일 · 텍스트 직접 입력</p></span>
+          <input type="checkbox" class="s0-cb tk">
         </div>
       </div>
-      <div style="margin-top:18px; padding-top:18px; border-top:1px solid #DAD3C6; display:flex; justify-content:flex-end">
-        <button onclick="s0WeeklySubmit()" style="padding:10px 20px; background:#5E9468; border:none; border-radius:6px; color:#fff; font-weight:600; cursor:pointer; font-size:13px">완료</button>
+
+      <div id="s0-extra" style="display:none; margin-top:14px; border-top:1px solid #DAD3C6; padding-top:16px">
+        <div style="display:flex; gap:10px; margin-bottom:12px; border-bottom:1px solid var(--line)">
+          <button class="s0-xtab" data-tab="url" onclick="s0ExtraTab('url')" style="padding:8px 14px;background:none;border:none;border-bottom:2px solid var(--accent);color:var(--accent);font-weight:600;cursor:pointer;font-size:13px">URL</button>
+          <button class="s0-xtab" data-tab="file" onclick="s0ExtraTab('file')" style="padding:8px 14px;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);font-weight:600;cursor:pointer;font-size:13px">파일</button>
+          <button class="s0-xtab" data-tab="text" onclick="s0ExtraTab('text')" style="padding:8px 14px;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);font-weight:600;cursor:pointer;font-size:13px">텍스트</button>
+        </div>
+        <div id="s0-pane-url" class="s0-pane" style="display:block">
+          <input type="url" placeholder="https://www.example.com/article..." style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font-size:13px">
+          <div style="font-size:11px;color:var(--faint);margin-top:6px">뉴스·블로그 기사 링크. 유튜브는 별도 운영.</div>
+        </div>
+        <div id="s0-pane-file" class="s0-pane" style="display:none">
+          <input type="file" accept=".pdf,.docx,.txt" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font-size:13px">
+          <div style="font-size:11px;color:var(--faint);margin-top:6px">PDF · DOCX · TXT 지원</div>
+        </div>
+        <div id="s0-pane-text" class="s0-pane" style="display:none">
+          <textarea placeholder="분석할 텍스트를 붙여넣으세요..." style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font-size:13px;height:90px;font-family:inherit;resize:vertical"></textarea>
+        </div>
+      </div>
+
+      <div style="margin-top:18px; padding-top:16px; border-top:1px solid #DAD3C6; display:flex; align-items:center; gap:12px">
+        <button id="s0ExtractBtn" class="s0-btn" style="background:var(--accent)" disabled onclick="s0Extract()">Insight 뽑기</button>
+        <span id="s0ExtractHint" style="font-size:12px; color:var(--muted)">소스를 1개 이상 선택하세요</span>
       </div>
     </div>
 
-    <!-- 0.2 수시 업데이트 -->
-    <h3 style="font-size:16px; font-weight:800; margin:24px 0 6px"><span class="substep">0.2</span>수시 업데이트 — S1·S3·S5 갱신</h3>
-    <p class="sec-desc" style="margin-bottom:14px">보고서·심층 기사·정책 발표 등을 수시로 반영. CES·규제 발효·대형 M&A 같은 비정기 변곡점을 그때그때 흡수.</p>
+    <!-- ② Insight 도출 -->
+    <div id="s0-insight-wrap" style="display:none">
+      <h3 style="font-size:16px; font-weight:800; margin:28px 0 6px"><span class="substep">②</span>Insight 도출</h3>
+      <p class="sec-desc" style="margin-bottom:14px">선택한 소스를 기반으로 Claude가 신호를 도출하고 S1~S6 분석 단계로 분류한다.</p>
+      <div class="s0-content-toggle" style="background:#F3EEE2; padding:20px; border-radius:12px">
+        <div id="s0-insight-area"></div>
+      </div>
+    </div>
 
-    <!-- 2. 비정기 — URL/파일/텍스트 입력 폼 -->
-    <div class="s0-content-toggle" id="vending-report-section" style="display:block; margin-top:16px; background:#F3EEE2; padding:20px; border-radius:12px">
-      <div style="margin-bottom:18px">
-        <div style="display:flex; gap:12px; margin-bottom:14px; border-bottom:1px solid var(--line)">
-          <button onclick="s0AdhocTab('url')" class="s0-adhoc-tab-btn" data-tab="url" style="padding:10px 16px; background:none; border:none; border-bottom:2px solid var(--accent); color:var(--accent); font-weight:600; cursor:pointer; font-size:13px">URL</button>
-          <button onclick="s0AdhocTab('file')" class="s0-adhoc-tab-btn" data-tab="file" style="padding:10px 16px; background:none; border:none; color:var(--muted); font-weight:600; cursor:pointer; font-size:13px">파일</button>
-          <button onclick="s0AdhocTab('text')" class="s0-adhoc-tab-btn" data-tab="text" style="padding:10px 16px; background:none; border:none; color:var(--muted); font-weight:600; cursor:pointer; font-size:13px">텍스트</button>
+    <!-- ③ 반영할 것 선택 -->
+    <div id="s0-apply-wrap" style="display:none">
+      <h3 style="font-size:16px; font-weight:800; margin:28px 0 6px"><span class="substep">③</span>반영할 것 선택</h3>
+      <p class="sec-desc" style="margin-bottom:14px">위 항목을 개별 또는 단계 전체로 선택한다. 고른 항목은 아래에 실시간으로 쌓인다.</p>
+      <div class="s0-content-toggle" style="background:#F3EEE2; padding:20px; border-radius:12px">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding-bottom:12px; border-bottom:1px solid #DAD3C6">
+          <b style="color:var(--ink); font-size:13px">선택한 항목 <span id="s0BasketCount" style="display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;font-size:11px;color:#fff;background:var(--accent);border-radius:999px;margin-left:4px">0</span></b>
+          <button onclick="s0ClearAll()" style="font-size:12px;color:var(--muted);background:none;border:none;cursor:pointer;text-decoration:underline">전체 해제</button>
         </div>
-      </div>
-      <div id="s0-adhoc-url" class="s0-adhoc-tab-content" style="display:block">
-        <input type="url" placeholder="https://www.example.com/article..." style="width:100%; padding:10px; border:1px solid var(--line); border-radius:6px; font-size:13px; margin-bottom:8px">
-        <div style="font-size:11px; color:var(--faint)">뉴스·블로그 등 기사 링크를 입력하세요. 유튜브는 별도 운영.</div>
-      </div>
-      <div id="s0-adhoc-file" class="s0-adhoc-tab-content" style="display:none">
-        <input type="file" accept=".pdf,.docx,.txt,.doc" style="width:100%; padding:10px; border:1px solid var(--line); border-radius:6px; font-size:13px; margin-bottom:8px">
-        <div style="font-size:11px; color:var(--faint)">PDF, DOCX, TXT 형식 지원</div>
-      </div>
-      <div id="s0-adhoc-text" class="s0-adhoc-tab-content" style="display:none">
-        <textarea placeholder="분석할 텍스트를 붙여넣으세요..." style="width:100%; padding:10px; border:1px solid var(--line); border-radius:6px; font-size:13px; height:100px; font-family:inherit; resize:vertical"></textarea>
+        <div id="s0-basket"><p style="font-size:12px;color:var(--muted);text-align:center;padding:12px 0;margin:0">아직 선택한 항목이 없습니다.</p></div>
+        <div style="margin-top:16px; padding-top:16px; border-top:1px solid #DAD3C6; display:flex; align-items:center; gap:12px">
+          <button id="s0ApplyBtn" class="s0-btn" style="background:#5E9468" disabled onclick="s0Apply()">1~6단계에 반영</button>
+          <span id="s0ApplyHint" style="font-size:12px; color:var(--muted)">항목을 선택하면 활성화됩니다</span>
+        </div>
       </div>
     </div>
 
     <div class="fill" style="margin-top:18px">
-      <p class="fill-note"><b>운영 메모</b> · 위클리는 고정 리듬(월요일)으로 누락 방지 · 비정기는 변곡점 발생 시 즉시 반영 · 두 경로 모두 출처·날짜를 함께 기록해 S2~S5의 근거 추적성 유지 · <b>갱신 이력 로그는 보강 단계에서 자동화 연계</b></p>
+      <p class="fill-note"><b>운영 메모</b> · 소스→Insight→반영 한 흐름으로 통합 · Insight는 소스 기반 Claude 도출(샘플·잠정) · 반영 항목은 출처·날짜와 함께 S2~S5 근거 추적성 유지 · <b>실데이터 연동은 보강 단계에서 자동화 연계</b></p>
     </div>
   </div>
 </section>
@@ -738,170 +751,154 @@ const obs=new IntersectionObserver((es)=>{
 },{rootMargin:'-45% 0px -50% 0px', threshold:0});
 sections.forEach(s=>obs.observe(s));
 
-// S0 routes toggle — 위클리 & 비정기 입력 UI
-// Helper functions for weekly visibility management
-window.s0IsMonday10AM=function(){
-  const now=new Date();
-  return now.getDay()===1 && now.getHours()>=10;
-};
-window.s0GetLastSubmissionTime=function(){
-  return localStorage.getItem('s0WeeklySubmissionTime');
-};
-window.s0SetSubmissionTime=function(){
-  const now=new Date().getTime();
-  localStorage.setItem('s0WeeklySubmissionTime',now);
-};
-window.s0IsWithinSevenDays=function(){
-  const lastSubmission=window.s0GetLastSubmissionTime();
-  if(!lastSubmission) return false;
-  const now=new Date().getTime();
-  const sevenDaysMs=7*24*60*60*1000;
-  return (now-parseInt(lastSubmission))<sevenDaysMs;
-};
-window.s0UpdateWeeklyVisibility=function(){
-  const weeklySection=document.getElementById('mi-articles-section');
-  const weeklyRoute=document.querySelector('[data-s0-toggle="weekly"]');
-  const statusLabel=document.getElementById('s0-weekly-status');
-  if(!weeklySection || !weeklyRoute) return;
+// STEP 00 — 소스 선택 → Insight 도출 → 반영
+(function(){
+  const S_DEF={
+    S1:["분석 프레임 · STEEP 신호","STEEP 관점에서 새로 포착된 거시 신호"],
+    S2:["트렌드 도출 · 근거 갱신","트렌드 가설을 강화·반증하는 근거"],
+    S3:["성숙도 · 영향","기술·생태계 성숙도와 영향 범위 변화"],
+    S4:["경쟁사 대응","경쟁사 신제품·M&A·전략 동향"],
+    S5:["당사 위치 · 전략","삼성 DA 포지션과 전략 시사점"],
+    S6:["실행 · 액션","즉시 반영할 액션·체크포인트"]
+  };
+  const DEMO=[
+    {s:"S1",t:"AI 가전 중심 STEEP 기술축에서 온디바이스 추론 신호 가속 — 클라우드 의존도 하락"},
+    {s:"S1",t:"경기 둔화로 소비자 가전 구매 위축, 내수 대비 신흥시장 비중 확대 신호"},
+    {s:"S2",t:"스마트홈 카테고리 재편 — 단일 기기 판매에서 구독형 케어 서비스로 무게중심 이동"},
+    {s:"S2",t:"에너지 효율 규제 강화가 프리미엄 라인 트렌드 가설을 강화하는 근거로 추가"},
+    {s:"S3",t:"T1 아파트 생태계 성숙도 상승 — 파트너 연동 표준화로 전환 비용 하락"},
+    {s:"S4",t:"경쟁사 AI 모듈러 라인업 확장, 가격 경쟁력 우위 구간 진입 신호 포착"},
+    {s:"S4",t:"Midea 에어컨드 채널 인수 추진 — 스마트홈 채널 장악 시도"},
+    {s:"S5",t:"당사 AI 모델 통합 전략이 T1 생태계 기반 경쟁우위로 연결 가능, 메시지 재정렬 필요"},
+    {s:"S6",t:"CES·대형 M&A 비정기 신호를 정기 리듬으로 흡수할 모니터링 큐 신설 검토"}
+  ];
+  const sel={};
+  const picked=new Map();
 
-  const isMonday=new Date().getDay()===1;
-  const isWithinSevenDays=window.s0IsWithinSevenDays();
+  window.s0SrcToggle=function(el){
+    const k=el.dataset.src;
+    sel[k]=!el.classList.contains("on");
+    el.classList.toggle("on");
+    const cb=el.querySelector(".s0-cb"); if(cb) cb.checked=sel[k];
+    if(k==="extra"){ const ex=document.getElementById("s0-extra"); ex.style.display=sel[k]?"block":"none"; }
+    const n=Object.values(sel).filter(Boolean).length;
+    const btn=document.getElementById("s0ExtractBtn");
+    document.getElementById("s0ExtractHint").textContent=n===0?"소스를 1개 이상 선택하세요":(n+"개 소스 선택됨");
+    btn.disabled=n===0;
+  };
 
-  // Always show weekly section and route
-  weeklySection.style.display='block';
-  weeklyRoute.style.display='block';
+  window.s0ExtraTab=function(tab){
+    document.querySelectorAll("#s0-extra .s0-pane").forEach(p=>p.style.display="none");
+    document.querySelectorAll("#s0-extra .s0-xtab").forEach(b=>{ b.style.color="var(--muted)"; b.style.borderBottom="2px solid transparent"; });
+    document.getElementById("s0-pane-"+tab).style.display="block";
+    const b=document.querySelector('#s0-extra .s0-xtab[data-tab="'+tab+'"]');
+    if(b){ b.style.color="var(--accent)"; b.style.borderBottom="2px solid var(--accent)"; }
+  };
 
-  // Update label based on day
-  if(statusLabel){
-    statusLabel.textContent=isMonday?'지난주 MI 핵심':'이번 주 MI 핵심';
-  }
+  window.s0Extract=async function(){
+    const wrap=document.getElementById("s0-insight-wrap");
+    const area=document.getElementById("s0-insight-area");
+    wrap.style.display="block";
+    area.innerHTML='<div style="display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px;padding:6px 0"><span class="s0-spin"></span>Claude가 선택한 소스에서 신호를 도출하는 중…</div>';
+    wrap.scrollIntoView({behavior:"smooth",block:"start"});
+    const payload={sources:Object.keys(sel).filter(k=>sel[k])};
+    let list, demo=false;
+    try{
+      const r=await fetch("/api/insight",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+      if(!r.ok) throw 0;
+      const d=await r.json(); list=d.insights;
+      if(!Array.isArray(list)||!list.length) throw 0;
+    }catch(e){ list=DEMO; demo=true; }
+    s0Render(list,demo);
+  };
 
-  // Hide content if within 7 days of submission (Monday only)
-  if(isMonday && isWithinSevenDays){
-    weeklySection.style.opacity='0.5';
-    document.querySelectorAll('.s0-weekly-cb').forEach(cb=>cb.disabled=true);
-    document.querySelectorAll('[id^="s0WeeklyS"]').forEach(btn=>btn.disabled=true);
-    document.getElementById('s0WeeklyToggleBtn').disabled=true;
-  } else {
-    weeklySection.style.opacity='1';
-    document.querySelectorAll('.s0-weekly-cb').forEach(cb=>cb.disabled=false);
-    document.querySelectorAll('[id^="s0WeeklyS"]').forEach(btn=>btn.disabled=false);
-    document.getElementById('s0WeeklyToggleBtn').disabled=false;
-  }
-};
-
-// Initialize visibility on page load
-document.addEventListener('DOMContentLoaded',function(){
-  window.s0UpdateWeeklyVisibility();
-});
-
-// Check visibility every minute (60000ms)
-setInterval(function(){
-  window.s0UpdateWeeklyVisibility();
-}, 60000);
-
-document.querySelectorAll('[data-s0-toggle]').forEach(route=>{
-  route.addEventListener('click',()=>{
-    const toggleId=route.getAttribute('data-s0-toggle');
-    const sectionId=toggleId==='weekly'?'mi-articles-section':'vending-report-section';
-    const section=document.getElementById(sectionId);
-    if(section){
-      section.style.display=section.style.display==='none'?'block':'none';
-    }
-  });
-});
-
-// 위클리 체크리스트 함수
-window.s0WeeklyToggleAll=function(){
-  const allChecked=Array.from(document.querySelectorAll('.s0-weekly-cb')).every(cb=>cb.checked);
-  document.querySelectorAll('.s0-weekly-cb').forEach(cb=>cb.checked=!allChecked);
-  window.s0UpdateWeeklyButtons();
-};
-window.s0WeeklyToggleStep=function(step){
-  const stepClass='s0-weekly-'+step;
-  const stepCheckboxes=document.querySelectorAll('.'+stepClass);
-  const allChecked=Array.from(stepCheckboxes).every(cb=>cb.checked);
-  stepCheckboxes.forEach(cb=>cb.checked=!allChecked);
-  window.s0UpdateWeeklyButtons();
-};
-window.s0UpdateWeeklyButtons=function(){
-  // Update global toggle button
-  const allCbs=Array.from(document.querySelectorAll('.s0-weekly-cb'));
-  const allChecked=allCbs.every(cb=>cb.checked);
-  const someChecked=allCbs.some(cb=>cb.checked);
-  const globalBtn=document.getElementById('s0WeeklyToggleBtn');
-  if(globalBtn){
-    globalBtn.textContent=allChecked?'전체 해제':'전체 선택';
-    globalBtn.style.background=allChecked?'#C7C2BA':'#496176';
-    globalBtn.style.color=allChecked?'var(--ink)':'#fff';
-  }
-
-  // Update step buttons
-  ['s1','s2','s3','s4'].forEach(step=>{
-    const stepCbs=Array.from(document.querySelectorAll('.s0-weekly-'+step));
-    const stepAllChecked=stepCbs.length>0 && stepCbs.every(cb=>cb.checked);
-    const btn=document.getElementById('s0WeeklyS'+step.toUpperCase()+'Btn');
-    if(btn){
-      btn.textContent=stepAllChecked?'해제':'선택';
-      btn.style.background=stepAllChecked?'#C7C2BA':'#496176';
-      btn.style.color=stepAllChecked?'var(--ink)':'#fff';
-    }
-  });
-};
-window.s0WeeklySubmit=function(){
-  // Store submission time and hide weekly section
-  window.s0SetSubmissionTime();
-  window.s0UpdateWeeklyVisibility();
-  alert('주간 반영이 완료되었습니다. 다음 주 월요일에 다시 표시됩니다.');
-};
-
-// Add event listeners to weekly checkboxes
-document.addEventListener('DOMContentLoaded',function(){
-  document.querySelectorAll('.s0-weekly-cb').forEach(cb=>{
-    cb.addEventListener('change',window.s0UpdateWeeklyButtons);
-  });
-  window.s0UpdateWeeklyButtons();
-});
-
-// 비정기 탭 전환 함수
-window.s0AdhocTab=function(tab){
-  document.querySelectorAll('.s0-adhoc-tab-content').forEach(el=>el.style.display='none');
-  document.querySelectorAll('.s0-adhoc-tab-btn').forEach(btn=>btn.style.color=btn.style.borderBottom='');
-  document.getElementById('s0-adhoc-'+tab).style.display='block';
-  const activeBtn=document.querySelector('[data-tab="'+tab+'"]');
-  activeBtn.style.color='var(--accent)';
-  activeBtn.style.borderBottom='2px solid var(--accent)';
-};
-
-// S0 섹션 헤더 및 체크박스 토글 함수
-window.s0ToggleSection=function(step){
-  const stepClass='s0-weekly-'+step;
-  const stepCheckboxes=document.querySelectorAll('.'+stepClass);
-  const allChecked=Array.from(stepCheckboxes).every(cb=>cb.checked);
-  stepCheckboxes.forEach(cb=>cb.checked=!allChecked);
-  const sectionBtn=document.getElementById('s0Weekly'+step.toUpperCase()+'Btn');
-  if(sectionBtn) sectionBtn.checked=!allChecked;
-  window.s0UpdateWeeklyButtons();
-};
-
-window.s0ToggleSectionCheckboxes=function(step){
-  const stepClass='s0-weekly-'+step;
-  const stepCheckboxes=document.querySelectorAll('.'+stepClass);
-  const sectionBtn=document.getElementById('s0Weekly'+step.toUpperCase()+'Btn');
-  const isChecked=sectionBtn.checked;
-  stepCheckboxes.forEach(cb=>cb.checked=isChecked);
-  window.s0UpdateWeeklyButtons();
-};
-
-// Update button styling to work with checkboxes
-document.addEventListener('DOMContentLoaded',function(){
-  document.querySelectorAll('.s0-section-cb').forEach(cb=>{
-    cb.addEventListener('change',function(){
-      const stepId=this.id.replace('s0Weekly','').replace('Btn','').toLowerCase();
-      window.s0ToggleSectionCheckboxes(stepId);
+  function s0Render(list,demo){
+    const groups={};
+    list.forEach((it,i)=>{ (groups[it.s]=groups[it.s]||[]).push({s:it.s,t:it.t,id:"s0i"+i}); });
+    let html=demo?'<div style="font-size:11px;color:var(--signal);background:var(--signal-soft);border:1px solid var(--line-strong);border-radius:6px;padding:8px 12px;margin-bottom:14px">백엔드 미연결 — 샘플 Insight로 흐름을 표시합니다(잠정). 워커 엔드포인트 연결 시 실데이터로 동작.</div>':"";
+    Object.keys(S_DEF).forEach(s=>{
+      if(!groups[s]) return;
+      const d=S_DEF[s];
+      html+='<div class="s0-grp" data-s="'+s+'">'
+        +'<div class="s0-row s0-ghead"><span class="s0-stag">'+s+'</span>'
+        +'<span class="s0-gname">'+d[0]+' <span class="s0-gdesc">'+d[1]+'</span></span>'
+        +'<input type="checkbox" class="s0-cb s0-gcb" style="pointer-events:none"></div>';
+      groups[s].forEach(it=>{
+        html+='<div class="s0-row s0-item" data-id="'+it.id+'" data-s="'+s+'">'
+          +'<span class="s0-itx">'+it.t+'</span>'
+          +'<input type="checkbox" class="s0-cb s0-icb" style="pointer-events:none"></div>';
+      });
+      html+="</div>";
     });
-  });
-});
+    const area=document.getElementById("s0-insight-area");
+    area.innerHTML=html;
+    area.querySelectorAll(".s0-grp").forEach(g=>{
+      g.querySelector(".s0-ghead").addEventListener("click",function(){ s0SelGroup(g.dataset.s); });
+    });
+    area.querySelectorAll(".s0-item").forEach(it=>{
+      it.addEventListener("click",function(){ s0SelItem(it); });
+    });
+    document.getElementById("s0-apply-wrap").style.display="block";
+  }
+
+  window.s0SelItem=function(el){
+    const id=el.dataset.id, s=el.dataset.s, t=el.querySelector(".s0-itx").textContent;
+    const icb=el.querySelector(".s0-icb");
+    if(picked.has(id)){ picked.delete(id); if(icb) icb.checked=false; }
+    else{ picked.set(id,{s,t}); if(icb) icb.checked=true; }
+    s0Sync();
+  };
+  window.s0SelGroup=function(s){
+    const items=document.querySelectorAll('#s0-insight-area .s0-item[data-s="'+s+'"]');
+    const all=Array.from(items).every(el=>picked.has(el.dataset.id));
+    items.forEach(el=>{
+      const id=el.dataset.id, t=el.querySelector(".s0-itx").textContent, icb=el.querySelector(".s0-icb");
+      if(all){ picked.delete(id); if(icb) icb.checked=false; }
+      else if(!picked.has(id)){ picked.set(id,{s,t}); if(icb) icb.checked=true; }
+    });
+    s0Sync();
+  };
+  window.s0ClearAll=function(){
+    picked.clear();
+    document.querySelectorAll("#s0-insight-area .s0-icb").forEach(c=>c.checked=false);
+    s0Sync();
+  };
+  window.s0Remove=function(id){
+    picked.delete(id);
+    document.querySelectorAll("#s0-insight-area .s0-item").forEach(el=>{
+      if(el.dataset.id===id){ const icb=el.querySelector(".s0-icb"); if(icb) icb.checked=false; }
+    });
+    s0Sync();
+  };
+  window.s0Apply=function(){
+    const b=document.getElementById("s0ApplyBtn");
+    b.textContent="✓ "+picked.size+"개 항목 반영 완료";
+    setTimeout(function(){ b.textContent="1~6단계에 반영"; },2200);
+  };
+
+  function s0Sync(){
+    document.querySelectorAll("#s0-insight-area .s0-grp").forEach(g=>{
+      const items=g.querySelectorAll(".s0-item");
+      const all=items.length>0 && Array.from(items).every(el=>picked.has(el.dataset.id));
+      const gcb=g.querySelector(".s0-gcb"); if(gcb) gcb.checked=all;
+    });
+    document.getElementById("s0BasketCount").textContent=picked.size;
+    const ab=document.getElementById("s0ApplyBtn"); ab.disabled=picked.size===0;
+    document.getElementById("s0ApplyHint").textContent=picked.size===0?"항목을 선택하면 활성화됩니다":(picked.size+"개 항목을 1~6단계에 반영");
+    const body=document.getElementById("s0-basket");
+    if(picked.size===0){ body.innerHTML='<p style="font-size:12px;color:var(--muted);text-align:center;padding:12px 0;margin:0">아직 선택한 항목이 없습니다.</p>'; return; }
+    const order=Object.keys(S_DEF);
+    const rows=Array.from(picked.entries()).sort((a,b)=>order.indexOf(a[1].s)-order.indexOf(b[1].s));
+    body.innerHTML=rows.map(function(e){ const id=e[0], v=e[1];
+      return '<div class="s0-bitem"><span class="s0-stag" style="margin-top:1px">'+v.s+'</span>'
+        +'<span style="flex:1;font-size:12px;color:var(--ink);line-height:1.5">'+v.t+'</span>'
+        +'<button class="s0-del" data-id="'+id+'">×</button></div>';
+    }).join("");
+  }
+
+  const bk=document.getElementById("s0-basket");
+  if(bk){ bk.addEventListener("click",function(e){ const d=e.target.closest(".s0-del"); if(d) s0Remove(d.dataset.id); }); }
+})();
 </script>
 </body>
 </html>
