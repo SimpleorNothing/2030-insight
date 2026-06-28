@@ -306,6 +306,20 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     .reflect-meta{display:block;margin-top:3px;font-size:10.5px;color:var(--faint)}
     .reflect-del{flex:none;width:20px;height:20px;border:none;border-radius:6px;background:#E6E1D6;color:var(--muted);cursor:pointer;font-size:14px;line-height:1;transition:.12s}
     .reflect-del:hover{background:#EAD7D7;color:#A8453C}
+    /* S0 반영 신호 → 단계별 분석 테이블 (표 동적화) */
+    .reflect-tbl{margin:0 0 26px;border:1px solid var(--line-strong);border-left:3px solid #5E9468;border-radius:10px;background:var(--surface);padding:13px 16px;animation:reflectIn .25s ease}
+    .reflect-tbl table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+    .reflect-tbl th,.reflect-tbl td{text-align:left;padding:8px 8px;border-top:1px solid var(--line);vertical-align:top}
+    .reflect-tbl thead th{color:var(--muted);font-weight:700;font-size:11px;border-top:none}
+    .reflect-tbl .rt-tr{font-weight:700;color:#4E7E58;white-space:nowrap;line-height:1.45}
+    .reflect-tbl .rt-ev{color:var(--faint);white-space:nowrap}
+    .reflect-tbl .rt-dir{text-align:center;white-space:nowrap;font-size:13px}
+    .reflect-tbl .rt-sig{display:flex;align-items:flex-start;gap:8px;color:var(--ink);line-height:1.5;padding:2px 0}
+    .reflect-tbl .rt-sig + .rt-sig{border-top:1px dashed var(--line);padding-top:6px;margin-top:4px}
+    .reflect-tbl .rt-sig .reflect-del{width:18px;height:18px;font-size:13px;margin-left:auto}
+    .s0-trtag{flex:none;font-size:10px;font-weight:700;color:#4E7E58;background:#E3EEE5;border-radius:5px;padding:1px 6px;margin-left:6px}
+    /* 기존 8대 트렌드 카드·경쟁사 표에 붙는 신규반영 배지 */
+    .trend-badge{display:inline-block;margin-left:6px;font-size:10px;font-weight:700;color:#fff;background:#5E9468;border-radius:999px;padding:1px 7px;vertical-align:middle}
     </style>
 
     <!-- ① 정보 소스 선택 -->
@@ -388,7 +402,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     </div>
 
     <div class="fill" style="margin-top:18px">
-      <p class="fill-note"><b>운영 메모</b> · 소스→Insight→반영 한 흐름으로 통합 · Insight는 소스 기반 Claude 도출(샘플·잠정) · <b>반영 시 선택 항목이 해당 STEP 1~6 섹션 상단에 출처·날짜와 함께 누적 표시</b>(× 로 반영 취소) · 근거 추적성 유지 · <b>소스 자동 수집(실데이터) 연동은 보강 단계에서 자동화 연계</b></p>
+      <p class="fill-note"><b>운영 메모</b> · 소스→Insight→반영 한 흐름으로 통합 · <b>Insight는 선택 소스 기반 실제 Claude 도출</b>(공용 키 프록시 워커, 키는 브라우저로 안 나감 · 미연결 시 샘플 폴백) · 각 신호는 8대 트렌드(T1~T8)에 매핑 · <b>반영 시 해당 STEP의 트렌드별 분석 테이블로 들어가고, 기존 트렌드 카드·경쟁사 표에 신규반영 배지(+N ▲/▼)로 연동</b>(× 로 반영 취소) · 정량 수치·자동 수집은 보강 단계 과제</p>
     </div>
   </div>
 </section>
@@ -775,20 +789,31 @@ sections.forEach(s=>obs.observe(s));
     S6:["실행 · 액션","즉시 반영할 액션·체크포인트"]
   };
   const DEMO=[
-    {s:"S1",t:"AI 가전 중심 STEEP 기술축에서 온디바이스 추론 신호 가속 — 클라우드 의존도 하락"},
-    {s:"S1",t:"경기 둔화로 소비자 가전 구매 위축, 내수 대비 신흥시장 비중 확대 신호"},
-    {s:"S2",t:"스마트홈 카테고리 재편 — 단일 기기 판매에서 구독형 케어 서비스로 무게중심 이동"},
-    {s:"S2",t:"에너지 효율 규제 강화가 프리미엄 라인 트렌드 가설을 강화하는 근거로 추가"},
-    {s:"S3",t:"T1 아파트 생태계 성숙도 상승 — 파트너 연동 표준화로 전환 비용 하락"},
-    {s:"S4",t:"경쟁사 AI 모듈러 라인업 확장, 가격 경쟁력 우위 구간 진입 신호 포착"},
-    {s:"S4",t:"Midea 에어컨드 채널 인수 추진 — 스마트홈 채널 장악 시도"},
-    {s:"S5",t:"당사 AI 모델 통합 전략이 T1 생태계 기반 경쟁우위로 연결 가능, 메시지 재정렬 필요"},
-    {s:"S6",t:"CES·대형 M&A 비정기 신호를 정기 리듬으로 흡수할 모니터링 큐 신설 검토"}
+    {s:"S1",t:"AI 가전 중심 STEEP 기술축에서 온디바이스 추론 신호 가속 — 클라우드 의존도 하락",tr:"T1",dir:"up"},
+    {s:"S1",t:"경기 둔화로 소비자 가전 구매 위축, 내수 대비 신흥시장 비중 확대 신호",tr:"",dir:"down"},
+    {s:"S2",t:"스마트홈 카테고리 재편 — 단일 기기 판매에서 구독형 케어 서비스로 무게중심 이동",tr:"T5",dir:"up"},
+    {s:"S2",t:"에너지 효율 규제 강화가 프리미엄 라인 트렌드 가설을 강화하는 근거로 추가",tr:"T4",dir:"up"},
+    {s:"S3",t:"T1 아파트 생태계 성숙도 상승 — 파트너 연동 표준화로 전환 비용 하락",tr:"T1",dir:"up"},
+    {s:"S4",t:"경쟁사 AI 모듈러 라인업 확장, 가격 경쟁력 우위 구간 진입 신호 포착",tr:"T1",dir:"down"},
+    {s:"S4",t:"Midea 에어컨드 채널 인수 추진 — 스마트홈 채널 장악 시도",tr:"T4",dir:"down"},
+    {s:"S5",t:"당사 AI 모델 통합 전략이 T1 생태계 기반 경쟁우위로 연결 가능, 메시지 재정렬 필요",tr:"T1",dir:"up"},
+    {s:"S6",t:"CES·대형 M&A 비정기 신호를 정기 리듬으로 흡수할 모니터링 큐 신설 검토",tr:"",dir:"flat"}
   ];
   const sel={};
   const picked=new Map();
-  const reflected=new Map();   // STEP 1~6에 실제 반영된 신호 (id -> {s,t,date})
+  const reflected=new Map();   // STEP 1~6에 실제 반영된 신호 (id -> {s,t,tr,dir,date})
   let renderSeq=0;             // 재추출 시에도 id가 겹치지 않도록 전역 시퀀스
+
+  // 공용 Anthropic 프록시 워커(키는 워커 secret 보관, 브라우저로 안 나감). market-insight와 동일 인프라.
+  const PROXY_URL="https://da-insight-anthropic-proxy.cw120-park.workers.dev";
+  const PROXY_MODEL="claude-haiku-4-5-20251001";
+  const SRC_LABEL={
+    MI:"Market Insight 시장 신호 피드(mi.samsungda.net) — 경쟁사·소비자·정책 최신 뉴스 신호",
+    "2030":"2030 미래 트렌드 보드 — 8대 메가트렌드(T1~T8) 구조",
+    agentguide:"agentguide 조사 보고서 결과물",
+    extra:"사용자가 추가한 소스(URL·텍스트)"
+  };
+  const TREND_DEF={T1:"AI 에이전트 가전",T2:"AI 데이터센터 냉각",T3:"저GWP·자연냉매",T4:"히트펌프 전기화",T5:"가전 구독·서비스화",T6:"순환경제·수리권",T7:"그리드 인터랙티브",T8:"실버·헬스케어"};
 
   window.s0SrcToggle=function(el){
     const k=el.dataset.src;
@@ -816,21 +841,61 @@ sections.forEach(s=>obs.observe(s));
     wrap.style.display="block";
     area.innerHTML='<div style="display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px;padding:6px 0"><span class="s0-spin"></span>Claude가 선택한 소스에서 신호를 도출하는 중…</div>';
     wrap.scrollIntoView({behavior:"smooth",block:"start"});
-    const payload={sources:Object.keys(sel).filter(k=>sel[k])};
+
+    // 선택 소스 라벨 + 추가 소스(URL/텍스트) 수집
+    const labels=Object.keys(sel).filter(k=>sel[k]).map(k=>SRC_LABEL[k]||k);
+    let extra="";
+    if(sel.extra){
+      const u=document.querySelector("#s0-pane-url input");
+      const tx=document.querySelector("#s0-pane-text textarea");
+      if(u&&u.value.trim()) extra+="\n[URL] "+u.value.trim();
+      if(tx&&tx.value.trim()) extra+="\n[붙여넣은 텍스트]\n"+tx.value.trim().slice(0,4000);
+    }
+
+    const sys="너는 삼성 생활가전(DA)의 2030 시장 센싱 분석가다. 주어진 소스로부터 의미 있는 시장 신호를 도출하고, 각 신호를 분석 단계 S1~S6 중 하나로 분류한다.\n"
+      +"S1=STEEP 거시 신호, S2=트렌드 도출·근거, S3=성숙도·영향, S4=경쟁사 대응, S5=당사 위치·전략, S6=실행·액션.\n"
+      +"또한 각 신호를 가장 관련된 8대 트렌드 중 하나에 매핑한다: "
+      +"T1 AI에이전트 가전, T2 AI데이터센터 냉각, T3 저GWP·자연냉매, T4 히트펌프 전기화, T5 가전 구독·서비스화, T6 순환경제·수리권, T7 그리드 인터랙티브, T8 실버·헬스케어 (해당 없으면 빈 문자열).\n"
+      +"신호가 그 트렌드 가설을 강화하면 dir=\"up\", 약화/위협이면 \"down\", 중립이면 \"flat\".\n"
+      +"반드시 JSON 배열만 출력한다. 형식: [{\"s\":\"S2\",\"t\":\"한국어 신호 한 문장\",\"tr\":\"T5\",\"dir\":\"up\"}]. 6~10개. 코드블록·설명·여는말 금지.";
+    const usr="선택된 소스:\n- "+labels.join("\n- ")+(extra?("\n"+extra):"")+"\n\n위 소스 맥락에서 삼성 DA 2030 관점의 신호를 도출해 JSON 배열로만 답하라.";
+
     let list, demo=false;
     try{
-      const r=await fetch("/api/insight",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+      const r=await fetch(PROXY_URL,{method:"POST",headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({model:PROXY_MODEL,max_tokens:1600,system:sys,messages:[{role:"user",content:usr}]})});
       if(!r.ok) throw 0;
-      const d=await r.json(); list=d.insights;
+      const d=await r.json();
+      const txt=(d&&d.content&&d.content[0]&&d.content[0].text)||"";
+      list=s0ParseInsights(txt);
       if(!Array.isArray(list)||!list.length) throw 0;
     }catch(e){ list=DEMO; demo=true; }
     s0Render(list,demo);
   };
 
+  // Claude 응답 텍스트에서 JSON 배열을 견고하게 추출·정규화
+  function s0ParseInsights(txt){
+    try{
+      let t=String(txt).trim().replace(/^```(?:json)?/i,"").replace(/```$/,"").trim();
+      const a=t.indexOf("["), b=t.lastIndexOf("]");
+      if(a>=0&&b>a) t=t.slice(a,b+1);
+      const arr=JSON.parse(t);
+      if(!Array.isArray(arr)) return null;
+      const VALID_S={S1:1,S2:1,S3:1,S4:1,S5:1,S6:1};
+      return arr.filter(o=>o&&o.s&&o.t).map(function(o){
+        const s=String(o.s).toUpperCase();
+        let tr=o.tr?String(o.tr).toUpperCase().trim():"";
+        if(!TREND_DEF[tr]) tr="";
+        const dir=(o.dir==="up"||o.dir==="down")?o.dir:"flat";
+        return VALID_S[s]?{s:s,t:String(o.t).trim(),tr:tr,dir:dir}:null;
+      }).filter(Boolean);
+    }catch(e){ return null; }
+  }
+
   function s0Render(list,demo){
     const seq=++renderSeq;
     const groups={};
-    list.forEach((it,i)=>{ (groups[it.s]=groups[it.s]||[]).push({s:it.s,t:it.t,id:"s0i"+seq+"_"+i}); });
+    list.forEach((it,i)=>{ (groups[it.s]=groups[it.s]||[]).push({s:it.s,t:it.t,tr:it.tr||"",dir:it.dir||"flat",id:"s0i"+seq+"_"+i}); });
     let html=demo?'<div style="font-size:11px;color:var(--signal);background:var(--signal-soft);border:1px solid var(--line-strong);border-radius:6px;padding:8px 12px;margin-bottom:14px">백엔드 미연결 — 샘플 Insight로 흐름을 표시합니다(잠정). 워커 엔드포인트 연결 시 실데이터로 동작.</div>':"";
     Object.keys(S_DEF).forEach(s=>{
       if(!groups[s]) return;
@@ -840,8 +905,9 @@ sections.forEach(s=>obs.observe(s));
         +'<span class="s0-gname">'+d[0]+' <span class="s0-gdesc">'+d[1]+'</span></span>'
         +'<input type="checkbox" class="s0-cb s0-gcb" style="pointer-events:none"></div>';
       groups[s].forEach(it=>{
-        html+='<div class="s0-row s0-item" data-id="'+it.id+'" data-s="'+s+'">'
+        html+='<div class="s0-row s0-item" data-id="'+it.id+'" data-s="'+s+'" data-tr="'+it.tr+'" data-dir="'+it.dir+'">'
           +'<span class="s0-itx">'+it.t+'</span>'
+          +(it.tr?'<span class="s0-trtag">'+it.tr+'</span>':'')
           +'<input type="checkbox" class="s0-cb s0-icb" style="pointer-events:none"></div>';
       });
       html+="</div>";
@@ -859,9 +925,10 @@ sections.forEach(s=>obs.observe(s));
 
   window.s0SelItem=function(el){
     const id=el.dataset.id, s=el.dataset.s, t=el.querySelector(".s0-itx").textContent;
+    const tr=el.dataset.tr||"", dir=el.dataset.dir||"flat";
     const icb=el.querySelector(".s0-icb");
     if(picked.has(id)){ picked.delete(id); if(icb) icb.checked=false; }
-    else{ picked.set(id,{s,t}); if(icb) icb.checked=true; }
+    else{ picked.set(id,{s,t,tr,dir}); if(icb) icb.checked=true; }
     s0Sync();
   };
   window.s0SelGroup=function(s){
@@ -869,8 +936,9 @@ sections.forEach(s=>obs.observe(s));
     const all=Array.from(items).every(el=>picked.has(el.dataset.id));
     items.forEach(el=>{
       const id=el.dataset.id, t=el.querySelector(".s0-itx").textContent, icb=el.querySelector(".s0-icb");
+      const tr=el.dataset.tr||"", dir=el.dataset.dir||"flat";
       if(all){ picked.delete(id); if(icb) icb.checked=false; }
-      else if(!picked.has(id)){ picked.set(id,{s,t}); if(icb) icb.checked=true; }
+      else if(!picked.has(id)){ picked.set(id,{s,t,tr,dir}); if(icb) icb.checked=true; }
     });
     s0Sync();
   };
@@ -890,38 +958,85 @@ sections.forEach(s=>obs.observe(s));
     if(picked.size===0) return;
     const d=new Date();
     const stamp=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
-    picked.forEach(function(v,id){ if(!reflected.has(id)) reflected.set(id,{s:v.s,t:v.t,date:stamp}); });
+    picked.forEach(function(v,id){ if(!reflected.has(id)) reflected.set(id,{s:v.s,t:v.t,tr:v.tr||"",dir:v.dir||"flat",date:stamp}); });
     s0RenderReflected();
     const b=document.getElementById("s0ApplyBtn");
     b.textContent="✓ "+picked.size+"개 항목 반영 완료";
     setTimeout(function(){ b.textContent="1~6단계에 반영"; },2200);
   };
 
-  // reflected 맵을 STEP 1~6 각 섹션 상단(소개문 바로 아래)에 패널로 렌더
+  function s0DirMark(dir){
+    if(dir==="up")   return '<span style="color:#4E7E58;font-weight:700">▲</span>';
+    if(dir==="down") return '<span style="color:#A8453C;font-weight:700">▼</span>';
+    return '<span style="color:var(--faint)">–</span>';
+  }
+  function s0AggDirMark(arr){
+    let up=0,dn=0; arr.forEach(o=>{ if(o.v.dir==="up")up++; else if(o.v.dir==="down")dn++; });
+    return s0DirMark(up>dn?"up":(dn>up?"down":"flat"));
+  }
+
+  // reflected 신호를 STEP 1~6 각 섹션에 '트렌드별 분석 테이블'로 렌더 (소개문 바로 아래)
   function s0RenderReflected(){
     Object.keys(S_DEF).forEach(function(s){
       const sec=document.getElementById(s.toLowerCase());
       if(!sec) return;
       const wrap=sec.querySelector(".wrap");
       if(!wrap) return;
-      let panel=wrap.querySelector(".reflect-panel");
+      let panel=wrap.querySelector(".reflect-tbl");
       const items=[];
       reflected.forEach(function(v,id){ if(v.s===s) items.push({id:id,v:v}); });
       if(!items.length){ if(panel) panel.remove(); return; }
+
+      // 트렌드(T1~T8/미매핑)별로 묶어 동적 행 구성
+      const byTr={};
+      items.forEach(o=>{ const tr=o.v.tr||"–"; (byTr[tr]=byTr[tr]||[]).push(o); });
+      const order=Object.keys(TREND_DEF).concat(["–"]);
+      const trKeys=Object.keys(byTr).sort((a,b)=>order.indexOf(a)-order.indexOf(b));
+
       if(!panel){
         panel=document.createElement("div");
-        panel.className="reflect-panel";
+        panel.className="reflect-tbl";
         const desc=wrap.querySelector(".sec-desc");
         if(desc) desc.parentNode.insertBefore(panel,desc.nextSibling);
         else wrap.insertBefore(panel,wrap.firstChild);
       }
-      panel.innerHTML='<div class="reflect-head">↳ S0에서 반영된 신호 <span class="reflect-count">'+items.length+'</span></div>'
-        + items.map(function(o){
-            return '<div class="reflect-item"><span class="reflect-tag">'+o.v.s+'</span>'
-              +'<span class="reflect-body"><span class="reflect-text">'+o.v.t+'</span>'
-              +'<span class="reflect-meta">반영 '+o.v.date+' · 출처 S0 Insight 도출</span></span>'
-              +'<button class="reflect-del" data-id="'+o.id+'" title="반영 취소">×</button></div>';
-          }).join("");
+      const rows=trKeys.map(function(tr){
+        const arr=byTr[tr];
+        const name=tr==="–"?'<span style="color:var(--faint)">트렌드 외</span>':(tr+' '+(TREND_DEF[tr]||""));
+        const sigs=arr.map(function(o){
+          return '<div class="rt-sig">· '+o.v.t
+            +' <button class="reflect-del" data-id="'+o.id+'" title="반영 취소">×</button></div>';
+        }).join("");
+        return '<tr><td class="rt-tr">'+name+'</td><td>'+sigs+'</td>'
+          +'<td class="rt-ev">신규 '+arr.length+'건</td>'
+          +'<td class="rt-dir">'+s0AggDirMark(arr)+'</td></tr>';
+      }).join("");
+      panel.innerHTML='<div class="reflect-head">↳ S0 반영 신호 → '+S_DEF[s][0]+' 분석 갱신 <span class="reflect-count">'+items.length+'</span></div>'
+        +'<table><thead><tr><th style="width:108px">트렌드</th><th>반영 신호</th><th style="width:62px">근거</th><th style="width:40px">방향</th></tr></thead><tbody>'
+        +rows+'</tbody></table>';
+    });
+    s0UpdateTrendBadges();
+  }
+
+  // 기존 8대 트렌드 카드(STEP02)·경쟁사 히트맵(STEP04) 행에 '신규반영' 배지 연동
+  function s0MakeBadge(label){
+    const b=document.createElement("span"); b.className="trend-badge"; b.textContent=label;
+    b.title="S0에서 반영된 신규 신호"; return b;
+  }
+  function s0UpdateTrendBadges(){
+    document.querySelectorAll(".trend-badge").forEach(b=>b.remove());
+    const cnt={}, dirs={};
+    reflected.forEach(function(v){ if(!v.tr) return; cnt[v.tr]=(cnt[v.tr]||0)+1; (dirs[v.tr]=dirs[v.tr]||[]).push(v.dir); });
+    Object.keys(cnt).forEach(function(tr){
+      const arr=dirs[tr], up=arr.filter(x=>x==="up").length, dn=arr.filter(x=>x==="down").length;
+      const mark=up>dn?" ▲":(dn>up?" ▼":""), label="+"+cnt[tr]+mark;
+      document.querySelectorAll('#s2 .grid4 .card .tag').forEach(function(tag){
+        if(tag.textContent.trim()===tr) tag.appendChild(s0MakeBadge(label));
+      });
+      document.querySelectorAll('#s4 table tbody th').forEach(function(th){
+        const txt=th.textContent.trim();
+        if(txt===tr||txt.indexOf(tr+" ")===0) th.appendChild(s0MakeBadge(label));
+      });
     });
   }
 
