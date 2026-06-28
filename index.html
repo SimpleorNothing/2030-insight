@@ -293,6 +293,19 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     #s0 .s0-btn:disabled{background:#C7C2BA !important;cursor:not-allowed}
     #s0 .s0-spin{width:15px;height:15px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;display:inline-block;animation:s0spin .7s linear infinite}
     @keyframes s0spin{to{transform:rotate(360deg)}}
+    /* S0에서 STEP 1~6으로 반영된 신호 패널 */
+    .reflect-panel{margin:0 0 26px;border:1px solid var(--line-strong);border-left:3px solid #5E9468;border-radius:10px;background:var(--surface);padding:13px 18px;animation:reflectIn .25s ease}
+    @keyframes reflectIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+    .reflect-panel .reflect-head{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#4E7E58;margin-bottom:8px}
+    .reflect-panel .reflect-count{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 6px;font-size:11px;color:#fff;background:#5E9468;border-radius:999px}
+    .reflect-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+    .reflect-item:first-of-type{border-top:none}
+    .reflect-tag{flex:none;font-size:10.5px;font-weight:700;color:#fff;background:#5E9468;border-radius:5px;padding:2px 7px;letter-spacing:.3px;margin-top:1px}
+    .reflect-body{flex:1;min-width:0}
+    .reflect-text{font-size:12.5px;color:var(--ink);line-height:1.5}
+    .reflect-meta{display:block;margin-top:3px;font-size:10.5px;color:var(--faint)}
+    .reflect-del{flex:none;width:20px;height:20px;border:none;border-radius:6px;background:#E6E1D6;color:var(--muted);cursor:pointer;font-size:14px;line-height:1;transition:.12s}
+    .reflect-del:hover{background:#EAD7D7;color:#A8453C}
     </style>
 
     <!-- ① 정보 소스 선택 -->
@@ -375,7 +388,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     </div>
 
     <div class="fill" style="margin-top:18px">
-      <p class="fill-note"><b>운영 메모</b> · 소스→Insight→반영 한 흐름으로 통합 · Insight는 소스 기반 Claude 도출(샘플·잠정) · 반영 항목은 출처·날짜와 함께 S2~S5 근거 추적성 유지 · <b>실데이터 연동은 보강 단계에서 자동화 연계</b></p>
+      <p class="fill-note"><b>운영 메모</b> · 소스→Insight→반영 한 흐름으로 통합 · Insight는 소스 기반 Claude 도출(샘플·잠정) · <b>반영 시 선택 항목이 해당 STEP 1~6 섹션 상단에 출처·날짜와 함께 누적 표시</b>(× 로 반영 취소) · 근거 추적성 유지 · <b>소스 자동 수집(실데이터) 연동은 보강 단계에서 자동화 연계</b></p>
     </div>
   </div>
 </section>
@@ -774,6 +787,8 @@ sections.forEach(s=>obs.observe(s));
   ];
   const sel={};
   const picked=new Map();
+  const reflected=new Map();   // STEP 1~6에 실제 반영된 신호 (id -> {s,t,date})
+  let renderSeq=0;             // 재추출 시에도 id가 겹치지 않도록 전역 시퀀스
 
   window.s0SrcToggle=function(el){
     const k=el.dataset.src;
@@ -813,8 +828,9 @@ sections.forEach(s=>obs.observe(s));
   };
 
   function s0Render(list,demo){
+    const seq=++renderSeq;
     const groups={};
-    list.forEach((it,i)=>{ (groups[it.s]=groups[it.s]||[]).push({s:it.s,t:it.t,id:"s0i"+i}); });
+    list.forEach((it,i)=>{ (groups[it.s]=groups[it.s]||[]).push({s:it.s,t:it.t,id:"s0i"+seq+"_"+i}); });
     let html=demo?'<div style="font-size:11px;color:var(--signal);background:var(--signal-soft);border:1px solid var(--line-strong);border-radius:6px;padding:8px 12px;margin-bottom:14px">백엔드 미연결 — 샘플 Insight로 흐름을 표시합니다(잠정). 워커 엔드포인트 연결 시 실데이터로 동작.</div>':"";
     Object.keys(S_DEF).forEach(s=>{
       if(!groups[s]) return;
@@ -871,10 +887,45 @@ sections.forEach(s=>obs.observe(s));
     s0Sync();
   };
   window.s0Apply=function(){
+    if(picked.size===0) return;
+    const d=new Date();
+    const stamp=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+    picked.forEach(function(v,id){ if(!reflected.has(id)) reflected.set(id,{s:v.s,t:v.t,date:stamp}); });
+    s0RenderReflected();
     const b=document.getElementById("s0ApplyBtn");
     b.textContent="✓ "+picked.size+"개 항목 반영 완료";
     setTimeout(function(){ b.textContent="1~6단계에 반영"; },2200);
   };
+
+  // reflected 맵을 STEP 1~6 각 섹션 상단(소개문 바로 아래)에 패널로 렌더
+  function s0RenderReflected(){
+    Object.keys(S_DEF).forEach(function(s){
+      const sec=document.getElementById(s.toLowerCase());
+      if(!sec) return;
+      const wrap=sec.querySelector(".wrap");
+      if(!wrap) return;
+      let panel=wrap.querySelector(".reflect-panel");
+      const items=[];
+      reflected.forEach(function(v,id){ if(v.s===s) items.push({id:id,v:v}); });
+      if(!items.length){ if(panel) panel.remove(); return; }
+      if(!panel){
+        panel=document.createElement("div");
+        panel.className="reflect-panel";
+        const desc=wrap.querySelector(".sec-desc");
+        if(desc) desc.parentNode.insertBefore(panel,desc.nextSibling);
+        else wrap.insertBefore(panel,wrap.firstChild);
+      }
+      panel.innerHTML='<div class="reflect-head">↳ S0에서 반영된 신호 <span class="reflect-count">'+items.length+'</span></div>'
+        + items.map(function(o){
+            return '<div class="reflect-item"><span class="reflect-tag">'+o.v.s+'</span>'
+              +'<span class="reflect-body"><span class="reflect-text">'+o.v.t+'</span>'
+              +'<span class="reflect-meta">반영 '+o.v.date+' · 출처 S0 Insight 도출</span></span>'
+              +'<button class="reflect-del" data-id="'+o.id+'" title="반영 취소">×</button></div>';
+          }).join("");
+    });
+  }
+
+  window.s0Unreflect=function(id){ reflected.delete(id); s0RenderReflected(); };
 
   function s0Sync(){
     document.querySelectorAll("#s0-insight-area .s0-grp").forEach(g=>{
@@ -898,6 +949,8 @@ sections.forEach(s=>obs.observe(s));
 
   const bk=document.getElementById("s0-basket");
   if(bk){ bk.addEventListener("click",function(e){ const d=e.target.closest(".s0-del"); if(d) s0Remove(d.dataset.id); }); }
+  // STEP 1~6에 반영된 신호의 '반영 취소'(×) — 패널이 동적 생성되므로 위임 처리
+  document.addEventListener("click",function(e){ const d=e.target.closest(".reflect-del"); if(d) s0Unreflect(d.dataset.id); });
 })();
 </script>
 </body>
