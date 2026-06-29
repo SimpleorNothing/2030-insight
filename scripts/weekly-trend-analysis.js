@@ -128,7 +128,7 @@ const stageRowsHtml = result.stageReviews.map(sr => {
 }).join('\n');
 
 const summaryHtml = result.summary
-  ? `<p style="font-size:13px; color:var(--warn); font-weight:600; padding:0 0 10px; border-bottom:1px solid rgba(245,158,11,.3); margin-bottom:6px">${result.summary}</p>`
+  ? `<p style="font-size:15px; color:var(--warn); font-weight:600; padding:0 0 10px; border-bottom:1px solid rgba(245,158,11,.3); margin-bottom:6px">${result.summary}</p>`
   : '';
 
 const newSection = `<!-- WEEKLY-CHECK-START -->
