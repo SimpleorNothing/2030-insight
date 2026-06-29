@@ -15,7 +15,8 @@
   --signal:#A07C3A; --signal-soft:#F1EAD8;
   --ok:#5E9468; --ok-soft:#DDEADD;
   --font-sans:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  --font-mono:ui-monospace,"SFMono-Regular","Menlo","Consolas",monospace;
+  /* 모든 글자체 Pretendard로 통일 — mono 변수도 Pretendard 스택을 가리킴 */
+  --font-mono:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --wrap:1180px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -37,9 +38,9 @@ header.rail{
   display:flex; align-items:center; gap:24px;
 }
 .brand{
-  font-size:13px; font-weight:700; letter-spacing:-.01em; white-space:nowrap;
+  font-size:15px; font-weight:700; letter-spacing:-.01em; white-space:nowrap;
 }
-.brand span{display:block; font-family:var(--font-mono); font-size:10.5px; font-weight:500; color:var(--faint); letter-spacing:.02em}
+.brand span{display:block; font-family:var(--font-mono); font-size:15px; font-weight:500; color:var(--faint); letter-spacing:.02em}
 .flow{
   display:flex; flex:1; align-items:center; gap:0; overflow-x:auto;
 }
@@ -51,12 +52,12 @@ header.rail{
   content:""; height:1px; flex:1; background:var(--line-strong); margin:0 4px; min-width:10px;
 }
 .flow .node{
-  font-family:var(--font-mono); font-size:11px; font-weight:600;
+  font-family:var(--font-mono); font-size:15px; font-weight:600;
   width:24px; height:24px; flex:none; border-radius:50%;
   display:grid; place-items:center; border:1.5px solid var(--line-strong);
   background:var(--surface); transition:.2s;
 }
-.flow .lbl{font-size:11.5px; font-weight:600; white-space:nowrap; transition:.2s}
+.flow .lbl{font-size:15px; font-weight:600; white-space:nowrap; transition:.2s}
 .flow a.active{color:var(--accent)}
 .flow a.active .node{border-color:var(--accent); background:var(--accent); color:#fff}
 .flow a.active .lbl{color:var(--accent)}
@@ -64,7 +65,7 @@ header.rail{
 /* ---------- 히어로 ---------- */
 .hero{padding:72px 0 40px}
 .eyebrow{
-  font-family:var(--font-mono); font-size:12px; font-weight:600; letter-spacing:.08em;
+  font-family:var(--font-mono); font-size:15px; font-weight:600; letter-spacing:.08em;
   color:var(--accent); text-transform:uppercase;
 }
 .hero h1{
@@ -81,18 +82,18 @@ header.rail{
   padding:16px 14px; text-decoration:none; color:inherit; transition:.18s;
 }
 .flowmap .step:hover{border-color:var(--accent); transform:translateY(-2px); box-shadow:0 8px 24px rgba(11,95,165,.08)}
-.flowmap .n{font-family:var(--font-mono); font-size:13px; font-weight:700; color:var(--accent)}
-.flowmap .t{font-size:13.5px; font-weight:700; margin:6px 0 4px; letter-spacing:-.01em}
-.flowmap .d{font-size:11.5px; color:var(--faint); line-height:1.45}
+.flowmap .n{font-family:var(--font-mono); font-size:15px; font-weight:700; color:var(--accent)}
+.flowmap .t{font-size:15px; font-weight:700; margin:6px 0 4px; letter-spacing:-.01em}
+.flowmap .d{font-size:15px; color:var(--faint); line-height:1.45}
 
 /* ---------- 섹션 공통 ---------- */
 section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:8px}
 .sec-num{
-  font-family:var(--font-mono); font-size:13px; font-weight:700; color:#fff;
+  font-family:var(--font-mono); font-size:15px; font-weight:700; color:#fff;
   background:var(--accent); padding:3px 10px; border-radius:20px; flex:none;
 }
-.sec-role{font-size:13px; color:var(--faint); font-family:var(--font-mono)}
+.sec-role{font-size:15px; color:var(--faint); font-family:var(--font-mono)}
 .sec-title{font-size:clamp(22px,3vw,30px); font-weight:800; letter-spacing:-.02em; margin:6px 0 10px}
 .sec-desc{font-size:15px; color:var(--muted); max-width:760px; margin-bottom:30px}
 
@@ -103,9 +104,9 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 }
 .fill::before{
   content:"✏ 채움 영역"; position:absolute; top:10px; right:12px;
-  font-family:var(--font-mono); font-size:10px; color:var(--faint); letter-spacing:.04em;
+  font-family:var(--font-mono); font-size:15px; color:var(--faint); letter-spacing:.04em;
 }
-.fill-note{font-size:13px; color:var(--muted); line-height:1.55}
+.fill-note{font-size:15px; color:var(--muted); line-height:1.55}
 .fill-note b{color:var(--ink); font-weight:700}
 .grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
 .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
@@ -113,28 +114,28 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 
 /* ---------- 1단계 STEEP × 가전4축 매트릭스 ---------- */
 .matrix{border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface)}
-.matrix table{width:100%; border-collapse:collapse; font-size:12.5px}
+.matrix table{width:100%; border-collapse:collapse; font-size:15px}
 .matrix th,.matrix td{border:1px solid var(--line); padding:10px 8px; text-align:center; vertical-align:middle}
-.matrix thead th{background:#3E5263; color:#fff; font-weight:700; font-size:12px}
+.matrix thead th{background:#3E5263; color:#fff; font-weight:700; font-size:15px}
 .matrix .axis{background:var(--accent-soft); color:var(--accent); font-weight:700; text-align:left; white-space:nowrap}
-.matrix .axis small{display:block; color:var(--muted); font-weight:500; font-size:10.5px}
-.matrix td.cell{color:var(--ink); font-size:11px; font-weight:600; cursor:default}
+.matrix .axis small{display:block; color:var(--muted); font-weight:500; font-size:15px}
+.matrix td.cell{color:var(--ink); font-size:15px; font-weight:600; cursor:default}
 .matrix td.cell.hit{background:var(--accent-soft); color:var(--accent); font-weight:700}
 .matrix td.cell:hover{background:var(--accent-soft)}
-.legend{display:flex; gap:18px; margin-top:14px; font-size:12px; color:var(--muted); flex-wrap:wrap}
+.legend{display:flex; gap:18px; margin-top:14px; font-size:15px; color:var(--muted); flex-wrap:wrap}
 .legend i{display:inline-block; width:11px; height:11px; border-radius:3px; margin-right:6px; vertical-align:-1px}
 
 /* ---------- 카드(트렌드/영향 등) ---------- */
 .card{
   border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:18px;
 }
-.card .tag{font-family:var(--font-mono); font-size:11px; font-weight:700; color:var(--accent)}
+.card .tag{font-family:var(--font-mono); font-size:15px; font-weight:700; color:var(--accent)}
 .card h4{font-size:15px; font-weight:700; margin:8px 0 6px; letter-spacing:-.01em}
 .card .chip{
-  display:inline-block; font-size:10.5px; font-family:var(--font-mono);
+  display:inline-block; font-size:15px; font-family:var(--font-mono);
   background:var(--accent-soft); color:var(--accent); padding:2px 8px; border-radius:20px; margin-top:8px;
 }
-.card .ph{font-size:12.5px; color:var(--faint); border-top:1px dashed var(--line); margin-top:10px; padding-top:10px}
+.card .ph{font-size:15px; color:var(--faint); border-top:1px dashed var(--line); margin-top:10px; padding-top:10px}
 
 /* ---------- 2x2 매트릭스(영향/우선순위) ---------- */
 .quad{
@@ -143,16 +144,16 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
   aspect-ratio:16/9;
 }
 .quad .q{background:var(--surface); padding:18px; display:flex; flex-direction:column}
-.quad .q .qh{font-size:12px; font-weight:700; color:var(--muted); font-family:var(--font-mono)}
-.quad-axes{display:flex; justify-content:space-between; font-size:11.5px; color:var(--faint); margin-top:8px; font-family:var(--font-mono)}
+.quad .q .qh{font-size:15px; font-weight:700; color:var(--muted); font-family:var(--font-mono)}
+.quad-axes{display:flex; justify-content:space-between; font-size:15px; color:var(--faint); margin-top:8px; font-family:var(--font-mono)}
 
 /* ---------- 경쟁사 히트맵 ---------- */
 .heat{border:1px solid var(--line); border-radius:14px; overflow:auto; background:var(--surface)}
-.heat table{width:100%; border-collapse:collapse; font-size:12px; min-width:760px}
+.heat table{width:100%; border-collapse:collapse; font-size:15px; min-width:760px}
 .heat th,.heat td{border:1px solid var(--line); padding:9px 10px; text-align:center}
-.heat thead th{background:#3E5263; color:#fff; font-weight:600; font-size:11.5px; position:sticky; top:0}
+.heat thead th{background:#3E5263; color:#fff; font-weight:600; font-size:15px; position:sticky; top:0}
 .heat tbody th{background:var(--paper); text-align:left; font-weight:700; white-space:nowrap}
-.heat td{color:var(--muted); font-size:11px}
+.heat td{color:var(--muted); font-size:15px}
 .heat td.lead{background:var(--accent-soft); color:var(--accent); font-weight:700}
 .heat .own{border-left:2px solid var(--ok)}
 .heat thead th.own{background:var(--ok)}
@@ -163,10 +164,10 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .road{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface)}
 .road .phase{padding:18px; border-right:1px solid var(--line)}
 .road .phase:last-child{border-right:none}
-.road .phase .ph-h{font-family:var(--font-mono); font-size:12px; font-weight:700; color:var(--accent)}
-.road .phase .ph-y{font-size:11px; color:var(--faint)}
+.road .phase .ph-h{font-family:var(--font-mono); font-size:15px; font-weight:700; color:var(--accent)}
+.road .phase .ph-y{font-size:15px; color:var(--faint)}
 
-footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint); font-size:12px; font-family:var(--font-mono)}
+footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint); font-size:15px; font-family:var(--font-mono)}
 
 @media(max-width:860px){
   .flow .lbl{display:none}
@@ -180,35 +181,35 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 .unver{color:#A07C3A; font-style:italic}
 /* 1.1 지역 매트릭스 */
 .region{border:1px solid var(--line); border-radius:14px; overflow:auto; background:var(--surface)}
-.region table{width:100%; border-collapse:collapse; font-size:11.5px; min-width:680px}
+.region table{width:100%; border-collapse:collapse; font-size:15px; min-width:680px}
 .region th,.region td{border:1px solid var(--line); padding:9px 10px; text-align:left; vertical-align:top}
-.region thead th{background:#3E5263; color:#fff; font-weight:700; font-size:12px; text-align:center}
+.region thead th{background:#3E5263; color:#fff; font-weight:700; font-size:15px; text-align:center}
 .region tbody th{background:var(--accent-soft); color:var(--accent); font-weight:700; white-space:nowrap; width:130px}
-.region tbody th small{display:block; color:var(--muted); font-weight:500; font-size:10px}
+.region tbody th small{display:block; color:var(--muted); font-weight:500; font-size:15px}
 .region td b{color:var(--ink)}
-.substep{font-family:var(--font-mono); font-size:12px; font-weight:700; color:#fff; background:var(--ink); padding:3px 9px; border-radius:6px; margin-right:8px}
+.substep{font-family:var(--font-mono); font-size:15px; font-weight:700; color:#fff; background:var(--ink); padding:3px 9px; border-radius:6px; margin-right:8px}
 
 /* S0 인풋 단계 (분석 6단계와 위계 구분) */
 .rail-s0{display:flex; align-items:center; gap:8px; padding-right:14px; margin-right:4px; border-right:1px dashed var(--line-strong); white-space:nowrap}
 .rail-s0 a{display:flex; align-items:center; gap:7px; text-decoration:none; color:var(--muted); padding:6px 4px}
-.rail-s0 .node{font-family:var(--font-mono); font-size:11px; font-weight:700; width:24px; height:24px; flex:none; border-radius:7px; display:grid; place-items:center; border:1.5px dashed var(--line-strong); background:var(--surface)}
+.rail-s0 .node{font-family:var(--font-mono); font-size:15px; font-weight:700; width:24px; height:24px; flex:none; border-radius:7px; display:grid; place-items:center; border:1.5px dashed var(--line-strong); background:var(--surface)}
 .rail-s0 a.active{color:var(--ink)}
 .rail-s0 a.active .node{border-style:solid; border-color:var(--ink); background:var(--ink); color:#fff}
-.rail-s0 .lbl{font-size:11.5px; font-weight:600}
+.rail-s0 .lbl{font-size:15px; font-weight:600}
 .s0-band{background:var(--surface); color:var(--ink); border-radius:0; padding:0; margin-top:0; border-top:1px solid var(--line)}
-.s0-band .s0-eyebrow{font-family:var(--font-mono); font-size:12px; font-weight:600; letter-spacing:.08em; color:var(--accent); text-transform:uppercase}
+.s0-band .s0-eyebrow{font-family:var(--font-mono); font-size:15px; font-weight:600; letter-spacing:.08em; color:var(--accent); text-transform:uppercase}
 .s0-band h3{font-size:clamp(22px,3vw,30px); font-weight:800; letter-spacing:-.02em; margin:6px 0 10px}
 .s0-band .s0-lead{font-size:15px; color:var(--muted); max-width:760px; margin-bottom:30px}
 .s0-routes{display:grid; grid-template-columns:1fr 1fr; gap:16px}
 .s0-route{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:18px}
-.s0-route .r-tag{display:inline-block; font-family:var(--font-mono); font-size:11px; font-weight:700; padding:3px 9px; border-radius:20px; margin-bottom:10px}
+.s0-route .r-tag{display:inline-block; font-family:var(--font-mono); font-size:15px; font-weight:700; padding:3px 9px; border-radius:20px; margin-bottom:10px}
 .s0-route.weekly .r-tag{background:#5E9468; color:#fff}
 .s0-route.adhoc .r-tag{background:#A07C3A; color:#fff}
 .s0-route h4{font-size:15px; font-weight:700; margin-bottom:6px}
-.s0-route p{font-size:12.5px; color:#B9C6D4; line-height:1.55}
-.s0-route .feeds{margin-top:12px; padding-top:12px; border-top:1px solid rgba(255,255,255,.12); font-size:11.5px; color:#8FA3B5}
+.s0-route p{font-size:15px; color:#B9C6D4; line-height:1.55}
+.s0-route .feeds{margin-top:12px; padding-top:12px; border-top:1px solid rgba(255,255,255,.12); font-size:15px; color:#8FA3B5}
 .s0-route .feeds b{color:#CFE0EE}
-.s0-flowto{display:flex; align-items:center; justify-content:center; gap:10px; margin-top:18px; font-family:var(--font-mono); font-size:12px; color:#7FB2D9}
+.s0-flowto{display:flex; align-items:center; justify-content:center; gap:10px; margin-top:18px; font-family:var(--font-mono); font-size:15px; color:#7FB2D9}
 @media(max-width:860px){.s0-routes{grid-template-columns:1fr} .rail-s0 .lbl{display:none}}
 
 </style>
@@ -218,7 +219,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 <!-- ════════ TEST VERSION 표시 (좌상단 고정 배지) ════════ -->
 <div id="test-version-badge" aria-hidden="true"
   style="position:fixed; top:10px; left:10px; z-index:200; background:#FFC107; color:#1A1A1A;
-  font-family:var(--font-sans); font-weight:800; font-size:12px; letter-spacing:.04em;
+  font-family:var(--font-sans); font-weight:800; font-size:15px; letter-spacing:.04em;
   padding:6px 14px; border-radius:999px; box-shadow:0 2px 8px rgba(0,0,0,.18);
   pointer-events:none; user-select:none">작업중</div>
 
@@ -272,8 +273,8 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     #s0 .s0-src.on{border-color:var(--accent);background:var(--accent-soft)}
     #s0 .s0-src .ico{width:30px;height:30px;flex:none;border-radius:8px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);color:var(--accent)}
     #s0 .s0-src.on .ico{border-color:var(--accent)}
-    #s0 .s0-src h4{font-size:14px;font-weight:700;color:var(--ink);margin:0 0 2px}
-    #s0 .s0-src p{font-size:11px;color:var(--muted);margin:0}
+    #s0 .s0-src h4{font-size:15px;font-weight:700;color:var(--ink);margin:0 0 2px}
+    #s0 .s0-src p{font-size:15px;color:var(--muted);margin:0}
     /* 다른 도구에서 오는 소스 → 그 도구로 바로 이동(도구간 연결 표시) */
     #s0 .s0-src .srclink{color:var(--accent);font-weight:700;text-decoration:none;border-bottom:1px dashed currentColor}
     #s0 .s0-src .srclink:hover{border-bottom-style:solid}
@@ -283,46 +284,46 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     #s0 .s0-ghead{cursor:pointer}
     #s0 .s0-ghead:hover,#s0 .s0-item:hover{background:#E6E1D6}
     #s0 .s0-item{cursor:pointer}
-    #s0 .s0-stag{flex:none;font-size:11px;font-weight:700;color:#fff;background:var(--accent);border-radius:5px;padding:2px 7px;letter-spacing:.3px}
-    #s0 .s0-gname{flex:1;min-width:0;font-weight:700;color:var(--ink);font-size:13px}
-    #s0 .s0-gdesc{font-size:11px;color:var(--muted);font-weight:400;margin-left:2px}
-    #s0 .s0-itx{flex:1;min-width:0;font-size:12px;color:var(--ink);line-height:1.5}
+    #s0 .s0-stag{flex:none;font-size:15px;font-weight:700;color:#fff;background:var(--accent);border-radius:5px;padding:2px 7px;letter-spacing:.3px}
+    #s0 .s0-gname{flex:1;min-width:0;font-weight:700;color:var(--ink);font-size:15px}
+    #s0 .s0-gdesc{font-size:15px;color:var(--muted);font-weight:400;margin-left:2px}
+    #s0 .s0-itx{flex:1;min-width:0;font-size:15px;color:var(--ink);line-height:1.5}
     #s0 .s0-cb{flex-shrink:0;margin:0;width:17px;height:17px;cursor:pointer;accent-color:var(--accent)}
     #s0 .s0-bitem{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-top:1px solid #DAD3C6}
     #s0 .s0-bitem:first-child{border-top:none}
     #s0 .s0-del{flex:none;width:22px;height:22px;border:none;border-radius:6px;background:#E6E1D6;color:var(--muted);cursor:pointer;font-size:15px;line-height:1;transition:.12s}
     #s0 .s0-del:hover{background:#EAD7D7;color:#A8453C}
-    #s0 .s0-btn{padding:10px 20px;border:none;border-radius:6px;color:#fff;font-weight:600;cursor:pointer;font-size:13px;transition:.15s}
+    #s0 .s0-btn{padding:10px 20px;border:none;border-radius:6px;color:#fff;font-weight:600;cursor:pointer;font-size:15px;transition:.15s}
     #s0 .s0-btn:disabled{background:#C7C2BA !important;cursor:not-allowed}
     #s0 .s0-spin{width:15px;height:15px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;display:inline-block;animation:s0spin .7s linear infinite}
     @keyframes s0spin{to{transform:rotate(360deg)}}
     /* S0에서 STEP 1~6으로 반영된 신호 패널 */
     .reflect-panel{margin:0 0 26px;border:1px solid var(--line-strong);border-left:3px solid #5E9468;border-radius:10px;background:var(--surface);padding:13px 18px;animation:reflectIn .25s ease}
     @keyframes reflectIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
-    .reflect-panel .reflect-head{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#4E7E58;margin-bottom:8px}
-    .reflect-panel .reflect-count{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 6px;font-size:11px;color:#fff;background:#5E9468;border-radius:999px}
+    .reflect-panel .reflect-head{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#4E7E58;margin-bottom:8px}
+    .reflect-panel .reflect-count{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 6px;font-size:15px;color:#fff;background:#5E9468;border-radius:999px}
     .reflect-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
     .reflect-item:first-of-type{border-top:none}
-    .reflect-tag{flex:none;font-size:10.5px;font-weight:700;color:#fff;background:#5E9468;border-radius:5px;padding:2px 7px;letter-spacing:.3px;margin-top:1px}
+    .reflect-tag{flex:none;font-size:15px;font-weight:700;color:#fff;background:#5E9468;border-radius:5px;padding:2px 7px;letter-spacing:.3px;margin-top:1px}
     .reflect-body{flex:1;min-width:0}
-    .reflect-text{font-size:12.5px;color:var(--ink);line-height:1.5}
-    .reflect-meta{display:block;margin-top:3px;font-size:10.5px;color:var(--faint)}
-    .reflect-del{flex:none;width:20px;height:20px;border:none;border-radius:6px;background:#E6E1D6;color:var(--muted);cursor:pointer;font-size:14px;line-height:1;transition:.12s}
+    .reflect-text{font-size:15px;color:var(--ink);line-height:1.5}
+    .reflect-meta{display:block;margin-top:3px;font-size:15px;color:var(--faint)}
+    .reflect-del{flex:none;width:20px;height:20px;border:none;border-radius:6px;background:#E6E1D6;color:var(--muted);cursor:pointer;font-size:15px;line-height:1;transition:.12s}
     .reflect-del:hover{background:#EAD7D7;color:#A8453C}
     /* S0 반영 신호 → 단계별 분석 테이블 (표 동적화) */
     .reflect-tbl{margin:0 0 26px;border:1px solid var(--line-strong);border-left:3px solid #5E9468;border-radius:10px;background:var(--surface);padding:13px 16px;animation:reflectIn .25s ease}
-    .reflect-tbl table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+    .reflect-tbl table{width:100%;border-collapse:collapse;font-size:15px;margin-top:8px}
     .reflect-tbl th,.reflect-tbl td{text-align:left;padding:8px 8px;border-top:1px solid var(--line);vertical-align:top}
-    .reflect-tbl thead th{color:var(--muted);font-weight:700;font-size:11px;border-top:none}
+    .reflect-tbl thead th{color:var(--muted);font-weight:700;font-size:15px;border-top:none}
     .reflect-tbl .rt-tr{font-weight:700;color:#4E7E58;white-space:nowrap;line-height:1.45}
     .reflect-tbl .rt-ev{color:var(--faint);white-space:nowrap}
-    .reflect-tbl .rt-dir{text-align:center;white-space:nowrap;font-size:13px}
+    .reflect-tbl .rt-dir{text-align:center;white-space:nowrap;font-size:15px}
     .reflect-tbl .rt-sig{display:flex;align-items:flex-start;gap:8px;color:var(--ink);line-height:1.5;padding:2px 0}
     .reflect-tbl .rt-sig + .rt-sig{border-top:1px dashed var(--line);padding-top:6px;margin-top:4px}
-    .reflect-tbl .rt-sig .reflect-del{width:18px;height:18px;font-size:13px;margin-left:auto}
-    .s0-trtag{flex:none;font-size:10px;font-weight:700;color:#4E7E58;background:#E3EEE5;border-radius:5px;padding:1px 6px;margin-left:6px}
+    .reflect-tbl .rt-sig .reflect-del{width:18px;height:18px;font-size:15px;margin-left:auto}
+    .s0-trtag{flex:none;font-size:15px;font-weight:700;color:#4E7E58;background:#E3EEE5;border-radius:5px;padding:1px 6px;margin-left:6px}
     /* 기존 8대 트렌드 카드·경쟁사 표에 붙는 신규반영 배지 */
-    .trend-badge{display:inline-block;margin-left:6px;font-size:10px;font-weight:700;color:#fff;background:#5E9468;border-radius:999px;padding:1px 7px;vertical-align:middle}
+    .trend-badge{display:inline-block;margin-left:6px;font-size:15px;font-weight:700;color:#fff;background:#5E9468;border-radius:999px;padding:1px 7px;vertical-align:middle}
     </style>
 
     <!-- ① 정보 소스 선택 -->
@@ -350,26 +351,26 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 
       <div id="s0-extra" style="display:none; margin-top:14px; border-top:1px solid #DAD3C6; padding-top:16px">
         <div style="display:flex; gap:10px; margin-bottom:12px; border-bottom:1px solid var(--line)">
-          <button class="s0-xtab" data-tab="url" onclick="s0ExtraTab('url')" style="padding:8px 14px;background:none;border:none;border-bottom:2px solid var(--accent);color:var(--accent);font-weight:600;cursor:pointer;font-size:13px">URL</button>
-          <button class="s0-xtab" data-tab="file" onclick="s0ExtraTab('file')" style="padding:8px 14px;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);font-weight:600;cursor:pointer;font-size:13px">파일</button>
-          <button class="s0-xtab" data-tab="text" onclick="s0ExtraTab('text')" style="padding:8px 14px;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);font-weight:600;cursor:pointer;font-size:13px">텍스트</button>
+          <button class="s0-xtab" data-tab="url" onclick="s0ExtraTab('url')" style="padding:8px 14px;background:none;border:none;border-bottom:2px solid var(--accent);color:var(--accent);font-weight:600;cursor:pointer;font-size:15px">URL</button>
+          <button class="s0-xtab" data-tab="file" onclick="s0ExtraTab('file')" style="padding:8px 14px;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);font-weight:600;cursor:pointer;font-size:15px">파일</button>
+          <button class="s0-xtab" data-tab="text" onclick="s0ExtraTab('text')" style="padding:8px 14px;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);font-weight:600;cursor:pointer;font-size:15px">텍스트</button>
         </div>
         <div id="s0-pane-url" class="s0-pane" style="display:block">
-          <input type="url" placeholder="https://www.example.com/article..." style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font-size:13px">
-          <div style="font-size:11px;color:var(--faint);margin-top:6px">뉴스·블로그 기사 링크. 유튜브는 별도 운영.</div>
+          <input type="url" placeholder="https://www.example.com/article..." style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font-size:15px">
+          <div style="font-size:15px;color:var(--faint);margin-top:6px">뉴스·블로그 기사 링크. 유튜브는 별도 운영.</div>
         </div>
         <div id="s0-pane-file" class="s0-pane" style="display:none">
-          <input type="file" accept=".pdf,.docx,.txt" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font-size:13px">
-          <div style="font-size:11px;color:var(--faint);margin-top:6px">PDF · DOCX · TXT 지원</div>
+          <input type="file" accept=".pdf,.docx,.txt" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font-size:15px">
+          <div style="font-size:15px;color:var(--faint);margin-top:6px">PDF · DOCX · TXT 지원</div>
         </div>
         <div id="s0-pane-text" class="s0-pane" style="display:none">
-          <textarea placeholder="분석할 텍스트를 붙여넣으세요..." style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font-size:13px;height:90px;font-family:inherit;resize:vertical"></textarea>
+          <textarea placeholder="분석할 텍스트를 붙여넣으세요..." style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font-size:15px;height:90px;font-family:inherit;resize:vertical"></textarea>
         </div>
       </div>
 
       <div style="margin-top:18px; padding-top:16px; border-top:1px solid #DAD3C6; display:flex; align-items:center; gap:12px">
         <button id="s0ExtractBtn" class="s0-btn" style="background:var(--accent)" disabled onclick="s0Extract()">Insight 뽑기</button>
-        <span id="s0ExtractHint" style="font-size:12px; color:var(--muted)">소스를 1개 이상 선택하세요</span>
+        <span id="s0ExtractHint" style="font-size:15px; color:var(--muted)">소스를 1개 이상 선택하세요</span>
       </div>
     </div>
 
@@ -388,13 +389,13 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       <p class="sec-desc" style="margin-bottom:14px">위 항목을 개별 또는 단계 전체로 선택한다. 고른 항목은 아래에 실시간으로 쌓인다.</p>
       <div class="s0-content-toggle" style="background:#F3EEE2; padding:20px; border-radius:12px">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding-bottom:12px; border-bottom:1px solid #DAD3C6">
-          <b style="color:var(--ink); font-size:13px">선택한 항목 <span id="s0BasketCount" style="display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;font-size:11px;color:#fff;background:var(--accent);border-radius:999px;margin-left:4px">0</span></b>
-          <button onclick="s0ClearAll()" style="font-size:12px;color:var(--muted);background:none;border:none;cursor:pointer;text-decoration:underline">전체 해제</button>
+          <b style="color:var(--ink); font-size:15px">선택한 항목 <span id="s0BasketCount" style="display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;font-size:15px;color:#fff;background:var(--accent);border-radius:999px;margin-left:4px">0</span></b>
+          <button onclick="s0ClearAll()" style="font-size:15px;color:var(--muted);background:none;border:none;cursor:pointer;text-decoration:underline">전체 해제</button>
         </div>
-        <div id="s0-basket"><p style="font-size:12px;color:var(--muted);text-align:center;padding:12px 0;margin:0">아직 선택한 항목이 없습니다.</p></div>
+        <div id="s0-basket"><p style="font-size:15px;color:var(--muted);text-align:center;padding:12px 0;margin:0">아직 선택한 항목이 없습니다.</p></div>
         <div style="margin-top:16px; padding-top:16px; border-top:1px solid #DAD3C6; display:flex; align-items:center; gap:12px">
           <button id="s0ApplyBtn" class="s0-btn" style="background:#5E9468" disabled onclick="s0Apply()">1~6단계에 반영</button>
-          <span id="s0ApplyHint" style="font-size:12px; color:var(--muted)">항목을 선택하면 활성화됩니다</span>
+          <span id="s0ApplyHint" style="font-size:15px; color:var(--muted)">항목을 선택하면 활성화됩니다</span>
         </div>
       </div>
     </div>
@@ -562,17 +563,17 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       <!-- 영향도 × 성숙도 매트릭스 (Hype Cycle 흡수) -->
       <div>
         <div class="quad">
-          <div class="q"><div class="qh">高영향 · 미성숙</div><div class="ph" style="font-size:12px; color:var(--muted); margin-top:6px"><b style="color:var(--ink)">선점 베팅</b><br>T1 AI에이전트 · T7 VPP</div></div>
-          <div class="q" style="background:linear-gradient(135deg,var(--accent-soft),#fff)"><div class="qh" style="color:var(--accent)">高영향 · 성숙 ★즉시</div><div class="ph" style="font-size:12px; color:var(--accent); font-weight:700; margin-top:6px">T2 DC냉각 <span style="font-size:10px; background:var(--accent); color:#fff; padding:1px 5px; border-radius:8px">수주 가시</span><br>T5 구독 <span style="font-size:10px; background:var(--accent); color:#fff; padding:1px 5px; border-radius:8px">매출 가시</span><br>T3 자연냉매</div></div>
-          <div class="q"><div class="qh">低영향 · 미성숙</div><div class="ph" style="font-size:12px; color:var(--muted); margin-top:6px"><b style="color:var(--ink)">관찰</b><br>T8 실버·헬스</div></div>
-          <div class="q"><div class="qh">低영향 · 성숙</div><div class="ph" style="font-size:12px; color:var(--muted); margin-top:6px"><b style="color:var(--ink)">효율 대응</b><br>T4 히트펌프 · T6 수리권</div></div>
+          <div class="q"><div class="qh">高영향 · 미성숙</div><div class="ph" style="font-size:15px; color:var(--muted); margin-top:6px"><b style="color:var(--ink)">선점 베팅</b><br>T1 AI에이전트 · T7 VPP</div></div>
+          <div class="q" style="background:linear-gradient(135deg,var(--accent-soft),#fff)"><div class="qh" style="color:var(--accent)">高영향 · 성숙 ★즉시</div><div class="ph" style="font-size:15px; color:var(--accent); font-weight:700; margin-top:6px">T2 DC냉각 <span style="font-size:15px; background:var(--accent); color:#fff; padding:1px 5px; border-radius:8px">수주 가시</span><br>T5 구독 <span style="font-size:15px; background:var(--accent); color:#fff; padding:1px 5px; border-radius:8px">매출 가시</span><br>T3 자연냉매</div></div>
+          <div class="q"><div class="qh">低영향 · 미성숙</div><div class="ph" style="font-size:15px; color:var(--muted); margin-top:6px"><b style="color:var(--ink)">관찰</b><br>T8 실버·헬스</div></div>
+          <div class="q"><div class="qh">低영향 · 성숙</div><div class="ph" style="font-size:15px; color:var(--muted); margin-top:6px"><b style="color:var(--ink)">효율 대응</b><br>T4 히트펌프 · T6 수리권</div></div>
         </div>
         <div class="quad-axes"><span>← 미성숙(여명·과열기)</span><span>성숙(계몽·안정기) →</span></div>
       </div>
       <!-- 기회/위협 카드 + Hype Cycle 진행 참조 -->
       <div style="display:flex; flex-direction:column; gap:12px">
-        <div class="card" style="border-left:3px solid var(--ok)"><div class="tag" style="color:var(--ok)">최대 기회 · T2 <span style="font-size:10px; background:var(--ok); color:#fff; padding:1px 5px; border-radius:8px">수주 가시</span></div><h4>DC냉각 = 장비판매→통합솔루션 B2B 전환</h4><div class="ph">액체냉각 $55억→$190억(2030, CAGR 23%) · <b>가시 수주잔고(보강)</b> · 과열기지만 실수주 동반</div></div>
-        <div class="card" style="border-left:3px solid var(--ok)"><div class="tag" style="color:var(--ok)">기회 · T5 <span style="font-size:10px; background:var(--ok); color:#fff; padding:1px 5px; border-radius:8px">매출 가시</span></div><h4>구독으로 정체 수요 돌파 + 리커링 락인</h4><div class="ph">국내 구독시장 100조(2025) · <b>당사 AI구독클럽 누적매출(보강)</b> · 계몽기, 한국 선도</div></div>
+        <div class="card" style="border-left:3px solid var(--ok)"><div class="tag" style="color:var(--ok)">최대 기회 · T2 <span style="font-size:15px; background:var(--ok); color:#fff; padding:1px 5px; border-radius:8px">수주 가시</span></div><h4>DC냉각 = 장비판매→통합솔루션 B2B 전환</h4><div class="ph">액체냉각 $55억→$190억(2030, CAGR 23%) · <b>가시 수주잔고(보강)</b> · 과열기지만 실수주 동반</div></div>
+        <div class="card" style="border-left:3px solid var(--ok)"><div class="tag" style="color:var(--ok)">기회 · T5 <span style="font-size:15px; background:var(--ok); color:#fff; padding:1px 5px; border-radius:8px">매출 가시</span></div><h4>구독으로 정체 수요 돌파 + 리커링 락인</h4><div class="ph">국내 구독시장 100조(2025) · <b>당사 AI구독클럽 누적매출(보강)</b> · 계몽기, 한국 선도</div></div>
         <div class="card"><div class="tag" style="color:var(--signal)">위협 · T3·T4</div><h4>냉매·전동화 규제 = 대응비용 + 부품 공급부족</h4><div class="ph">EPA 700GWP 제조금지(25.1) · 컴프레서 핵심부품 내재화 필요</div></div>
       </div>
     </div>
@@ -656,40 +657,40 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     <h2 class="sec-title">당사 현 위치 — 트렌드별 역량·격차 진단</h2>
     <p class="sec-desc">"차별화·선도"를 말하기 전, 당사가 트렌드별로 선도사 대비 어디 있는지부터 못 박는다. 격차가 정량화돼야 6단계 목표가 정량화된다. <b>산업구조 레벨(메가트렌드)</b>과 <b>제품 카테고리 레벨</b> 두 해상도로 진단한다.</p>
 
-    <h3 style="font-size:14px; font-weight:700; margin:4px 0 12px; color:var(--faint)">① 산업구조 레벨 — 메가트렌드 갭</h3>
+    <h3 style="font-size:15px; font-weight:700; margin:4px 0 12px; color:var(--faint)">① 산업구조 레벨 — 메가트렌드 갭</h3>
     <div class="grid3">
       <div class="card" style="border-top:3px solid var(--ok)">
         <div class="tag" style="color:var(--ok)">호각·우위 (지킨다)</div>
-        <h4 style="font-size:14px">T1 AI에이전트 · T2 DC냉각</h4>
+        <h4 style="font-size:15px">T1 AI에이전트 · T2 DC냉각</h4>
         <div class="ph" style="color:var(--muted)">T1: Bespoke+Gemini로 선도권 · T2: FläktGroup 인수로 LG·Midea와 동일 출발선. <b>격차 KPI:</b> 선도 지위 유지율·수주 점유율</div>
       </div>
       <div class="card" style="border-top:3px solid var(--signal)">
         <div class="tag" style="color:var(--signal)">격차·추격 (좁힌다)</div>
-        <h4 style="font-size:14px">T3 자연냉매 · T4 히트펌프 · T6 순환</h4>
+        <h4 style="font-size:15px">T3 자연냉매 · T4 히트펌프 · T6 순환</h4>
         <div class="ph" style="color:var(--muted)"><b style="color:var(--signal)">중국계 추격 경계:</b> Midea R-290 620만대(●)·Haier 실버로봇(●) 선점 vs 당사 ○. Daikin(R-32)·BSH(프로판)도 ● 선도. <b>격차 KPI:</b> 저GWP 라인업 비중·핵심부품 내재화율</div>
       </div>
       <div class="card" style="border-top:3px solid var(--accent)">
         <div class="tag" style="color:var(--accent)">선점 (먼저 깃발)</div>
-        <h4 style="font-size:14px">T5 구독 · T7 VPP · T8 실버</h4>
+        <h4 style="font-size:15px">T5 구독 · T7 VPP · T8 실버</h4>
         <div class="ph" style="color:var(--muted)">T5: LG 외 글로벌 공백 = 해외 선점 여지 · T7·T8: 전 사 여명기. <b>격차 KPI:</b> 해외 구독 침투율·신BM 매출</div>
       </div>
     </div>
 
-    <h3 style="font-size:14px; font-weight:700; margin:26px 0 12px; color:var(--faint)">② 제품 카테고리 레벨 — 기존 사업 갭</h3>
+    <h3 style="font-size:15px; font-weight:700; margin:26px 0 12px; color:var(--faint)">② 제품 카테고리 레벨 — 기존 사업 갭</h3>
     <div class="grid3">
       <div class="card" style="border-top:3px solid var(--ok)">
         <div class="tag" style="color:var(--ok)">선도 (지킨다)</div>
-        <h4 style="font-size:14px">냉장고 · 세탁·건조 · 조리</h4>
+        <h4 style="font-size:15px">냉장고 · 세탁·건조 · 조리</h4>
         <div class="ph" style="color:var(--muted)">AI비전(가전 최초 Gemini)·비스포크 콤보·익스트랙터 인덕션. <b>경고:</b> 인오븐카메라 AI는 경쟁사 80개급 추격으로 차별화 소진 → 생태계 연동으로 락인 전환</div>
       </div>
       <div class="card" style="border-top:3px solid var(--signal)">
         <div class="tag" style="color:var(--signal)">격차 (뼈아픈 추격)</div>
-        <h4 style="font-size:14px">청소기 · 식기세척기</h4>
+        <h4 style="font-size:15px">청소기 · 식기세척기</h4>
         <div class="ph" style="color:var(--muted)"><b style="color:var(--signal)">청소기 구조적 열세:</b> 국내 매출 로보락 46% vs 당사 22%(롤러물걸레·문턱등반 격차) · <b style="color:var(--signal)">식기세척 자동세제투입 공백</b>(LG·Bosch·Miele 표준화). <b>격차 KPI:</b> 청소기 점유율·세제투입 탑재율</div>
       </div>
       <div class="card" style="border-top:3px solid var(--accent)">
         <div class="tag" style="color:var(--accent)">공백 (진입 기회)</div>
-        <h4 style="font-size:14px">주방 소형가전</h4>
+        <h4 style="font-size:15px">주방 소형가전</h4>
         <div class="ph" style="color:var(--muted)">듀얼존 에어프라이어 미진입(Ninja 대중화). 냉장고 펠티어 역량을 써멀일렉트릭 냉음료기로 전이 가능 · 구독 번들 연계 진입 여지</div>
       </div>
     </div>
@@ -711,17 +712,17 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     <div class="grid3" style="margin-bottom:20px">
       <div class="card" style="background:var(--accent-soft); border-color:var(--accent)">
         <div class="tag">클러스터 A · 락인</div>
-        <h4 style="font-size:14px">T1 AI에이전트 + T5 구독</h4>
+        <h4 style="font-size:15px">T1 AI에이전트 + T5 구독</h4>
         <div class="ph" style="color:var(--muted)">AI가 소모품·케어 시점을 예측 → 구독으로 자동 전환. 결합 시 이탈장벽↑ 리커링 매출↑</div>
       </div>
       <div class="card" style="background:var(--accent-soft); border-color:var(--accent)">
         <div class="tag">클러스터 B · 에너지</div>
-        <h4 style="font-size:14px">T2 DC냉각 + T3 냉매 + T7 VPP</h4>
+        <h4 style="font-size:15px">T2 DC냉각 + T3 냉매 + T7 VPP</h4>
         <div class="ph" style="color:var(--muted)">DC 전력급증이 VPP 수요를 키우고, 냉매규제가 냉각효율을 강제. 에너지축으로 한 묶음</div>
       </div>
       <div class="card" style="background:var(--signal-soft); border-color:var(--signal)">
         <div class="tag" style="color:var(--signal)">충돌 · 비용</div>
-        <h4 style="font-size:14px">T3 냉매 + T6 수리권 ↔ 원가</h4>
+        <h4 style="font-size:15px">T3 냉매 + T6 수리권 ↔ 원가</h4>
         <div class="ph" style="color:var(--muted)">저GWP 부품+수리 가능 설계는 원가·복잡도↑. 규제 동시 대응 시 설계 부담 충돌</div>
       </div>
     </div>
@@ -730,10 +731,10 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       <!-- 전략 우선순위 매트릭스 (역량 × 우선순위) -->
       <div>
         <div class="quad">
-          <div class="q"><div class="qh">선도 영역 ★</div><div class="ph" style="font-size:12px; color:var(--accent); font-weight:700; margin-top:6px">T2 DC냉각<br>T1 AI에이전트</div></div>
-          <div class="q"><div class="qh">선택적 투자</div><div class="ph" style="font-size:12px; color:var(--muted); margin-top:6px">T5 구독(해외)<br>T7 VPP</div></div>
-          <div class="q"><div class="qh">관망·대응</div><div class="ph" style="font-size:12px; color:var(--muted); margin-top:6px">T8 실버·헬스</div></div>
-          <div class="q"><div class="qh">방어·추격</div><div class="ph" style="font-size:12px; color:var(--muted); margin-top:6px">T3 냉매 · T4 히트펌프<br>T6 수리권</div></div>
+          <div class="q"><div class="qh">선도 영역 ★</div><div class="ph" style="font-size:15px; color:var(--accent); font-weight:700; margin-top:6px">T2 DC냉각<br>T1 AI에이전트</div></div>
+          <div class="q"><div class="qh">선택적 투자</div><div class="ph" style="font-size:15px; color:var(--muted); margin-top:6px">T5 구독(해외)<br>T7 VPP</div></div>
+          <div class="q"><div class="qh">관망·대응</div><div class="ph" style="font-size:15px; color:var(--muted); margin-top:6px">T8 실버·헬스</div></div>
+          <div class="q"><div class="qh">방어·추격</div><div class="ph" style="font-size:15px; color:var(--muted); margin-top:6px">T3 냉매 · T4 히트펌프<br>T6 수리권</div></div>
         </div>
         <div class="quad-axes"><span>← 당사 역량 낮음</span><span>당사 역량 높음 →</span></div>
       </div>
@@ -745,9 +746,9 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 
     <!-- 단기·중기·장기 로드맵 (충돌 해결책 + 정량 목표 종착지) -->
     <div class="road">
-      <div class="phase"><div class="ph-h">단기</div><div class="ph-y">~2026</div><div class="ph" style="font-size:12.5px; color:var(--muted); margin-top:8px"><b style="color:var(--ink)">DC냉각 최우선 격상</b> — FläktGroup 시너지·NVIDIA 인증. AI+구독 락인 강화<br><span style="color:var(--signal)">▸기존사업 방어: 청소기 롤러물걸레·자동급배수 추격 + 식기세척 자동세제투입 탑재 + 소형 듀얼존 진입</span><br><span style="color:var(--signal)">▸충돌 대응: 표준 모듈화 설계 착수</span><br><span style="color:var(--accent); font-weight:700">◎ 목표: 신BM 매출비중 □□% · 청소기 국내점유 22→□□%</span></div></div>
-      <div class="phase"><div class="ph-h">중기</div><div class="ph-y">2027~2028</div><div class="ph" style="font-size:12.5px; color:var(--muted); margin-top:8px"><b style="color:var(--ink)">자연냉매 규제차익</b> — EU 27년 R-410A 금지 선제 R-290/454B 확보<br><span style="color:var(--signal)">▸충돌 대응: 컴프레서 핵심부품 내재화율 제고</span><br><span style="color:var(--accent); font-weight:700">◎ 목표: 저GWP 라인업 □□%</span></div></div>
-      <div class="phase"><div class="ph-h">장기</div><div class="ph-y">2029~2030</div><div class="ph" style="font-size:12.5px; color:var(--muted); margin-top:8px"><b style="color:var(--ink)">VPP·실버 신수익 + 글로벌 선도</b> — 유틸리티 DR·Samsung Health 결합<br><span style="color:var(--accent); font-weight:700">◎ 목표: 글로벌 냉각솔루션 점유율 □□% · 해외 구독 □□만</span></div></div>
+      <div class="phase"><div class="ph-h">단기</div><div class="ph-y">~2026</div><div class="ph" style="font-size:15px; color:var(--muted); margin-top:8px"><b style="color:var(--ink)">DC냉각 최우선 격상</b> — FläktGroup 시너지·NVIDIA 인증. AI+구독 락인 강화<br><span style="color:var(--signal)">▸기존사업 방어: 청소기 롤러물걸레·자동급배수 추격 + 식기세척 자동세제투입 탑재 + 소형 듀얼존 진입</span><br><span style="color:var(--signal)">▸충돌 대응: 표준 모듈화 설계 착수</span><br><span style="color:var(--accent); font-weight:700">◎ 목표: 신BM 매출비중 □□% · 청소기 국내점유 22→□□%</span></div></div>
+      <div class="phase"><div class="ph-h">중기</div><div class="ph-y">2027~2028</div><div class="ph" style="font-size:15px; color:var(--muted); margin-top:8px"><b style="color:var(--ink)">자연냉매 규제차익</b> — EU 27년 R-410A 금지 선제 R-290/454B 확보<br><span style="color:var(--signal)">▸충돌 대응: 컴프레서 핵심부품 내재화율 제고</span><br><span style="color:var(--accent); font-weight:700">◎ 목표: 저GWP 라인업 □□%</span></div></div>
+      <div class="phase"><div class="ph-h">장기</div><div class="ph-y">2029~2030</div><div class="ph" style="font-size:15px; color:var(--muted); margin-top:8px"><b style="color:var(--ink)">VPP·실버 신수익 + 글로벌 선도</b> — 유틸리티 DR·Samsung Health 결합<br><span style="color:var(--accent); font-weight:700">◎ 목표: 글로벌 냉각솔루션 점유율 □□% · 해외 구독 □□만</span></div></div>
     </div>
     <div class="fill" style="margin-top:18px">
       <p class="fill-note"><b>정량 목표 종착지(□□ = 내부 데이터 매핑)</b> · 각 로드맵 단계에 당사 핵심자산(SmartThings·AI 가전·FläktGroup) 연계해 '2030 신BM 매출비중·글로벌 냉각 점유율' 등 명확한 Goal 확정 · <b>당사 선도 선언 후보:</b> T5 구독(글로벌 공백 선점) · T2 DC냉각(FläktGroup 레버리지)</p>
@@ -836,7 +837,7 @@ sections.forEach(s=>obs.observe(s));
     const wrap=document.getElementById("s0-insight-wrap");
     const area=document.getElementById("s0-insight-area");
     wrap.style.display="block";
-    area.innerHTML='<div style="display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px;padding:6px 0"><span class="s0-spin"></span>Claude가 선택한 소스에서 신호를 도출하는 중…</div>';
+    area.innerHTML='<div style="display:flex;align-items:center;gap:10px;color:var(--muted);font-size:15px;padding:6px 0"><span class="s0-spin"></span>Claude가 선택한 소스에서 신호를 도출하는 중…</div>';
     wrap.scrollIntoView({behavior:"smooth",block:"start"});
 
     // 선택 소스 라벨 + 추가 소스(URL/텍스트) 수집
@@ -893,7 +894,7 @@ sections.forEach(s=>obs.observe(s));
     const seq=++renderSeq;
     const groups={};
     list.forEach((it,i)=>{ (groups[it.s]=groups[it.s]||[]).push({s:it.s,t:it.t,tr:it.tr||"",dir:it.dir||"flat",id:"s0i"+seq+"_"+i}); });
-    let html=demo?'<div style="font-size:11px;color:var(--signal);background:var(--signal-soft);border:1px solid var(--line-strong);border-radius:6px;padding:8px 12px;margin-bottom:14px">백엔드 미연결 — 샘플 Insight로 흐름을 표시합니다(잠정). 워커 엔드포인트 연결 시 실데이터로 동작.</div>':"";
+    let html=demo?'<div style="font-size:15px;color:var(--signal);background:var(--signal-soft);border:1px solid var(--line-strong);border-radius:6px;padding:8px 12px;margin-bottom:14px">백엔드 미연결 — 샘플 Insight로 흐름을 표시합니다(잠정). 워커 엔드포인트 연결 시 실데이터로 동작.</div>':"";
     Object.keys(S_DEF).forEach(s=>{
       if(!groups[s]) return;
       const d=S_DEF[s];
@@ -1049,12 +1050,12 @@ sections.forEach(s=>obs.observe(s));
     const ab=document.getElementById("s0ApplyBtn"); ab.disabled=picked.size===0;
     document.getElementById("s0ApplyHint").textContent=picked.size===0?"항목을 선택하면 활성화됩니다":(picked.size+"개 항목을 1~6단계에 반영");
     const body=document.getElementById("s0-basket");
-    if(picked.size===0){ body.innerHTML='<p style="font-size:12px;color:var(--muted);text-align:center;padding:12px 0;margin:0">아직 선택한 항목이 없습니다.</p>'; return; }
+    if(picked.size===0){ body.innerHTML='<p style="font-size:15px;color:var(--muted);text-align:center;padding:12px 0;margin:0">아직 선택한 항목이 없습니다.</p>'; return; }
     const order=Object.keys(S_DEF);
     const rows=Array.from(picked.entries()).sort((a,b)=>order.indexOf(a[1].s)-order.indexOf(b[1].s));
     body.innerHTML=rows.map(function(e){ const id=e[0], v=e[1];
       return '<div class="s0-bitem"><span class="s0-stag" style="margin-top:1px">'+v.s+'</span>'
-        +'<span style="flex:1;font-size:12px;color:var(--ink);line-height:1.5">'+v.t+'</span>'
+        +'<span style="flex:1;font-size:15px;color:var(--ink);line-height:1.5">'+v.t+'</span>'
         +'<button class="s0-del" data-id="'+id+'">×</button></div>';
     }).join("");
   }
