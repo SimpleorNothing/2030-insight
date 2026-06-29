@@ -330,17 +330,12 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:12px">
         <div class="s0-src" data-src="MI" onclick="s0SrcToggle(this)">
           <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span>
-          <span><h4>Market Insight</h4><p>mi.samsungda.net · 시장 신호</p></span>
-          <input type="checkbox" class="s0-cb tk">
-        </div>
-        <div class="s0-src" data-src="2030" onclick="s0SrcToggle(this)">
-          <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-          <span><h4>2030 미래 트렌드</h4><p>2030.samsungda.net · 메가트렌드</p></span>
+          <span><h4>'Market Sensing'에서 파악한 시장 동향</h4><p>mi.samsungda.net · 시장 신호</p></span>
           <input type="checkbox" class="s0-cb tk">
         </div>
         <div class="s0-src" data-src="agentguide" onclick="s0SrcToggle(this)">
           <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h6"/></svg></span>
-          <span><h4>agentguide 보고서</h4><p>agentguide.samsungda.net · 조사 결과물</p></span>
+          <span><h4>'클로드로 워드보고서 작성' 도구에 업로드한 보고서</h4><p>agentguide.samsungda.net · 조사 결과물</p></span>
           <input type="checkbox" class="s0-cb tk">
         </div>
         <div class="s0-src" data-src="extra" onclick="s0SrcToggle(this)">
@@ -809,7 +804,6 @@ sections.forEach(s=>obs.observe(s));
   const PROXY_MODEL="claude-haiku-4-5-20251001";
   const SRC_LABEL={
     MI:"Market Insight 시장 신호 피드(mi.samsungda.net) — 경쟁사·소비자·정책 최신 뉴스 신호",
-    "2030":"2030 미래 트렌드 보드 — 8대 메가트렌드(T1~T8) 구조",
     agentguide:"agentguide 조사 보고서 결과물",
     extra:"사용자가 추가한 소스(URL·텍스트)"
   };
