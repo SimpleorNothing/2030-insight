@@ -8,6 +8,69 @@ import fs from 'fs';
 
 const client = new Anthropic();
 
+// ===== CI(경쟁사 전략 추적) 실데이터 =====
+// ci.samsungda.net 은 SSO(SITE_PASSWORD·세션 쿠키) 게이트라 직접 fetch가 막혀,
+// 공개 저장소(competitor_intelligence) main 브랜치 raw JSON을 읽는다(main push 자동배포 → 배포본과 동일 최신).
+const CI_STRATEGIES_URL = 'https://raw.githubusercontent.com/SimpleorNothing/competitor_intelligence/main/public/data/strategies.json';
+const CI_EVIDENCE_URL   = 'https://raw.githubusercontent.com/SimpleorNothing/competitor_intelligence/main/public/data/evidence.json';
+const CI_SIGNAL_RANK = { Insight: 3, Deep: 2, New: 1 };
+
+// CI 전략 프레임 + 최근 실행 증거를 프롬프트 주입용 텍스트 블록으로 요약. 실패 시 '' 반환(MI 단독 진행).
+async function loadCI(cap = 16) {
+  let strategies, evidence;
+  try {
+    const [rs, re] = await Promise.all([fetch(CI_STRATEGIES_URL), fetch(CI_EVIDENCE_URL)]);
+    if (!rs.ok || !re.ok) { console.error('CI fetch 응답 오류:', rs.status, re.status); return ''; }
+    strategies = await rs.json();
+    evidence   = await re.json();
+  } catch (e) { console.error('CI fetch 실패:', e.message); return ''; }
+
+  const companies = Array.isArray(strategies?.companies) ? strategies.companies : [];
+  const items     = Array.isArray(evidence?.items) ? evidence.items : [];
+  const active    = companies.filter(c => c && c.active);
+  if (!active.length || !items.length) return '';
+
+  const axisMap = {}, compMap = {};
+  for (const c of companies) {
+    compMap[c.id] = c.shortName || c.name || c.id;
+    (Array.isArray(c.axes) ? c.axes : []).forEach(a => {
+      axisMap[a.id] = { title: a.title || a.code || '', status: a.execStatus || '' };
+    });
+  }
+  const axisLabel = (axisId) => {
+    if (axisId && /-frame$/.test(axisId)) return '전략 프레임';
+    const a = axisMap[axisId];
+    return a ? (a.title + (a.status ? ` (${a.status})` : '')) : '';
+  };
+  const activeIds = new Set(active.map(c => c.id));
+
+  // 주간 점검용: 최신순 우선 + 시그널·확신도 가중
+  const sortFn = (a, b) => {
+    const dt = new Date(b.date || 0) - new Date(a.date || 0); if (dt) return dt;
+    const sg = (CI_SIGNAL_RANK[b.signalType] || 0) - (CI_SIGNAL_RANK[a.signalType] || 0); if (sg) return sg;
+    return ((b.confidence === '사실') ? 1 : 0) - ((a.confidence === '사실') ? 1 : 0);
+  };
+  const pool = items.filter(it => activeIds.has(it.companyId)).sort(sortFn).slice(0, cap);
+  if (!pool.length) return '';
+
+  const frameLines = active.map(c => {
+    const axes = (Array.isArray(c.axes) ? c.axes : [])
+      .map(a => `${a.title}${a.execStatus ? ` (${a.execStatus})` : ''}`).join(' / ');
+    const stmt = c.frame?.statement || '';
+    const redef = c.frame?.redefinition ? `\n    재정의: ${String(c.frame.redefinition).slice(0, 120)}` : '';
+    return `· ${c.shortName || c.name}${stmt ? ` — ${stmt}` : ''}${redef}` + (axes ? `\n    전략축(실행상태): ${axes}` : '');
+  }).join('\n');
+
+  const evLines = pool.map(it => {
+    const comp = compMap[it.companyId] || it.companyId;
+    const ax = axisLabel(it.axisId);
+    const interp = it.interpretation ? ` — ${String(it.interpretation).slice(0, 90)}` : '';
+    return `- [${it.date}] [${comp}${ax ? ` · ${ax}` : ''}] ${it.event}${interp}`;
+  }).join('\n');
+
+  return `[전략 프레임 요약]\n${frameLines}\n\n[최근 실행 증거]\n${evLines}`;
+}
+
 // 전주 범위 계산
 const now = new Date();
 const monday = new Date(now);
@@ -44,6 +107,11 @@ const newsSummary = topItems.map(item =>
   `[${item.grade}/${item.lens}] impact:${item.impact} | ${item.headline} | 제품: ${(item.products||[]).join(',')} | 경쟁사: ${(item.competitors||[]).join(',')}`
 ).join('\n');
 
+// CI(경쟁사 전략 추적) 실데이터 로드 — MI 뉴스에 더해 소스로 함께 활용
+console.log('CI 데이터 로드 중...');
+const ciBlock = await loadCI();
+console.log(ciBlock ? 'CI 전략·증거 블록 주입' : 'CI 데이터 없음 — MI 뉴스만으로 분석 진행');
+
 // 현재 index.html 읽기
 const html = fs.readFileSync('index.html', 'utf-8');
 
@@ -56,20 +124,24 @@ const response = await client.messages.create({
     role: 'user',
     content: `당신은 삼성다이나믹바이저리의 2030 미래 트렌드 보고서 편집자입니다.
 
-아래 전주(${weekLabel}) 가전·기술 업계 MI 뉴스를 검토하여,
+아래 두 소스 — ① 전주(${weekLabel}) 가전·기술 업계 MI 뉴스와 ② 경쟁사 전략 추적(CI) 보드의 전략 프레임·최근 실행 증거 — 를 함께 검토하여,
 현재 보고서의 1~6단계 중 어느 단계에 어떤 점을 반영하면 좋을지 점검 결과를 작성해주세요.
+MI 뉴스뿐 아니라 CI 데이터에서 도출한 점검 포인트도 stageReviews에 포함하세요(특히 4단계 경쟁사 대응, 그리고 경쟁사 전략축 변화가 트렌드 성숙도·당사 전략에 주는 시사점).
 
 ## 판단 기준
 - 1단계(분석 프레임): STEEP 매트릭스 셀에 새 신호 추가 필요?
 - 2단계(트렌드 도출): 8대 메가트렌드 수치·근거 업데이트 필요? 카테고리 표 변경?
 - 3단계(성숙도·영향): 트렌드 위치 이동 필요? 기회/위협 카드 업데이트?
-- 4단계(경쟁사 대응): 경쟁사 신규 동향 추가 필요?
+- 4단계(경쟁사 대응): 경쟁사 신규 동향 추가 필요? (아래 CI 데이터의 전략축 실행상태 변화·신규 실행 증거를 우선 근거로 판단)
 - 5단계(당사 현위치): 갭 진단 수치 변경 필요?
 - 6단계(당사 전략): 로드맵·목표 수정 필요?
 - 반영 불필요: 단순 일회성 이벤트, 저영향(impact < 3.0), 기존 내용과 중복
 
 ## 전주 MI 뉴스
 ${newsSummary}
+
+## 경쟁사 전략 추적(CI) — 전략 프레임·최근 실행 증거
+${ciBlock || '(이번 회차 CI 데이터 없음 — MI 뉴스만 근거)'}
 
 ## 응답 형식 (JSON만 반환)
 {
