@@ -8,12 +8,13 @@
   href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 :root{
-  --paper:#F0EFEB; --surface:#FBFAF7;
-  --ink:#2E2A26; --muted:#837E78; --faint:#A7A29B;
-  --line:#E2DED7; --line-strong:#CFC9C0;
-  --accent:#496176; --accent-soft:#E5E9EE;
-  --signal:#A07C3A; --signal-soft:#F1EAD8;
-  --ok:#5E9468; --ok-soft:#DDEADD;
+  /* CI 편집국 팔레트 (기획도구 생태계 표준 컬러 트랙) */
+  --paper:#EDEFEC; --surface:#FFFFFF;
+  --ink:#17222D; --muted:#5C6B79; --faint:#8B97A3;
+  --line:#D3D9D6; --line-strong:#9AA6A0;
+  --accent:#46647E; --accent-soft:#E4EAEF;
+  --signal:#A9790F; --signal-soft:#F2E9D3;
+  --ok:#2F614D; --ok-soft:#DCE7E1;
   --font-sans:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   /* 모든 글자체 Pretendard로 통일 — mono 변수도 Pretendard 스택을 가리킴 */
   --font-mono:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
@@ -81,7 +82,7 @@ header.rail{
   border:1px solid var(--line); background:var(--surface); border-radius:12px;
   padding:16px 14px; text-decoration:none; color:inherit; transition:.18s;
 }
-.flowmap .step:hover{border-color:var(--accent); transform:translateY(-2px); box-shadow:0 8px 24px rgba(11,95,165,.08)}
+.flowmap .step:hover{border-color:var(--accent); transform:translateY(-2px); box-shadow:0 8px 24px rgba(23,34,45,.08)}
 .flowmap .n{font-family:var(--font-mono); font-size:15px; font-weight:700; color:var(--accent)}
 .flowmap .t{font-size:15px; font-weight:700; margin:6px 0 4px; letter-spacing:-.01em}
 .flowmap .d{font-size:15px; color:var(--faint); line-height:1.45}
@@ -116,7 +117,7 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .matrix{border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface)}
 .matrix table{width:100%; border-collapse:collapse; font-size:15px}
 .matrix th,.matrix td{border:1px solid var(--line); padding:10px 8px; text-align:center; vertical-align:middle}
-.matrix thead th{background:#3E5263; color:#fff; font-weight:700; font-size:15px}
+.matrix thead th{background:#35505F; color:#fff; font-weight:700; font-size:15px}
 .matrix .axis{background:var(--accent-soft); color:var(--accent); font-weight:700; text-align:left; white-space:nowrap}
 .matrix .axis small{display:block; color:var(--muted); font-weight:500; font-size:15px}
 .matrix td.cell{color:var(--ink); font-size:15px; font-weight:600; cursor:default}
@@ -151,7 +152,7 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .heat{border:1px solid var(--line); border-radius:14px; overflow:auto; background:var(--surface)}
 .heat table{width:100%; border-collapse:collapse; font-size:15px; min-width:760px}
 .heat th,.heat td{border:1px solid var(--line); padding:9px 10px; text-align:center}
-.heat thead th{background:#3E5263; color:#fff; font-weight:600; font-size:15px; position:sticky; top:0}
+.heat thead th{background:#35505F; color:#fff; font-weight:600; font-size:15px; position:sticky; top:0}
 .heat tbody th{background:var(--paper); text-align:left; font-weight:700; white-space:nowrap}
 .heat td{color:var(--muted); font-size:15px}
 .heat td.lead{background:var(--accent-soft); color:var(--accent); font-weight:700}
@@ -178,12 +179,12 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto; transition:none!important}}
 
 /* 검증 필요(예시·미검증) 표기 */
-.unver{color:#A07C3A; font-style:italic}
+.unver{color:var(--signal); font-style:italic}
 /* 1.1 지역 매트릭스 */
 .region{border:1px solid var(--line); border-radius:14px; overflow:auto; background:var(--surface)}
 .region table{width:100%; border-collapse:collapse; font-size:15px; min-width:680px}
 .region th,.region td{border:1px solid var(--line); padding:9px 10px; text-align:left; vertical-align:top}
-.region thead th{background:#3E5263; color:#fff; font-weight:700; font-size:15px; text-align:center}
+.region thead th{background:#35505F; color:#fff; font-weight:700; font-size:15px; text-align:center}
 .region tbody th{background:var(--accent-soft); color:var(--accent); font-weight:700; white-space:nowrap; width:130px}
 .region tbody th small{display:block; color:var(--muted); font-weight:500; font-size:15px}
 .region td b{color:var(--ink)}
@@ -203,13 +204,13 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 .s0-routes{display:grid; grid-template-columns:1fr 1fr; gap:16px}
 .s0-route{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:18px}
 .s0-route .r-tag{display:inline-block; font-family:var(--font-mono); font-size:15px; font-weight:700; padding:3px 9px; border-radius:20px; margin-bottom:10px}
-.s0-route.weekly .r-tag{background:#5E9468; color:#fff}
-.s0-route.adhoc .r-tag{background:#A07C3A; color:#fff}
+.s0-route.weekly .r-tag{background:#2F614D; color:#fff}
+.s0-route.adhoc .r-tag{background:#A9790F; color:#fff}
 .s0-route h4{font-size:15px; font-weight:700; margin-bottom:6px}
-.s0-route p{font-size:15px; color:#B9C6D4; line-height:1.55}
-.s0-route .feeds{margin-top:12px; padding-top:12px; border-top:1px solid rgba(255,255,255,.12); font-size:15px; color:#8FA3B5}
-.s0-route .feeds b{color:#CFE0EE}
-.s0-flowto{display:flex; align-items:center; justify-content:center; gap:10px; margin-top:18px; font-family:var(--font-mono); font-size:15px; color:#7FB2D9}
+.s0-route p{font-size:15px; color:#AEBAC5; line-height:1.55}
+.s0-route .feeds{margin-top:12px; padding-top:12px; border-top:1px solid rgba(255,255,255,.12); font-size:15px; color:#93A0AB}
+.s0-route .feeds b{color:#D6E0E9}
+.s0-flowto{display:flex; align-items:center; justify-content:center; gap:10px; margin-top:18px; font-family:var(--font-mono); font-size:15px; color:#7C97AC}
 @media(max-width:860px){.s0-routes{grid-template-columns:1fr} .rail-s0 .lbl{display:none}}
 
 </style>
@@ -218,7 +219,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 
 <!-- ════════ TEST VERSION 표시 (좌상단 고정 배지) ════════ -->
 <div id="test-version-badge" aria-hidden="true"
-  style="position:fixed; top:10px; left:10px; z-index:200; background:#FFC107; color:#1A1A1A;
+  style="position:fixed; top:10px; left:10px; z-index:200; background:#A9790F; color:#fff;
   font-family:var(--font-sans); font-weight:800; font-size:15px; letter-spacing:.04em;
   padding:6px 14px; border-radius:999px; box-shadow:0 2px 8px rgba(0,0,0,.18);
   pointer-events:none; user-select:none">작업중</div>
@@ -282,55 +283,55 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     #s0 .s0-grp{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px;margin-bottom:12px}
     #s0 .s0-row{display:flex;align-items:center;gap:14px;padding:10px 16px;border-radius:6px;transition:background-color .2s}
     #s0 .s0-ghead{cursor:pointer}
-    #s0 .s0-ghead:hover,#s0 .s0-item:hover{background:#E6E1D6}
+    #s0 .s0-ghead:hover,#s0 .s0-item:hover{background:#E1E5E2}
     #s0 .s0-item{cursor:pointer}
     #s0 .s0-stag{flex:none;font-size:15px;font-weight:700;color:#fff;background:var(--accent);border-radius:5px;padding:2px 7px;letter-spacing:.3px}
     #s0 .s0-gname{flex:1;min-width:0;font-weight:700;color:var(--ink);font-size:15px}
     #s0 .s0-gdesc{font-size:15px;color:var(--muted);font-weight:400;margin-left:2px}
     #s0 .s0-itx{flex:1;min-width:0;font-size:15px;color:var(--ink);line-height:1.5}
     #s0 .s0-cb{flex-shrink:0;margin:0;width:17px;height:17px;cursor:pointer;accent-color:var(--accent)}
-    #s0 .s0-bitem{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-top:1px solid #DAD3C6}
+    #s0 .s0-bitem{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-top:1px solid #D3D9D6}
     #s0 .s0-bitem:first-child{border-top:none}
-    #s0 .s0-del{flex:none;width:22px;height:22px;border:none;border-radius:6px;background:#E6E1D6;color:var(--muted);cursor:pointer;font-size:15px;line-height:1;transition:.12s}
-    #s0 .s0-del:hover{background:#EAD7D7;color:#A8453C}
+    #s0 .s0-del{flex:none;width:22px;height:22px;border:none;border-radius:6px;background:#E1E5E2;color:var(--muted);cursor:pointer;font-size:15px;line-height:1;transition:.12s}
+    #s0 .s0-del:hover{background:#F3DAD8;color:#B02E24}
     #s0 .s0-btn{padding:10px 20px;border:none;border-radius:6px;color:#fff;font-weight:600;cursor:pointer;font-size:15px;transition:.15s}
-    #s0 .s0-btn:disabled{background:#C7C2BA !important;cursor:not-allowed}
+    #s0 .s0-btn:disabled{background:#B4BCB7 !important;cursor:not-allowed}
     #s0 .s0-spin{width:15px;height:15px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;display:inline-block;animation:s0spin .7s linear infinite}
     @keyframes s0spin{to{transform:rotate(360deg)}}
     /* S0에서 STEP 1~6으로 반영된 신호 패널 */
-    .reflect-panel{margin:0 0 26px;border:1px solid var(--line-strong);border-left:3px solid #5E9468;border-radius:10px;background:var(--surface);padding:13px 18px;animation:reflectIn .25s ease}
+    .reflect-panel{margin:0 0 26px;border:1px solid var(--line-strong);border-left:3px solid #2F614D;border-radius:10px;background:var(--surface);padding:13px 18px;animation:reflectIn .25s ease}
     @keyframes reflectIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
-    .reflect-panel .reflect-head{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#4E7E58;margin-bottom:8px}
-    .reflect-panel .reflect-count{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 6px;font-size:15px;color:#fff;background:#5E9468;border-radius:999px}
+    .reflect-panel .reflect-head{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#2F614D;margin-bottom:8px}
+    .reflect-panel .reflect-count{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 6px;font-size:15px;color:#fff;background:#2F614D;border-radius:999px}
     .reflect-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
     .reflect-item:first-of-type{border-top:none}
-    .reflect-tag{flex:none;font-size:15px;font-weight:700;color:#fff;background:#5E9468;border-radius:5px;padding:2px 7px;letter-spacing:.3px;margin-top:1px}
+    .reflect-tag{flex:none;font-size:15px;font-weight:700;color:#fff;background:#2F614D;border-radius:5px;padding:2px 7px;letter-spacing:.3px;margin-top:1px}
     .reflect-body{flex:1;min-width:0}
     .reflect-text{font-size:15px;color:var(--ink);line-height:1.5}
     .reflect-meta{display:block;margin-top:3px;font-size:15px;color:var(--faint)}
-    .reflect-del{flex:none;width:20px;height:20px;border:none;border-radius:6px;background:#E6E1D6;color:var(--muted);cursor:pointer;font-size:15px;line-height:1;transition:.12s}
-    .reflect-del:hover{background:#EAD7D7;color:#A8453C}
+    .reflect-del{flex:none;width:20px;height:20px;border:none;border-radius:6px;background:#E1E5E2;color:var(--muted);cursor:pointer;font-size:15px;line-height:1;transition:.12s}
+    .reflect-del:hover{background:#F3DAD8;color:#B02E24}
     /* S0 반영 신호 → 단계별 분석 테이블 (표 동적화) */
-    .reflect-tbl{margin:0 0 26px;border:1px solid var(--line-strong);border-left:3px solid #5E9468;border-radius:10px;background:var(--surface);padding:13px 16px;animation:reflectIn .25s ease}
+    .reflect-tbl{margin:0 0 26px;border:1px solid var(--line-strong);border-left:3px solid #2F614D;border-radius:10px;background:var(--surface);padding:13px 16px;animation:reflectIn .25s ease}
     .reflect-tbl table{width:100%;border-collapse:collapse;font-size:15px;margin-top:8px}
     .reflect-tbl th,.reflect-tbl td{text-align:left;padding:8px 8px;border-top:1px solid var(--line);vertical-align:top}
     .reflect-tbl thead th{color:var(--muted);font-weight:700;font-size:15px;border-top:none}
-    .reflect-tbl .rt-tr{font-weight:700;color:#4E7E58;white-space:nowrap;line-height:1.45}
+    .reflect-tbl .rt-tr{font-weight:700;color:#2F614D;white-space:nowrap;line-height:1.45}
     .reflect-tbl .rt-ev{color:var(--faint);white-space:nowrap}
     .reflect-tbl .rt-dir{text-align:center;white-space:nowrap;font-size:15px}
     .reflect-tbl .rt-sig{display:flex;align-items:flex-start;gap:8px;color:var(--ink);line-height:1.5;padding:2px 0}
     .reflect-tbl .rt-sig + .rt-sig{border-top:1px dashed var(--line);padding-top:6px;margin-top:4px}
     .reflect-tbl .rt-sig .reflect-del{width:18px;height:18px;font-size:15px;margin-left:auto}
-    .s0-trtag{flex:none;font-size:15px;font-weight:700;color:#4E7E58;background:#E3EEE5;border-radius:5px;padding:1px 6px;margin-left:6px}
+    .s0-trtag{flex:none;font-size:15px;font-weight:700;color:#2F614D;background:#DCE7E1;border-radius:5px;padding:1px 6px;margin-left:6px}
     /* 기존 8대 트렌드 카드·경쟁사 표에 붙는 신규반영 배지 */
-    .trend-badge{display:inline-block;margin-left:6px;font-size:15px;font-weight:700;color:#fff;background:#5E9468;border-radius:999px;padding:1px 7px;vertical-align:middle}
+    .trend-badge{display:inline-block;margin-left:6px;font-size:15px;font-weight:700;color:#fff;background:#2F614D;border-radius:999px;padding:1px 7px;vertical-align:middle}
     </style>
 
     <!-- ① 정보 소스 선택 -->
     <h3 style="font-size:16px; font-weight:800; margin:24px 0 6px"><span class="substep">①</span>정보 소스 선택</h3>
     <p class="sec-desc" style="margin-bottom:14px">Insight 도출에 쓸 소스를 고른다. 기존 도구 결과물 또는 직접 추가한 자료를 함께 넣을 수 있다.</p>
 
-    <div class="s0-content-toggle" style="background:#F3EEE2; padding:20px; border-radius:12px">
+    <div class="s0-content-toggle" style="background:#E7EBE8; padding:20px; border-radius:12px">
       <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:12px">
         <div class="s0-src" data-src="MI" onclick="s0SrcToggle(this)">
           <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span>
@@ -349,7 +350,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
         </div>
       </div>
 
-      <div id="s0-extra" style="display:none; margin-top:14px; border-top:1px solid #DAD3C6; padding-top:16px">
+      <div id="s0-extra" style="display:none; margin-top:14px; border-top:1px solid #D3D9D6; padding-top:16px">
         <div style="display:flex; gap:10px; margin-bottom:12px; border-bottom:1px solid var(--line)">
           <button class="s0-xtab" data-tab="url" onclick="s0ExtraTab('url')" style="padding:8px 14px;background:none;border:none;border-bottom:2px solid var(--accent);color:var(--accent);font-weight:600;cursor:pointer;font-size:15px">URL</button>
           <button class="s0-xtab" data-tab="file" onclick="s0ExtraTab('file')" style="padding:8px 14px;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);font-weight:600;cursor:pointer;font-size:15px">파일</button>
@@ -368,7 +369,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
         </div>
       </div>
 
-      <div style="margin-top:18px; padding-top:16px; border-top:1px solid #DAD3C6; display:flex; align-items:center; gap:12px">
+      <div style="margin-top:18px; padding-top:16px; border-top:1px solid #D3D9D6; display:flex; align-items:center; gap:12px">
         <button id="s0ExtractBtn" class="s0-btn" style="background:var(--accent)" disabled onclick="s0Extract()">Insight 뽑기</button>
         <span id="s0ExtractHint" style="font-size:15px; color:var(--muted)">소스를 1개 이상 선택하세요</span>
       </div>
@@ -378,7 +379,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     <div id="s0-insight-wrap" style="display:none">
       <h3 style="font-size:16px; font-weight:800; margin:28px 0 6px"><span class="substep">②</span>Insight 도출</h3>
       <p class="sec-desc" style="margin-bottom:14px">선택한 소스를 기반으로 Claude가 신호를 도출하고 S1~S6 분석 단계로 분류한다.</p>
-      <div class="s0-content-toggle" style="background:#F3EEE2; padding:20px; border-radius:12px">
+      <div class="s0-content-toggle" style="background:#E7EBE8; padding:20px; border-radius:12px">
         <div id="s0-insight-area"></div>
       </div>
     </div>
@@ -387,14 +388,14 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     <div id="s0-apply-wrap" style="display:none">
       <h3 style="font-size:16px; font-weight:800; margin:28px 0 6px"><span class="substep">③</span>반영할 것 선택</h3>
       <p class="sec-desc" style="margin-bottom:14px">위 항목을 개별 또는 단계 전체로 선택한다. 고른 항목은 아래에 실시간으로 쌓인다.</p>
-      <div class="s0-content-toggle" style="background:#F3EEE2; padding:20px; border-radius:12px">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding-bottom:12px; border-bottom:1px solid #DAD3C6">
+      <div class="s0-content-toggle" style="background:#E7EBE8; padding:20px; border-radius:12px">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding-bottom:12px; border-bottom:1px solid #D3D9D6">
           <b style="color:var(--ink); font-size:15px">선택한 항목 <span id="s0BasketCount" style="display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;font-size:15px;color:#fff;background:var(--accent);border-radius:999px;margin-left:4px">0</span></b>
           <button onclick="s0ClearAll()" style="font-size:15px;color:var(--muted);background:none;border:none;cursor:pointer;text-decoration:underline">전체 해제</button>
         </div>
         <div id="s0-basket"><p style="font-size:15px;color:var(--muted);text-align:center;padding:12px 0;margin:0">아직 선택한 항목이 없습니다.</p></div>
-        <div style="margin-top:16px; padding-top:16px; border-top:1px solid #DAD3C6; display:flex; align-items:center; gap:12px">
-          <button id="s0ApplyBtn" class="s0-btn" style="background:#5E9468" disabled onclick="s0Apply()">1~6단계에 반영</button>
+        <div style="margin-top:16px; padding-top:16px; border-top:1px solid #D3D9D6; display:flex; align-items:center; gap:12px">
+          <button id="s0ApplyBtn" class="s0-btn" style="background:#2F614D" disabled onclick="s0Apply()">1~6단계에 반영</button>
           <span id="s0ApplyHint" style="font-size:15px; color:var(--muted)">항목을 선택하면 활성화됩니다</span>
         </div>
       </div>
@@ -467,10 +468,10 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
         <thead>
           <tr>
             <th style="text-align:left">STEEP ↓ \ 가전축 →</th>
-            <th>기술축<br><small style="color:#AFBDC9">제품·폼팩터</small></th>
-            <th>소비자축<br><small style="color:#AFBDC9">구매·사용</small></th>
-            <th>규제축<br><small style="color:#AFBDC9">기준·진입</small></th>
-            <th>공급망축<br><small style="color:#AFBDC9">생산·조달</small></th>
+            <th>기술축<br><small style="color:#AEB9C2">제품·폼팩터</small></th>
+            <th>소비자축<br><small style="color:#AEB9C2">구매·사용</small></th>
+            <th>규제축<br><small style="color:#AEB9C2">기준·진입</small></th>
+            <th>공급망축<br><small style="color:#AEB9C2">생산·조달</small></th>
           </tr>
         </thead>
         <tbody>
@@ -964,8 +965,8 @@ sections.forEach(s=>obs.observe(s));
   };
 
   function s0DirMark(dir){
-    if(dir==="up")   return '<span style="color:#4E7E58;font-weight:700">▲</span>';
-    if(dir==="down") return '<span style="color:#A8453C;font-weight:700">▼</span>';
+    if(dir==="up")   return '<span style="color:#2F614D;font-weight:700">▲</span>';
+    if(dir==="down") return '<span style="color:#B02E24;font-weight:700">▼</span>';
     return '<span style="color:var(--faint)">–</span>';
   }
   function s0AggDirMark(arr){
