@@ -63,6 +63,20 @@ header.rail{
 .flow a.active .node{border-color:var(--accent); background:var(--accent); color:#fff}
 .flow a.active .lbl{color:var(--accent)}
 
+/* ---------- 도구모음 런처 (samsungda.net 포털 바로가기) ---------- */
+.da-launcher{
+  flex:none; display:inline-flex; align-items:center; gap:7px;
+  height:30px; padding:0 11px; border:1.5px solid var(--line-strong);
+  border-radius:7px; background:var(--surface); text-decoration:none;
+  color:var(--ink); font-size:15px; font-weight:600; line-height:1;
+  white-space:nowrap; transition:.15s;
+}
+.da-launcher:hover{border-color:var(--accent); box-shadow:0 4px 18px rgba(46,42,38,.10)}
+.da-launcher .da-gi{display:grid; grid-template-columns:1fr 1fr; gap:2px; width:16px; height:16px}
+.da-launcher .da-gi i{background:var(--muted); border-radius:1px; transition:.15s}
+.da-launcher:hover .da-gi i{background:var(--accent)}
+@media(max-width:860px){ .da-launcher .lbl-txt{display:none} .da-launcher{padding:0 8px} }
+
 /* ---------- 히어로 ---------- */
 .hero{padding:72px 0 40px}
 .eyebrow{
@@ -239,6 +253,9 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       <a href="#s5"><span class="node">5</span><span class="lbl">당사 현 위치</span></a>
       <a href="#s6"><span class="node">6</span><span class="lbl">당사 전략</span></a>
     </nav>
+    <a class="da-launcher" href="https://samsungda.net" title="도구모음 열기">
+      <span class="da-gi"><i></i><i></i><i></i><i></i></span><span class="lbl-txt">도구모음</span>
+    </a>
   </div>
 </header>
 
