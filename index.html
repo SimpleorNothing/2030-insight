@@ -54,7 +54,7 @@ header.rail{
 }
 .flow .node{
   font-family:var(--font-mono); font-size:15px; font-weight:600;
-  width:24px; height:24px; flex:none; border-radius:50%;
+  width:24px; height:24px; flex:none; border-radius:0;
   display:grid; place-items:center; border:1.5px solid var(--line-strong);
   background:var(--surface); transition:.2s;
 }
@@ -67,13 +67,13 @@ header.rail{
 .da-launcher{
   flex:none; display:inline-flex; align-items:center; gap:7px;
   height:30px; padding:0 11px; border:1.5px solid var(--line-strong);
-  border-radius:7px; background:var(--surface); text-decoration:none;
+  border-radius:0; background:var(--surface); text-decoration:none;
   color:var(--ink); font-size:15px; font-weight:600; line-height:1;
   white-space:nowrap; transition:.15s;
 }
 .da-launcher:hover{border-color:var(--accent); box-shadow:0 4px 18px rgba(46,42,38,.10)}
 .da-launcher .da-gi{display:grid; grid-template-columns:1fr 1fr; gap:2px; width:16px; height:16px}
-.da-launcher .da-gi i{background:var(--muted); border-radius:1px; transition:.15s}
+.da-launcher .da-gi i{background:var(--muted); border-radius:0; transition:.15s}
 .da-launcher:hover .da-gi i{background:var(--accent)}
 @media(max-width:860px){ .da-launcher .lbl-txt{display:none} .da-launcher{padding:0 8px} }
 
@@ -93,7 +93,7 @@ header.rail{
   display:grid; grid-template-columns:repeat(6,1fr); gap:10px; margin-top:40px;
 }
 .flowmap .step{
-  border:1px solid var(--line); background:var(--surface); border-radius:12px;
+  border:1px solid var(--line); border-left:3px solid var(--accent); background:var(--surface); border-radius:0;
   padding:16px 14px; text-decoration:none; color:inherit; transition:.18s;
 }
 .flowmap .step:hover{border-color:var(--accent); transform:translateY(-2px); box-shadow:0 8px 24px rgba(23,34,45,.08)}
@@ -106,7 +106,7 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:8px}
 .sec-num{
   font-family:var(--font-mono); font-size:15px; font-weight:700; color:#fff;
-  background:var(--accent); padding:3px 10px; border-radius:20px; flex:none;
+  background:var(--accent); padding:3px 10px; border-radius:0; flex:none;
 }
 .sec-role{font-size:15px; color:var(--faint); font-family:var(--font-mono)}
 .sec-title{font-size:clamp(22px,3vw,30px); font-weight:800; letter-spacing:-.02em; margin:6px 0 10px}
@@ -114,7 +114,7 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 
 /* ---------- 채움 영역(다른 Claude가 콘텐츠 삽입) ---------- */
 .fill{
-  border:1.5px dashed var(--line-strong); border-radius:12px; background:var(--surface);
+  border:1.5px dashed var(--line-strong); border-radius:0; background:var(--surface);
   padding:22px; position:relative; min-height:90px;
 }
 .fill::before{
@@ -128,7 +128,7 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .grid4{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
 
 /* ---------- 1단계 STEEP × 가전4축 매트릭스 ---------- */
-.matrix{border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface)}
+.matrix{border:1px solid var(--line); border-radius:0; overflow:hidden; background:var(--surface)}
 .matrix table{width:100%; border-collapse:collapse; font-size:15px}
 .matrix th,.matrix td{border:1px solid var(--line); padding:10px 8px; text-align:center; vertical-align:middle}
 .matrix thead th{background:#35505F; color:#fff; font-weight:700; font-size:15px}
@@ -138,24 +138,24 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .matrix td.cell.hit{background:var(--accent-soft); color:var(--accent); font-weight:700}
 .matrix td.cell:hover{background:var(--accent-soft)}
 .legend{display:flex; gap:18px; margin-top:14px; font-size:15px; color:var(--muted); flex-wrap:wrap}
-.legend i{display:inline-block; width:11px; height:11px; border-radius:3px; margin-right:6px; vertical-align:-1px}
+.legend i{display:inline-block; width:11px; height:11px; border-radius:0; margin-right:6px; vertical-align:-1px}
 
 /* ---------- 카드(트렌드/영향 등) ---------- */
 .card{
-  border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:18px;
+  border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:0; background:var(--surface); padding:18px;
 }
 .card .tag{font-family:var(--font-mono); font-size:15px; font-weight:700; color:var(--accent)}
 .card h4{font-size:15px; font-weight:700; margin:8px 0 6px; letter-spacing:-.01em}
 .card .chip{
   display:inline-block; font-size:15px; font-family:var(--font-mono);
-  background:var(--accent-soft); color:var(--accent); padding:2px 8px; border-radius:20px; margin-top:8px;
+  background:var(--accent-soft); color:var(--accent); padding:2px 8px; border-radius:0; margin-top:8px;
 }
 .card .ph{font-size:15px; color:var(--faint); border-top:1px dashed var(--line); margin-top:10px; padding-top:10px}
 
 /* ---------- 2x2 매트릭스(영향/우선순위) ---------- */
 .quad{
   display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:2px;
-  background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden;
+  background:var(--line); border:1px solid var(--line); border-radius:0; overflow:hidden;
   aspect-ratio:16/9;
 }
 .quad .q{background:var(--surface); padding:18px; display:flex; flex-direction:column}
@@ -163,7 +163,7 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .quad-axes{display:flex; justify-content:space-between; font-size:15px; color:var(--faint); margin-top:8px; font-family:var(--font-mono)}
 
 /* ---------- 경쟁사 히트맵 ---------- */
-.heat{border:1px solid var(--line); border-radius:14px; overflow:auto; background:var(--surface)}
+.heat{border:1px solid var(--line); border-radius:0; overflow:auto; background:var(--surface)}
 .heat table{width:100%; border-collapse:collapse; font-size:15px; min-width:760px}
 .heat th,.heat td{border:1px solid var(--line); padding:9px 10px; text-align:center}
 .heat thead th{background:#35505F; color:#fff; font-weight:600; font-size:15px; position:sticky; top:0}
@@ -176,7 +176,7 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .heat td.own.lead{background:var(--ok); color:#fff; font-weight:700}
 
 /* ---------- 로드맵 ---------- */
-.road{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface)}
+.road{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--line); border-radius:0; overflow:hidden; background:var(--surface)}
 .road .phase{padding:18px; border-right:1px solid var(--line)}
 .road .phase:last-child{border-right:none}
 .road .phase .ph-h{font-family:var(--font-mono); font-size:15px; font-weight:700; color:var(--accent)}
@@ -195,19 +195,19 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 /* 검증 필요(예시·미검증) 표기 */
 .unver{color:var(--signal); font-style:italic}
 /* 1.1 지역 매트릭스 */
-.region{border:1px solid var(--line); border-radius:14px; overflow:auto; background:var(--surface)}
+.region{border:1px solid var(--line); border-radius:0; overflow:auto; background:var(--surface)}
 .region table{width:100%; border-collapse:collapse; font-size:15px; min-width:680px}
 .region th,.region td{border:1px solid var(--line); padding:9px 10px; text-align:left; vertical-align:top}
 .region thead th{background:#35505F; color:#fff; font-weight:700; font-size:15px; text-align:center}
 .region tbody th{background:var(--accent-soft); color:var(--accent); font-weight:700; white-space:nowrap; width:130px}
 .region tbody th small{display:block; color:var(--muted); font-weight:500; font-size:15px}
 .region td b{color:var(--ink)}
-.substep{font-family:var(--font-mono); font-size:15px; font-weight:700; color:#fff; background:var(--ink); padding:3px 9px; border-radius:6px; margin-right:8px}
+.substep{font-family:var(--font-mono); font-size:15px; font-weight:700; color:#fff; background:var(--ink); padding:3px 9px; border-radius:0; margin-right:8px}
 
 /* S0 인풋 단계 (분석 6단계와 위계 구분) */
 .rail-s0{display:flex; align-items:center; gap:8px; padding-right:14px; margin-right:4px; border-right:1px dashed var(--line-strong); white-space:nowrap}
 .rail-s0 a{display:flex; align-items:center; gap:7px; text-decoration:none; color:var(--muted); padding:6px 4px}
-.rail-s0 .node{font-family:var(--font-mono); font-size:15px; font-weight:700; width:24px; height:24px; flex:none; border-radius:7px; display:grid; place-items:center; border:1.5px dashed var(--line-strong); background:var(--surface)}
+.rail-s0 .node{font-family:var(--font-mono); font-size:15px; font-weight:700; width:24px; height:24px; flex:none; border-radius:0; display:grid; place-items:center; border:1.5px dashed var(--line-strong); background:var(--surface)}
 .rail-s0 a.active{color:var(--ink)}
 .rail-s0 a.active .node{border-style:solid; border-color:var(--ink); background:var(--ink); color:#fff}
 .rail-s0 .lbl{font-size:15px; font-weight:600}
@@ -216,8 +216,8 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 .s0-band h3{font-size:clamp(22px,3vw,30px); font-weight:800; letter-spacing:-.02em; margin:6px 0 10px}
 .s0-band .s0-lead{font-size:15px; color:var(--muted); max-width:760px; margin-bottom:30px}
 .s0-routes{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-.s0-route{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:18px}
-.s0-route .r-tag{display:inline-block; font-family:var(--font-mono); font-size:15px; font-weight:700; padding:3px 9px; border-radius:20px; margin-bottom:10px}
+.s0-route{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:0; padding:18px}
+.s0-route .r-tag{display:inline-block; font-family:var(--font-mono); font-size:15px; font-weight:700; padding:3px 9px; border-radius:0; margin-bottom:10px}
 .s0-route.weekly .r-tag{background:#2F614D; color:#fff}
 .s0-route.adhoc .r-tag{background:#A9790F; color:#fff}
 .s0-route h4{font-size:15px; font-weight:700; margin-bottom:6px}
@@ -235,7 +235,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
 <div id="test-version-badge" aria-hidden="true"
   style="position:fixed; top:10px; left:10px; z-index:200; background:#A9790F; color:#fff;
   font-family:var(--font-sans); font-weight:800; font-size:15px; letter-spacing:.04em;
-  padding:6px 14px; border-radius:999px; box-shadow:0 2px 8px rgba(0,0,0,.18);
+  padding:6px 14px; border-radius:0; box-shadow:0 2px 8px rgba(0,0,0,.18);
   pointer-events:none; user-select:none">작업중</div>
 
 <!-- ════════ 흐름 레일 (6단계 = 하나의 논리 사슬) ════════ -->
@@ -286,10 +286,10 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     <p class="sec-desc">S1~S6 분석이 도는 "엔진"이라면, 이 단계는 최신 신호를 끊임없이 넣어주는 "연료 공급"이다. 소스를 고르면 Claude가 Insight를 도출하고, 그중 필요한 것만 골라 해당 단계에 반영한다.</p>
 
     <style>
-    #s0 .s0-src{display:flex;align-items:flex-start;gap:11px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:15px 16px;cursor:pointer;transition:.15s;position:relative;text-align:left}
+    #s0 .s0-src{display:flex;align-items:flex-start;gap:11px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0;padding:15px 16px;cursor:pointer;transition:.15s;position:relative;text-align:left}
     #s0 .s0-src:hover{border-color:var(--accent)}
     #s0 .s0-src.on{border-color:var(--accent);background:var(--accent-soft)}
-    #s0 .s0-src .ico{width:30px;height:30px;flex:none;border-radius:8px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);color:var(--accent)}
+    #s0 .s0-src .ico{width:30px;height:30px;flex:none;border-radius:0;display:grid;place-items:center;background:#fff;border:1px solid var(--line);color:var(--accent)}
     #s0 .s0-src.on .ico{border-color:var(--accent)}
     #s0 .s0-src h4{font-size:15px;font-weight:700;color:var(--ink);margin:0 0 2px}
     #s0 .s0-src p{font-size:15px;color:var(--muted);margin:0}
@@ -297,39 +297,39 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     #s0 .s0-src .srclink{color:var(--accent);font-weight:700;text-decoration:none;border-bottom:1px dashed currentColor}
     #s0 .s0-src .srclink:hover{border-bottom-style:solid}
     #s0 .s0-src .tk{position:absolute;top:12px;right:12px;width:17px;height:17px;margin:0;pointer-events:none;accent-color:var(--accent)}
-    #s0 .s0-grp{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px;margin-bottom:12px}
-    #s0 .s0-row{display:flex;align-items:center;gap:14px;padding:10px 16px;border-radius:6px;transition:background-color .2s}
+    #s0 .s0-grp{background:var(--surface);border:1px solid var(--line);border-radius:0;padding:6px;margin-bottom:12px}
+    #s0 .s0-row{display:flex;align-items:center;gap:14px;padding:10px 16px;border-radius:0;transition:background-color .2s}
     #s0 .s0-ghead{cursor:pointer}
     #s0 .s0-ghead:hover,#s0 .s0-item:hover{background:#E1E5E2}
     #s0 .s0-item{cursor:pointer}
-    #s0 .s0-stag{flex:none;font-size:15px;font-weight:700;color:#fff;background:var(--accent);border-radius:5px;padding:2px 7px;letter-spacing:.3px}
+    #s0 .s0-stag{flex:none;font-size:15px;font-weight:700;color:#fff;background:var(--accent);border-radius:0;padding:2px 7px;letter-spacing:.3px}
     #s0 .s0-gname{flex:1;min-width:0;font-weight:700;color:var(--ink);font-size:15px}
     #s0 .s0-gdesc{font-size:15px;color:var(--muted);font-weight:400;margin-left:2px}
     #s0 .s0-itx{flex:1;min-width:0;font-size:15px;color:var(--ink);line-height:1.5}
     #s0 .s0-cb{flex-shrink:0;margin:0;width:17px;height:17px;cursor:pointer;accent-color:var(--accent)}
     #s0 .s0-bitem{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-top:1px solid #D3D9D6}
     #s0 .s0-bitem:first-child{border-top:none}
-    #s0 .s0-del{flex:none;width:22px;height:22px;border:none;border-radius:6px;background:#E1E5E2;color:var(--muted);cursor:pointer;font-size:15px;line-height:1;transition:.12s}
+    #s0 .s0-del{flex:none;width:22px;height:22px;border:none;border-radius:0;background:#E1E5E2;color:var(--muted);cursor:pointer;font-size:15px;line-height:1;transition:.12s}
     #s0 .s0-del:hover{background:#F3DAD8;color:#B02E24}
-    #s0 .s0-btn{padding:10px 20px;border:none;border-radius:6px;color:#fff;font-weight:600;cursor:pointer;font-size:15px;transition:.15s}
+    #s0 .s0-btn{padding:10px 20px;border:none;border-radius:0;color:#fff;font-weight:600;cursor:pointer;font-size:15px;transition:.15s}
     #s0 .s0-btn:disabled{background:#B4BCB7 !important;cursor:not-allowed}
     #s0 .s0-spin{width:15px;height:15px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;display:inline-block;animation:s0spin .7s linear infinite}
     @keyframes s0spin{to{transform:rotate(360deg)}}
     /* S0에서 STEP 1~6으로 반영된 신호 패널 */
-    .reflect-panel{margin:0 0 26px;border:1px solid var(--line-strong);border-left:3px solid #2F614D;border-radius:10px;background:var(--surface);padding:13px 18px;animation:reflectIn .25s ease}
+    .reflect-panel{margin:0 0 26px;border:1px solid var(--line-strong);border-left:3px solid #2F614D;border-radius:0;background:var(--surface);padding:13px 18px;animation:reflectIn .25s ease}
     @keyframes reflectIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
     .reflect-panel .reflect-head{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#2F614D;margin-bottom:8px}
-    .reflect-panel .reflect-count{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 6px;font-size:15px;color:#fff;background:#2F614D;border-radius:999px}
+    .reflect-panel .reflect-count{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 6px;font-size:15px;color:#fff;background:#2F614D;border-radius:0}
     .reflect-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
     .reflect-item:first-of-type{border-top:none}
-    .reflect-tag{flex:none;font-size:15px;font-weight:700;color:#fff;background:#2F614D;border-radius:5px;padding:2px 7px;letter-spacing:.3px;margin-top:1px}
+    .reflect-tag{flex:none;font-size:15px;font-weight:700;color:#fff;background:#2F614D;border-radius:0;padding:2px 7px;letter-spacing:.3px;margin-top:1px}
     .reflect-body{flex:1;min-width:0}
     .reflect-text{font-size:15px;color:var(--ink);line-height:1.5}
     .reflect-meta{display:block;margin-top:3px;font-size:15px;color:var(--faint)}
-    .reflect-del{flex:none;width:20px;height:20px;border:none;border-radius:6px;background:#E1E5E2;color:var(--muted);cursor:pointer;font-size:15px;line-height:1;transition:.12s}
+    .reflect-del{flex:none;width:20px;height:20px;border:none;border-radius:0;background:#E1E5E2;color:var(--muted);cursor:pointer;font-size:15px;line-height:1;transition:.12s}
     .reflect-del:hover{background:#F3DAD8;color:#B02E24}
     /* S0 반영 신호 → 단계별 분석 테이블 (표 동적화) */
-    .reflect-tbl{margin:0 0 26px;border:1px solid var(--line-strong);border-left:3px solid #2F614D;border-radius:10px;background:var(--surface);padding:13px 16px;animation:reflectIn .25s ease}
+    .reflect-tbl{margin:0 0 26px;border:1px solid var(--line-strong);border-left:3px solid #2F614D;border-radius:0;background:var(--surface);padding:13px 16px;animation:reflectIn .25s ease}
     .reflect-tbl table{width:100%;border-collapse:collapse;font-size:15px;margin-top:8px}
     .reflect-tbl th,.reflect-tbl td{text-align:left;padding:8px 8px;border-top:1px solid var(--line);vertical-align:top}
     .reflect-tbl thead th{color:var(--muted);font-weight:700;font-size:15px;border-top:none}
@@ -339,16 +339,16 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     .reflect-tbl .rt-sig{display:flex;align-items:flex-start;gap:8px;color:var(--ink);line-height:1.5;padding:2px 0}
     .reflect-tbl .rt-sig + .rt-sig{border-top:1px dashed var(--line);padding-top:6px;margin-top:4px}
     .reflect-tbl .rt-sig .reflect-del{width:18px;height:18px;font-size:15px;margin-left:auto}
-    .s0-trtag{flex:none;font-size:15px;font-weight:700;color:#2F614D;background:#DCE7E1;border-radius:5px;padding:1px 6px;margin-left:6px}
+    .s0-trtag{flex:none;font-size:15px;font-weight:700;color:#2F614D;background:#DCE7E1;border-radius:0;padding:1px 6px;margin-left:6px}
     /* 기존 8대 트렌드 카드·경쟁사 표에 붙는 신규반영 배지 */
-    .trend-badge{display:inline-block;margin-left:6px;font-size:15px;font-weight:700;color:#fff;background:#2F614D;border-radius:999px;padding:1px 7px;vertical-align:middle}
+    .trend-badge{display:inline-block;margin-left:6px;font-size:15px;font-weight:700;color:#fff;background:#2F614D;border-radius:0;padding:1px 7px;vertical-align:middle}
     </style>
 
     <!-- ① 정보 소스 선택 -->
     <h3 style="font-size:16px; font-weight:800; margin:24px 0 6px"><span class="substep">①</span>정보 소스 선택</h3>
     <p class="sec-desc" style="margin-bottom:14px">Insight 도출에 쓸 소스를 고른다. 기존 도구 결과물 또는 직접 추가한 자료를 함께 넣을 수 있다.</p>
 
-    <div class="s0-content-toggle" style="background:#E7EBE8; padding:20px; border-radius:12px">
+    <div class="s0-content-toggle" style="background:#E7EBE8; padding:20px; border-radius:0">
       <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:12px">
         <div class="s0-src" data-src="MI" onclick="s0SrcToggle(this)">
           <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span>
@@ -374,15 +374,15 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
           <button class="s0-xtab" data-tab="text" onclick="s0ExtraTab('text')" style="padding:8px 14px;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);font-weight:600;cursor:pointer;font-size:15px">텍스트</button>
         </div>
         <div id="s0-pane-url" class="s0-pane" style="display:block">
-          <input type="url" placeholder="https://www.example.com/article..." style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font-size:15px">
+          <input type="url" placeholder="https://www.example.com/article..." style="width:100%;padding:10px;border:1px solid var(--line);border-radius:0;font-size:15px">
           <div style="font-size:15px;color:var(--faint);margin-top:6px">뉴스·블로그 기사 링크. 유튜브는 별도 운영.</div>
         </div>
         <div id="s0-pane-file" class="s0-pane" style="display:none">
-          <input type="file" accept=".pdf,.docx,.txt" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font-size:15px">
+          <input type="file" accept=".pdf,.docx,.txt" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:0;font-size:15px">
           <div style="font-size:15px;color:var(--faint);margin-top:6px">PDF · DOCX · TXT 지원</div>
         </div>
         <div id="s0-pane-text" class="s0-pane" style="display:none">
-          <textarea placeholder="분석할 텍스트를 붙여넣으세요..." style="width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;font-size:15px;height:90px;font-family:inherit;resize:vertical"></textarea>
+          <textarea placeholder="분석할 텍스트를 붙여넣으세요..." style="width:100%;padding:10px;border:1px solid var(--line);border-radius:0;font-size:15px;height:90px;font-family:inherit;resize:vertical"></textarea>
         </div>
       </div>
 
@@ -396,7 +396,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     <div id="s0-insight-wrap" style="display:none">
       <h3 style="font-size:16px; font-weight:800; margin:28px 0 6px"><span class="substep">②</span>Insight 도출</h3>
       <p class="sec-desc" style="margin-bottom:14px">선택한 소스를 기반으로 Claude가 신호를 도출하고 S1~S6 분석 단계로 분류한다.</p>
-      <div class="s0-content-toggle" style="background:#E7EBE8; padding:20px; border-radius:12px">
+      <div class="s0-content-toggle" style="background:#E7EBE8; padding:20px; border-radius:0">
         <div id="s0-insight-area"></div>
       </div>
     </div>
@@ -405,9 +405,9 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     <div id="s0-apply-wrap" style="display:none">
       <h3 style="font-size:16px; font-weight:800; margin:28px 0 6px"><span class="substep">③</span>반영할 것 선택</h3>
       <p class="sec-desc" style="margin-bottom:14px">위 항목을 개별 또는 단계 전체로 선택한다. 고른 항목은 아래에 실시간으로 쌓인다.</p>
-      <div class="s0-content-toggle" style="background:#E7EBE8; padding:20px; border-radius:12px">
+      <div class="s0-content-toggle" style="background:#E7EBE8; padding:20px; border-radius:0">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding-bottom:12px; border-bottom:1px solid #D3D9D6">
-          <b style="color:var(--ink); font-size:15px">선택한 항목 <span id="s0BasketCount" style="display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;font-size:15px;color:#fff;background:var(--accent);border-radius:999px;margin-left:4px">0</span></b>
+          <b style="color:var(--ink); font-size:15px">선택한 항목 <span id="s0BasketCount" style="display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;font-size:15px;color:#fff;background:var(--accent);border-radius:0;margin-left:4px">0</span></b>
           <button onclick="s0ClearAll()" style="font-size:15px;color:var(--muted);background:none;border:none;cursor:pointer;text-decoration:underline">전체 해제</button>
         </div>
         <div id="s0-basket"><p style="font-size:15px;color:var(--muted);text-align:center;padding:12px 0;margin:0">아직 선택한 항목이 없습니다.</p></div>
@@ -582,7 +582,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       <div>
         <div class="quad">
           <div class="q"><div class="qh">高영향 · 미성숙</div><div class="ph" style="font-size:15px; color:var(--muted); margin-top:6px"><b style="color:var(--ink)">선점 베팅</b><br>T1 AI에이전트 · T7 VPP</div></div>
-          <div class="q" style="background:linear-gradient(135deg,var(--accent-soft),#fff)"><div class="qh" style="color:var(--accent)">高영향 · 성숙 ★즉시</div><div class="ph" style="font-size:15px; color:var(--accent); font-weight:700; margin-top:6px">T2 DC냉각 <span style="font-size:15px; background:var(--accent); color:#fff; padding:1px 5px; border-radius:8px">수주 가시</span><br>T5 구독 <span style="font-size:15px; background:var(--accent); color:#fff; padding:1px 5px; border-radius:8px">매출 가시</span><br>T3 자연냉매</div></div>
+          <div class="q" style="background:linear-gradient(135deg,var(--accent-soft),#fff)"><div class="qh" style="color:var(--accent)">高영향 · 성숙 ★즉시</div><div class="ph" style="font-size:15px; color:var(--accent); font-weight:700; margin-top:6px">T2 DC냉각 <span style="font-size:15px; background:var(--accent); color:#fff; padding:1px 5px; border-radius:0">수주 가시</span><br>T5 구독 <span style="font-size:15px; background:var(--accent); color:#fff; padding:1px 5px; border-radius:0">매출 가시</span><br>T3 자연냉매</div></div>
           <div class="q"><div class="qh">低영향 · 미성숙</div><div class="ph" style="font-size:15px; color:var(--muted); margin-top:6px"><b style="color:var(--ink)">관찰</b><br>T8 실버·헬스</div></div>
           <div class="q"><div class="qh">低영향 · 성숙</div><div class="ph" style="font-size:15px; color:var(--muted); margin-top:6px"><b style="color:var(--ink)">효율 대응</b><br>T4 히트펌프 · T6 수리권</div></div>
         </div>
@@ -590,8 +590,8 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
       </div>
       <!-- 기회/위협 카드 + Hype Cycle 진행 참조 -->
       <div style="display:flex; flex-direction:column; gap:12px">
-        <div class="card" style="border-left:3px solid var(--ok)"><div class="tag" style="color:var(--ok)">최대 기회 · T2 <span style="font-size:15px; background:var(--ok); color:#fff; padding:1px 5px; border-radius:8px">수주 가시</span></div><h4>DC냉각 = 장비판매→통합솔루션 B2B 전환</h4><div class="ph">액체냉각 $55억→$190억(2030, CAGR 23%) · <b>가시 수주잔고(보강)</b> · 과열기지만 실수주 동반</div></div>
-        <div class="card" style="border-left:3px solid var(--ok)"><div class="tag" style="color:var(--ok)">기회 · T5 <span style="font-size:15px; background:var(--ok); color:#fff; padding:1px 5px; border-radius:8px">매출 가시</span></div><h4>구독으로 정체 수요 돌파 + 리커링 락인</h4><div class="ph">국내 구독시장 100조(2025) · <b>당사 AI구독클럽 누적매출(보강)</b> · 계몽기, 한국 선도</div></div>
+        <div class="card" style="border-left:3px solid var(--ok)"><div class="tag" style="color:var(--ok)">최대 기회 · T2 <span style="font-size:15px; background:var(--ok); color:#fff; padding:1px 5px; border-radius:0">수주 가시</span></div><h4>DC냉각 = 장비판매→통합솔루션 B2B 전환</h4><div class="ph">액체냉각 $55억→$190억(2030, CAGR 23%) · <b>가시 수주잔고(보강)</b> · 과열기지만 실수주 동반</div></div>
+        <div class="card" style="border-left:3px solid var(--ok)"><div class="tag" style="color:var(--ok)">기회 · T5 <span style="font-size:15px; background:var(--ok); color:#fff; padding:1px 5px; border-radius:0">매출 가시</span></div><h4>구독으로 정체 수요 돌파 + 리커링 락인</h4><div class="ph">국내 구독시장 100조(2025) · <b>당사 AI구독클럽 누적매출(보강)</b> · 계몽기, 한국 선도</div></div>
         <div class="card"><div class="tag" style="color:var(--signal)">위협 · T3·T4</div><h4>냉매·전동화 규제 = 대응비용 + 부품 공급부족</h4><div class="ph">EPA 700GWP 제조금지(25.1) · 컴프레서 핵심부품 내재화 필요</div></div>
       </div>
     </div>
@@ -912,7 +912,7 @@ sections.forEach(s=>obs.observe(s));
     const seq=++renderSeq;
     const groups={};
     list.forEach((it,i)=>{ (groups[it.s]=groups[it.s]||[]).push({s:it.s,t:it.t,tr:it.tr||"",dir:it.dir||"flat",id:"s0i"+seq+"_"+i}); });
-    let html=demo?'<div style="font-size:15px;color:var(--signal);background:var(--signal-soft);border:1px solid var(--line-strong);border-radius:6px;padding:8px 12px;margin-bottom:14px">백엔드 미연결 — 샘플 Insight로 흐름을 표시합니다(잠정). 워커 엔드포인트 연결 시 실데이터로 동작.</div>':"";
+    let html=demo?'<div style="font-size:15px;color:var(--signal);background:var(--signal-soft);border:1px solid var(--line-strong);border-radius:0;padding:8px 12px;margin-bottom:14px">백엔드 미연결 — 샘플 Insight로 흐름을 표시합니다(잠정). 워커 엔드포인트 연결 시 실데이터로 동작.</div>':"";
     Object.keys(S_DEF).forEach(s=>{
       if(!groups[s]) return;
       const d=S_DEF[s];
