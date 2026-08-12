@@ -887,7 +887,7 @@ sections.forEach(s=>obs.observe(s));
       const visibleParts=parts.filter(p=>!p.thought&&p.text).map(p=>p.text);
       const txt=(visibleParts.length?visibleParts:parts.map(p=>p.text||"")).join("\n");
       list=s0ParseInsights(txt);
-      if(!Array.isArray(list)||!list.length) throw new Error("Insight 응답 JSON 파싱 실패");
+      if(!Array.isArray(list)||!list.length){ console.error("S0 Insight 원문 응답",txt); throw new Error("Insight 응답 JSON 파싱 실패"); }
     }catch(e){ console.error("S0 Insight 요청 실패",e); list=DEMO; demo=true; }
     s0Render(list,demo);
   };
