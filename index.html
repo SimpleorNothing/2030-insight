@@ -112,7 +112,7 @@ section.step-sec{padding:64px 0; border-top:1px solid var(--line)}
 .sec-title{font-size:clamp(22px,3vw,30px); font-weight:800; letter-spacing:-.02em; margin:6px 0 10px}
 .sec-desc{font-size:15px; color:var(--muted); max-width:760px; margin-bottom:30px}
 
-/* ---------- 채움 영역(다른 Claude가 콘텐츠 삽입) ---------- */
+/* ---------- 채움 영역(다른 도구가 콘텐츠 삽입) ---------- */
 .fill{
   border:1.5px dashed var(--line-strong); border-radius:0; background:var(--surface);
   padding:22px; position:relative; min-height:90px;
@@ -283,7 +283,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
   <div class="wrap">
     <div class="sec-head"><span class="sec-num">STEP 00</span><span class="sec-role">// 신호 공급 — ① 소스 → ② Insight → ③ 반영</span></div>
     <h2 class="sec-title">정보 업데이트 — 분석 사슬에 신호를 공급하는 단계</h2>
-    <p class="sec-desc">S1~S6 분석이 도는 "엔진"이라면, 이 단계는 최신 신호를 끊임없이 넣어주는 "연료 공급"이다. 소스를 고르면 Claude가 Insight를 도출하고, 그중 필요한 것만 골라 해당 단계에 반영한다.</p>
+    <p class="sec-desc">S1~S6 분석이 도는 "엔진"이라면, 이 단계는 최신 신호를 끊임없이 넣어주는 "연료 공급"이다. 소스를 고르면 Gemini가 Insight를 도출하고, 그중 필요한 것만 골라 해당 단계에 반영한다.</p>
 
     <style>
     #s0 .s0-src{display:flex;align-items:flex-start;gap:11px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0;padding:15px 16px;cursor:pointer;transition:.15s;position:relative;text-align:left}
@@ -395,7 +395,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     <!-- ② Insight 도출 -->
     <div id="s0-insight-wrap" style="display:none">
       <h3 style="font-size:16px; font-weight:800; margin:28px 0 6px"><span class="substep">②</span>Insight 도출</h3>
-      <p class="sec-desc" style="margin-bottom:14px">선택한 소스를 기반으로 Claude가 신호를 도출하고 S1~S6 분석 단계로 분류한다.</p>
+      <p class="sec-desc" style="margin-bottom:14px">선택한 소스를 기반으로 Gemini가 신호를 도출하고 S1~S6 분석 단계로 분류한다.</p>
       <div class="s0-content-toggle" style="background:#E7EBE8; padding:20px; border-radius:0">
         <div id="s0-insight-area"></div>
       </div>
@@ -419,7 +419,7 @@ footer{padding:48px 0 64px; border-top:1px solid var(--line); color:var(--faint)
     </div>
 
     <div class="fill" style="margin-top:18px">
-      <p class="fill-note"><b>운영 메모</b> · 소스→Insight→반영 한 흐름으로 통합 · <b>Insight는 선택 소스 기반 실제 Claude 도출</b>(공용 키 프록시 워커, 키는 브라우저로 안 나감 · 미연결 시 샘플 폴백) · 각 신호는 8대 트렌드(T1~T8)에 매핑 · <b>반영 시 해당 STEP의 트렌드별 분석 테이블로 들어가고, 기존 트렌드 카드·경쟁사 표에 신규반영 배지(+N ▲/▼)로 연동</b>(× 로 반영 취소) · 정량 수치·자동 수집은 보강 단계 과제</p>
+      <p class="fill-note"><b>운영 메모</b> · 소스→Insight→반영 한 흐름으로 통합 · <b>Insight는 선택 소스 기반 실제 Gemini 도출</b>(공용 키 프록시 워커, 키는 브라우저로 안 나감 · 미연결 시 샘플 폴백) · 각 신호는 8대 트렌드(T1~T8)에 매핑 · <b>반영 시 해당 STEP의 트렌드별 분석 테이블로 들어가고, 기존 트렌드 카드·경쟁사 표에 신규반영 배지(+N ▲/▼)로 연동</b>(× 로 반영 취소) · 정량 수치·자동 수집은 보강 단계 과제</p>
     </div>
   </div>
 </section>
@@ -821,9 +821,9 @@ sections.forEach(s=>obs.observe(s));
   const reflected=new Map();   // STEP 1~6에 실제 반영된 신호 (id -> {s,t,tr,dir,date})
   let renderSeq=0;             // 재추출 시에도 id가 겹치지 않도록 전역 시퀀스
 
-  // 공용 Anthropic 프록시 워커(키는 워커 secret 보관, 브라우저로 안 나감). market-insight와 동일 인프라.
+  // 공용 Gemini 프록시 워커(키는 워커 secret 보관, 브라우저로 안 나감). market-insight와 동일 인프라.
   const PROXY_URL="https://da-insight-anthropic-proxy.cw120-park.workers.dev";
-  const PROXY_MODEL="claude-haiku-4-5-20251001";
+  const PROXY_MODEL="gemini-3.6-flash";
   const SRC_LABEL={
     MI:"Market Insight 시장 신호 피드(mi.samsungda.net) — 경쟁사·소비자·정책 최신 뉴스 신호",
     agentguide:"agentguide 조사 보고서 결과물",
@@ -855,7 +855,7 @@ sections.forEach(s=>obs.observe(s));
     const wrap=document.getElementById("s0-insight-wrap");
     const area=document.getElementById("s0-insight-area");
     wrap.style.display="block";
-    area.innerHTML='<div style="display:flex;align-items:center;gap:10px;color:var(--muted);font-size:15px;padding:6px 0"><span class="s0-spin"></span>Claude가 선택한 소스에서 신호를 도출하는 중…</div>';
+    area.innerHTML='<div style="display:flex;align-items:center;gap:10px;color:var(--muted);font-size:15px;padding:6px 0"><span class="s0-spin"></span>Gemini가 선택한 소스에서 신호를 도출하는 중…</div>';
     wrap.scrollIntoView({behavior:"smooth",block:"start"});
 
     // 선택 소스 라벨 + 추가 소스(URL/텍스트) 수집
@@ -879,17 +879,17 @@ sections.forEach(s=>obs.observe(s));
     let list, demo=false;
     try{
       const r=await fetch(PROXY_URL,{method:"POST",headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({model:PROXY_MODEL,max_tokens:1600,system:sys,messages:[{role:"user",content:usr}]})});
+        body:JSON.stringify({model:PROXY_MODEL,systemInstruction:{parts:[{text:sys}]},contents:[{role:"user",parts:[{text:usr}]}],generationConfig:{maxOutputTokens:1600}})});
       if(!r.ok) throw 0;
       const d=await r.json();
-      const txt=(d&&d.content&&d.content[0]&&d.content[0].text)||"";
+      const txt=(d&&d.candidates&&d.candidates[0]&&d.candidates[0].content&&d.candidates[0].content.parts&&d.candidates[0].content.parts[0]&&d.candidates[0].content.parts[0].text)||"";
       list=s0ParseInsights(txt);
       if(!Array.isArray(list)||!list.length) throw 0;
     }catch(e){ list=DEMO; demo=true; }
     s0Render(list,demo);
   };
 
-  // Claude 응답 텍스트에서 JSON 배열을 견고하게 추출·정규화
+  // Gemini 응답 텍스트에서 JSON 배열을 견고하게 추출·정규화
   function s0ParseInsights(txt){
     try{
       let t=String(txt).trim().replace(/^```(?:json)?/i,"").replace(/```$/,"").trim();
