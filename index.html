@@ -873,13 +873,13 @@ sections.forEach(s=>obs.observe(s));
       +"또한 각 신호를 가장 관련된 8대 트렌드 중 하나에 매핑한다: "
       +"T1 AI에이전트 가전, T2 AI데이터센터 냉각, T3 저GWP·자연냉매, T4 히트펌프 전기화, T5 가전 구독·서비스화, T6 순환경제·수리권, T7 그리드 인터랙티브, T8 실버·헬스케어 (해당 없으면 빈 문자열).\n"
       +"신호가 그 트렌드 가설을 강화하면 dir=\"up\", 약화/위협이면 \"down\", 중립이면 \"flat\".\n"
-      +"반드시 JSON 배열만 출력한다. 형식: [{\"s\":\"S2\",\"t\":\"한국어 신호 한 문장\",\"tr\":\"T5\",\"dir\":\"up\"}]. 6~10개. 코드블록·설명·여는말 금지.";
+      +"반드시 JSON 배열만 출력한다. 형식: [{\"s\":\"S2\",\"t\":\"한국어 신호 한 문장\",\"tr\":\"T5\",\"dir\":\"up\"}]. 서로 다른 분석 단계의 핵심 신호 3~4개만 작성한다. 코드블록·설명·여는말 금지.";
     const usr="선택된 소스:\n- "+labels.join("\n- ")+(extra?("\n"+extra):"")+"\n\n위 소스 맥락에서 삼성 DA 2030 관점의 신호를 도출해 JSON 배열로만 답하라.";
 
     let list, demo=false;
     try{
       const r=await fetch(PROXY_URL,{method:"POST",headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({model:PROXY_MODEL,systemInstruction:{parts:[{text:sys}]},contents:[{role:"user",parts:[{text:usr}]}],generationConfig:{maxOutputTokens:1600}})});
+        body:JSON.stringify({model:PROXY_MODEL,systemInstruction:{parts:[{text:sys}]},contents:[{role:"user",parts:[{text:usr}]}],generationConfig:{maxOutputTokens:2000}})});
       if(!r.ok) throw new Error("Insight proxy HTTP "+r.status+": "+(await r.text()).slice(0,300));
       const d=await r.json();
       const parts=(d&&d.candidates&&d.candidates[0]&&d.candidates[0].content&&d.candidates[0].content.parts)||[];
