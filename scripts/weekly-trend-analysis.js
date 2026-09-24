@@ -200,7 +200,7 @@ const stageRowsHtml = result.stageReviews.map(sr => {
 }).join('\n');
 
 const summaryHtml = result.summary
-  ? `<p style="font-size:15px; color:var(--warn); font-weight:600; padding:0 0 10px; border-bottom:1px solid rgba(245,158,11,.3); margin-bottom:6px">${result.summary}</p>`
+  ? `<p style="font-size:15px; color:var(--ink); font-weight:600; padding:0 0 10px; border-bottom:1px solid var(--line); margin-bottom:6px">${result.summary}</p>`
   : '';
 
 const newSection = `<!-- WEEKLY-CHECK-START -->
@@ -208,7 +208,7 @@ const newSection = `<!-- WEEKLY-CHECK-START -->
   <div class="weekly-check">
     <div class="weekly-check-head">
       <span class="wc-badge">📰 주간 점검</span>
-      <span class="wc-title">MI 트렌드 점검 — 1~6단계 반영 검토</span>
+      <span class="wc-title">MI·CI 트렌드 점검 — 1~6단계 반영 검토</span>
       <span class="wc-date">분석 기간: ${weekLabel}</span>
       <span class="wc-status pending">검토 대기</span>
     </div>
